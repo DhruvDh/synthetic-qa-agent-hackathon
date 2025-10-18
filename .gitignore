@@ -1,0 +1,148 @@
+# -----------------------------
+# JUPYTER / NOTEBOOK ESSENTIALS
+# -----------------------------
+# Keep notebooks themselves; ignore transient checkpoints.
+.ipynb_checkpoints/
+
+# If you pair notebooks with Jupytext and track the .py/.md instead, uncomment:
+# *.ipynb
+
+# -----------------------------
+# PYTHON BUILD / RUNTIME NOISE
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.$py.class
+*.so
+
+# Packaging / builds
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# -----------------------------
+# VIRTUAL ENVS / TOOLING
+# -----------------------------
+.venv/
+venv/
+env/
+ENV/
+__pypackages__/
+.pyenv/
+.conda/
+.mamba/
+pip-wheel-metadata/
+
+# -----------------------------
+# TEST / TYPE / LINT / PROFILE
+# -----------------------------
+.pytest_cache/
+.tox/
+.nox/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pytype/
+.pyre/
+.ruff_cache/
+.cache/
+*.prof
+*.profraw
+
+# -----------------------------
+# DATA / MODELS / ARTIFACTS
+# (anchored to project root; keep README or samples)
+# -----------------------------
+/data/**
+!/data/.gitkeep
+!/data/README.md
+!/data/samples/**
+
+/datasets/**
+!/datasets/.gitkeep
+!/datasets/README.md
+!/datasets/samples/**
+
+/models/**
+!/models/.gitkeep
+!/models/README.md
+
+/outputs/**
+!/outputs/.gitkeep
+!/outputs/README.md
+
+/artifacts/**
+!/artifacts/.gitkeep
+!/artifacts/README.md
+
+/checkpoints/
+wandb/
+mlruns/
+ray_results/
+tensorboard/
+lightning_logs/
+tb_logs/
+runs/
+
+# If you prefer to version figures/reports, remove the relevant lines above.
+
+# -----------------------------
+# NOTEBOOK EXPORTS (optional)
+# Uncomment if you don't want rendered exports tracked
+# -----------------------------
+# *.html
+# *.pdf
+
+# -----------------------------
+# JUPYTER / DOC TOOLING (optional)
+# -----------------------------
+# If you generate a Quarto site or nbconvert build dir, ignore it:
+# _site/
+# .quarto/
+
+# -----------------------------
+# LOGS
+# -----------------------------
+*.log
+logs/
+*.out
+*.err
+
+# -----------------------------
+# IDE / EDITOR
+# -----------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# -----------------------------
+# OS CLUTTER
+# -----------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# -----------------------------
+# SECRETS & ENV
+# -----------------------------
+.env
+.env.*
+*.env
+*.env.*
+.envrc
+
+# -----------------------------
+# DVC (if used)
+# -----------------------------
+.dvc/
+.dvc/cache/
+*.dvc
+
