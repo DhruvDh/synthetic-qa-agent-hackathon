@@ -27,7 +27,7 @@ DEVELOPER_TEMPLATE = """<|start|>developer<|message|># Instructions
 USER_TEMPLATE = "<|start|>user<|message|>{user}<|end|>\n<|start|>assistant"
 
 _FINAL_RE = re.compile(
-    r"<\|channel\|>final<\|message\|>(?P<body>.*?)(?:<\|return\|>|<\|end\|>)",
+    r"<\|channel\|>final<\|message\|>(?P<body>.*?)(?:<\|return\|>|<\|end\|>|(?=<\|channel\|>[a-zA-Z]+<\|message\|>)|\Z)",
     flags=re.DOTALL,
 )
 
