@@ -1,12 +1,12 @@
 {
-    "n_questions_raw": 40,
+    "n_questions_raw": 0,
     "n_questions_filtered": 0,
-    "n_answers_raw": 40,
-    "n_answers_valid": 1,
+    "n_answers_raw": 0,
+    "n_answers_valid": 0,
     "a_agent_accuracy": 0.0,
     "q_agent_score": 0.0,
     "question_valid_rate": 0.0,
-    "answer_valid_rate": 0.025,
+    "answer_valid_rate": 0.0,
     "duplicate_choices_rate": 0.0,
     "long_reasoning_rate": 0.0,
     "answer_letter_distribution": {}

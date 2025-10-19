@@ -9,17 +9,17 @@ dependencies = [
     "pyyaml>=6.0.3",
     "tqdm>=4.67.1",
     "transformers>=4.57.1",
-    "torch",
-    "torchaudio",
-    "torchvision",
+    "torch; sys_platform == 'linux'",
+    "torchaudio; sys_platform == 'linux'",
+    "torchvision; sys_platform == 'linux'",
     "unsloth>=2025.7.2",
     "unsloth-zoo>=2025.7.4",
 ]
 
 [tool.uv.sources]
-torch = { index = "rocm-nightly" }
-torchaudio = { index = "rocm-nightly" }
-torchvision = { index = "rocm-nightly" }
+torch = { index = "rocm-nightly", marker = "sys_platform == 'linux'" }
+torchaudio = { index = "rocm-nightly", marker = "sys_platform == 'linux'" }
+torchvision = { index = "rocm-nightly", marker = "sys_platform == 'linux'" }
 
 [[tool.uv.index]]
 name = "rocm-nightly"

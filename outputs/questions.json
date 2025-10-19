@@ -1,189 +1,201 @@
 [
     [
-        "{\n  \"topic\": \"...\",\n  \"question\": \"...\",\n  \"choices\": [\"A) ...\", \"B) ...\", \"C) ...\", \"D) ...\"],\n  \"answer\": \"Only the option letter (A, B, C, or D)\",\n  \"explanation\": \"...\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
-        null,
-        null
-    ],
-    "{\n  \"topic\": \"Blood Relations and Family Tree/Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering, Maya says: \\\"The man standing to my left is the son of the woman who is the mother of my father's only brother's wife. The woman standing opposite me is the daughter of the man who is the brother of my mother's sister.\\\" If the man to Maya's left is John and the woman opposite her is Lisa, how is Lisa related to Maya?\",\n  \"choices\": [\n    \"A) Paternal cousin\",\n    \"B) Sister\",\n    \"C) Maternal cousin\",\n    \"D) Niece\"\n  ],\n  \"answer\": \"C\",\n  \"explanation\": \"Maya's mother's sister's brother is Maya's maternal uncle. His daughter is Maya's maternal cousin. Hence Lisa is Maya's maternal cousin.\"\n}",
-    [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree\",\n  \"question\": \"At a family reunion, Maya says: \\\"The man standing next to me is the son of my father's sister's husband, who is also the brother of the woman sitting opposite me. That woman is the mother of my husband's only brother.\\\" How is the man standing next to Maya related to her?\",\n  \"choices\": [\n    \"A) Paternal cousin\",\n    \"B) Brother\u2011in\u2011law\",\n    \"C) Maternal uncle\u2011in\u2011law\",\n    \"D) Father\u2011in\u2011law\"\n  ],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree/Puzzles involving generations and family tree logic\",\n  \"question\": \"In a certain family:\\n- Two brothers, Arun (elder) and Bhushan (younger), are married to Maya and Leela respectively.\\n- Maya\",\n  \"choices\": [],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree\",\n  \"question\": \"In a\",\n  \"choices\": [],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "No JSON data was provided to extract the requested fields.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the JSON string you\u2019d like me to extract the fields from is missing. Could you please provide the actual JSON content? Once you do, I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** as requested.",
-        null,
-        null
-    ],
-    "{\n  \"topic\": \"Blood Relations and Family Tree/Puzzles involving generations and family tree logic\",\n  \"question\": \"Riya says: \\\"The man who is the husband of my father's only sister's daughter is the son of the woman who is the mother of my husband's maternal uncle.\\\" How is that man related to Riya?\",\n  \"choices\": [\n    \"A) Uncle\u2011in\u2011law\",\n    \"B) Father\u2011in\u2011law\",\n    \"C) Brother\u2011in\u2011law\",\n    \"D) Nephew\"\n  ],\n  \"answer\": \"A\",\n  \"explanation\": \"Riya's father's only sister is her paternal aunt; her daughter is Riya's paternal cousin. The husband of that cousin is the son of Riya's husband's maternal grandmother, i.e., her husband's maternal uncle. Thus the man is Riya's husband's maternal uncle, making him her uncle\u2011in\u2011law.\"\n}",
-    [
-        "{\n  \"topic\": \"Seating Arrangements (Linear, Circular)\",\n  \"question\": \"Ten scholars A, B, C, D, E, F, G, H, I, and J sit around a circular table numbered clockwise 1 to 10. Each scholar has a distinct nationality (American, British, Chinese, Danish, Egyptian, French, German, Hungarian, Indian, Japanese) and a distinct occupation (Architect, Biologist, Chemist, Designer, Engineer, Farmer, Geologist, Historian, Illustrator, Journalist). Exactly three scholars face outward; the rest face the center. The following conditions hold:\\n1. The British scholar sits immediately clockwise of the Architect.\\n2. The Engineer faces outward and sits opposite the Japanese scholar.\\n3. The German scholar sits two seats to the left of the Farmer.\\n4. The Chinese scholar sits directly opposite the Biologist.\\n5. The Illustrator sits three seats clockwise from the Danish scholar\",\n  \"choices\": [],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "No JSON data was provided to extract the requested fields.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the JSON string you\u2019d like me to extract the fields from is missing. Could you please provide the actual JSON content? Once you do, I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** as requested.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree\",\n  \"question\": \"At a family gathering, Meera says: \\\"The man standing to my left is the son of the woman who is married to my father's brother's only son. That woman's brother is the father of the person sitting opposite me, who is the daughter of my mother's sister's husband.\\\" How is the man standing to Meera's left related to Meera?\",\n  \"choices\": [\n    \"A) Maternal cousin (by marriage)\",\n    \"B\"\n  ],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree\",\n  \"question\": \"\",\n  \"choices\": [],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the JSON string you\u2019d like me to extract the fields from is missing. Could you please provide the actual JSON content? Once you do, I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** as requested.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "{\n  \"topic\": \"Blood Relations and Family Tree\",\n  \"question\": \"Meera says: \\\"The woman standing to my left is the mother of the son of my father's younger brother's wife. That woman's husband is the son of the woman who is my mother's paternal aunt.\\\" The man standing opposite Meera is the husband of the\",\n  \"choices\": [],\n  \"answer\": \"\",\n  \"explanation\": \"\"\n}",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the input string containing the JSON data is missing, so there\u2019s nothing to extract. Please provide the JSON text you\u2019d like parsed.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the JSON string you\u2019d like me to extract the fields from is missing. Could you please provide the actual JSON content? Once you do, I\u2019ll extract the **topic**, **question**, **choices**, **answer**, and **explanation** as requested.",
-        null,
-        null
-    ],
-    "{\n  \"topic\": \"Blood Relations and Family Tree/Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering, Arjun says: \\\"The woman I'm pointing to is the daughter of the woman who is married to my father's only brother, and that woman's mother is my mother's sister.\\\" How is the pointed\u2011out woman related to Arjun?\",\n  \"choices\": [\n    \"A) Paternal Uncle\",\n    \"B) Maternal First Cousin Once Removed\",\n    \"C) Maternal Aunt\",\n    \"D) Sister\u2011in\u2011law\"\n  ],\n  \"answer\": \"B\",\n  \"explanation\": \"Arjun's father's only brother is his paternal uncle. His wife is Arjun's paternal aunt. That aunt\u2019s mother is Arjun\u2019s mother\u2019s sister (a maternal aunt), so the aunt is also Arjun\u2019s maternal cousin. The woman pointed to is the aunt\u2019s daughter, i.e., the daughter of Arjun\u2019s maternal cousin, making her Arjun\u2019s maternal first cousin once removed.\"\n}",
-    [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ],
     [
-        "It looks like the actual JSON content to extract isn\u2019t included in your message. Please provide the JSON string, and I\u2019ll extract the requested fields for you.",
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
+        null,
+        null
+    ],
+    [
+        "It looks like the JSON string you\u2019d like me to extract the fields from wasn\u2019t included. Could you please provide the actual string (the JSON content) so I can pull out the\u202ftopic,\u202fquestion,\u202fchoices,\u202fanswer, and\u202fexplanation for you?",
         null,
         null
     ]

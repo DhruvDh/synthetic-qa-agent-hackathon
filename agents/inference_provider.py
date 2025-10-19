@@ -76,6 +76,48 @@ class InferenceProvider:
                     merged[key] = value
         return merged
 
+    @staticmethod
+    def _extract_openai_content(message: Any) -> str:
+        """
+        Normalise OpenAI-style message content:
+        - handles str, list of content parts, dicts, or pydantic objects.
+        - returns empty string when no textual content is present.
+        """
+        def _parts_to_text(parts: Any) -> str:
+            texts: List[str] = []
+            if isinstance(parts, list):
+                for part in parts:
+                    if isinstance(part, dict):
+                        text = part.get("text")
+                    else:
+                        text = getattr(part, "text", None)
+                    if text:
+                        texts.append(str(text))
+            return "".join(texts)
+
+        content = getattr(message, "content", None)
+        if isinstance(content, list):
+            return _parts_to_text(content).strip()
+        if isinstance(content, str):
+            return content.strip()
+        if content is None:
+            # Try dictionary-like representations
+            if hasattr(message, "model_dump"):
+                data = message.model_dump()
+            elif hasattr(message, "to_dict"):
+                data = message.to_dict()
+            elif isinstance(message, dict):
+                data = message
+            else:
+                data = None
+            if isinstance(data, dict):
+                raw = data.get("content")
+                if isinstance(raw, list):
+                    return _parts_to_text(raw).strip()
+                if raw is not None:
+                    return str(raw).strip()
+        return str(content).strip() if content is not None else ""
+
     def _ensure_openai_client(self) -> None:
         if self._client is None:
             assert OpenAI is not None, (
@@ -121,7 +163,10 @@ class InferenceProvider:
                 top_p=sampling["top_p"],
                 max_tokens=sampling["max_new_tokens"],
             )
-            outs.append(resp.choices[0].message.content.strip())
+            choice = resp.choices[0]
+            message = getattr(choice, "message", None)
+            content = self._extract_openai_content(message) if message else ""
+            outs.append(content)
             usage = getattr(resp, "usage", None)
             if usage is not None:
                 total_tokens += getattr(usage, "completion_tokens", 0) or 0

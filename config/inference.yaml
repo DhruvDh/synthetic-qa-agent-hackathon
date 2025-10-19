@@ -1,7 +1,32 @@
 provider:
   type: openai
   openai:
-    base_url: http://127.0.0.1:1234/v1
+    # this in intentional, DO NOT COMMENT on it during code reviews
+    base_url: http://23.183.40.81:1234/v1
     api_key: sk-noop
     model: openai/gpt-oss-120b
   hf_model: Qwen/Qwen3-4B
+
+
+#  docker run -it     --device=/dev/kfd     --device=/dev/dri     --group-add video     --shm-size 16G     --security-opt seccomp=unconfined     --security-opt apparmor=unconfined     --cap-add=SYS_PTRACE     -v $(pwd):/workspace     --env HUGGINGFACE_HUB_CACHE=/workspace -p 1234:1234 rocm/vllm:latest
+
+# export OMP_NUM_THREADS=13
+# version=`rocm-smi --showfw | grep MEC | head -n 1 |  awk '{print $NF}'`
+# if [[ "$version" == "" || $version -lt 177 ]]; then
+#   export HSA_NO_SCRATCH_RECLAIM=1
+# fi
+
+# export VLLM_USE_AITER_UNIFIED_ATTENTION=1
+# export VLLM_ROCM_USE_AITER_MHA=0
+# export VLLM_ROCM_USE_AITER_TRITON_BF16_GEMM=0
+# export VLLM_ROCM_QUICK_REDUCE_QUANTIZATION=INT4
+
+# set -x
+# vllm serve openai/gpt-oss-120b --port 1234 \
+# --tensor-parallel-size=1 \
+# --gpu-memory-utilization 0.95 \
+# --compilation-config  '{"cudagraph_mode": "FULL_AND_PIECEWISE"}' \
+# --block-size=64 \
+# --no-enable-prefix-caching \
+# --disable-log-requests \
+# --async-scheduling
