@@ -61,6 +61,7 @@ class QAgent(object):
             if key not in self._SAMPLING_KEYS and key != "tgps_show"
         }
         extra_args.update({"use_completions": True, "raw_harmony": True})
+        extra_args.setdefault("stop", ["<|end|>", "<|assistant", "<|start|>"])
         return self._provider.generate(
             [harmony_prompt],
             system_prompt="",

@@ -3,27 +3,27 @@
 import random
 import json
 
+from collections import OrderedDict
 from tqdm import tqdm
 from pathlib import Path
 from typing import List, Tuple, Dict, Any, Optional
 
-from .config import get_sampling_settings
+from .config import (
+    get_sampling_settings,
+    get_question_prompt_blocks,
+)
 from .question_model import QAgent
 from utils.harmony_prompt import render_harmony_prompt, extract_final
 
-Q_DEV_INSTRUCTIONS = """You are an expert-level examiner. Follow the user's directions exactly,
-produce a single multiple-choice question, and ensure the final channel contains only the JSON object
-matching the provided response format."""
-
 Q_RESPONSE_FORMAT_NAME = "mcq_question"
 Q_RESPONSE_FORMAT_SCHEMA = r"""
-{"type":"object","additionalProperties":false,"required":["topic","question","choices","answer","explanation"],
+{"type":"object","additionalProperties":false,"required":["topic","question","choices","explanation","answer"],
 "properties":{"topic":{"type":"string","minLength":1},
 "question":{"type":"string","minLength":1},
 "choices":{"type":"array","minItems":4,"maxItems":4,
 "items":{"type":"string","pattern":"^[ABCD]\\)\\s.+$"}},
-"answer":{"type":"string","enum":["A","B","C","D"]},
-"explanation":{"type":"string","maxLength":800}}}
+"explanation":{"type":"string","maxLength":540},
+"answer":{"type":"string","enum":["A","B","C","D"]}}}
 """
 
 
@@ -37,6 +37,10 @@ class QuestioningAgent(object):
     # WARNING: public contract – do not modify signature or return type.
     def __init__(self, **kwargs):
         self.agent = QAgent(**kwargs)
+        prompt_blocks = get_question_prompt_blocks()
+        self.prompt_system = prompt_blocks.system
+        self.prompt_developer = prompt_blocks.developer
+        self.prompt_user_template = prompt_blocks.user
 
     # WARNING: public contract – do not modify signature or return type.
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
@@ -59,12 +63,22 @@ class QuestioningAgent(object):
         sample_str = ""
         for sample in inc_samples:
             question = sample.get("question", "")
-            choices = sample.get("choices", [""] * 4)
-            answer = sample.get("answer", "")
+            choices = self._format_choices_array(sample.get("choices", []))
+            answer = self._normalize_answer_letter(sample.get("answer", ""))
             explanation = sample.get("explanation", "")
+            choice_bodies = []
+            for choice in choices:
+                parts = choice.split(")", 1)
+                body = parts[1].strip() if len(parts) == 2 else choice.strip()
+                choice_bodies.append(body)
             sample_str += (
                 fmt.format(
-                    topic, topic.split("/")[-1], question, *choices, answer, explanation
+                    topic,
+                    topic.split("/")[-1],
+                    question,
+                    *choice_bodies,
+                    answer,
+                    explanation,
                 )
                 + "\n\n"
             )
@@ -80,60 +94,25 @@ class QuestioningAgent(object):
     ) -> Tuple[str, str]:
         """Generate an MCQ based question on given topic with specified difficulty"""
 
-        if wadvsys:
-            # TODO: Manipulate this SYS prompt for better results
-            sys_prompt = """
-            You are an **expert-level examiner** with deep expertise in designing **highly challenging and conceptually rigorous multiple-choice questions (MCQs)** for the **Quantitative Aptitude and Analytical Reasoning** sections of top-tier competitive exams.
-            Think step by step to generate the question and solve the same, but only output the final answer. Do not show your thinking process.
-            **Please DO NOT reveal the solution steps or any intermediate reasoning.**
-            """
-        else:
-            sys_prompt = "You are an examiner tasked with creating extremely difficult multiple-choice questions"
-        tmpl = (
-            "Generate an EXTREMELY DIFFICULT MCQ on topic: {0}.\n\n"
-            "**CRITICAL REQUIREMENTS:**\n"
-            '1.  **Topic Alignment**: The "question" must be strictly relevant to the topic: {1}.\n'
-            "2.  **Question Quality**: The question must be EXTREMELY DIFFICULT, clear, and test deep conceptual understanding. Avoid trivial or ambiguous questions.\n"
-            '3.  **Choices (4 total)**: Generate exactly FOUR multiple-choice options, labeled "A)", "B)", "C)", and "D)".\n'
-            "4.  **Single Correct Answer**: Ensure that option {2} is only factually correct.\n"
-            "5.  **Plausible Distractors**: While option {3} are three incorrect UNIQUE choices which are highly plausible and common misconceptions related to the topic, designed to mislead someone without expert knowledge.\n"
-            '6.  **Answer Key**: The "answer" field in the JSON should be ONLY the letter {4}.\n'
-            '7.  **Explanation**: The "explanation" field provides a concise (under 100 words) and clear justification for why the correct answer is correct.\n\n'
-            "{5}"
-            "RESPONSE FORMAT: Strictly generate a valid JSON object ensuring proper syntax and structure as shown below.\n\n"
-            "EXAMPLE: {6}\n"
-            "{{\n"
-            '  "topic": "{7}",\n'
-            '  "question": "...",\n'
-            '  "choices": ["A) ...", "B) ...", "C) ...", "D) ..."],\n'
-            '  "answer": "{8}",\n'
-            '  "explanation": "Provide a brief explanation why {9} is correct within 100 words."\n'
-            "}}"
-        )
-        # Remove model's preferential bias for options
         correct_option = random.choice(["A", "B", "C", "D"])
         distractors = ", ".join(
-            [opt for opt in ["A", "B", "C", "D"] if opt != correct_option]
+            opt for opt in ["A", "B", "C", "D"] if opt != correct_option
         )
 
-        if wicl:
-            inc_samples_ex = self.build_inc_samples(inc_samples, topic)
-        else:
-            inc_samples_ex = ""
-        prompt = tmpl.format(
-            topic,
-            topic,
-            correct_option,
-            distractors,
-            correct_option,
-            inc_samples_ex,
-            topic,
-            topic.split("/")[-1],
-            correct_option,
-            correct_option,
+        samples_block = ""
+        if wicl and inc_samples:
+            examples = self.build_inc_samples(inc_samples, topic)
+            if examples:
+                samples_block = f"\nREFERENCE EXAMPLES:\n{examples}"
+
+        user_prompt = self.prompt_user_template.format(
+            topic=topic,
+            answer_letter=correct_option,
+            distractors=distractors,
+            samples_section=samples_block,
         )
 
-        return prompt, sys_prompt
+        return user_prompt, self.prompt_system
 
     # WARNING: public contract – do not modify signature or return type.
     def generate_question(
@@ -149,7 +128,10 @@ class QuestioningAgent(object):
         if isinstance(topic, list):
             for t in topic:
                 prompt_text, sys_prompt = self.build_prompt(
-                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples.get(t[1]) if inc_samples else None
+                    f"{t[0]}/{t[1]}",
+                    wadvsys,
+                    wicl,
+                    inc_samples.get(t[1]) if inc_samples else None,
                 )
                 prompts.append((prompt_text, sys_prompt))
         else:
@@ -165,20 +147,23 @@ class QuestioningAgent(object):
         total_tokens: Optional[int] = 0
         total_time: Optional[float] = 0.0
 
+        developer_text = self.prompt_developer
         for prompt_text, sys_prompt in prompts:
-            combined_user = f"{sys_prompt.strip()}\n\n{prompt_text.strip()}"
+            combined_user = prompt_text.strip()
             harmony_prompt = render_harmony_prompt(
-                developer_instructions=Q_DEV_INSTRUCTIONS,
+                developer_instructions=developer_text,
                 response_format_name=Q_RESPONSE_FORMAT_NAME,
                 response_format_json_schema=Q_RESPONSE_FORMAT_SCHEMA,
                 user_prompt=combined_user,
                 reasoning="low" if wadvsys else "medium",
+                system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(
                 harmony_prompt, **gen_kwargs
             )
             final = extract_final(resp_text) or resp_text
-            outputs.append(final.strip())
+            structured = self._reorder_question_json(final.strip())
+            outputs.append(structured)
 
             if tokens is None:
                 total_tokens = None
@@ -232,11 +217,13 @@ class QuestioningAgent(object):
             batch_questions = self.generate_question(
                 batch_topics, wadvsys, wicl, inc_samples, **kwargs
             )
-            (
-                questions.extend(batch_questions[0]),
-                tls.append(batch_questions[1]),
-                gts.append(batch_questions[2]),
-            )
+            payload = batch_questions[0]
+            if isinstance(payload, list):
+                questions.extend(payload)
+            else:
+                questions.append(payload)
+            tls.append(batch_questions[1])
+            gts.append(batch_questions[2])
             pbar.update(1)
         pbar.close()
         return questions, tls, gts
@@ -250,52 +237,52 @@ class QuestioningAgent(object):
     def filter_questions(
         self, questions: List[str | Dict[str, str | Any]]
     ) -> List[Dict[str, str | Any]]:
-        def basic_checks(q2: Dict[str, str]) -> bool:
-            # check required keys
-            required_keys = ["topic", "question", "choices", "answer"]
-            if all((key in q2) for key in required_keys):
-                # check choices format
-                checks = all(
-                    isinstance(choice, str)
-                    and len(choice) > 2
-                    and choice[0].upper() in "ABCD"
-                    for choice in q2["choices"]
-                )
-                if (
-                    isinstance(q2["choices"], list)
-                    and len(q2["choices"]) == 4
-                    and checks
-                ):
-                    # check answer format
-                    # Check token length
-                    check_len = sum(
-                        self.count_tokens_q(q2[k]) for k in ["question", "answer"]
-                    )
-                    check_len += (
-                        sum(self.count_tokens_q(choice) for choice in q2["choices"])
-                        - 15
-                    )
-                    if check_len < 130:
-                        if (
-                            check_len
-                            + self.count_tokens_q(q2.get("explanation", "None"))
-                            <= 1024
-                        ):
-                            ans = str(q2.get("answer", "")).strip()
-                            if len(ans) == 1 and ans.upper() in "ABCD":
-                                return True
-            return False
+        def basic_checks(q2: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+            required_keys = {"topic", "question", "choices", "explanation", "answer"}
+            if not required_keys.issubset(q2.keys()):
+                return None
+
+            topic = str(q2.get("topic", "")).strip()
+            question = str(q2.get("question", "")).strip()
+            explanation = str(q2.get("explanation", "")).strip()
+            if not topic or not question:
+                return None
+
+            raw_choices = q2.get("choices", [])
+            if not isinstance(raw_choices, list) or len(raw_choices) != 4:
+                return None
+            choices = self._format_choices_array(raw_choices)
+            bodies = [
+                c.split(")", 1)[1].strip().lower() if ")" in c else c.strip().lower()
+                for c in choices
+            ]
+            if len(set(bodies)) != 4:
+                return None
+
+            answer = self._normalize_answer_letter(q2.get("answer", ""))
+            if answer not in {"A", "B", "C", "D"}:
+                return None
+
+            ordered = OrderedDict()
+            ordered["topic"] = topic
+            ordered["question"] = question
+            ordered["choices"] = choices
+            ordered["explanation"] = explanation
+            ordered["answer"] = answer
+            return ordered
 
         correct_format_question = []
         for i, q in enumerate(questions):
             if isinstance(q, dict):
-                if basic_checks(q):
-                    correct_format_question.append(q)
+                candidate = basic_checks(q)
+                if candidate:
+                    correct_format_question.append(candidate)
             elif isinstance(q, str):
                 try:
                     q1 = json.loads(q)
-                    if basic_checks(q1):
-                        correct_format_question.append(q1)
+                    candidate = basic_checks(q1)
+                    if candidate:
+                        correct_format_question.append(candidate)
                 except json.JSONDecodeError:
                     # If JSON decoding fails, skip this answer
                     print(f"Skipping invalid JSON at index {i}: {q}")
@@ -305,6 +292,63 @@ class QuestioningAgent(object):
         if len(correct_format_question) >= 0.5 * len(questions):
             return correct_format_question
         return list()
+
+    @staticmethod
+    def _normalize_answer_letter(value: str) -> str:
+        """Normalize answer strings to a single uppercase letter A-D."""
+        letter = value.strip().upper()
+        for opt in ("A", "B", "C", "D"):
+            if letter == opt:
+                return opt
+            if letter.startswith(opt + ")") or letter.startswith(opt + " "):
+                return opt
+        return ""
+
+    def _format_choices_array(self, choices: List[str]) -> List[str]:
+        """Ensure there are four choices labeled A)-D) with trimmed bodies."""
+        formatted: List[str] = []
+        for idx in range(4):
+            label = chr(65 + idx)
+            raw = choices[idx] if idx < len(choices) else ""
+            text = raw.strip()
+            body = text
+            if text.startswith(f"{label})"):
+                body = text[len(f"{label})") :].strip()
+            elif text and text[0].upper() == label and text[1:2] in {")", "."}:
+                body = text[2:].strip()
+            elif text.startswith(f"{label} "):
+                body = text[len(f"{label} ") :].strip()
+            else:
+                body = text.strip()
+            formatted.append(f"{label}) {body}".strip())
+        return formatted
+
+    def _reorder_question_json(self, text: str) -> str:
+        """
+        Ensure output JSON keys follow mandated order:
+        topic -> question -> choices -> explanation -> answer.
+        """
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            return text
+
+        topic = data.get("topic", "").strip()
+        question = data.get("question", "").strip()
+        choices = self._format_choices_array(data.get("choices", []))
+        explanation = " ".join(data.get("explanation", "").strip().split())
+        words = explanation.split()
+        if len(words) > 90:
+            explanation = " ".join(words[:90])
+        answer = self._normalize_answer_letter(data.get("answer", ""))
+
+        ordered = OrderedDict()
+        ordered["topic"] = topic
+        ordered["question"] = question
+        ordered["choices"] = choices
+        ordered["explanation"] = explanation
+        ordered["answer"] = answer
+        return json.dumps(ordered, ensure_ascii=False)
 
     # WARNING: public contract – do not modify signature or return type.
     def save_questions(self, questions: Any, file_path: str | Path) -> None:

@@ -12,10 +12,40 @@ from typing import Any, Dict
 
 import yaml
 
+
+def _read_prompt(path: Path) -> "PromptBlocks":
+    if not path.exists():
+        raise FileNotFoundError(f"Prompt file {path} not found.")
+    system, developer, user = [], [], []
+    current = None
+    with path.open("r") as handle:
+        for line in handle:
+            header = line.strip()
+            if header == "# System":
+                current = system
+                continue
+            if header == "# Developer":
+                current = developer
+                continue
+            if header == "# User Template":
+                current = user
+                continue
+            if current is not None:
+                current.append(line)
+    return PromptBlocks(
+        system="".join(system).strip(),
+        developer="".join(developer).strip(),
+        user="".join(user).strip(),
+    )
+
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILE = REPO_ROOT / "config" / "inference.yaml"
 QGEN_FILE = REPO_ROOT / "qgen.yaml"
 AGEN_FILE = REPO_ROOT / "agen.yaml"
+PROMPTS_DIR = REPO_ROOT / "prompts"
+Q_PROMPT_FILE = PROMPTS_DIR / "q_agent.md"
+A_PROMPT_FILE = PROMPTS_DIR / "a_agent.md"
 
 _DEFAULT_PROVIDER: Dict[str, Any] = {
     "type": "openai",
@@ -45,6 +75,13 @@ _DEFAULT_SAMPLING: Dict[str, Dict[str, Any]] = {
         "do_sample": True,
     },
 }
+
+
+@dataclass(frozen=True)
+class PromptBlocks:
+    system: str
+    developer: str
+    user: str
 
 
 @dataclass(frozen=True)
@@ -111,3 +148,13 @@ def get_sampling_settings(agent_key: str) -> Dict[str, Any]:
                     merged[key] = value
             return merged
     return dict(defaults)
+
+
+@lru_cache()
+def get_question_prompt_blocks() -> PromptBlocks:
+    return _read_prompt(Q_PROMPT_FILE)
+
+
+@lru_cache()
+def get_answer_prompt_blocks() -> PromptBlocks:
+    return _read_prompt(A_PROMPT_FILE)

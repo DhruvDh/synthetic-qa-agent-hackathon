@@ -3,22 +3,23 @@
 import re
 import json
 
+from collections import OrderedDict
 from pathlib import Path
 from tqdm import tqdm
 from typing import List, Tuple, Dict, Any, Optional
 
 from .answer_model import AAgent
-from .config import get_sampling_settings
+from .config import (
+    get_sampling_settings,
+    get_answer_prompt_blocks,
+)
 from utils.harmony_prompt import render_harmony_prompt, extract_final
-
-A_DEV_INSTRUCTIONS = """You are an expert MCQ solver. Think privately in the analysis channel,
-then output only the JSON object described in the response format within the final channel."""
 
 A_RESPONSE_FORMAT_NAME = "mcq_answer"
 A_RESPONSE_FORMAT_SCHEMA = r"""
-{"type":"object","additionalProperties":false,"required":["answer"],
-"properties":{"answer":{"type":"string","pattern":"^[ABCD]$"},
-"reasoning":{"type":"string","maxLength":700}}}
+{"type":"object","additionalProperties":false,"required":["reasoning","answer"],
+"properties":{"reasoning":{"type":"string","maxLength":480},
+"answer":{"type":"string","enum":["A","B","C","D"]}}}
 """
 
 
@@ -32,42 +33,22 @@ class AnsweringAgent(object):
     def __init__(self, select_prompt1: bool = True, **kwargs):
         self.agent = AAgent(**kwargs)
         self.select_prompt1 = select_prompt1
+        prompt_blocks = get_answer_prompt_blocks()
+        self.prompt_system = prompt_blocks.system
+        self.prompt_developer = prompt_blocks.developer
+        self.prompt_user_template = prompt_blocks.user
 
     # WARNING: public contract – do not modify signature or return type.
     def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
         """Generate an answer to the given MCQ question with confidence and reasoning"""
 
-        sys_prompt1 = "You are an expert in quantitative aptitude for competitive exams, solving MCQs with step-by-step reasoning before selecting the correct answer."
-        sys_prompt2 = (
-            "You are an expert answer agent specializing in solving multiple-choice questions (MCQs) that test "
-            "quantitative aptitude skills, as seen in top-tier competitive exams. "
-            "You have a deep understanding of logical reasoning, puzzles, and analytical problem-solving under exam conditions. "
-            "For each question, think step by step using a clear chain-of-thought approach. "
-            "Break down the problem, analyze all options, eliminate distractors, and then confidently select the correct answer. "
-            "Always explain your reasoning before finalizing your choice."
+        choices_formatted = self._format_choices(question_data["choices"])
+        user_prompt = self.prompt_user_template.format(
+            question=question_data["question"],
+            choices=choices_formatted,
         )
 
-        tmpl = (
-            "INSTRUCTIONS FOR ANSWERING:\n"
-            "1. Carefully read and understand what is being asked.\n"
-            "2. Consider why each choice might be correct or incorrect.\n"
-            "3. There is only **ONE OPTION** correct.\n"
-            "4. Provide reasoning within 100 words\n\n"
-            "Now answer the following question:\n"
-            "Question: {}\n"
-            "Choices: {}\n\n"
-            "RESPONSE FORMAT: Strictly generate a valid JSON object as shown below:\n"
-            "{{\n"
-            '    "answer": "One of the letter from [A, B, C, D]",\n'
-            '    "reasoning": "Brief explanation within 100 words"\n'
-            "}}"
-        )
-
-        prompt = tmpl.format(
-            question_data["question"], self._format_choices(question_data["choices"])
-        )
-
-        return prompt, sys_prompt1 if self.select_prompt1 else sys_prompt2
+        return user_prompt, self.prompt_system
 
     # WARNING: public contract – do not modify signature or return type.
     def answer_question(
@@ -79,21 +60,25 @@ class AnsweringAgent(object):
         total_tokens: Optional[int] = 0
         total_time: Optional[float] = 0.0
 
+        developer_text = self.prompt_developer
         for entry in dataset:
             prompt_text, sys_prompt = self.build_prompt(entry)
-            user_prompt = f"{sys_prompt.strip()}\n\n{prompt_text.strip()}"
+            user_prompt = prompt_text.strip()
             harmony_prompt = render_harmony_prompt(
-                developer_instructions=A_DEV_INSTRUCTIONS,
+                developer_instructions=developer_text,
                 response_format_name=A_RESPONSE_FORMAT_NAME,
                 response_format_json_schema=A_RESPONSE_FORMAT_SCHEMA,
                 user_prompt=user_prompt,
                 reasoning="medium" if self.select_prompt1 else "high",
+                system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(
                 harmony_prompt, **kwargs
             )
             final = extract_final(resp_text) or resp_text
-            outputs.append(final.strip())
+
+            structured = self._reorder_answer_json(final.strip())
+            outputs.append(structured)
 
             if tokens is None:
                 total_tokens = None
@@ -105,7 +90,9 @@ class AnsweringAgent(object):
             elif total_time is not None:
                 total_time += elapsed
 
-        payload: List[str] | str = outputs if isinstance(question_data, list) else outputs[0]
+        payload: List[str] | str = (
+            outputs if isinstance(question_data, list) else outputs[0]
+        )
         return payload, total_tokens, total_time
 
     # WARNING: public contract – do not modify signature or return type.
@@ -136,27 +123,24 @@ class AnsweringAgent(object):
     def filter_answers(self, ans: List[str | Dict[str, str]]) -> List[Dict[str, str]]:
         r"""Filter answers to ensure they are in the correct format"""
 
-        def basic_checks(a1: Dict[str, str]) -> bool:
-            # check required keys
-            required_keys = ["answer"]
-            if all((key in a1) and isinstance(a1[key], str) for key in required_keys):
-                ans = a1["answer"].strip()
-                if len(ans) != 1 or ans.upper() not in "ABCD":
-                    return False
-                check_len = self.count_tokens_a(a1["answer"])
-                if check_len < 50:
-                    check_len += self.count_tokens_a(a1.get("reasoning", "None"))
-                    if check_len < 512:
-                        # check answer format - EXTRA checks
-                        # if len(a1['answer']) == 1 and a1['answer'].upper() in 'ABCD':
-                        return True
-            return False
+        def basic_checks(a1: Dict[str, Any]) -> Optional[Dict[str, str]]:
+            if "answer" not in a1:
+                return None
+            reasoning = str(a1.get("reasoning", "")).strip()
+            answer = self._normalize_answer_letter(a1.get("answer", ""))
+            if answer not in {"A", "B", "C", "D"}:
+                return None
+            ordered = OrderedDict()
+            ordered["reasoning"] = reasoning
+            ordered["answer"] = answer
+            return ordered
 
         filtered_answers = []
         for i, a in enumerate(ans):
             if isinstance(a, dict):
-                if basic_checks(a):
-                    filtered_answers.append(a)
+                candidate = basic_checks(a)
+                if candidate:
+                    filtered_answers.append(candidate)
                 else:
                     filtered_answers.append(None)
                     print(f"Skipping invalid answer at index {i}: {a}")
@@ -164,8 +148,9 @@ class AnsweringAgent(object):
                 # Basic checks: at least with correct JSON format
                 try:
                     a1 = json.loads(a)
-                    if basic_checks(a1):
-                        filtered_answers.append(a1)
+                    candidate = basic_checks(a1)
+                    if candidate:
+                        filtered_answers.append(candidate)
                     else:
                         filtered_answers.append(None)
                         print(f"Skipping invalid answer at index {i}: {a}")
@@ -201,7 +186,38 @@ class AnsweringAgent(object):
                 formatted.append(f"{letter}) {choice.strip()}")
             else:
                 formatted.append(choice.strip())
-        return " ".join(formatted)
+        return "\n".join(formatted)
+
+    @staticmethod
+    def _normalize_answer_letter(value: str) -> str:
+        """Ensure the answer field is a single uppercase letter A-D."""
+        letter = value.strip().upper()
+        for opt in ("A", "B", "C", "D"):
+            if letter == opt:
+                return opt
+            if letter.startswith(opt + ")") or letter.startswith(opt + " "):
+                return opt
+        return ""
+
+    def _reorder_answer_json(self, text: str) -> str:
+        """
+        Ensure output JSON keys follow the mandated order: reasoning -> answer.
+        If parsing fails, return the original text.
+        """
+        try:
+            data = json.loads(text)
+            reasoning = " ".join(data.get("reasoning", "").strip().split())
+            words = reasoning.split()
+            if len(words) > 60:
+                reasoning = " ".join(words[:60])
+
+            answer = self._normalize_answer_letter(data.get("answer", ""))
+            ordered = OrderedDict()
+            ordered["reasoning"] = reasoning
+            ordered["answer"] = answer
+            return json.dumps(ordered, ensure_ascii=False)
+        except json.JSONDecodeError:
+            return text
 
 
 # Example usage

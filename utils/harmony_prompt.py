@@ -11,6 +11,7 @@ Current date: 2025-10-19
 
 Reasoning: {reasoning}
 
+{system_extra}
 # Valid channels: final. Channel must be included for every message.<|end|>
 """
 
@@ -37,9 +38,16 @@ def render_harmony_prompt(
     response_format_json_schema: str,
     user_prompt: str,
     reasoning: str = "medium",
+    system_extra: str = "",
 ) -> str:
     """Render a single Harmony-formatted prompt suitable for /v1/completions."""
-    sys_prompt = SYSTEM_TEMPLATE.format(reasoning=reasoning.strip())
+    extra = system_extra.strip()
+    if extra:
+        extra = extra + "\n"
+    sys_prompt = SYSTEM_TEMPLATE.format(
+        reasoning=reasoning.strip(),
+        system_extra=extra,
+    )
     dev_prompt = DEVELOPER_TEMPLATE.format(
         instructions=developer_instructions.strip(),
         format_name=response_format_name.strip(),

@@ -52,7 +52,7 @@ class InferenceProvider:
             total_time: Optional[float] = 0.0
             for prompt in messages:
                 text, tokens, elapsed = self._generate_openai_completions_raw(
-                    prompt, tgps_show, sampling
+                    prompt, tgps_show, sampling, extra.get("stop")
                 )
                 completions.append(text)
                 if tokens is None:
@@ -130,6 +130,7 @@ class InferenceProvider:
         prompt: str,
         tgps_show: bool,
         sampling: Dict[str, Any],
+        stop: Optional[List[str]] = None,
     ) -> Tuple[str, Optional[int], Optional[float]]:
         self._ensure_openai_client()
         start = time.time() if tgps_show else None
@@ -140,6 +141,7 @@ class InferenceProvider:
             top_p=sampling.get("top_p"),
             max_tokens=sampling.get("max_new_tokens"),
             repetition_penalty=sampling.get("repetition_penalty"),
+            stop=stop,
         )
         text = resp.choices[0].text if resp.choices else ""
         usage = getattr(resp, "usage", None)
