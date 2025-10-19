@@ -42,7 +42,7 @@ ROBUSTNESS RULES:
 - Avoid hedging language ("maybe", "possibly"); commit to a single conclusion.
 
 SINGLE OUTPUT EXAMPLE (STRUCTURE ONLY — VALUES ARE PLACEHOLDERS):
-{"reasoning":"r","answer":"A"}
+{{"reasoning":"r","answer":"A"}}
 Do NOT include code fences or any extra text. Emit exactly one JSON object.
 
 QUESTION:

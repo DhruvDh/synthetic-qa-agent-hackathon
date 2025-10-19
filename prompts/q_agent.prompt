@@ -48,7 +48,7 @@ ROBUSTNESS RULES:
 - Do not restate the choices in the explanation; focus on why the correct option is uniquely true.
 
 SINGLE OUTPUT EXAMPLE (STRUCTURE ONLY — VALUES ARE PLACEHOLDERS):
-{"topic":"T","question":"Q?","explanation":"e","choices":["A) a","B) b","C) c","D) d"],"answer":"A"}
+{{"topic":"T","question":"Q?","explanation":"e","choices":["A) a","B) b","C) c","D) d"],"answer":"A"}}
 Do NOT include code fences or any extra text. Emit exactly one JSON object.
 
 TOPIC: {topic}
