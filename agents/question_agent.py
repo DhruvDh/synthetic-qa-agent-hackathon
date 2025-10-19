@@ -17,12 +17,12 @@ from utils.harmony_prompt import render_harmony_prompt, extract_final
 
 Q_RESPONSE_FORMAT_NAME = "mcq_question"
 Q_RESPONSE_FORMAT_SCHEMA = r"""
-{"type":"object","additionalProperties":false,"required":["topic","question","choices","explanation","answer"],
+{"type":"object","additionalProperties":false,"required":["topic","question","explanation","choices","answer"],
 "properties":{"topic":{"type":"string","minLength":1},
 "question":{"type":"string","minLength":1},
+"explanation":{"type":"string","maxLength":540},
 "choices":{"type":"array","minItems":4,"maxItems":4,
 "items":{"type":"string","pattern":"^[ABCD]\\)\\s.+$"}},
-"explanation":{"type":"string","maxLength":540},
 "answer":{"type":"string","enum":["A","B","C","D"]}}}
 """
 
@@ -54,9 +54,9 @@ class QuestioningAgent(object):
             "{{\n"
             '  "topic": "{}",\n'
             '  "question": "{}",\n'
+            '  "explanation": "{}",\n'
             '  "choices": ["A) {}", "B) {}", "C) {}", "D) {}"],\n'
-            '  "answer": "{}",\n'
-            '  "explanation": "{}"\n'
+            '  "answer": "{}"\n'
             "}}"
         )
 
@@ -76,9 +76,9 @@ class QuestioningAgent(object):
                     topic,
                     topic.split("/")[-1],
                     question,
+                    explanation,
                     *choice_bodies,
                     answer,
-                    explanation,
                 )
                 + "\n\n"
             )
@@ -238,7 +238,7 @@ class QuestioningAgent(object):
         self, questions: List[str | Dict[str, str | Any]]
     ) -> List[Dict[str, str | Any]]:
         def basic_checks(q2: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-            required_keys = {"topic", "question", "choices", "explanation", "answer"}
+            required_keys = {"topic", "question", "explanation", "choices", "answer"}
             if not required_keys.issubset(q2.keys()):
                 return None
 
@@ -266,8 +266,8 @@ class QuestioningAgent(object):
             ordered = OrderedDict()
             ordered["topic"] = topic
             ordered["question"] = question
-            ordered["choices"] = choices
             ordered["explanation"] = explanation
+            ordered["choices"] = choices
             ordered["answer"] = answer
             return ordered
 
@@ -326,7 +326,7 @@ class QuestioningAgent(object):
     def _reorder_question_json(self, text: str) -> str:
         """
         Ensure output JSON keys follow mandated order:
-        topic -> question -> choices -> explanation -> answer.
+        topic -> question -> explanation -> choices -> answer.
         """
         try:
             data = json.loads(text)
@@ -335,18 +335,18 @@ class QuestioningAgent(object):
 
         topic = data.get("topic", "").strip()
         question = data.get("question", "").strip()
-        choices = self._format_choices_array(data.get("choices", []))
         explanation = " ".join(data.get("explanation", "").strip().split())
         words = explanation.split()
         if len(words) > 90:
             explanation = " ".join(words[:90])
+        choices = self._format_choices_array(data.get("choices", []))
         answer = self._normalize_answer_letter(data.get("answer", ""))
 
         ordered = OrderedDict()
         ordered["topic"] = topic
         ordered["question"] = question
-        ordered["choices"] = choices
         ordered["explanation"] = explanation
+        ordered["choices"] = choices
         ordered["answer"] = answer
         return json.dumps(ordered, ensure_ascii=False)
 
@@ -466,7 +466,7 @@ if __name__ == "__main__":
             # the dictionary is not as expected.
             # TODO: IMPROVE THE FOLLOWING
             prompt = (
-                "Extract **ONLY** the topic, question, choices, answer, and explanation while discarding the rest.\n"
+                "Extract **ONLY** the topic, question, explanation, choices, and answer while discarding the rest.\n"
                 "Also please remove JSON code block text with backticks** like **```json** and **```**.\n\n"
                 "String:\n"
                 "{}\n\n"
@@ -474,9 +474,9 @@ if __name__ == "__main__":
                 "{{\n"
                 '  "topic": "...",\n'
                 '  "question": "...",\n'
+                '  "explanation": "...",\n'
                 '  "choices": ["A) ...", "B) ...", "C) ...", "D) ..."],\n'
-                '  "answer": "Only the option letter (A, B, C, or D)",\n'
-                '  "explanation": "..."\n'
+                '  "answer": "Only the option letter (A, B, C, or D)"\n'
                 "}}"
             )
             raw_resp, _, _ = agent.agent.generate_response(

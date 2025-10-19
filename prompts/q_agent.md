@@ -10,7 +10,7 @@ MANDATORY OUTPUT CONTRACT:
 
 - Use the assistant final channel only.
 - Return exactly one JSON object that validates the schema "mcq_question".
-- Keys must appear in this order: "topic", "question", "choices", "explanation", "answer".
+- Keys must appear in this order: "topic", "question", "explanation", "choices", "answer".
 - Do not emit code fences, markdown, commentary, or extra text of any kind.
 
 CONTENT RULES:
@@ -28,16 +28,16 @@ ROBUSTNESS RULES:
 - Do not restate the choices in the explanation; focus on why the correct option is uniquely true.
 
 SINGLE OUTPUT EXAMPLE (STRUCTURE ONLY — VALUES ARE PLACEHOLDERS):
-{"topic":"T","question":"Q?","choices":["A) a","B) b","C) c","D) d"],"explanation":"e","answer":"A"}
+{"topic":"T","question":"Q?","explanation":"e","choices":["A) a","B) b","C) c","D) d"],"answer":"A"}
 Do NOT include code fences or any extra text. Emit exactly one JSON object.
 
 SCHEMA:
-{"type":"object","additionalProperties":false,"required":["topic","question","choices","explanation","answer"],
+{"type":"object","additionalProperties":false,"required":["topic","question","explanation","choices","answer"],
  "properties":{"topic":{"type":"string","minLength":1},
                "question":{"type":"string","minLength":1},
+               "explanation":{"type":"string","maxLength":540},
                "choices":{"type":"array","minItems":4,"maxItems":4,
                           "items":{"type":"string","pattern":"^[ABCD]\)\s.+$"}},
-               "explanation":{"type":"string","maxLength":540},
                "answer":{"type":"string","enum":["A","B","C","D"]}}}
 
 # User Template
