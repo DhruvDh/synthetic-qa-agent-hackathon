@@ -1,1 +1,109 @@
-[]
+[
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    {
+        "reasoning": "Maya's father's sister's husband is her paternal uncle; his mother is Maya's paternal grandmother. The woman\u2019s daughter is the paternal grandmother\u2019s daughter, i.e., Maya's paternal aunt. Her son (the uncle\u2019s son) is married to that aunt, making the woman Maya's paternal grandmother.",
+        "answer": "B"
+    },
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    {
+        "reasoning": "The daughter is Maya's great\u2011aunt, so her grandson is Maya's second cousin. The son of Maya's father's only brother is Maya's first cousin. Their marriage links Maya to her second cousin, making her his aunt by marriage, i.e., aunt.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "The elder daughter's grandson is Arjun. He married the younger daughter's only son's daughter, making Arjun the son-in-law of the younger daughter's son. Therefore Arjun is the younger daughter's son's nephew.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Maya's mother and her sister are siblings; the sister's son is Maya's maternal cousin. His wife is the daughter of Maya's paternal grandfather's brother's wife\u2019s only brother, which makes her Maya's aunt, so Maya is the aunt's niece, i.e., the husband is Maya's uncle, making Maya his niece.",
+        "answer": "C"
+    },
+    {
+        "reasoning": "Maya's mother\u2019s brother is her maternal uncle; his only daughter is Maya\u2019s first cousin. That daughter\u2019s husband\u2019s wife is the same person, i.e., Maya\u2019s cousin, making her Maya\u2019s first cousin once removed.",
+        "answer": "B"
+    },
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    {
+        "reasoning": "Lady A's mother is King X's only daughter, making Lady A the king's granddaughter. King X's sister is Lady A's great\u2011aunt and married the son of Lady B's maternal grandmother, making that son Lady B's maternal uncle. Lady B's father is the brother of that uncle, so Lady B's father is also Lady B's maternal uncle, meaning Lady B is",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Maya's mother and Lina are siblings, making Lina Maya's aunt. Therefore Maya is Lina's niece.",
+        "answer": "B"
+    },
+    [
+        "",
+        null,
+        null
+    ],
+    [
+        "",
+        null,
+        null
+    ],
+    {
+        "reasoning": "The described connections reduce to Maya and the daughter being children of siblings, making them first cousins; the generational offset makes it once removed.",
+        "answer": "B"
+    }
+]

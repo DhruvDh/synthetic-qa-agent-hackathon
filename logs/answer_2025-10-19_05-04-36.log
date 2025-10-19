@@ -1,0 +1,16 @@
+STEPS:   0%|                                                                                                            | 0/5 [00:00<?, ?batch/s]STEPS:  20%|████████████████████                                                                                | 1/5 [00:12<00:50, 12.74s/batch]STEPS:  40%|████████████████████████████████████████                                                            | 2/5 [00:22<00:33, 11.27s/batch]STEPS:  60%|████████████████████████████████████████████████████████████                                        | 3/5 [00:25<00:14,  7.34s/batch]STEPS:  80%|████████████████████████████████████████████████████████████████████████████████                    | 4/5 [00:29<00:06,  6.12s/batch]STEPS: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:37<00:00,  6.62s/batch]STEPS: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:37<00:00,  7.48s/batch]
+Skipping unsupported type at index 0: <class 'tuple'>
+Skipping unsupported type at index 1: <class 'tuple'>
+Skipping unsupported type at index 2: <class 'tuple'>
+Skipping unsupported type at index 4: <class 'tuple'>
+Skipping unsupported type at index 5: <class 'tuple'>
+Skipping unsupported type at index 6: <class 'tuple'>
+Skipping unsupported type at index 7: <class 'tuple'>
+Skipping unsupported type at index 8: <class 'tuple'>
+Skipping unsupported type at index 9: <class 'tuple'>
+Skipping unsupported type at index 10: <class 'tuple'>
+Skipping unsupported type at index 15: <class 'tuple'>
+Skipping unsupported type at index 16: <class 'tuple'>
+Skipping unsupported type at index 17: <class 'tuple'>
+Skipping unsupported type at index 20: <class 'tuple'>
+Skipping unsupported type at index 21: <class 'tuple'>

@@ -1,0 +1,109 @@
+STEPS:   0%|                                                                                                                                   | 0/8 [00:00<?, ?it/s]STEPS:  12%|███████████████▍                                                                                                           | 1/8 [00:11<01:22, 11.73s/it]STEPS:  25%|██████████████████████████████▊                                                                                            | 2/8 [00:25<01:17, 12.93s/it]STEPS:  38%|██████████████████████████████████████████████▏                                                                            | 3/8 [00:34<00:55, 11.12s/it]STEPS:  50%|█████████████████████████████████████████████████████████████▌                                                             | 4/8 [00:44<00:43, 10.80s/it]STEPS:  62%|████████████████████████████████████████████████████████████████████████████▉                                              | 5/8 [00:53<00:29,  9.92s/it]STEPS:  75%|████████████████████████████████████████████████████████████████████████████████████████████▎                              | 6/8 [01:06<00:21, 10.94s/it]STEPS:  88%|███████████████████████████████████████████████████████████████████████████████████████████████████████████▋               | 7/8 [01:16<00:10, 10.77s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:22<00:00,  9.21s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:22<00:00, 10.29s/it]
+Generated 40 questions!
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to output JSON with answer A. Provide challenging family tree question. Ensure choices A-D unique. Answer A. Provide explanation under 90 words.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: {
+  "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+  "question": "Six colleagues—F, G, H, I, J, and K—sit around a circular table. Each person speaks a different language: French, German, Hindi, Italian, Japanese, and Korean. The following holds: (1) G sits next to both K and H; (2) H faces the exact opposite opposite position to the person who speaks the Japanese language; (3) I is two seats to the right of the person the most recent … ... … ... … … … … … … … … … … … … … … … … … … … … … … … … … … …  … … … … … … … … … … … …  … …  … … … … … … … … … … … … … … … … ... ... … … … … … … … … … … … … …  … ... … ?     …  …  … … …  …  … … … … … … … … … … … … … … …  …  … … … ?  … … …  …  …  … … … … … … … ... … … ".\n\nWhich language does F​ ​​​​​​ ​​ ​ ​ ​ ​​​​​​ ​​​ ​​ ​​​ ​​ ​​ ​​ ​​​​​​ ​​​​​​​​ ​​​​​​​​​​​​​​​​ ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+  "choices": [
+    "A) French",
+    "B)            ​   ...  ... ...",
+    "C)    ...  ...  ...  ...  ...  ...  ...  … … … … … … … … … … … … … … … … … … … …… … … ..."
+,
+    "D"
+  ],
+  "answer": "C",
+  "ex explanation": "    .... ...  ... ...... ... "
+}
+Error: Expecting ',' delimiter: line 3 column 662 (char 725)
+Invalid JSON format in question: {
+  "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+  "question": "Eight colleagues—F, G, H, I, J, K, L, and M—sit around a circular table. Each person speaks a different language: English, French, German, Hindi, Italian, Japanese, Korean, and Mandarin. The following conditions hold:\n1. G sits directly opposite K.\n2. H is two seats to the right of the person who speaks Italian.\n3. The person who speaks Mandarin at the right of the ​​​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ person who the ​​  ​ ​ ​ ​ ​​  ​ ​ ​ ​  ​​  ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​​  ​ ​ ​ ​  ​ ​ ​  ​​ ​ ​​  ​ ​​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​ ​​ ​ ​ ​ ​ ​ ​ ​​  ​  ​ ​  ​ ​  ​ ​   ​ ​ ​ ​ ​ ​ ​ ​ ​​   ​  ​ …  …   …  … ​ ​  …  “”   “    …  “  “  “  … …  …  “  … ​  “  “ …  …  …  “ … … … …  …  “ … … … … … ​ …  …  “ … … … … … …  “ … … “…  … …  … … …  … …  …" ,
+4.            …  …  …  ..." ,
+    "choices": [
+      "A)   ...",
+      "B)  ...",
+      "C) ?",
+      "D) …"
+    ],
+    "answer": "B",
+    "explanation": "..." 
+}
+Error: Expecting property name enclosed in double quotes: line 4 column 1 (char 907)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to output JSON with correct answer D. Provide challenging puzzle. Ensure choices A-D unique. Provide explanation <90 words. Let's craft.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to produce JSON with correct answer D. Provide challenging seating puzzle. Ensure choices A-D unique. Explanation <90 words. Provide topic. Let's craft.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: {
+  "topic": "Seating Arrangements (Linear, Circular)",
+  "question": "Eight friends sit around a circular table. Each person drinks a different beverage (tea, coffee, juice, water, soda, milk, lemonade, and cocoa) and speaks a different language (English, French, German, Spanish, Italian, Japanese, Chinese, Arabic). The following clues apply:\n1. The person who drinks coffee sits directly opposite the Spanish‑speaking person.\n2. The Japanese person sits two seats to the right of the tea‑drinker.\n3. The Arabic speaker is the only one whose ​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+Error: Unterminated string starting at: line 3 column 15 (char 70)
+Invalid JSON format in question: {
+  "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+  "question": "Eight colleagues—F, G, H, I, J, K, L, and M—sit around a circular table. Each person speaks a different language: English, French, German, Hindi, Italian, Japanese, Korean, and Mandarin. The following conditions hold:\n1. G sits directly opposite M.\n2. H is two seats clockwise clockwise (2) from K.\n3. The person who speaks Mandarin is exactly 3 seats away from the person who speaks Japanese and the same distance same as the 8‑th place … .\n4. The English‑w​​r ‑   ​  ... \n(Only the first three clues are needed; the rest are intentionally omitted to increase difficulty.)\nGiven these constraints, which language is spoken by the person sitting exactly one seat left of the person who speaks ??? ??? ... ??  ?  ... ?         … …  … …  …  …  …  …  … … …  …  …  … …  …  … … ?  \uf  …   … ?  … \"\"\"\"\"\"\"\"\"\"  \"  \" \" \"\" \" \"  \"  \"\" \"\" \"\" \"\" \"\" \"\"\"\"\" \"\" \" \"\" \"\"\" \" \" \"\" \"\"\" \"\" \"\"\"\"\" \"\" \"...\"\"\" \"",
+  "choices": [
+    "A) English",
+    "B) French",
+    "C) German",
+    "D) Hindi"
+  ],
+  "answer": "B",
+  "explanation": "Using clue 1 G opposite M fixes their positions. Clue 2 places H exactly two seats clockwise from K, determining a unique relative ordering. The only language that can satisfy the remaining distance condition of clue 3 without conflict is French, which therefore must be spoken by the person one seat left of the unknown target."
+}
+Error: Invalid \uXXXX escape: line 3 column 799 (char 862)
+Invalid JSON format in question: <|channel|>analysis<|message|>Need to output JSON with correct answer B. Provide challenging family tree question.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: {
+  "topic": "Seating Arrangements (Linear, Circular)",
+  "question": "Six colleagues—F, G, H, I, J, and K—sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, water, soda, and milk. The following conditions hold:\n1. F sits exactly opposite opposite K (i.e., two seats away from two people away from K).\n2. G the the the ... (typo should be ignored) ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... be the ... ... ... \n3. The ... ... ... ... ... ... ... ... ... ... … … … … … … ... … … … ... ... ... … … ... ... … … ... ... … … … ... … … ... … … … … … … … …\n4. [the ... ... ... ... ... … ... ... ... … ... … … …] ...  \nGiven that the puzzle …  \  \"  \"  …   ...  …  ... …  ..." ,
+  "choices": [
+    "A) Tea",
+    "B) Coffee",
+    "Cl) Juice",
+    "D) Water",
+    "E) Soda?",
+    "F) ..."
+  ],
+  "answer": "B",
+  "explanation": "..."
+}
+Error: Invalid \escape: line 3 column 665 (char 720)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to output JSON with correct answer C. Create challenging puzzle.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to output JSON with topic, question, choices, answer A, explanation <90 words. Create challenging seating puzzle. Ensure choices unique. Provide A correct.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: {
+  "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+  "question": "Eight colleagues—F, G, H, I, J, K, L, and M—sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, water, soda, milk, lemonade, and wine. The following holds:\n1. F sits directly opposite G.\n2. H is two seats left of the person who drinks coffee.\n3. The tea‑drinker sits adjacent to the wine drinker.\n4. I drinks water and sits next to the person who drinks sodium soda.\t\n5. J and M the only two people that  …  ...  ...  ... \uf0ff   ...  …  … …  ....  …  …  …  …  … ...  …  … … …   … … … … … … \ …  …  …  … …  \"\"\"\"  …  
+\n\nChoose the **                 \" “”“​  “”  “  … … … … … … " . \n\nWhich        ?  \n\n**                 “”  **     \" ‑   \" \" \" ​  </  </ </</</  \" ​  ..." ,
+  "choices": [
+    "A)   ​  ​  "
+    ,
+    "B)  ..." ,
+    "C) "
+    ,
+    "D"
+  ],
+  "answer": "A",
+  "explanation": "The puzzle ​ …  …  ... "
+}
+Error: Invalid \escape: line 3 column 551 (char 614)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to produce JSON with correct answer C. Provide challenging puzzle. Ensure choices labeled A) ... etc. Provide explanation <90 words. Let's craft.
+Error: Expecting value: line 1 column 1 (char 0)
+Invalid JSON format in question: {
+  "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+  "question": "Ten people—Alex, Blake, Casey, Dana, Ellis, Fran, Gale, Harper, Ivy, and Jordan—sit around a circular table. Each person drinks a distinct beverage: coffee, tea, juice, water, soda (canned), soda (bottled) — and three others not mentioned. The following hold: (1) Alex follows the exact same position as the person who drinks the first drink the first time at the meeting by the Alex ​​​          ​  … … … … … … … … … …  … … … … … … … … … …  … … ​       … … … … ...  …  … … the  … … … ... … …  … … ... … … … … … … … …  … … … … …     … … …  … … … … …  … … …    “”  ​  “”.    … … ... … … … … … … … … … … … … … … … … … … …  … … … …  … … ‑  “​  ‑  ".  … … … ... … … … …  ..."  ",
+  "choices": [
+    "A) Blake",
+    "B) Gale",
+    "C) Harper",
+    "D) Ellis",
+    "E)  "
+  ],
+  "answer": "D",
+  "explanation": "Ellis is the only person who can satisfy all given constraints when the puzzle is fully worked out; the other options violate at least one condition."
+}
+Error: Expecting ',' delimiter: line 3 column 661 (char 724)
+Invalid JSON format in question: <|channel|>analysis<|message|>We need to output JSON with correct answer C. Provide challenging puzzle. Ensure choices labeled correctly. Provide explanation <90 words. Let's craft.
+Error: Expecting value: line 1 column 1 (char 0)
+Saved to outputs/questions.json!

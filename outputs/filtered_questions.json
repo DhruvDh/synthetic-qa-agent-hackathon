@@ -1,1 +1,278 @@
-[]
+[
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Maya's maternal grandfather has two daughters. One daughter (Maya's mother) married a man whose paternal aunt is the wife of Maya's father's only brother. Maya's father's sister married the son of the woman who is the mother of Maya's maternal aunt's husband. How is Maya related to the son of her father's sister?",
+        "choices": [
+            "A) Cousin",
+            "B) Half\u2011brother",
+            "C) Uncle",
+            "D) Nephew"
+        ],
+        "explanation": "Maya's father's sister is Maya's paternal aunt. Her son is therefore Maya's first cousin. However, the extra condition that the aunt married the son of the woman who is the mother of Maya's maternal aunt's husband makes that son one generation younger than Maya, turning the relationship into a nephew\u2011type link. Hence Maya is the nephew of that son.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Maya's paternal great\u2011grandmother had two daughters. The elder daughter\u2019s only grandson married the son of Maya\u2019s maternal grandfather\u2019s only brother. That son\u2019s daughter is the woman Maya is pointing to. How is the woman related to Maya?",
+        "choices": [
+            "A) First cousin once removed",
+            "B) Second cousin",
+            "C) Maternal aunt",
+            "D) Half\u2011sister"
+        ],
+        "explanation": "The elder daughter\u2019s grandson is Maya\u2019s paternal great\u2011uncle\u2019s grandson, i.e., Maya\u2019s father\u2019s cousin. He marries Maya\u2019s maternal uncle\u2019s son, who is Maya\u2019s maternal cousin. Their daughter shares one generation with Maya and is the child of Maya\u2019s paternal cousin and maternal cousin, making her Maya\u2019s first cousin once removed.",
+        "answer": "A"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Anika's paternal great\u2011grandmother had three children: two sons and a daughter. The daughter\u2019s only granddaughter married the eldest son of the younger son\u2019s only brother. How is Anika related to that granddaughter?",
+        "choices": [
+            "A) First cousin once removed",
+            "B) Maternal aunt",
+            "C) Half\u2011sister",
+            "D) Grandniece"
+        ],
+        "explanation": "The daughter of the great\u2011grandmother is Anika\u2019s great\u2011aunt. Her only granddaughter is therefore Anika\u2019s great\u2011aunt\u2019s granddaughter, i.e., the child of Anika\u2019s parent\u2019s cousin \u2013 a grandniece. The other relations do not fit the generational steps described.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a sprawling joint family, Maya says: \"My mother's brother's son is married to the daughter of the woman who is my father's sister's husband\u2019s mother. Who is the woman in relation to Maya?\"",
+        "choices": [
+            "A) Maternal Aunt",
+            "B) Paternal Grandmother",
+            "C) Maternal Grandmother",
+            "D) Paternal Aunt"
+        ],
+        "explanation": "Maya's mother's brother = maternal uncle. His son = Maya's maternal cousin. He is married to the daughter of a woman. That woman is the mother of Maya's father's sister's husband. Maya's father's sister = paternal aunt; her husband\u2019s mother = Maya's paternal aunt\u2019s mother\u2011in\u2011law, who is Maya's paternal grandmother. Hence the woman is Maya's maternal grandmother.",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a royal lineage, Zara's mother is the only daughter of the king's brother. The king's sister married the son of Zara's paternal grandfather, who is also the father of Zara's cousin. If Zara's father's sister is married to the king's only son, how is Zara related to the king's only son?",
+        "choices": [
+            "A) Niece",
+            "B) Grandniece",
+            "C) Daughter-in-law",
+            "D) Granddaughter"
+        ],
+        "explanation": "Zara's mother is the daughter of the king's brother, making Zara the king's grandniece through her mother. The king's sister's husband is Zara's paternal grandfather's son, confirming that Zara's cousin shares the same paternal line. Zara's father's sister marrying the king's only son makes that son Zara's paternal aunt's husband, i.e., Zara's uncle by marriage. Since the king's only son is also Zara's father's brother-in-law, Zara is one generation below the king, placing her as the king's granddaughter.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant kingdom, Princess Lila says: 'My father's sister's son married the woman who is the daughter of the man who is my mother's brother's son-in-law.' How is the husband described in the statement related to Princess Lila?",
+        "choices": [
+            "A) Maternal uncle",
+            "B) Paternal cousin",
+            "C) Maternal grandfather",
+            "D) Paternal uncle"
+        ],
+        "explanation": "Lila's father's sister = paternal aunt; her son = Lila's paternal cousin. He marries the daughter of the man who is the son\u2011in\u2011law of Lila's mother's brother (maternal uncle). That son\u2011in\u2011law is Lila's maternal uncle's husband, i.e., Lila's maternal uncle himself. His daughter is Lila's maternal cousin. Thus the husband (the cousin) is the son of Lila's paternal aunt, making him Lila's paternal uncle.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's maternal grandfather has two children: a son and a daughter. The son\u2019s only child is Maya's mother. Maya's paternal grandmother has three children: two sons and a daughter. The daughter\u2019s only child is the spouse of Maya's maternal uncle. Maya\u2019s maternal uncle is married to the only daughter of Maya's paternal grandfather's brother. How is Maya related to the spouse of her maternal uncle?",
+        "choices": [
+            "A) Aunt",
+            "B) Niece",
+            "C) Cousin",
+            "D) Sister-in-law"
+        ],
+        "explanation": "Maya's maternal uncle is her mother\u2019s brother. His spouse is the daughter of Maya\u2019s paternal grandfather\u2019s brother, making that spouse Maya\u2019s paternal first cousin once removed. Since Maya is one generation younger than that cousin, Maya is the niece of the spouse.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a royal lineage, Maya's great\u2011grandfather had three children: two sons and a daughter. The daughter\u2019s only granddaughter married the eldest son of Maya\u2019s father's only brother. How is Maya related to that granddaughter?",
+        "choices": [
+            "A) Aunt",
+            "B) Cousin",
+            "C) Sister\u2011in\u2011law",
+            "D) Niece"
+        ],
+        "explanation": "Maya's father's only brother is Maya's paternal uncle. His eldest son is Maya's first cousin. The granddaughter of the great\u2011grandfather\u2019s daughter is Maya's second cousin. That second cousin marries Maya's first cousin, making her the cousin\u2019s wife. Maya is one generation below that wife, so she is the wife\u2019s niece.",
+        "answer": "D"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Six people\u2014Ruth, Sam, Tina, Umar, Victor, and Wendy\u2014sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, milk, soda, and water. The following conditions hold: (1) Sam sits\u00a0exactly\u00a0two\u00a0seats\u00a0to\u00a0the\u00a0right\u00a0of\u00a0the\u00a0person\u00a0who\u00a0drinks\u00a0tea\u00a0(they\u00a0are\u00a0adjacent\u00a0only\u00a0if\u00a0the\u00a0table\u00a0is\u00a0clockwise\u00a0clockwise\u00a0). (2) Wendy\u00a0the\u00a0only\u00a0one\u00a0by\u00a0the\u00a0same\u00a0\u201c\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u201c\u00a0\u00a0\u00a0\u200b\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u200b\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u200b\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...",
+        "choices": [
+            "A) Ruth",
+            "B) ...",
+            "C) D) ...",
+            "D)"
+        ],
+        "explanation": "...",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's maternal grandfather has two sons: Maya's mother and her aunt. Maya's aunt has one child, a daughter named Lila. Maya's father is the only son of Maya's paternal grandfather. Maya's father's sister married Maya's maternal great\u2011uncle (the brother of Maya's maternal grandfather). Their only child is Maya's cousin, Arjun. Arjun's wife is the only daughter of Lila's husband. How is Arjun's wife related to Maya?",
+        "choices": [
+            "A) First cousin once removed",
+            "B) Maternal aunt",
+            "C) Second cousin",
+            "D) Half\u2011sister"
+        ],
+        "explanation": "Lila is Maya's first cousin (daughter of Maya's maternal aunt). Lila's husband\u2019s only daughter is the child of Lila\u2019s spouse, making her Lila\u2019s daughter\u2011in\u2011law, who is one generation below Maya\u2019s cousin Arjun. Thus Arjun\u2019s wife is the child of Maya\u2019s first cousin, i.e., Maya\u2019s first cousin once removed.",
+        "answer": "A"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, water, soda, and milk. The following conditions hold: (1) F sits immediately after (clockwise) G; (2) J is two seats\u00a0\u200b\u200b\u200b\u200b\u200b\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0$\u00a0$\u00a0\u00a0\u200b\u00a0\u00a0$\u00a0\u00a0\u200b\u00a0\u00a0\u00a0$\u00a0\u00a0\u00a0$\u00a0\u00a0$\u00a0$\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0$\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u200b\u00a0\u00a0\u201c\u201d\u00a0\u00a0\u00a0\u201c\u00a0\u00a0\u2026\u00a0\u00a0\u200b\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026",
+        "choices": [
+            "A) tea",
+            "B) coffee",
+            "C) juice",
+            "D) water"
+        ],
+        "explanation": "From the clues, the only consistent placement gives J opposite J the coffee drinker who is the only person whose position fits the two\u2011seat gap condition. This forces J to be the juice driver and the remaining beverages assign uniquely to others.",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a sprawling family, Maya's paternal great\u2011grandmother had three children: two sons and a daughter. The daughter\u2019s only grandson married the son of Maya\u2019s father's only brother. How is Maya related to that grandson?",
+        "choices": [
+            "A) Aunt",
+            "B) Cousin",
+            "C) Sister\u2011in\u2011law",
+            "D) Niece"
+        ],
+        "explanation": "The daughter of the great\u2011grandmother is Maya\u2019s great\u2011aunt. Her only grandson is Maya\u2019s second cousin once removed. Maya\u2019s father\u2019s only brother is Maya\u2019s paternal uncle; his son is Maya\u2019s first cousin. The grandson marries that cousin, making the grandson Maya\u2019s cousin\u2019s husband, which places Maya one generation above him \u2013 she is his niece.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Arjun's great\u2011grandmother had two daughters. The elder daughter\u2019s only grandson married the daughter of the younger daughter\u2019s only son. If Arjun is the son of that grandson, how is Arjun related to the younger daughter\u2019s only son?",
+        "choices": [
+            "A) Uncle",
+            "B) Cousin",
+            "C) Grandfather",
+            "D) Nephew"
+        ],
+        "explanation": "The younger daughter\u2019s only son is Arjun\u2019s father\u2019s father\u2011in\u2011law, i.e., Arjun\u2019s paternal great\u2011uncle. Therefore Arjun is the nephew of that man, making option D the only correct relation.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a clan, Maya's mother has exactly one sister. That sister's son is married to the daughter of the only brother of Maya's paternal grandfather's wife. How is Maya related to the husband of her mother's sister's son?",
+        "choices": [
+            "A) First cousin",
+            "B) Half\u2011sister",
+            "C) Aunt",
+            "D) Grand\u2011niece"
+        ],
+        "explanation": "Maya's mother's sister is Maya's maternal aunt. Her son is Maya's first cousin. The extra clause only describes the cousin's wife and does not change the cousin relationship. Therefore Maya and the husband (her cousin) are first cousins.",
+        "answer": "A"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's mother has exactly one brother. That brother's only daughter married the son of the woman who is the maternal grandmother of Maya's father's only sister. How is Maya related to the son-in-law's wife?",
+        "choices": [
+            "A) Maternal aunt",
+            "B) First cousin once removed",
+            "C) Second cousin",
+            "D) Paternal great\u2011aunt"
+        ],
+        "explanation": "Maya's mother's brother = maternal uncle. His daughter = Maya's first cousin. She marries the son of a woman who is the maternal grandmother of Maya's father's only sister (Maya's paternal aunt). That woman's granddaughter is Maya's paternal aunt, so her son is Maya's second cousin. Therefore Maya is a second cousin to the son-in-law's wife.",
+        "answer": "C"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight executives sit around a circular table. Each executive is from a different department (Finance, HR, Marketing, R&D, Legal, Operations, IT, Sales) and holds a distinct rank (President, Vice\u2011President, Director, Manager, Supervisor, Analyst, Coordinator, Assistant). The following conditions apply:\n1. The Finance officer sits directly opposite the President.\n2. The HR director sits two seats to the right of the Marketing manager.\n3. The R&D analyst sits adjacent to the Legal supervisor.\n4. The Operations manager sits next to the IT\u00a0Coordinator\u00a0who\u00a0is\u00a0exactly\u00a0two\u00a0seats\u00a0clockwise\u00a0from\u00a0the\u00a0Legal\u00a0supervisor.\n5. The Sales\u00a0Assistant\u00a0is\u00a0the\u00a0only\u00a0person\u00a0who\u00a0does\u00a0not\u00a0share\u00a0the\u00a0same\u00a0seat\u00a0with\u00a0any\u00a0other\u00a0attribute\u00a0of\u00a0any\u00a0the\u00a0same\u00a0person\u00a0by\u00a0the\u00a0\u2026\u00a0\u2026\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\nGiven these constraints, who sits\u00a0?\u00a0\u2014\u00a0who\u00a0the\u00a0person\u00a0with\u00a0the\u00a0rank\u00a0\"Director\"\u00a0is\u00a0sitting\u00a0next\u00a0to\u00a0the\u00a0Legal\u00a0supervisor?",
+        "choices": [
+            "A) Finance",
+            "B) HR",
+            "C) Marketing",
+            "D) IT"
+        ],
+        "explanation": "From condition 4 the IT Coordinator is two seats clockwise from the Legal supervisor, so the seat immediately clockwise of the Legal supervisor is occupied by the Operations manager and the next seat by the IT Coordinator. Condition 3 places the R&D analyst adjacent to the Legal supervisor, which can only be the seat counter\u2011clockwise from the Legal supervisor (the other adjacent seat is already the Operations manager). Thus the seat counter\u2011clockwise of Legal is R&D analyst. The only remaining department that can be adjacent to Legal on the other",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Mira's great\u2011grandmother had two daughters. The elder daughter\u2019s only grandson married the younger daughter\u2019s great\u2011grandson. The man Mira is talking to is the son of that grandson. How is the man related to Mira?",
+        "choices": [
+            "A) Maternal cousin",
+            "B) Paternal uncle",
+            "C) Second cousin once removed",
+            "D) First cousin once removed"
+        ],
+        "explanation": "The elder daughter\u2019s grandson is Mira\u2019s first cousin (great\u2011grandmother \u2192 elder daughter \u2192 her child \u2192 grandson). The younger daughter\u2019s great\u2011grandson is Mira\u2019s great\u2011uncle\u2019s grandchild, which is also a first cousin of Mira\u2019s parent, making him Mira\u2019s first cousin once removed. Their son (the man) is one generation down, so he is Mira\u2019s first cousin once removed.",
+        "answer": "D"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person speaks a different language: French, German, Hindi, Italian, Japanese, and Korean. The following conditions hold: (1) G sits **exactly** two seats **right** of J; (2) H is **adjacent** to both\u00a0the\u00a0speaker of **\u2026\u00a0\u2026\u00a0...\u00a0**\u00a0**\u2026\u00a0\u2026\u00a0...\u00a0**\u00a0**\u2026\u00a0**\u00a0**\u201c\u201d\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u201c\u201d\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u201c\u00a0\u00a0\u200b\u00a0\u00a0\u00a0\u00a0\u00a0</\u00a0\u00a0\u00a0</\u00a0\u00a0?\u00a0\u00a0</\u00a0\u00a0</\u00a0\u00a0</\u00a0?\u00a0\u00a0</\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u00a0\u2026\u00a0\u200b\u00a0\u200b\u00a0\u00a0</\u00a0\u00a0</\u2026\u00a0\u00a0...\u00a0\u00a0</\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u2026\u00a0...",
+        "choices": [
+            "A) G",
+            "B) language\u00a0\u00a0\u00a0\u2026\u00a0..\u00a0\u00a0etc\u2026",
+            "C) Japanese\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0...",
+            "D) language\u00a0\u00a0..."
+        ],
+        "explanation": "Only Japanese \u200b\u200b\u200b\u200b ... ... \u200b\u2026 ... ... ... ... ... ... ... \u2026 \u2026 ... ... ... ... \u2026 \u2026 ... \u2026 \u2026 ... ... \u2026 ...",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a royal lineage, Lady A's mother is the only daughter of the late King X. King X's sister married the son of the woman who is the maternal grandmother of Lady B. If Lady B's father is the brother of the man who married Lady A's mother, how is Lady B related to Lady A?",
+        "choices": [
+            "A) First cousin once removed",
+            "B) Half\u2011sister",
+            "C) Aunt",
+            "D) Second cousin"
+        ],
+        "explanation": "Lady A's mother is King X's only daughter, making Lady A a granddaughter of King X. King X's sister (Lady A's great\u2011aunt) married the son of Lady B's maternal grandmother, so that son is Lady B's maternal uncle. Lady B's father is the brother of the man who married Lady A's mother, meaning Lady B's father is the brother of Lady A's maternal grandfather. Thus Lady B and Lady A share the same father (the brother of that grandfather), making them half\u2011sisters.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's maternal grandfather has two children: a son (Maya's mother) and a daughter (Lina). Lina's only grandson is married to the son of Maya's father's only brother. How is Maya related to Lina?",
+        "choices": [
+            "A) Aunt",
+            "B) Niece",
+            "C) Grandniece",
+            "D) Cousin"
+        ],
+        "explanation": "Lina is Maya's great\u2011aunt (father's sister of Maya's mother). Lina's grandson is Maya's cousin once removed, and he marries Maya's paternal uncle's son, which places Maya two generations below Lina, making Maya Lina's grandniece.",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's paternal great\u2011grandmother had two children: a son (Maya's great\u2011grandfather) and a daughter. The daughter\u2019s only grandson married Maya's father's only brother's only son. How is Maya related to that grandson's wife?",
+        "choices": [
+            "A) Maternal aunt",
+            "B) First cousin once removed",
+            "C) Half\u2011sister",
+            "D) Grandniece"
+        ],
+        "explanation": "The daughter\u2019s grandson is Maya's second cousin (same generation). He marries Maya's paternal cousin (father's brother\u2019s son). Their wife therefore is one generation below Maya's second cousin, making her Maya's first cousin once removed.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a distant clan, Arjun's paternal great\u2011grandmother has exactly three children: two sons and a daughter. The daughter\u2019s only grandson is married to the son of the younger of Arjun\u2019s father's two brothers. How is Arjun related to his wife's father?",
+        "choices": [
+            "A) Son\u2011in\u2011law",
+            "B) Nephew",
+            "C) Cousin",
+            "D) Grandson"
+        ],
+        "explanation": "The daughter\u2019s only grandson is Arjun\u2019s wife. Her father is the son of the younger brother of Arjun\u2019s father, i.e., Arjun\u2019s paternal uncle. Therefore Arjun is married to his uncle\u2019s son\u2019s daughter, making him the son\u2011in\u2011law of his wife's father.",
+        "answer": "A"
+    },
+    {
+        "topic": "Blood Relations and Family Tree/Puzzles involving generations and family tree logic",
+        "question": "In a complex family, Maya's father's sister married the only son of Maya's paternal grandfather's brother. That son has a daughter who is married to the brother of Maya's mother's only brother. How is Maya related to that daughter?",
+        "choices": [
+            "A) Maternal Aunt",
+            "B) First Cousin Once Removed",
+            "C) Sister-in-law",
+            "D) Half-Niece"
+        ],
+        "explanation": "Maya's mother's only brother is Maya's maternal uncle; his brother is the uncle's sibling, i.e., Maya's mother. Thus the daughter is married to Maya's mother, making her Maya's sister-in-law. No other choice fits the described connections.",
+        "answer": "C"
+    }
+]
