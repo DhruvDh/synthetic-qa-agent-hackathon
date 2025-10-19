@@ -1,13 +1,18 @@
 {
-    "n_questions_raw": 0,
-    "n_questions_filtered": 0,
-    "n_answers_raw": 0,
-    "n_answers_valid": 0,
-    "a_agent_accuracy": 0.0,
-    "q_agent_score": 0.0,
-    "question_valid_rate": 0.0,
-    "answer_valid_rate": 0.0,
+    "n_questions_raw": 40,
+    "n_questions_filtered": 23,
+    "n_answers_raw": 23,
+    "n_answers_valid": 8,
+    "a_agent_accuracy": 0.125,
+    "q_agent_score": 57.5,
+    "question_valid_rate": 0.575,
+    "answer_valid_rate": 0.3478,
     "duplicate_choices_rate": 0.0,
     "long_reasoning_rate": 0.0,
-    "answer_letter_distribution": {}
+    "answer_letter_distribution": {
+        "B": 4,
+        "A": 2,
+        "D": 1,
+        "C": 1
+    }
 }
