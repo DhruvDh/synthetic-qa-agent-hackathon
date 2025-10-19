@@ -69,7 +69,7 @@ class AnsweringAgent(object):
                 response_format_name=A_RESPONSE_FORMAT_NAME,
                 response_format_json_schema=A_RESPONSE_FORMAT_SCHEMA,
                 user_prompt=user_prompt,
-                reasoning="medium" if self.select_prompt1 else "high",
+                reasoning="low",
                 system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(

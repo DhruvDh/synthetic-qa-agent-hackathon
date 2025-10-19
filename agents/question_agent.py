@@ -155,7 +155,7 @@ class QuestioningAgent(object):
                 response_format_name=Q_RESPONSE_FORMAT_NAME,
                 response_format_json_schema=Q_RESPONSE_FORMAT_SCHEMA,
                 user_prompt=combined_user,
-                reasoning="low" if wadvsys else "medium",
+                reasoning="low",
                 system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(
