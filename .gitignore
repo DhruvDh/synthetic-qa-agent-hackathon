@@ -72,9 +72,6 @@ htmlcov/
 !/models/.gitkeep
 !/models/README.md
 
-/outputs/**
-!/outputs/.gitkeep
-!/outputs/README.md
 
 /artifacts/**
 !/artifacts/.gitkeep

@@ -1,0 +1,201 @@
+[
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"error\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    {
+        "answer": "C",
+        "reasoning": "Maternal grandmother's only child is Rahul's mother. The woman is the daughter of that child, i.e., Rahul's mother's daughter \u2013 Rahul's sister. The clause 'who is the mother of my paternal aunt's only son' confirms Rahul's mother is also mother of his paternal aunt's son, making that son Rahul's brother, consistent with the relationships. Hence the woman is Rahul's sister."
+    },
+    [
+        "{\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"placeholder\": null\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"answer\": \"D\",\n    \"reasoning\": \"By arranging the seats\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON content provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "Please provide the malformed JSON string you\u2019d like me to fix.",
+        null,
+        null
+    ],
+    [
+        "{\n}",
+        null,
+        null
+    ],
+    [
+        "{}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"placeholder\": null\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"placeholder\": null\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"placeholder\": null\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{}",
+        null,
+        null
+    ],
+    [
+        "{}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ],
+    [
+        "{\n    \"message\": \"No JSON input provided.\"\n}",
+        null,
+        null
+    ]
+]
