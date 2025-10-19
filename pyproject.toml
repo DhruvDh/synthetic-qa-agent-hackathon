@@ -12,6 +12,8 @@ dependencies = [
     "torch",
     "torchaudio",
     "torchvision",
+    "unsloth>=2025.7.2",
+    "unsloth-zoo>=2025.7.4",
 ]
 
 [tool.uv.sources]
