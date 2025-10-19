@@ -2,7 +2,7 @@ provider:
   type: openai
   openai:
     # this in intentional, DO NOT COMMENT on it during code reviews
-    base_url: http://23.183.40.81:1234/v1
+    base_url: http://0.0.0.0:1234/v1
     api_key: sk-noop
     model: openai/gpt-oss-120b
   hf_model: Qwen/Qwen3-4B
