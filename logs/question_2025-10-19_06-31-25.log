@@ -1,0 +1,67 @@
+STEPS:   0%|                                                                                                               | 0/8 [00:00<?, ?it/s]STEPS:  12%|████████████▉                                                                                          | 1/8 [00:06<00:46,  6.66s/it]STEPS:  25%|█████████████████████████▊                                                                             | 2/8 [00:17<00:52,  8.83s/it]STEPS:  38%|██████████████████████████████████████▋                                                                | 3/8 [00:28<00:50, 10.16s/it]STEPS:  50%|███████████████████████████████████████████████████▌                                                   | 4/8 [00:36<00:37,  9.29s/it]STEPS:  62%|████████████████████████████████████████████████████████████████▍                                      | 5/8 [00:46<00:28,  9.49s/it]STEPS:  75%|█████████████████████████████████████████████████████████████████████████████▎                         | 6/8 [00:55<00:18,  9.29s/it]STEPS:  88%|██████████████████████████████████████████████████████████████████████████████████████████▏            | 7/8 [01:04<00:09,  9.25s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:12<00:00,  8.78s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:12<00:00,  9.05s/it]
+Generated 40 questions!
+Invalid JSON format in question: {"topic":"Blood Relations and Family Tree","question":"In a family, Maya’s mother’s brother is married to the daughter of the woman who is the mother of Maya’s father’s only sister. That daughter’s son is the husband of the woman who is the sister of Maya’s paternal grandfather’s wife. How is Maya related to that husband?","choices":["A) Maternal cousin","B) Paternal uncle","C) Brother-in-law","D) Second cousin","explanation":"Maya’s mother’s brother is her maternal uncle. His wife’s mother is Maya’s paternal grandmother, making the daughter Maya’s aunt. That daughter’s son is her aunt’s son, i.e., Maya’s brother. He is married to the sister of Maya’s paternal grandfather’s wife, who is Maya’s paternal grandmother’s sister, also Maya’s aunt. Thus the husband is Maya’s brother, making him her brother-in-law through marriage to her aunt.","answer":"C"}
+Error: Expecting ',' delimiter: line 1 column 430 (char 429)
+Invalid JSON format in question: {"topic":"Blood Relations and Family Tree","question":"A man says: \"My father's sister's son is married to the daughter of the woman who is my mother's brother's wife’s mother. Who is the woman referred to as 'the woman' in this statement?\",\"choices":["A) My paternal aunt","B) My maternal grandmother","C) My maternal aunt","D) My paternal grandmother"],"explanation":"The woman's mother is my mother's brother's wife, i.e., my maternal aunt by marriage. Her daughter is my maternal aunt (by blood). The son of my father's sister (my paternal cousin) is married to that aunt, making the woman the mother of my maternal aunt, which is my maternal grandmother. Only option B fits.","answer":"B"}
+Error: Expecting ',' delimiter: line 1 column 254 (char 253)
+Invalid JSON format in question: {"topic":"Puzzles/Seating Arrangements (Linear, Circular)","question":"Six colleagues—F, G, H, I, J, and K—sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, water, soda, and milk. The clues are: (1) F sits 2 seats to the right of the coffee‑drinker; (2) G is adjacent to the milk‑drinker; (2) G​ ​   ​  ​    ​  …  …… … …  …  …  … ...  … … … … … … … … …  … … … … … … … … … … … … … … … … … … … … ​  … … … … … … … … … … … … ​ … … … … ... … … … … ... … … … … … … … … … ... … … … … … … … … … … … ... … …… … … The  …………… … … … … … … … … … … … … … … … ... … ... \"\"\"\"  \"  \" \" \"
+
+
+
+","choices":["A) F","B) J","C)          
+
+
+
+","D
+
+
+
+","A","","","","?","  
+
+
+
+","?"," 
+
+
+
+"," 
+
+
+
+"," 
+
+
+
+"]}
+Error: Invalid control character at: line 1 column 617 (char 616)
+Invalid JSON format in question: {"topic":"Seating Arrangements (Linear, Circular)","question":"Eight colleagues sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk, wine, and lemonade) and holds a unique hobby (painting, knitting, chess, gardening, cycling, cooking, hiking, and photography). The clues are: 1) The person who drinks tea sits directly opposite the gardener. 2) The cyclist cycles two seats to the right of the coffee drinker. 3) The painter sits adjacent to the lemonade‑drinker. 4) The chess player is three seats — the short way — from the water‑drinker. (Count = 3.) 5) The hiker has the same position as the wine‑or wine‑the the  …?  (Ignore this clue as it is invalid). 6) The person who drinks Soda … … … … … … ... ... ... ... … … … … … … … … … … … … ... … ... … … … … … … ... ... … … ... ... … ... … … … …  ... … … … invalid … … invalid … … … … … … … … … ... … … … … … … … … … ... invalid … … … ?  … …… … ... … … ... ... ... ... … … … … … … … … … ".","choices":["A) The coffee drinker","B) The painter","C) The cyclist","D) The chess player"],"answer":"C","explanation":"Only the cyclist’s location is defined relative to the coffee drinker; the other options lack a direct positional relationship that satisfies all given constraints, making the cyclist uniquely determined."}
+Error: Expecting ',' delimiter: line 1 column 995 (char 994)
+Skipping invalid JSON at index 8: <|channel|>analysis<|message|>We need to extract only the topic, question, choices, answer, explanation. Remove code block markers. Provide JSON with those fields. Ensure answer is only the option letter. In given JSON answer is "C". That's fine. Provide output JSON.
+Skipping invalid JSON at index 18: <|channel|>analysis<|message|>We need to output JSON with only the fields: topic, question, choices, answer, explanation. Remove code block markers. Also answer should be only the option letter, not "B". The original answer field is "B". So we output "B". Ensure format matches given. Provide JSON object.
+Skipping invalid JSON at index 27: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. The input JSON is corrupted. We need to parse what we can. The topic is "Puzzles/Seating Arrangements (Linear, Circular)". The question is the long string about six colleagues. The choices array is weird: ["A) F","B) J","C)          
+
+
+","D
+
+
+","A","","","","?","  
+
+
+","?"," 
+
+
+"," 
+
+
+"," 
+
+
+"].
+
+We need to produce choices as four options A) ... B) ... C) ... D). Probably the intended choices are A) F, B) J, C) ?, D) ?. But we have many extra entries. We need to output only four choices. Likely the correct ones are A) F, B) J, C) ?, D) ?. We'll include them.
+
+Answer unknown. No answer provided. Explanation unknown. Probably we cannot infer answer. Might leave answer blank? But format requires answer field. Could put null? But spec says answer: "Only the option letter (A, B, C, or D)". If unknown, maybe leave empty string.
+
+We'll output JSON with extracted fields, ignoring rest.
+Skipping invalid JSON at index 34: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. Remove code block markers. Provide JSON with those fields. Ensure answer is only letter. In original answer field is "C". That's fine. Provide JSON.
+Saved to outputs/questions.json!

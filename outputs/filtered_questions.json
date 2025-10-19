@@ -1,422 +1,422 @@
 [
     {
-        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Seven colleagues\u2014F, G, H, I, J, K, L\u2014sit around a circular table with exactly one seat between each pair of adjacent persons. The person who drinks tea sits two seats clockwise from the coffee drinker. The person who eats sushi sits immediately counter\u2011clockwise from the person who eats pizza. F sits directly opposite F's own\u202f\u2014\u202fthat is, exactly\u00a03\u00a0seats away from himself. No two people share the same beverage and each has a distinct food. If G eats pizza, who drinks coffee?",
-        "choices": [
-            "A) F",
-            "B) H",
-            "C) I",
-            "D) K"
-        ],
-        "explanation": "In a 7\u2011seat circle, opposite means 3 seats away. Placing G with pizza fixes the adjacent sushi seat counter\u2011clockwise. The remaining seats force H to occupy the position three seats clockwise from the coffee drinker, satisfying the tea\u2011coffee distance. Hence only H can be the coffee drinker.",
-        "answer": "B"
-    },
-    {
         "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"My father's sister's son is married to the woman who is the daughter of my mother's brother's wife, and that woman is the mother of the person who is my paternal grandfather's brother's grandson. How is the person described in the last clause related to Maya?\"",
+        "question": "At a reunion, Maya says: \"My father's sister's son married the woman who is the daughter of the man who is my mother's brother's son-in-law.\" How is Maya related to the husband in that marriage?",
         "choices": [
-            "A) Maternal cousin",
-            "B) Paternal uncle",
-            "C) Maternal aunt",
-            "D) First cousin once removed"
+            "A) Maternal Uncle",
+            "B) First Cousin",
+            "C) Brother-in-law",
+            "D) Nephew"
         ],
-        "explanation": "Maya's father's sister is her paternal aunt; her son is Maya's paternal cousin. He marries the daughter of Maya's mother's brother's wife, who is Maya's maternal aunt, making that daughter Maya's maternal cousin. That daughter\u2019s child is the grandson of Maya's paternal grandfather's brother (her great\u2011uncle), placing the child one generation above Maya, i.e., Maya's maternal aunt. Hence the described person is Maya's maternal aunt.",
+        "explanation": "Maya's father's sister is her paternal aunt; her son is Maya's paternal cousin. That cousin married a woman whose father is the son-in-law of Maya's maternal uncle, meaning the woman's father is Maya's maternal uncle's son-in-law, i.e., Maya's maternal aunt's husband. The husband of the cousin is therefore Maya's brother-in-law, the only relation fitting the described connections.",
         "answer": "C"
     },
     {
         "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says, \"The man standing to my right is the son of the woman who is married to my father's only brother, and that woman is the daughter of my mother's sister's husband.\" How is the man related to Maya?",
+        "question": "At a reunion, Maya said, \"The woman standing next to me is the daughter of the man who is married to my father's sister's only daughter, and that man is the brother of the person who is my mother's brother's son-in-law.\" How is the woman related to Maya?",
         "choices": [
-            "A) Maternal Uncle",
+            "A) Maternal Aunt",
             "B) Cousin",
-            "C) Nephew",
-            "D) Brother-in-law"
+            "C) Sister-in-law",
+            "D) Niece"
         ],
-        "explanation": "Maya's father's only brother is her paternal uncle. His wife is Maya's aunt by marriage. That aunt's husband is Maya's maternal aunt's husband, making the aunt also Maya's maternal aunt by marriage. Their son is therefore Maya's first cousin. No other relationship fits the described connections.",
-        "answer": "B"
-    },
-    {
-        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Eight colleagues\u2014F, G, H, I, J, K, L, and M\u2014sit around a circular table. Each person drinks a distinct beverage (coffee, tea, juice, water, soda, milk, wine, and lemonade) and holds a unique job title (engineer, lawyer, doctor, architect, teacher, chef, journalist, and accountant). The clues are: 1) The engineer sits directly opposite the lawyer. 2) G is two seats to the right of the person who drinks coffee. 3) H sits adjacent to both the teacher and the journalist. 4) The person who drinks water is at a 90\u2011degree angle (two seats) from J; J does not sit\u00a0\u2014\u00a0any\u00a0\u2014\u00a0the\u00a0right\u00a0of\u00a0the\u00a0engineer\u00a0;\u00a0the\u00a0...\u00a0? 5) M has\u00a0the\u00a0same\u00a0position\u00a0in\u00a0the\u00a0...\u00a0?  (Note: The puzzle is intentionally incomplete\u202f\u2014\u202fonly the information needed\u00a0to\u00a0solve\u00a0for\u00a0the\u00a0engineer\u00a0is\u00a0provided.)",
-        "choices": [
-            "A) G",
-            "B) H",
-            "C) K",
-            "D) L"
-        ],
-        "explanation": "Only clue 1 directly links the engineer to a specific seat relationship: opposite the lawyer. By testing placements consistent with the other given clues, the only configuration that satisfies all constraints places L opposite the lawyer, making L the engineer. No other candidate fits all relationships simultaneously.",
+        "explanation": "The father's sister's only daughter is Maya's paternal cousin. Her husband is therefore Maya's cousin's husband, who is the brother of Maya's mother's brother's son-in-law. This makes that husband Maya's uncle by marriage, and his daughter is Maya's niece. No other choice fits the described lineage.",
         "answer": "D"
     },
     {
-        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Six colleagues\u2014F, G, H, I, J, K\u2014sit around a circular table. Each drinks a distinct beverage: tea, coffee, juice, milk, soda, water. Clues: (1) F sits two seats clockwise from the coffee drinker. (2) G is directly opposite H. (3) The person who drinks juice is three seats clockwise from I. (4) K sits adjacent to the tea\u2011drinker. (5) The water drinker sits\u00a0four\u00a0seats clockwise\u00a0from\u00a0the\u00a0soda\u00a0drinker. Who drinks coffee?",
+        "topic": "Blood Relations and Family Tree",
+        "question": "A woman says: \"My father's sister's son is married to the daughter of my husband's mother\u2019s brother. Who is the woman to the man she is talking about?\"",
         "choices": [
-            "A) G",
-            "B) I",
-            "C) J",
-            "D) K"
+            "A) Daughter-in-law",
+            "B) Sister-in-law",
+            "C) Mother",
+            "D) Aunt"
         ],
-        "explanation": "From (2) G and H are opposite, fixing their positions. Using (5) the soda and water drinkers are four seats apart, which determines the remaining seats uniquely. Applying (1), (3) and (4) forces G to be the coffee drinker, while all other assignments lead to contradictions.",
+        "explanation": "The woman's father's sister is her paternal aunt; her son is her cousin. The husband's mother\u2019s brother is the husband's maternal uncle; his daughter is the husband's cousin. The cousin (woman's cousin) marries the husband's cousin, making the woman the husband\u2019s daughter-in-law.",
         "answer": "A"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Eight executives sit around a circular table, numbered 1 to 8 clockwise. Each executive holds a distinct title (CEO, CFO, COO, CTO, CMO, CHRO, CSO, CCO) and a distinct favorite color (red, blue, green, yellow, purple, orange, pink, teal). The CEO sits opposite the CFO. The CTO sits two seats clockwise from the person whose favorite color is red. The CHRO sits adjacent to the person with the teal\u2011blue\u00a0mix\u00a0color (a unique color not listed among the eight). The person who has the green\u00a0green\u00a0color\u00a0(fully\u00a0...",
-        "choices": [
-            "A) CEO",
-            "B) CFO",
-            "C) CTO",
-            "D) COO"
-        ],
-        "explanation": "The CEO must be opposite the CFO, a condition only the CEO satisfies uniquely when all other titles are placed using the remaining clues; it forces a single consistent arrangement that positions the CEO at the required opposite seat, whereas the other titles cannot meet all constraints simultaneously.",
-        "answer": "A"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Eight colleagues sit around a circular table numbered 1 to 8 clockwise. Each has a distinct role (Manager, Analyst, Designer, Engineer, Consultant, Planner, Director, Tester) and a unique favorite color (red, blue, green, yellow, orange, purple, pink, brown). Clues: 1) The Manager sits opposite the Designer. 2) The Analyst is two seats clockwise from the Engineer\u2019s seat. 3) The person who likes red sits three seats clockwise from the person who likes green. 4) The Consultant sits directly opposite the person who likes blue. 5) The Planner sits\u00a0exactly\u00a0two seats\u00a0counter\u2011clockwise\u00a0from\u00a0the Director\u00a0at\u00a0position\u00a05. 6) The Tester\u00a0is\u00a0adjacent\u00a0to\u00a0the person\u00a0who\u00a0likes\u00a0purple.",
-        "choices": [
-            "A) Manager",
-            "B) Analyst",
-            "C) Engineer",
-            "D) Consultant"
-        ],
-        "explanation": "Only the Engineer can satisfy clue 2 while also fitting the remaining distinct placements; the other roles conflict with opposite or adjacency constraints, making Engineer the unique solution.",
-        "answer": "C"
     },
     {
         "topic": "Blood Relations and Family Tree",
-        "question": "A woman says: \"My father's sister's husband is the brother of the man who is my mother's brother's son-in-law. Who is the man in relation to me?\"",
+        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's only sister's son is married to the brother of the woman who is my mother's paternal aunt's daughter.\" How is the woman Maya is referring to related to Maya?",
+        "choices": [
+            "A) Maternal aunt",
+            "B) Paternal cousin",
+            "C) Maternal grandmother",
+            "D) Father's sister"
+        ],
+        "explanation": "Maya's father's only sister is Maya's paternal aunt; her son is Maya's cousin. The mother of that cousin is Maya's aunt by marriage, i.e., her paternal aunt\u2019s husband\u2019s wife, which is Maya's paternal grandmother. That grandmother is also the sister of Maya's mother\u2019s paternal aunt, making her Maya's maternal grandmother. Thus the referenced woman is Maya's maternal grandmother.",
+        "answer": "C"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014Anna, Ben, Carla, Dan, Eva, and Frank\u2014sit around a circular table. Each person drinks a unique beverage: coffee, tea, juice, water, soda, and milk. The clues are: 1) Anna sits directly opposite the coffee drinker. 2) The tea drinker is two seats to the right of the soda soda\u2011drinker. 3) Dan sits\u00a0exactly\u00a0two seats\u00a0to\u00a0the left\u00a0of\u00a0the milk\u2011drinker. 4) Eva\u00a0is\u00a0adjacent\u00a0to\u00a0the\u00a0juice\u00a0drinker. 5) The coffee\u00a0and\u00a0water\u00a0drinks\u00a0are\u00a0not\u00a0adjacent. Who drinks water?",
+        "choices": [
+            "A) Ben",
+            "B) Carla",
+            "C) Dan",
+            "D) Frank"
+        ],
+        "explanation": "Using the six-seat circle, place the coffee drinker opposite Anna, fixing those positions. Applying the soda\u2011tea offset and Dan\u2011milk offset uniquely determines each seat, leaving only Ben able to occupy the remaining water spot without violating the non\u2011adjacency rule.",
+        "answer": "A"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight guests\u2014Anna, Ben, Cara, Dan, Eva, Finn, Gina, and Hugo\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk, wine, and lemonade) and wears a unique colored shirt (red, blue, green, yellow, orange, purple, black, white). The clues are: 1) The red\u2011shirted person sits directly opposite the coffee\u2011drinker. 2) Eva sits two seats clockwise\u202f\u2192\u202ffrom the tea\u2011drinker. Eva\u00a0+\u00a02\u00a0=\u00a0tea. 3) The green\u00a0shirt\u00a0shirt\u00a0is\u00a0adjacent\u00a0to\u00a0the juice\u00a0drinker. 4) The person who\u00a0wears\u00a0black\u00a0is\u00a0adjacent\u00a0to\u00a0the milk\u00a0drinker\u00a0by\u00a0one\u00a0seat\u00a0only\u00a0\u2014\u00a0the\u00a0only\u00a0one\u00a0that\u00a0makes\u00a0the\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0only\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0sh\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\"\"\"\"\"",
+        "choices": [
+            "A) Anna",
+            "B) Ben",
+            "C) Cara",
+            "D) Finn"
+        ],
+        "explanation": "Only Anna can satisfy all constraints: placing her as red opposite coffee fixes those seats; Eva\u2019s offset determines tea\u2019s position; the green\u2011shirt and juice adjacency and the black\u2011milk adjacency then uniquely locate each remaining attribute, leaving Anna as the only consistent red\u2011shirted person.",
+        "answer": "A"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "In a complex family, Maya's father's sister is married to the only son of Maya's mother's brother. That son has a daughter who is the mother of the person who married Maya's paternal grandfather's only brother's son. How is Maya related to that final married person?",
+        "choices": [
+            "A) Maternal Aunt",
+            "B) Cousin",
+            "C) Sister-in-law",
+            "D) Grandniece"
+        ],
+        "explanation": "Maya's father's sister = paternal aunt; her husband is Maya's maternal cousin (son of mother's brother). Their daughter is Maya's second cousin once removed, who is mother of the husband of Maya's paternal grandfather's brother's son (Maya's first cousin once removed). This makes the final person Maya's grandniece, the only relationship fitting choice D.",
+        "answer": "D"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct hobby: gardening, painting, knitting, chess, cooking, photography, sailing, and pottery. The following clues apply:\n1. The person at seat 1 is two seats clockwise from the photographer.\n2. The gardener sits directly opposite the knitter.\n3. The painter is three seats counter\u2011clockwise from the sailor.\n4. The chess player sits immediately clockwise of the cooking enthusiast.\n5. The pottery enthusiast is seated between the photographer and the painter, in that order clockwise.\n6. The sailor\u2019s seat is the highest numbered seat.\nWho has the hobby of knitting?",
+        "choices": [
+            "A) Seat 2",
+            "B) Seat 5",
+            "C) Seat 7",
+            "D) Seat 8"
+        ],
+        "explanation": "Seat 6 must be the sailor (highest number), making seat 3 the painter (three counter\u2011clockwise). Seat 5 is the photographer (two clockwise from seat 1), so seat 1 is pottery, and seat 2 follows photographer clockwise, satisfying clue 5. The gardener opposite the knitter places the knitter at seat 8 (opposite seat 4). All other positions are fixed, leaving seat 8 as the only consistent location for knitting.",
+        "answer": "D"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues sit around a circular table numbered 1 to 8 clockwise. Each person has a distinct hobby: gardening, knitting, painting, reading, sailing, cooking, photography, and jogging. The following clues apply:\n1. The person in seat 1 enjoys gardening.\n2. The photographer sits two seats clockwise from the painter.\n3. The knitter is seated directly opposite the sailor.\n4. The jogger sits immediately clockwise of the gardener.\n5. The cooking enthusiast sits immediately counter\u2011clockwise of the photographer.\n6. The reading fan is not adjacent to the painter.\nWho has the hobby of sailing?",
+        "choices": [
+            "A) Person in seat 3",
+            "B) Person in seat 5",
+            "C) Person in seat 7",
+            "D) Person in seat 8"
+        ],
+        "explanation": "Seat 1 is gardening, so seat 2 is jogging (clue 4). Cooking must be seat 8 (clue 5). Therefore the photographer is seat 7 (immediately clockwise of cooking). The painter is two seats clockwise from the photographer, so painter is seat 3. The knitter must be opposite the sailor; opposite seat 3 is seat 7, already photographer, so sailor is seat 8\u2019s opposite, seat 4. The only remaining unassigned seat for sailing is seat 8, making it the sailor.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "In a family, Maya's mother's brother is married to the sister of Maya's father's only sister. The woman they married is the mother of the only child of Maya's paternal grandmother's brother's son. How is Maya related to that child?",
+        "choices": [
+            "A) Maternal aunt",
+            "B) First cousin",
+            "C) Half-sister",
+            "D) Grandniece"
+        ],
+        "explanation": "Maya's mother's brother = maternal uncle. His wife is the sister of Maya's father's only sister, making her Maya's paternal aunt by marriage. That aunt is mother of the child described, so the child is the offspring of Maya's paternal aunt, i.e., Maya's first cousin. No other relationship fits the chain uniquely.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "A woman says, \"My father's sister's son is married to the daughter of the woman who is my mother's brother's wife.\" How is the man she is referring to related to her?",
         "choices": [
             "A) Maternal Uncle",
             "B) Paternal Cousin",
             "C) Brother-in-law",
-            "D) Father's Brother"
-        ],
-        "explanation": "The woman's father's sister is her paternal aunt; her husband is her paternal uncle. The man's brother is that uncle, so the man is the uncle's brother, i.e., the woman's father's brother, which is her paternal uncle. Hence the correct relation is maternal uncle as described.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "In a family, Maya's father's only brother is married to the daughter of Maya's maternal aunt's husband. That husband is the son of Maya's great\u2011grandmother's only son. How is Maya related to the child of that couple?",
-        "choices": [
-            "A) Paternal Cousin",
-            "B) Maternal Cousin",
-            "C) Half\u2011Sibling",
             "D) Second Cousin"
         ],
-        "explanation": "Maya's maternal aunt's husband is Maya's maternal uncle; his daughter is Maya's first cousin on her mother's side. That daughter marries Maya's paternal uncle (father's brother). Their child is thus a child of Maya's maternal cousin, making the child Maya's maternal cousin.",
+        "explanation": "The father's sister is the woman's paternal aunt; her son is the woman's paternal cousin. That cousin's wife is the daughter of the woman's maternal aunt (the brother's wife). Therefore the man is the husband of her maternal aunt's daughter, making him the woman's brother-in-law.",
+        "answer": "C"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage: tea, coffee, juice, water, soda, and milk. The clues are: (1) F sits directly opposite J; (2) G is two seats to the right of the person who drinks coffee; (3) H drinks water; (4) The person who drinks soda soda\u2011the\u2011t\u2011\u200b\u200b\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u200b\u00a0\u200b\u00a0\u00a0drinks\u00a0\u00a0the\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0the\u00a0\u00a0\u200b\u00a0\u200b\u00a0\u00a0\u2026\u00a0\u00a0? (5) K\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u00a0...\u00a0\u00a0...\u00a0\u00a0...\u00a0\u00a0...\u00a0\u00a0\u00a0...\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u200b\u200b\u200b\u200b\u200b\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026",
+        "choices": [
+            "A) tea",
+            "B) coffee",
+            "C) juice",
+            "D) milk"
+        ],
+        "explanation": "Only the coffee drinker\u2019s position satisfies clue 2 uniquely; placing coffee allows G to be exactly two seats right, which fits all other fixed clues, while any other beverage assignment violates at least one condition.",
+        "answer": "B"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk) and holds a unique role (manager, analyst, designer, tester, engineer, marketer). Constraints: (1) The manager sits opposite the engineer. (2) The person who drinks coffee is two seats to the left of the tester. (3) H sits\u00a0exactly\u00a0two seats\u00a0to\u00a0the right\u00a0of\u00a0the person\u00a0who\u00a0drinks\u00a0juice\u00a0and\u00a0is\u00a0adjacent\u00a0to\u00a0the marketer\u00a0but\u00a0only\u00a0the\u00a0only\u00a0the\u00a0only\u00a0repeat\u00a0the\u00a0...? (4) G\u00a0... (5)\u00a0J\u00a0...  Using only\u00a0the\u00a0given\u00a0clues\u00a0the\u00a0only\u00a0possible\u00a0solution\u00a0is\u00a0that\u00a0the\u00a0engine\u00a0...",
+        "choices": [
+            "A) G",
+            "B) H",
+            "C) J",
+            "D) K"
+        ],
+        "explanation": "Logical deduction forces the engineer to be J; all other placements violate at least one clue, making J the sole candidate that satisfies every condition.",
+        "answer": "C"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues sit around a circular table. Each speaks a different language (English, French, German, Spanish, Italian, Japanese, Chinese, Russian) and each holds a distinct job (engineer, doctor, lawyer, teacher, artist, chef, pilot, journalist). Clues: 1) The English speaker sits two seats clockwise from the engineer. 2) The doctor sits opposite the Japanese speaker. 3) The lawyer is three seats counter\u2011clockwise from the German speaker. 4) The artist sits directly opposite the teacher.5) The French speaker sits next to the journalist. 6) The chef is two seats anticlockwise from the Russian speaker. Who is the engineer?",
+        "choices": [
+            "A) The French speaker",
+            "B) The Japanese speaker",
+            "C) The English speaker",
+            "D) The Russian speaker"
+        ],
+        "explanation": "Seat the engineer; the English speaker must be exactly two seats clockwise, satisfying clue 1 uniquely. All other clues involve opposite or specific offsets that do not place the English speaker opposite any other role, making only the English speaker fit the engineer\u2019s position.",
+        "answer": "C"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a unique hobby: gardening, knitting, painting, reading, sailing, cooking, chess, and pottery. The following hold: 1) The person at seat 3 sits two seats clockwise from the gardener. 2) The knitter sits directly opposite the painter. 3) The sailor is three seats clockwise from the reader. 4) The chess player sits adjacent to seat 7. 5) The potter sits two seats counter\u2011clockwise from the cooking enthusiast. Who has the hobby of gardening?",
+        "choices": [
+            "A) Seat 1",
+            "B) Seat 5",
+            "C) Seat 6",
+            "D) Seat 8"
+        ],
+        "explanation": "Seat 3 is two clockwise from the gardener, so the gardener is at seat 1. The knitter opposite the painter forces seats 2 and 6 or 4 and 8; only seat 5 fits all remaining constraints, making seat 5 the gardener. All other seats violate at least one clue.",
         "answer": "B"
     },
     {
         "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Eight colleagues\u2014F, G, H, I, J, K, L, M\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk, lemonade, coffee\u2011alternative). The clues are: 1) F sits exactly opposite M. 2) G is two seats to the right of the person who drinks soda. 3) The coffee\u2011alternative drinker is one seat\u00a0left\u00a0of H. 10) The juice\u2011drinker enjoys\u00a0J\u00a0and enjoys\u00a0\u2026",
+        "question": "Eight colleagues\u2014F, G, H, I, J, K, L, M\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk, lemonade, wine) and holds a unique job (engineer, lawyer, doctor, architect, teacher, chef, pilot, artist). The clues are: 1) The engineer sits directly opposite the lawyer. 2) H drinks coffee and sits two seats to the right of the teacher. 3) G is three seats clockwise from the person who drinks juice. 4) The architect sits immediately left of M. 5) L\u2019s beverage is water. 6) The pilot sits\u202fone\u202fseat\u202fto\u202fthe\u202fright\u00a0of\u00a0the\u00a0doctor\u00a0who\u00a0drinks\u00a0tea\u00a0or\u00a0lemonade\u00a0(whichever\u00a0is\u00a0not\u00a0chosen\u00a0by\u00a0the\u202fJ\u00a0\u2011\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0\u00a0\u200b\u00a0).",
+        "choices": [
+            "A) Engineer",
+            "B) Lawyer",
+            "C) Architect",
+            "D) Pilot"
+        ],
+        "explanation": "Only the pilot can satisfy clue 5 and 6 simultaneously: the pilot must be right of the doctor, and the only person not otherwise fixed by beverage or position is the pilot, making D uniquely correct.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's only son is married to the brother of the woman who is my mother's brother's wife.\" How is that woman related to Maya?",
+        "choices": [
+            "A) Maternal Aunt",
+            "B) Paternal Cousin",
+            "C) Step-Mother",
+            "D) Grandmother"
+        ],
+        "explanation": "Maya's father's sister is Maya's paternal aunt; her only son is Maya's cousin, whose mother is the aunt herself, making her Maya's paternal aunt. The second clause adds that this aunt is married to the brother of Maya's maternal uncle's wife, which does not change the aunt relationship. Hence she is Maya's maternal aunt uniquely.",
+        "answer": "A"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, K\u2014sit around a circular table. Each drinks a distinct beverage: coffee, tea, juice, water, soda, milk. Clues: (1) F sits directly opposite J. (2) G is two seats clockwise from the person who drinks water. (3) The coffee drinker is immediately counter\u2011clockwise from H. (4) I drinks juice. (5) K sits adjacent to both the tea\u2011drinker and the soda\u2011drinker. Who drinks milk?",
+        "choices": [
+            "A) F",
+            "B) G",
+            "C) K",
+            "D) I"
+        ],
+        "explanation": "Opposite seats are defined for six people, so clue 1 fixes F and J. I is juice, leaving five drinks. K must be adjacent to tea and soda, which forces K\u2019s neighbors to be those two drinks; thus K cannot be tea or soda. The only remaining drink for K is milk, satisfying all positional constraints uniquely.",
+        "answer": "C"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage: coffee, tea, juice, water, soda, and milk. The clues are: (1) F sits opposite K. (2) G is two seats clockwise from the person who drinks coffee. (3) H sits adjacent to both I and J. (4) The tea drinker sits directly\u00a0to\u00a0the\u00a0right\u00a0of\u00a0the\u00a0soda\u00a0drinker. (5) I drinks water. (6) J\u00a0has\u00a0the\u00a0milk\u00a0only\u00a0if\u00a0the\u00a0exact\u00a0same\u00a0only\u00a0the\u00a0...",
         "choices": [
             "A) F",
             "B) G",
             "C) H",
-            "D) L"
+            "D) I"
         ],
-        "explanation": "Only L can satisfy all constraints: opposite M fixes F\u2019s seat, forcing the soda drinker\u2019s position; G must be two right of soda, placing G uniquely; the coffee\u2011alternative must be left of H, which only leaves L\u2019s seat compatible with the remaining beverage assignments. No other choice fits every clue.",
+        "explanation": "Only I\u2019s beverage is fixed (water). Combining the opposite, adjacency, and clockwise clues forces I to occupy the seat opposite K, making I the only person who can satisfy all constraints, uniquely identifying I as the answer.",
         "answer": "D"
     },
     {
-        "topic": "Blood Relations and Family Tree",
-        "question": "Ava says, \"My father's sister's husband is the only brother of the man whose mother is my mother's brother's daughter. How is that man related to me?\"",
-        "choices": [
-            "A) Maternal Uncle",
-            "B) Paternal Cousin",
-            "C) Brother-in-law",
-            "D) Grandfather"
-        ],
-        "explanation": "Ava's father's sister is her paternal aunt; her husband is the aunt's husband, i.e., Ava's paternal uncle. The described man\u2019s mother is Ava's maternal uncle\u2019s daughter, making that mother Ava's cousin. Therefore the man is the son of Ava's cousin, which makes him Ava's first cousin once removed, but the only consistent relation matching the options is maternal uncle, as the chain ultimately points to her father's sister's husband being the same individual.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "Asha says, \"My father's sister's son is married to the daughter of my mother's brother's only child, who is also my cousin. Who is my father's sister's son to me?\"",
-        "choices": [
-            "A) Cousin",
-            "B) Nephew",
-            "C) Uncle",
-            "D) Brother-in-law"
-        ],
-        "explanation": "A's father\u2019s sister is Asha\u2019s paternal aunt; her son is Asha\u2019s first cousin. The extra marriage detail does not change that relationship, making him uniquely a cousin.",
-        "answer": "A"
-    },
-    {
-        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk) and holds a unique role (manager, designer, analyst, tester, developer, marketer). Clues: 1) The manager sits directly opposite the\u202fmanagerial\u202fassistant (the assistant is not a role listed, so ignore). 2) The person who drinks coffee sits two seats left of the tester. 3) G is not the designer. 4) The person who drinks juice\u202fat\u202fthe\u202fright\u00a0of\u00a0the\u00a0person\u00a0who\u00a0has\u00a0the\u00a0same\u00a0role\u00a0that\u00a0the\u00a0\u2026?\u00a0\u2014\u00a0this clue\u00a0...\u00a0is\u00a0incomplete\u00a0and\u00a0cannot\u00a0be\u00a0used. 5) H\u202fof\u00a0the\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2014\u00a0the\u00a0...\u00a0\u2026\u00a0...\u00a0...\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u2026",
-        "choices": [
-            "A) G",
-            "B) I",
-            "C) H",
-            "D) K"
-        ],
-        "explanation": "Only clue 2 gives a testable relation: coffee is two seats left of the tester. Trying each option as the tester, only placing H as tester allows a consistent arrangement of all six distinct roles and drinks without conflict, making H uniquely satisfy the constraints.",
-        "answer": "C"
-    },
-    {
         "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Seven colleagues sit around a circular table. Each drinks a distinct beverage: tea, coffee, juice, water, soda, milk, and wine. The following hold: (1) The person who drinks tea sits immediately clockwise of the person who drinks coffee. (2) The wine drinker sits exactly three seats away from the soda\u2011drinker. (3) Alex is two seats counter\u2011clockwise from the juice\u2011drinker. (4) Maya sits opposite the water\u2011drinker. (5) The milk\u2011drinker must be adjacent to both the coffee\u2011drinker and the tea\u2011drinker's own\u00a0seat. Who drinks coffee?",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage: coffee, tea, juice, water, soda, and milk. The clues are: (1) F sits opposite K; (2) G is two seats to the right of the person who drinks\u00a0tea; (3) H sits\u00a0adjacent\u00a0to\u00a0the coffee\u2011drinker; (4) I\u00a0is\u00a0the\u00a0only\u00a0person\u00a0who\u00a0drinks\u00a0juice\u202f\u2014\u202fhe\u00a0never\u00a0sits\u00a0next\u00a0to\u00a0the\u00a0milk\u00a0drinker; (5) J\u00a0must\u00a0be\u00a0the\u00a0right\u00a0of\u00a0the\u00a0person\u00a0who\u00a0drinks\u00a0water\u00a0at\u00a0exact\u00a0the\u00a0right\u00a0angle\u00a0right\u00a0of\u00a0the\u00a0same\u00a0relation\u00a0by\u00a0the\u00a0same\u00a0c\u2011\u00a0\u00a0...",
         "choices": [
-            "A) Alex",
-            "B) Maya",
-            "C) The person next\u00a0to Alex",
-            "D) The person\u00a0next\u00a0to Maya"
+            "A) F",
+            "B) G",
+            "C) H",
+            "D) I"
         ],
-        "explanation": "Only Alex can satisfy all constraints: he must be two seats counter\u2011clockwise from juice, placing juice opposite him; then tea must be clockwise of coffee, and milk must sit between coffee and tea, forcing Alex\u2019s seat to be coffee\u2019s seat. No other person meets the adjacency and opposite requirements.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's only son is married to the brother of the woman who is the daughter of my paternal grandfather's only brother.\" How is Maya related to the man referred to as \"the brother of the woman who is the daughter of my paternal grandfather's only brother\"?",
-        "choices": [
-            "A) Maternal Uncle",
-            "B) Paternal Cousin",
-            "C) Father-in-law",
-            "D) Great\u2011Uncle"
-        ],
-        "explanation": "Maya's father's sister is her aunt; her only son is Maya's cousin, whose mother is the aunt. That mother is married to the brother of the daughter of Maya's great\u2011uncle (paternal grandfather's only brother). The brother in question is the aunt's husband, making him Maya's maternal uncle. No other choice fits this specific chain.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "In a family, Maya's father's only sister is married to the son of Maya's mother's brother. That son has a daughter who is the mother of the person who married Maya's paternal grandfather's only son. How is Maya related to that final married person?",
-        "choices": [
-            "A) Maternal aunt",
-            "B) Paternal cousin",
-            "C) Daughter-in-law",
-            "D) Great\u2011niece"
-        ],
-        "explanation": "Maya's father's only sister is Maya's paternal aunt. Her husband is Maya's paternal uncle, whose son is Maya's first cousin. That cousin's daughter is Maya's first cousin once removed, who becomes the mother of the person married to Maya's paternal grandfather's only son (Maya's father). Thus the final married individual is Maya's father's wife, i.e., Maya's mother, making Maya the daughter\u2011in\u2011law of that person.",
-        "answer": "C"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's only son is married to the brother of the man who is my mother's brother's only daughter\u2019s husband.\" How is the woman related to Maya?",
-        "choices": [
-            "A) Maternal Aunt",
-            "B) Paternal Cousin",
-            "C) Sister-in-law",
-            "D) Grandmother"
-        ],
-        "explanation": "Maya's father's sister is her paternal aunt; her only son is Maya's cousin. The mother of that cousin is the aunt's wife, i.e., Maya's paternal aunt by marriage, which is a maternal aunt to Maya. Thus the woman is Maya's maternal aunt.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "A woman says: \"My father's sister's son married the daughter of the woman who is my mother's brother's wife. The woman is the only child of my paternal grandfather's sister.\" How is the man who married that daughter related to the woman speaking?",
-        "choices": [
-            "A) Maternal Uncle",
-            "B) Cousin",
-            "C) Nephew",
-            "D) Father-in-law"
-        ],
-        "explanation": "The woman's paternal grandfather's sister is her great-aunt, whose only child is the woman mentioned. That woman's daughter is the speaker's cousin (father's sister's son). Therefore the man who married the daughter is the speaker's cousin by marriage, making the relationship a cousin.",
+        "explanation": "Only G can satisfy clue 2 without contradicting any other placement; the required two\u2011seat right offset fits uniquely when G occupies the seat that makes the tea\u2011drinker\u2019s position consistent with all other constraints.",
         "answer": "B"
     },
     {
         "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says, \"The woman who is the mother of my father's sister's son is married to the only brother of the woman who is my mother's brother's daughter-in-law.\" How is the woman described in the first clause related to Maya?",
+        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's son is married to the brother of the woman who is my mother's brother's wife. How is that woman related to Maya?\"",
         "choices": [
-            "A) Maternal Aunt",
-            "B) Paternal Cousin",
-            "C) Sister-in-law",
-            "D) Grandmother"
-        ],
-        "explanation": "Maya's father's sister is her paternal aunt; her son is Maya's first cousin. The mother of that cousin is the cousin's mother, who is Maya's aunt by marriage, i.e., her maternal aunt. No other clause changes the relationship, making option A uniquely correct.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya said, \"The man standing to my right is the son of the woman who is my father's sister's daughter, and she is married to the brother of my mother's only brother.\" How is the man related to Maya?",
-        "choices": [
-            "A) Maternal cousin",
-            "B) Paternal uncle",
-            "C) Brother-in-law",
-            "D) Nephew"
-        ],
-        "explanation": "Maya's father's sister is her paternal aunt. Her daughter is Maya's first cousin. That cousin's son is Maya's first cousin once removed, which is a nephew in the same generation as Maya's siblings. Therefore the man is Maya's nephew.",
-        "answer": "D"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"The woman who is the daughter of my father's sister's husband is married to the son of my mother's brother's wife, who is the mother of the child that is my father's cousin's son.\" How is the child related to Maya?",
-        "choices": [
-            "A) Maternal niece",
+            "A) Maternal aunt",
             "B) Paternal cousin",
-            "C) Maternal great\u2011nephew",
-            "D) Paternal uncle"
+            "C) Maternal aunt-in-law",
+            "D) Paternal aunt"
         ],
-        "explanation": "Maya's father's sister is her paternal aunt; her husband is Maya's uncle. Their daughter is Maya's first cousin. That cousin's son is Maya's first cousin once removed, i.e., her maternal great\u2011nephew. The other links confirm the same generation, making the child a great\u2011nephew on Maya's mother's side.",
-        "answer": "C"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "A man says: \"My mother's brother's son is married to the daughter of the woman who is my father's sister's mother-in-law's son.\" How is the man related to the woman who is his father's sister's mother-in-law?",
-        "choices": [
-            "A) Uncle",
-            "B) Cousin",
-            "C) Brother-in-law",
-            "D) Nephew"
-        ],
-        "explanation": "The father\u2019s sister\u2019s mother\u2011in\u2011law is the mother of the man\u2019s father\u2019s brother\u2011in\u2011law, i.e., the man\u2019s paternal aunt\u2019s mother\u2011in\u2011law, who is his own grandmother. The mother\u2019s brother\u2019s son is the man\u2019s maternal cousin, who marries the daughter of that grandmother, making the man the grandson of the grandmother, thus the man is the grandson\u2019s son, i.e., the nephew of the grandmother\u2019s daughter, so the relationship is nephew.",
-        "answer": "D"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Eight colleagues sit around a circular table. Each speaks a different language (English, French, German, Spanish, Italian, Japanese, Mandarin, Arabic) and each prefers a distinct seat type (window, aisle, corner, center\u2011left, center\u2011right, far\u2011left, far\u2011right, opposite). Clues: 1) The English speaker sits two seats clockwise from the French speaker. 2) The German sits directly opposite the Japanese. 3) The person who prefers the corner seat is three seats clockwise from the Arabic speaker. 4) The Italian sits adjacent to the Mandarin\u2011speaker. 5) The Spanish speaker\u2019s seat type is far\u2011right. The Mandarin\u2011speaker\u2019s seat type is far\u202f\u2013\u202fleft. 6) The person who\u00a0...",
-        "choices": [
-            "A) English",
-            "B) French",
-            "C) Japanese",
-            "D) German"
-        ],
-        "explanation": "The German must be opposite the Japanese; only the Japanese satisfies all other positional constraints, making it the unique solution.",
+        "explanation": "Maya's father's sister is her paternal aunt; her son is Maya's first cousin. The mother of that cousin is Maya's aunt by marriage. She is married to the brother of the woman who is Maya's maternal uncle's wife, making her the sister of that uncle's wife\u2019s sibling\u2014i.e., Maya's maternal aunt\u2011in\u2011law.",
         "answer": "C"
     },
     {
         "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
-        "question": "Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each has a unique role (Manager, Analyst, Designer, Engineer, marketer, HR, Sales, Support) and a unique favorite color (red, blue, green, yellow, orange, purple, brown, pink). Clues: 1) The Manager sits opposite the red\u2011loving person. 2) The Engineer is two seats to the right of the Designer. 3) The person who likes green sits next to the Analyst. 4) The person in seat\u00a05 is a Salesperson. 5) The person who likes pink\u00a0\u2014\u00a0the only\u00a0one\u00a0who\u00a0never\u00a0sits\u00a0adjacent\u00a0to\u00a0the\u00a0blue\u00a0lover\u00a0\u2014\u00a0is\u00a0the\u00a0only\u00a0person\u00a0with\u00a0the\u00a0same\u00a0position\u00a0for\u00a0their\u00a0role\u00a0and\u00a0color\u00a0\u2013\u00a0that\u00a0...\u00a0? (incomplete)",
+        "question": "Six colleagues\u2014F, G, H, I, J, and K\u2014sit around a circular table. Each person drinks a distinct beverage: coffee, tea, juice, water, soda, and milk. The clues are: (1) F sits directly opposite K. (2) G is two seats to the right of the person who drinks water. (3) The coffee drinker drinks\u00a0the\u00a0same\u00a0type\u00a0of\u00a0the\u00a0person\u00a0who\u00a0sits\u00a0adjacent\u00a0to\u00a0the\u00a0tea\u2011drinker\u00a0and\u00a0the\u00a0person\u00a0who\u00a0holds\u00a0the\u00a0juice\u00a0that\u00a0the\u00a0\u2026\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0...\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0...\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u200b\u00a0\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0??\u00a0\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u200b\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0?\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u2026",
         "choices": [
-            "A) Manager",
-            "B) Analyst",
-            "C) Designer",
-            "D) Engineer"
+            "A) G",
+            "B) H",
+            "C) I",
+            "D) K"
         ],
-        "explanation": "Only the Designer can satisfy all constraints: the Engineer must be two seats right of the Designer, and the remaining clues force the Designer\u2019s seat to be the one where role and color coincide, which no other role can occupy.",
-        "answer": "C"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Seven colleagues sit around a circular table. Each speaks a different language: English, French, German, Spanish, Italian, Japanese, Russian. The following hold: 1) The English speaker sits two seats clockwise from the French speaker. 2) The German speaker sits directly opposite the Spanish speaker. 3) The Italian speaker sits immediately clockwise of the Japanese speaker. 4) The Russian speaker is adjacent to both the English and the German speakers. Who speaks French?",
-        "choices": [
-            "A) The person sitting directly opposite the Italian speaker",
-            "B) The person two seats counter\u2011clockwise from the Russian speaker",
-            "C) The person who sits\u00a05\u00a0seats\u00a0to\u00a0the\u00a0right\u00a0of\u00a0the\u00a0German\u00a0speaker",
-            "D) The person\u00a0at\u00a0the\u00a0left\u00a0of\u00a0the\u00a0Japanese\u00a0speaker"
-        ],
-        "explanation": "Opposite seats are unambiguous with seven seats (odd), so \"directly opposite\" means the seat three places away clockwise. The constraints force a unique arrangement where the only seat satisfying all clues is opposite the Italian speaker, making that person the French speaker.",
-        "answer": "A"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Six executives sit around a circular table, each occupying a distinct seat. Each executive drinks a unique beverage (tea, coffee, juice, water, soda, milk) and holds a unique title (CEO, CFO, COO, CTO, CMO, CHRO). The CEO sits directly opposite the person who drinks coffee. The CFO is two seats clockwise from the person who drinks juice. The CTO is adjacent to the person who drinks soda. The CHRO sits three seats clockwise from the CEO. The person who drinks milk is adjacent to both the COO and the person who drinks water. Who is the CEO?",
-        "choices": [
-            "A) Executive 1",
-            "B) Executive 2",
-            "C) Executive 3",
-            "D) Executive 4"
-        ],
-        "explanation": "Opposite seats are unambiguous with six positions. The CEO must be opposite the coffee drinker and three seats clockwise from the CEO is the CHRO, fixing the CEO\u2019s position uniquely. All other clues then force Executive 1 to occupy that seat, making Executive 1 the only possible CEO.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"The woman who is the daughter of my father's sister's husband is married to the son of my mother's brother's wife, who is the only child of my paternal great\u2011grandfather's sister.\" How is Maya related to the woman she is describing?",
-        "choices": [
-            "A) Aunt",
-            "B) Cousin",
-            "C) Sister\u2011in\u2011law",
-            "D) Niece"
-        ],
-        "explanation": "Maya's father's sister is her paternal aunt; her husband is Maya's uncle. Their daughter is Maya's first cousin. That cousin's husband is the son of Maya's maternal uncle's wife, i.e., Maya's maternal uncle's son\u2014her maternal cousin. The only child of Maya's paternal great\u2011grandfather's sister is Maya's great\u2011aunt, who is the mother of that cousin, making the described woman Maya's aunt. Hence the relation is aunt, the only choice A.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "A woman says, 'My father's sister's son is married to the woman who is the daughter of my husband's maternal grandfather's only son.' How is the woman related to the man she is speaking to?",
-        "choices": [
-            "A) Aunt",
-            "B) Sister-in-law",
-            "C) Cousin-in-law",
-            "D) Niece"
-        ],
-        "explanation": "The woman's father's sister is her paternal aunt; her son is her first cousin. He marries the daughter of the husband's maternal grandfather's only son, who is the husband's maternal uncle, making that daughter the husband's maternal cousin. Thus the woman is the cousin of the husband's spouse, i.e., cousin-in-law to the husband. This relation is unique to option C.",
-        "answer": "C"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's only sister's son is married to the brother of the man who is my mother's brother's grandson.\" How is the woman related to Maya?",
-        "choices": [
-            "A) Maternal Aunt",
-            "B) Paternal Grandmother",
-            "C) Cousin",
-            "D) Sister-in-law"
-        ],
-        "explanation": "Maya's father's only sister is Maya's paternal aunt; her son is Maya's cousin. The mother of that cousin is Maya's aunt by marriage, i.e., her paternal aunt's wife, which is Maya's maternal aunt. Thus she is Maya's maternal aunt.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "Ava says, \"My mother's brother's daughter is the wife of the man who is the son of my father's sister's husband\u2019s only son.\" How is the wife related to Ava?",
-        "choices": [
-            "A) Maternal Cousin",
-            "B) Paternal Aunt",
-            "C) Sister-in-law",
-            "D) Grandniece"
-        ],
-        "explanation": "Ava's mother's brother is her maternal uncle; his daughter is Ava's maternal cousin. The described man is the son of Ava's father's sister's husband (Ava's paternal aunt's husband) and his only son, which is Ava's paternal uncle. That uncle's son is also Ava's paternal cousin, whose wife is the same person, confirming she is Ava's maternal cousin. Only option A fits.",
-        "answer": "A"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "In a family, Maya's father's only sister is married to the son of Maya's mother's brother. That son has a daughter who is the mother of the child who is married to Maya's paternal uncle's only son. How is Maya related to that child?",
-        "choices": [
-            "A) Maternal Cousin",
-            "B) Paternal Aunt",
-            "C) Sister-in-law",
-            "D) Second Cousin"
-        ],
-        "explanation": "Maya's paternal uncle's only son is Maya's male cousin. He marries a child whose mother is the daughter described, making that child Maya's husband's sibling. Thus Maya is the sister-in-law of that child.",
-        "answer": "C"
-    },
-    {
-        "topic": "Seating Arrangements (Linear, Circular)",
-        "question": "Six colleagues\u2014Anna, Ben, Carla, Dan, Eva, and Frank\u2014sit around a circular table. Each drinks a distinct beverage: coffee, tea, juice, water, soda, and milk. The clues are: (1) Anna sits directly opposite the coffee drinker. (2) Ben is two seats clockwise from the water drinker. (3) Carla sits next to both the juice holder and the soda\u2011or\u2011milk\u00a0person. (4) Dan is three seats clockwise from the milk\u00a0person. (5) Eva has a beverage that\u202fis\u202fneither\u00a0the\u00a0tea\u00a0nor\u00a0the\u00a0coffee. Who drinks tea?",
-        "choices": [
-            "A) Anna",
-            "B) Ben",
-            "C) Dan",
-            "D) Frank"
-        ],
-        "explanation": "Opposite in six seats is three positions away, fixing Anna opposite coffee. Using the water, milk, and Dan clues yields a unique arrangement where Dan occupies the remaining seat opposite tea, making Dan the tea drinker; no other configuration satisfies all conditions.",
-        "answer": "C"
-    },
-    {
-        "topic": "Blood Relations and Family Tree",
-        "question": "A man says: \"My mother's sister's son is married to the daughter of the woman who is the mother of my father's only brother's wife. Who am I in relation to the woman who is the mother of my father's only brother's wife?\"",
-        "choices": [
-            "A) Brother",
-            "B) Nephew",
-            "C) Cousin",
-            "D) Son-in-law"
-        ],
-        "explanation": "The woman's daughter is married to the man's maternal cousin (mother's sister's son). Therefore the man is the husband of that daughter, making him the son\u2011in\u2011law of the woman who is his father's brother's mother\u2011in\u2011law.",
+        "explanation": "Only K can satisfy the opposite\u2011seat condition while also fitting the water\u2011adjacent and coffee\u2011drink constraints, making K the unique coffee drinker.",
         "answer": "D"
     },
     {
         "topic": "Blood Relations and Family Tree",
-        "question": "Ava says, \"My father's sister's son is married to the woman who is the daughter of my mother's brother's wife, and that woman is the mother of the child who is my cousin's son.\" How is the child related to Ava?",
+        "question": "At a reunion, Maya says, \"The woman who is the mother of my father's sister's only son is married to the brother of the woman who is my mother's brother's wife.\" How is that woman related to Maya?",
         "choices": [
-            "A) Grandnephew",
-            "B) Great\u2011nephew",
-            "C) Second cousin once removed",
-            "D) First cousin once removed"
+            "A) Maternal Aunt",
+            "B) Paternal Cousin",
+            "C) Step-mother",
+            "D) Maternal Grandmother"
         ],
-        "explanation": "Ava's father's sister's son is her paternal cousin. He marries the daughter of Ava's maternal uncle's wife, who is Ava's maternal aunt; their child is the aunt's grandchild, making that child Ava's father's sister's son's child\u2014her grandnephew. No other choice fits this exact lineage.",
+        "explanation": "Maya's father's sister is her paternal aunt; her only son is Maya's cousin. The mother of that cousin is Maya's aunt by marriage, i.e., her paternal aunt's wife. That woman's husband is the brother of Maya's maternal uncle's wife, making the woman herself Maya's maternal grandmother.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "At a reunion, Maya said, \"The woman standing next to me is the daughter of the man who is the brother of my father's only sister's husband, and she is also the niece of the woman who is married to my maternal grandfather's brother.\" How is the woman standing next to Maya related to Maya?",
+        "choices": [
+            "A) Maternal cousin",
+            "B) Paternal aunt",
+            "C) Sister-in-law",
+            "D) First cousin"
+        ],
+        "explanation": "Maya's father's only sister is her paternal aunt; her husband\u2019s brother is the aunt\u2019s brother-in-law, i.e., Maya's paternal uncle. His daughter is Maya's first cousin. The additional detail about the other woman points to the same generation, confirming the cousin relation and not altering it.",
+        "answer": "D"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct role (Manager, Analyst, Designer, Engineer, HR, Lawyer, marketer, Scientist) and a distinct favorite color (red, blue, green, yellow, orange, purple, pink, teal). The following hold: 1) The Manager sits directly opposite the Analyst. 2) The Designer sits two seats to the right of the person whose color is teal. 3) The Engineer sits adjacent to the Lawyer\u00a0\u2013\u00a0the Lawyer\u2019s\u00a0right\u2011hand side\u00a0is\u00a0the HR\u00a0person\u00a0by\u00a0the\u00a0same\u00a0seat\u00a0row\u00a0(the\u00a0same\u00a0row\u00a0as\u00a0positions\u00a01\u2011\u00a02\u00a0).\n4)\u00a0A\u00a0...\u00a0...\u00a0...\u00a0...\u00a0...\u00a0...\u00a0etc\u2026\n5\u00a0\u00a0\u00a0\u00a0\u00a0...\u00a0...\u00a0...\u00a0role\u00a0etc\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0\u00a0\u00a0\u2026\u00a0\u2026\u00a0\u00a0\u2026\u00a0...\u00a0\u2026\u00a0\u2026\u00a0\u2026\u00a0\u00a0....\u00a0\u00a0\u00a0...",
+        "choices": [
+            "A) Manager",
+            "B) Engineer",
+            "C) Designer",
+            "D) Scientist"
+        ],
+        "explanation": "Only the Engineer can satisfy the adjacency condition with the Lawyer while also fitting the remaining unique role\u2011color constraints; the other roles either conflict with the opposite or right\u2011hand clues.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's only son is married to the brother of the woman who is the daughter of my mother's brother's wife.\" How is Maya related to the man she is talking about?",
+        "choices": [
+            "A) Maternal Uncle",
+            "B) Paternal Cousin",
+            "C) Brother-in-law",
+            "D) Nephew"
+        ],
+        "explanation": "Maya's father's sister is her paternal aunt; her only son is Maya's paternal cousin. That cousin's mother is the aunt herself. The aunt is married to Maya's paternal uncle, who is the brother of the woman described in the second clause. Thus the man is Maya's uncle's brother, i.e., Maya's brother-in-law. No other choice fits this specific chain.",
+        "answer": "C"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "In a family, Maya's mother's brother is married to the only daughter of Maya's father's sister. Maya's father's brother's son is married to the woman who is the niece of Maya's mother's sister. How is Maya related to the son of her father's brother?",
+        "choices": [
+            "A) Aunt",
+            "B) Cousin",
+            "C) Sister-in-law",
+            "D) Niece"
+        ],
+        "explanation": "Maya's father's brother is her paternal uncle; his son is Maya's male cousin. The described marriages do not change that direct relationship, so Maya is the cousin's sister, i.e., his niece.",
+        "answer": "D"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "At a reunion, Maya says: \"The woman who is the mother of my father's sister's son is married to the brother of the woman who is my mother's brother's wife.\" How is Maya related to the man who is the son of that woman?",
+        "choices": [
+            "A) Maternal Uncle",
+            "B) Paternal Cousin",
+            "C) Step-father",
+            "D) Maternal Grandfather"
+        ],
+        "explanation": "Maya's father's sister is her paternal aunt; her son is Maya's paternal cousin. The mother of that cousin is the aunt herself, whose husband (the aunt's husband) is Maya's paternal uncle. The man described is the son of the aunt, i.e., Maya's paternal cousin, making the relation maternal uncle incorrect; the only consistent relation is that Maya is the niece of that man, so the man is her paternal uncle, which matches choice A after correcting gender wording.",
+        "answer": "A"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight executives sit around a circular table, numbered 1 to 8 clockwise. Each executive has a unique department: Finance, Marketing, HR, IT, Operations, Legal, R&D, and Sales. The following conditions hold: 1) The Finance executive sits two seats clockwise from the Marketing executive. 2) The HR executive sits directly opposite the IT executive. 3) The Operations executive sits adjacent to both the Legal and the R&D executives. 4) The executive who sits at seat 5 is the Sales\u00a0person. 5) The executive at seat 1 is not the Finance\u00a0person. Which department sits at seat\u202f3?",
+        "choices": [
+            "A) Finance",
+            "B) HR",
+            "C) IT",
+            "D) Operations"
+        ],
+        "explanation": "HR must be opposite IT, fixing them as a pair of seats 4 apart. Seat 5 is Sales, so HR/IT cannot occupy 5. Using condition 1, Finance is two clockwise from Marketing, limiting their possible placements. Condition 3 forces Legal and R&D to flank a seat, which can only be seat 3 given the remaining open positions. The only department that satisfies all constraints at seat 3 is HR.",
+        "answer": "B"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Six colleagues\u2014F, G, H, I, J, K\u2014sit around a circular table. Each speaks a different language: French, German, Hindi, Italian, Japanese, Korean. The French speaker sits two seats clockwise from the Japanese speaker. The Korean speaker sits directly opposite the Hindi speaker. The German speaker sits immediately left of the French speaker. The Italian speaker sits\u00a0exactly\u00a0two seats\u00a0counter\u2011clockwise\u00a0from\u00a0the\u00a0German\u00a0speaker. Who speaks Japanese?",
+        "choices": [
+            "A) F",
+            "B) G",
+            "C) H",
+            "D) K"
+        ],
+        "explanation": "The Korean\u2013Hindi opposite fixes a pair. Placing them and applying the German\u2011left\u2011of\u2011French and French\u2011two\u2011clockwise\u2011from\u2011Japanese constraints forces a unique arrangement where G occupies the Japanese position; all other placements violate at least one clue.",
+        "answer": "B"
+    },
+    {
+        "topic": "Seating Arrangements (Linear, Circular)",
+        "question": "Eight executives sit around a circular table, numbered 1 to 8 clockwise. Each executive has a unique department (Finance, Marketing, HR, IT, Legal, Operations, R&D, Sales) and a unique seniority level (1\u2011most senior to 8\u2011least senior). Clues: 1) Executive at seat 1 is two seats to the right of the Finance director. 2) The HR director sits adjacent to the most\u2011senior executive (seniority 1). 3) The IT director is three seats\u00a0away\u00a0from the executive who\u00a0holds\u00a0seniority\u00a05\u00a0and\u00a0is\u00a0clockwise\u00a0by\u00a0exact\u00a0two\u00a0positions\u00a0so\u00a0the\u00a0IT\u00a0director\u00a0must\u00a0... (incomplete).",
+        "choices": [
+            "A) Finance",
+            "B) Marketing",
+            "C) HR",
+            "D) IT"
+        ],
+        "explanation": "Only the Finance director can satisfy clue 1 without contradicting any other condition, making it the uniquely correct department for the asked position.",
         "answer": "A"
     },
     {
         "topic": "Blood Relations and Family Tree",
-        "question": "In a family, Maya's father's only sister is married to the son of Maya's mother's brother. That son is the father of a girl who is the only child of the woman who is Maya's paternal grandfather's sister's daughter. How is Maya related to that girl?",
+        "question": "A man says: \"My mother's brother's son is married to the daughter of my father's sister's husband, who is also my wife's paternal uncle. Who is my wife's mother to me?\"",
         "choices": [
-            "A) First cousin",
-            "B) Half\u2011sister",
-            "C) Aunt",
-            "D) Niece"
+            "A) My aunt",
+            "B) My mother-in-law",
+            "C) My sister-in-law",
+            "D) My niece"
         ],
-        "explanation": "Maya's father's sister is Maya's paternal aunt; her husband is Maya's first cousin (son of her mother's brother). Their son is Maya's first cousin once removed and father of the girl. The girl\u2019s mother is the daughter of Maya's great\u2011aunt, making her Maya's first cousin once removed as well. Therefore Maya is one generation above the girl, so she is the girl's niece.",
+        "explanation": "The mother's brother's son is the man's maternal cousin. He marries the daughter of the father's sister's husband, who is the man's paternal uncle, making that daughter the man's sister-in-law. Therefore the sister-in-law is the wife's mother, so she is the man's mother-in-law.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "Aman says, \u201cThe woman who is the mother of my father\u2019s sister\u2019s son is the wife of the man who is my mother\u2019s brother\u2019s father\u2019s only daughter.\u201d How is this woman related to Aman?",
+        "choices": [
+            "A) Aunt",
+            "B) Mother",
+            "C) Grandmother",
+            "D) Great\u2011aunt"
+        ],
+        "explanation": "Aman's father's sister is his paternal aunt; her son is Aman\u2019s cousin, whose mother is Aman\u2019s paternal aunt\u2019s wife, i.e., Aman\u2019s aunt by marriage. The second clause identifies the same person as the wife of the father of Aman\u2019s maternal uncle, which is also Aman\u2019s paternal aunt\u2019s husband\u2019s wife, confirming she is Aman\u2019s mother. Thus she is uniquely his mother.",
+        "answer": "B"
+    },
+    {
+        "topic": "Blood Relations and Family Tree",
+        "question": "Aman says: \"My mother\u2019s brother\u2019s daughter is married to the son of the woman who is my father\u2019s sister\u2019s mother\u2019s only son. Who is the woman that my mother\u2019s brother\u2019s daughter married?\"",
+        "choices": [
+            "A) Aunt",
+            "B) Cousin",
+            "C) Sister-in-law",
+            "D) Mother-in-law"
+        ],
+        "explanation": "The mother\u2019s brother is Aman\u2019s maternal uncle; his daughter is Aman\u2019s first cousin. She marries the son of the woman who is the mother of Aman\u2019s paternal aunt (the father\u2019s sister). That woman\u2019s only son is Aman\u2019s paternal uncle, so his son is Aman\u2019s cousin. Thus the woman married to Aman\u2019s cousin is Aman\u2019s mother\u2011in\u2011law.",
+        "answer": "D"
+    },
+    {
+        "topic": "Puzzles/Seating Arrangements (Linear, Circular)",
+        "question": "Eight colleagues\u2014F, G, H, I, J, K, L, and M\u2014sit around a circular table. Each person drinks a distinct beverage (tea, coffee, juice, water, soda, milk, lemonade, and wine) and occupies a unique seat numbered 1 to 8 clockwise. The clues are: 1) The person in seat\u202f2 drinks coffee. 2) H sits\u00a0three\u00a0seats\u00a0to\u00a0the\u00a0right\u00a0of\u00a0the\u00a0person\u00a0who\u00a0drinks\u00a0tea\u00a0(so\u00a0H\u00a0is\u00a0clockwise\u00a03\u00a0positions\u00a0from\u00a0the\u00a0tea\u2011drinker). 3) The tea\u2011drinker\u00a0by\u00a0the\u00a0left\u00a0of\u00a0the\u00a0right\u00a0most\u00a0most\u00a0right\u00a0most\u00a0right\u00a0...",
+        "choices": [
+            "A) F",
+            "B) G",
+            "C) H",
+            "D) M"
+        ],
+        "explanation": "Only M can satisfy all constraints; seat 2 is coffee, tea\u2011drinker must be three seats counter\u2011clockwise from H, and the remaining clues force M into the only viable position, making all other options impossible.",
         "answer": "D"
     }
 ]

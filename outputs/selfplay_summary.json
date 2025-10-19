@@ -3,16 +3,16 @@
     "n_questions_filtered": 35,
     "n_answers_raw": 35,
     "n_answers_valid": 35,
-    "a_agent_accuracy": 0.4,
+    "a_agent_accuracy": 0.3714,
     "q_agent_score": 87.5,
     "question_valid_rate": 0.875,
     "answer_valid_rate": 1.0,
     "duplicate_choices_rate": 0.0,
     "long_reasoning_rate": 0.0,
     "answer_letter_distribution": {
-        "A": 11,
-        "D": 12,
-        "B": 9,
-        "C": 3
+        "C": 7,
+        "D": 13,
+        "B": 7,
+        "A": 8
     }
 }

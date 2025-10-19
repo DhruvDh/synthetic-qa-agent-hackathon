@@ -1,142 +1,142 @@
 [
     {
-        "reasoning": "Given G eats pizza, the sushi eater must be immediately counter\u2011clockwise, fixing relative positions. The tea\u2011drinker is two seats clockwise from coffee\u2011drinker, and F opposite himself forces F\u2019s seat to be opposite its own position, which only works if F is the coffee\u2011drinker. Hence coffee is drunk by F.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "Maya's father's sister's son is her paternal cousin. He marries the daughter of Maya's mother's brother's wife, who is Maya's maternal cousin by marriage. Their child is the grandchild of Maya's paternal grandfather's brother, i.e., Maya's paternal great\u2011uncle, making that child Maya's first cousin once removed.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "The woman's husband is Maya's maternal uncle, making the woman Maya's aunt. Her son is Maya's cousin. Thus the man is Maya's cousin.",
-        "answer": "B"
-    },
-    {
-        "reasoning": "The only clue linking a person to the engineer role is that the engineer sits directly opposite the lawyer. Given the partial information, the only person that can be deduced as the engineer from the provided clues is G.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "Using the constraints, the only consistent arrangement assigns coffee to J, making J the coffee drinker.",
+        "reasoning": "Maya's father's sister is her aunt; her son is Maya's cousin. The woman's father is Maya's mother's brother's son-in-law, i.e., Maya's maternal uncle's son-in-law, who is Maya's father. Thus the woman is Maya's father's daughter, Maya's sister. Hence the cousin married Maya's sister, making the husband Maya's brother-in-law.",
         "answer": "C"
     },
     {
-        "reasoning": "The constraints lead to the CEO being the only position that satisfies all given conditions, making CEO the correct answer.",
-        "answer": "A"
+        "reasoning": "The described woman is the daughter of Maya's maternal uncle's wife, making her Maya's niece.",
+        "answer": "D"
     },
     {
-        "reasoning": "Using the constraints, the only role that can be placed consistently at position 5 (the Director\u2019s seat) while satisfying all opposite and adjacency conditions is the Manager, making the Manager the unique answer.",
-        "answer": "A"
+        "reasoning": "The woman's father's sister's son is her paternal cousin. He is married to the daughter of her husband's mother's brother, who is her husband's maternal uncle, making that daughter her husband's cousin. Thus the woman is married to the man whose cousin (the husband\u2019s cousin) is her cousin\u2019s wife, so she is the man's aunt by marriage, i.e., aunt.",
+        "answer": "D"
     },
     {
-        "reasoning": "The father's sister's husband is the woman's paternal uncle. He is described as the brother of the man who is the mother's brother's son\u2011in\u2011law. The mother's brother's son\u2011in\u2011law is the woman's husband, making his brother the woman's brother\u2011in\u2011law.",
+        "reasoning": "Maya's father's only sister is her paternal aunt; her son is Maya's paternal cousin. His mother is Maya's paternal aunt, whose husband is the aunt's husband, i.e., Maya's paternal uncle. The woman described is his wife, which is Maya's paternal aunt, making her Maya's paternal aunt's sister\u2011in\u2011law, i.e., also a paternal aunt. Thus the relation matches a paternal aunt, which",
+        "answer": "B"
+    },
+    {
+        "reasoning": "By arranging the six seats using the given constraints, the only consistent assignment places water with Frank.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Only the green shirt is mentioned as adjacent to the juice drinker, and no other clues link a specific person to that condition. Among the answer choices, only one could plausibly satisfy the adjacency, which is Finn.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Maya's father's sister is her paternal aunt. She marries Maya's maternal uncle's only son, who is Maya's cousin. That cousin's daughter is Maya's first cousin once removed, whose child marries Maya's paternal grandfather's only brother's son (Maya's father's cousin). Thus Maya and that married person are first cousins once removed, making Maya the aunt of that person\u2019s spouse, i.e., sister\u2011in\u2011law.",
         "answer": "C"
     },
     {
-        "reasoning": "Maya's father's brother (her paternal uncle) is married to the daughter of Maya's maternal aunt's husband. That husband is the son of Maya's great\u2011grandmother's only son, making him Maya's grandfather. Thus the daughter is Maya's aunt, and the uncle's wife is Maya's aunt, so their child is Maya's cousin. Since the aunt is on the maternal side, it is a",
-        "answer": "B"
-    },
-    {
-        "reasoning": "Only the incomplete clue 10 can be resolved by noting that the juice\u2011drinker is J, and the only person left that fits the remaining constraints is L.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Ava's father's sister's husband is her paternal aunt's husband, i.e., her uncle. He is described as the only brother of the man whose mother is Ava's mother's brother's daughter (her cousin). Thus the man is the son of Ava's cousin, making him Ava's paternal cousin's child, i.e., her paternal cousin. However, the only matching relation is paternal cousin.",
-        "answer": "B"
-    },
-    {
-        "reasoning": "Asha's father's sister is her aunt; her son is Asha's paternal cousin. The description confirms he is her cousin. Hence the relationship is cousin.",
+        "reasoning": "From clue 6 the sailor is seat 8. Clue 3 puts the painter three seats counter\u2011clockwise from seat 8, i.e., seat 5. Clue 5 places photographer\u2011pottery\u2011painter clockwise, so photographer is seat 3 and pottery seat 4. Clue 1 makes seat 1 two seats clockwise from photographer (seat 3), so seat 1 is seat 5, confirming painter at seat 5. The",
         "answer": "A"
     },
     {
-        "reasoning": "Only usable clues are 1, 2 and 3. The manager opposite the managerial assistant fixes relative positions, and coffee two left of tester links coffee drinker and tester. With G not designer, the only person fitting the remaining constraints for the asked question is I.",
-        "answer": "B"
-    },
-    {
-        "reasoning": "From the constraints, the only arrangement that satisfies all conditions places coffee two seats clockwise from tea, making Alex the coffee drinker. Thus the answer is Alex.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "Maya's paternal grandfather's only brother is her great\u2011uncle. His daughter is Maya's father\u2019s cousin. That cousin's sister is the same woman, whose brother is the man in question. He is Maya's great\u2011uncle\u2019s son, i.e., her great\u2011uncle\u2019s brother, making him Maya\u2019s great\u2011uncle.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Maya's father's only sister is Maya's paternal aunt. She marries Maya's maternal uncle's son, who is Maya's cousin. Their daughter is Maya's second cousin, who becomes mother of the person who married Maya's paternal grandfather's only son (Maya's father). Thus Maya is the great\u2011niece of that married person.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Maya's father's sister is his aunt; her only son is Maya's cousin. That cousin's mother is the aunt, so she is Maya's paternal aunt. The described woman is married to the brother of the man who is married to Maya's maternal aunt's daughter, which also leads to the same paternal aunt. Thus the woman is Maya's paternal aunt, matching option",
-        "answer": "B"
-    },
-    {
-        "reasoning": "The woman's father's sister is her aunt; her son is her cousin. The daughter's mother is the woman's maternal uncle's wife, making the daughter the woman's cousin. Thus the man married to that daughter is her cousin's husband, i.e., her cousin.",
-        "answer": "B"
-    },
-    {
-        "reasoning": "Maya's father's sister is her paternal aunt; her son is Maya's paternal cousin. The mother of that cousin is the aunt herself, making her Maya's paternal aunt.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "Maya's father's sister's daughter is Maya's cousin. Her son is Maya's cousin's son, i.e., Maya's first cousin once removed, which is her nephew in simplified terms.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "The described relations trace back to Maya's father's cousin's son, whose mother is married to Maya's maternal uncle's son; that child is thus the son of Maya's paternal cousin, making him Maya's paternal cousin's child, i.e., a maternal great\u2011nephew.",
+        "reasoning": "Seat1 is gardening, so seat2 is jogger. The photographer must be two seats clockwise from painter, and cooking is immediately counter\u2011clockwise of photographer. Trying placements shows painter cannot be seat6, so painter is seat4, photographer seat6, cooking seat5. The knitter opposite sailor gives sailor seat7 and knitter seat3. Thus sailing is seat7.",
         "answer": "C"
     },
     {
-        "reasoning": "The father's sister's mother-in-law is the man's paternal grandmother. Her son is the man's father, whose son (the man) is married to the woman described, making the man her nephew. Thus the relation is nephew.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Applying the positional clues, the only language that fits all constraints uniquely is the German.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "The incomplete clue indicates the pink\u2011loving person\u2019s role matches their color position; only the Manager can satisfy the opposite\u2011red condition and fit the unique constraints.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "By arranging the constraints, the only consistent placement puts the French speaker at the seat that is two seats counter\u2011clockwise from the Russian speaker, which matches choice B.",
+        "reasoning": "Maya's mother's brother is her maternal uncle; he marries the sister of Maya's father's only sister, who is Maya's paternal aunt. Their wife is the mother of the child of Maya's paternal grandmother's brother's son, who is Maya's father's cousin, making that child Maya's first cousin.",
         "answer": "B"
     },
     {
-        "reasoning": "By fixing the CEO and using the opposite, clockwise, and adjacency constraints, the only consistent placement puts the CEO at Executive 1.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "Maya's father's sister's husband is her uncle; his daughter is Maya's cousin. That cousin's husband is the son of Maya's mother's brother's wife, who is also the only child of Maya's paternal great\u2011grandfather's sister, making him Maya's cousin. Thus the woman described is Maya's cousin, so Maya is her aunt.",
-        "answer": "A"
-    },
-    {
-        "reasoning": "The woman's father's sister is her aunt; her son is her cousin. He is married to the daughter of the man's maternal grandfather's only son, who is the man's mother. Thus the woman is the man's sister-in-law.",
+        "reasoning": "The father's sister's son is the woman's paternal cousin. He is married to the daughter of the woman's maternal aunt's husband\u2019s wife, which makes his wife the woman's cousin-in-law, so the man is her paternal cousin.",
         "answer": "B"
     },
     {
-        "reasoning": "Maya's father's only sister is his aunt; her son is Maya's cousin. His mother is Maya's aunt (father's sister's wife). That aunt is married to the brother of the man who is Maya's mother's brother's grandson (the grandson is Maya herself). So the brother is Maya's brother, making the aunt married to Maya's brother, i.e., she is Maya's sister\u2011in\u2011law.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Ava's mother's brother's daughter is her maternal cousin. The described man is Ava's paternal uncle, making his wife Ava's paternal aunt. Thus the wife is Ava's paternal aunt.",
+        "reasoning": "Only clue that yields a definite beverage is H drinks water, leaving tea, coffee, juice, milk for others. The question asks which beverage matches the incomplete clue, and the only remaining option that can be deduced is coffee.",
         "answer": "B"
     },
     {
-        "reasoning": "Maya's father's sister is her paternal aunt; she marries Maya's maternal uncle's son, making that son Maya's cousin. Their daughter is Maya's first cousin once removed, whose child is Maya's second cousin. That child is married to Maya's paternal uncle's son, who is also Maya's cousin, so the married child is Maya's second cousin.",
+        "reasoning": "Only one person can satisfy the given constraints, and evaluating each option shows that K fits all conditions uniquely.",
         "answer": "D"
     },
     {
-        "reasoning": "By assigning seats and using the constraints, the only consistent arrangement gives Frank as the tea drinker.",
-        "answer": "D"
+        "reasoning": "From clue 1, the English speaker is two seats clockwise from the engineer, so the engineer must be the person who is two seats counter\u2011clockwise from the English speaker. Among the answer options, only the English speaker fits this relation as the engineer\u2019s identity.",
+        "answer": "C"
     },
     {
-        "reasoning": "The woman's mother is the man's paternal aunt's mother-in-law, making her the man's mother. Thus the man is her son.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Ava's father's sister's son is her paternal cousin. He marries the daughter of her maternal uncle's wife, which is her maternal aunt by marriage, making that woman Ava's cousin-in-law. Their child is thus Ava's first cousin once removed.",
-        "answer": "D"
-    },
-    {
-        "reasoning": "Maya's father's sister is Maya's aunt. She marries Maya's maternal uncle's son, who is Maya's cousin. Their child is the girl, making her Maya's first cousin. The woman who is the paternal grandfather's sister's daughter is also Maya's aunt, confirming the same generation.",
+        "reasoning": "Seat 3 is two clockwise from the gardener, so the gardener is at seat 1. No other constraints affect this placement.",
         "answer": "A"
+    },
+    {
+        "reasoning": "The clues determine each person's job; only one job fits the remaining constraints for the queried person, which is the engineer.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Maya's father's sister is his aunt; her only son is Maya's cousin. His mother is Maya's paternal aunt by marriage. That woman's husband is the brother of Maya's maternal aunt, making her Maya's grandmother.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "From the clues we deduce the only consistent assignment gives K as the milk drinker.",
+        "answer": "C"
+    },
+    {
+        "reasoning": "Using the clues, the only person whose identity can be definitively determined from the constraints is F, who must sit opposite K, fixing his position uniquely.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Using the constraints, the only arrangement that satisfies all conditions places I as the unique person meeting the required position.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Maya's father's sister is his aunt; her son is Maya's paternal cousin. His mother is Maya's paternal aunt. That aunt is married to the brother of Maya's maternal uncle's wife, making her the sister-in-law of that uncle, i.e., Maya's paternal aunt-in-law. So the woman is Maya's paternal aunt-in-law.",
+        "answer": "C"
+    },
+    {
+        "reasoning": "Only the clue that can be resolved uniquely is that F sits opposite K, placing K opposite F. The other garbled clue cannot change the fact that K is the only person directly opposite F, matching the answer choice.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Maya's father's sister is his aunt; her only son is Maya's cousin. That cousin's mother is Maya's paternal aunt. She is married to the brother of Maya's maternal uncle's wife, making her the wife of Maya's maternal aunt's brother, i.e., Maya's maternal grandmother.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "The described woman is the daughter of Maya's paternal uncle (her father's sister's husband\u2019s brother) making her Maya's first cousin. The other relationships confirm the same generation.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Given the constraints, only the Manager can satisfy the positional and role relationships described.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Maya's father's sister is her aunt; her only son is Maya's cousin. His mother is Maya's aunt, making her the cousin's mother. That woman's husband is the cousin's father, who is Maya's paternal uncle. Thus Maya refers to her paternal uncle.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Maya's father's brother is her paternal uncle; his son is Maya's male cousin. The relationships described do not change that direct lineage.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "Maya's father's sister is her aunt; her aunt's son is Maya's cousin. The mother of that cousin is Maya's aunt, who is married to the brother of Maya's maternal aunt's husband, making that brother Maya's maternal uncle. The man who is the son of that woman is Maya's maternal uncle's son, i.e., Maya's cousin.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "Seat5 is Sales. From condition1, Finance is two clockwise from Marketing. Trying placements, the only arrangement satisfying all constraints puts Operations at seat3.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "By testing placements, the only arrangement satisfying all constraints has K as the Japanese speaker.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Only the first clue directly ties a department to a seat: seat 1 is two seats right of the Finance director, so the Finance director cannot be at seat 1. The other options cannot be deduced, making Finance the only department referenced.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "The father's sister's husband is the man's maternal uncle by marriage. His wife (the father's sister) is the man's aunt. The daughter's husband is the man's wife's paternal uncle, making the daughter the man's wife's aunt, thus his wife's mother is his mother-in-law.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "Aman's father's sister is his aunt; her son is his cousin. The mother of that cousin is his aunt (the cousin's mother). The other description also points to his aunt, making her his aunt.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "The mother\u2019s brother is the maternal uncle; his daughter is the speaker\u2019s cousin. She marries the son of the woman who is the speaker\u2019s father\u2019s sister\u2019s mother\u2019s only son. The father\u2019s sister\u2019s mother is the speaker\u2019s grandmother; her only son is the speaker\u2019s father, whose son is the speaker himself. Thus she marries the speaker, making the woman his wife,",
+        "answer": "D"
+    },
+    {
+        "reasoning": "Only option H fits the positional constraints described, placing H three seats clockwise from the tea\u2011drinker as required by the clues.",
+        "answer": "C"
     }
 ]
