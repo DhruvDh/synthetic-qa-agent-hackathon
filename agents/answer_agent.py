@@ -5,19 +5,35 @@ import json
 
 from pathlib import Path
 from tqdm import tqdm
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Optional
 
 from .answer_model import AAgent
 from .config import get_sampling_settings
+from utils.harmony_prompt import render_harmony_prompt, extract_final
+
+A_DEV_INSTRUCTIONS = """You are an expert MCQ solver. Think privately in the analysis channel,
+then output only the JSON object described in the response format within the final channel."""
+
+A_RESPONSE_FORMAT_NAME = "mcq_answer"
+A_RESPONSE_FORMAT_SCHEMA = r"""
+{"type":"object","additionalProperties":false,"required":["answer"],
+"properties":{"answer":{"type":"string","pattern":"^[ABCD]$"},
+"reasoning":{"type":"string","maxLength":700}}}
+"""
 
 
 class AnsweringAgent(object):
     r"""Agent responsible for answering MCQ questions with confidence scoring"""
 
+    # WARNING: Public method signatures/return values must remain identical to the
+    # initial commit to preserve compatibility with the evaluation pipeline.
+
+    # WARNING: public contract – do not modify signature or return type.
     def __init__(self, select_prompt1: bool = True, **kwargs):
         self.agent = AAgent(**kwargs)
         self.select_prompt1 = select_prompt1
 
+    # WARNING: public contract – do not modify signature or return type.
     def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
         """Generate an answer to the given MCQ question with confidence and reasoning"""
 
@@ -53,33 +69,46 @@ class AnsweringAgent(object):
 
         return prompt, sys_prompt1 if self.select_prompt1 else sys_prompt2
 
+    # WARNING: public contract – do not modify signature or return type.
     def answer_question(
         self, question_data: Dict | List[Dict], **kwargs
     ) -> Tuple[List[Dict], int | None, float | None]:
         """Generate answer(s) for the given question(s)"""
-        if isinstance(question_data, list):
-            prompt = []
-            for qd in question_data:
-                p, sp = self.build_prompt(qd)
-                prompt.append(p)
-        else:
-            prompt, sp = self.build_prompt(question_data)
+        dataset = question_data if isinstance(question_data, list) else [question_data]
+        outputs: List[str] = []
+        total_tokens: Optional[int] = 0
+        total_time: Optional[float] = 0.0
 
-        resp, tl, gt = self.agent.generate_response(prompt, sp, **kwargs)
-
-        if (
-            isinstance(resp, list) and all(isinstance(r, str) for r in resp)
-        ) or isinstance(resp, str):
-            return resp, tl, gt
-        else:
-            return (
-                "",
-                tl,
-                gt if not isinstance(resp, list) else [""] * len(resp),
-                tl,
-                gt,
+        for entry in dataset:
+            prompt_text, sys_prompt = self.build_prompt(entry)
+            user_prompt = f"{sys_prompt.strip()}\n\n{prompt_text.strip()}"
+            harmony_prompt = render_harmony_prompt(
+                developer_instructions=A_DEV_INSTRUCTIONS,
+                response_format_name=A_RESPONSE_FORMAT_NAME,
+                response_format_json_schema=A_RESPONSE_FORMAT_SCHEMA,
+                user_prompt=user_prompt,
+                reasoning="medium" if self.select_prompt1 else "high",
             )
+            resp_text, tokens, elapsed = self.agent.generate_completion_raw(
+                harmony_prompt, **kwargs
+            )
+            final = extract_final(resp_text) or resp_text
+            outputs.append(final.strip())
 
+            if tokens is None:
+                total_tokens = None
+            elif total_tokens is not None:
+                total_tokens += tokens
+
+            if elapsed is None:
+                total_time = None
+            elif total_time is not None:
+                total_time += elapsed
+
+        payload: List[str] | str = outputs if isinstance(question_data, list) else outputs[0]
+        return payload, total_tokens, total_time
+
+    # WARNING: public contract – do not modify signature or return type.
     def answer_batches(
         self, questions: List[Dict], batch_size: int = 5, **kwargs
     ) -> Tuple[List[Dict], List[int | None], List[float | None]]:
@@ -98,10 +127,12 @@ class AnsweringAgent(object):
         pbar.close()
         return answers, tls, gts
 
+    # WARNING: public contract – do not modify signature or return type.
     def count_tokens_a(self, text: str) -> int:
         """Count the number of tokens in the text using the active backend."""
         return self.agent.count_tokens(text)
 
+    # WARNING: public contract – do not modify signature or return type.
     def filter_answers(self, ans: List[str | Dict[str, str]]) -> List[Dict[str, str]]:
         r"""Filter answers to ensure they are in the correct format"""
 
@@ -149,6 +180,7 @@ class AnsweringAgent(object):
                 filtered_answers.append(None)
         return filtered_answers
 
+    # WARNING: public contract – do not modify signature or return type.
     def save_answers(self, answers: List[str], file_path: str | Path) -> None:
         """Save generated answers to a JSON file"""
         # check for existence of dir
@@ -157,6 +189,7 @@ class AnsweringAgent(object):
         with open(file_path, "w") as f:
             json.dump([a for a in answers], f, indent=4)
 
+    # WARNING: public contract – do not modify signature or return type.
     def _format_choices(self, choices: List[str]) -> str:
         r"""Format the choices for better readability"""
         formatted = []

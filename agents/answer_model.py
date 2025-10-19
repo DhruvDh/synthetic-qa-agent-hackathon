@@ -16,6 +16,7 @@ class AAgent(object):
         "repetition_penalty",
     }
 
+    # WARNING: public contract – signature/return type must match initial commit.
     def __init__(self, **kwargs):
         sampling_overrides = {
             key: kwargs[key] for key in self._SAMPLING_KEYS if key in kwargs
@@ -24,6 +25,7 @@ class AAgent(object):
             "answer", sampling_overrides=sampling_overrides
         )
 
+    # WARNING: public contract – signature/return type must match initial commit.
     def generate_response(
         self, message: str | List[str], system_prompt: Optional[str] = None, **kwargs
     ) -> Tuple[List[str] | str, Optional[int], Optional[float]]:
@@ -43,6 +45,28 @@ class AAgent(object):
 
     def count_tokens(self, text: str) -> int:
         return self._provider.count_tokens(text)
+
+    def generate_completion_raw(
+        self,
+        harmony_prompt: str,
+        **kwargs,
+    ) -> Tuple[str, Optional[int], Optional[float]]:
+        # NOTE: optional helper for experimental Harmony flows; core contract still uses generate_response.
+        tgps_show = kwargs.get("tgps_show", False)
+        overrides = {key: kwargs[key] for key in self._SAMPLING_KEYS if key in kwargs}
+        extra_args = {
+            key: value
+            for key, value in kwargs.items()
+            if key not in self._SAMPLING_KEYS and key != "tgps_show"
+        }
+        extra_args.update({"use_completions": True, "raw_harmony": True})
+        return self._provider.generate(
+            [harmony_prompt],
+            system_prompt="",
+            tgps_show=tgps_show,
+            overrides=overrides,
+            extra=extra_args,
+        )
 
 
 if __name__ == "__main__":

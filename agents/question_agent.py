@@ -5,18 +5,40 @@ import json
 
 from tqdm import tqdm
 from pathlib import Path
-from typing import List, Tuple, Dict, Any
+from typing import List, Tuple, Dict, Any, Optional
 
 from .config import get_sampling_settings
 from .question_model import QAgent
+from utils.harmony_prompt import render_harmony_prompt, extract_final
+
+Q_DEV_INSTRUCTIONS = """You are an expert-level examiner. Follow the user's directions exactly,
+produce a single multiple-choice question, and ensure the final channel contains only the JSON object
+matching the provided response format."""
+
+Q_RESPONSE_FORMAT_NAME = "mcq_question"
+Q_RESPONSE_FORMAT_SCHEMA = r"""
+{"type":"object","additionalProperties":false,"required":["topic","question","choices","answer","explanation"],
+"properties":{"topic":{"type":"string","minLength":1},
+"question":{"type":"string","minLength":1},
+"choices":{"type":"array","minItems":4,"maxItems":4,
+"items":{"type":"string","pattern":"^[ABCD]\\)\\s.+$"}},
+"answer":{"type":"string","enum":["A","B","C","D"]},
+"explanation":{"type":"string","maxLength":800}}}
+"""
 
 
 class QuestioningAgent(object):
     r"""Agent responsible for generating questions"""
 
+    # WARNING: The method signatures and return types in this class are part of the
+    # official submission contract. Do not change them; they must match the initial
+    # repository version so downstream tooling continues to work.
+
+    # WARNING: public contract – do not modify signature or return type.
     def __init__(self, **kwargs):
         self.agent = QAgent(**kwargs)
 
+    # WARNING: public contract – do not modify signature or return type.
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
         r"""
         Build a string of example questions from the provided samples.
@@ -48,6 +70,7 @@ class QuestioningAgent(object):
             )
         return sample_str.strip()
 
+    # WARNING: public contract – do not modify signature or return type.
     def build_prompt(
         self,
         topic: str,
@@ -112,6 +135,7 @@ class QuestioningAgent(object):
 
         return prompt, sys_prompt
 
+    # WARNING: public contract – do not modify signature or return type.
     def generate_question(
         self,
         topic: Tuple[str, str] | List[Tuple[str, str]],
@@ -121,33 +145,55 @@ class QuestioningAgent(object):
         **gen_kwargs,
     ) -> Tuple[List[str], int | None, float | None]:
         """Generate a question prompt for the LLM"""
+        prompts: List[Tuple[str, str]] = []
         if isinstance(topic, list):
-            prompt = []
             for t in topic:
-                p, sp = self.build_prompt(
-                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples[t[1]]
+                prompt_text, sys_prompt = self.build_prompt(
+                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples.get(t[1]) if inc_samples else None
                 )
-                prompt.append(p)
+                prompts.append((prompt_text, sys_prompt))
         else:
-            prompt, sp = self.build_prompt(
-                f"{topic[0]}/{topic[1]}", wadvsys, wicl, inc_samples[topic[1]]
+            prompt_text, sys_prompt = self.build_prompt(
+                f"{topic[0]}/{topic[1]}",
+                wadvsys,
+                wicl,
+                inc_samples.get(topic[1]) if inc_samples else None,
             )
+            prompts.append((prompt_text, sys_prompt))
 
-        resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
+        outputs: List[str] = []
+        total_tokens: Optional[int] = 0
+        total_time: Optional[float] = 0.0
 
-        if (
-            isinstance(resp, list) and all(isinstance(r, str) for r in resp)
-        ) or isinstance(resp, str):
-            return resp, tl, gt
-        else:
-            return (
-                "",
-                tl,
-                gt if not isinstance(resp, list) else [""] * len(resp),
-                tl,
-                gt,
+        for prompt_text, sys_prompt in prompts:
+            combined_user = f"{sys_prompt.strip()}\n\n{prompt_text.strip()}"
+            harmony_prompt = render_harmony_prompt(
+                developer_instructions=Q_DEV_INSTRUCTIONS,
+                response_format_name=Q_RESPONSE_FORMAT_NAME,
+                response_format_json_schema=Q_RESPONSE_FORMAT_SCHEMA,
+                user_prompt=combined_user,
+                reasoning="low" if wadvsys else "medium",
             )
+            resp_text, tokens, elapsed = self.agent.generate_completion_raw(
+                harmony_prompt, **gen_kwargs
+            )
+            final = extract_final(resp_text) or resp_text
+            outputs.append(final.strip())
 
+            if tokens is None:
+                total_tokens = None
+            elif total_tokens is not None:
+                total_tokens += tokens
+
+            if elapsed is None:
+                total_time = None
+            elif total_time is not None:
+                total_time += elapsed
+
+        payload: List[str] | str = outputs if len(outputs) > 1 else outputs[0]
+        return payload, total_tokens, total_time
+
+    # WARNING: public contract – do not modify signature or return type.
     def generate_batches(
         self,
         num_questions: int,
@@ -195,10 +241,12 @@ class QuestioningAgent(object):
         pbar.close()
         return questions, tls, gts
 
+    # WARNING: public contract – do not modify signature or return type.
     def count_tokens_q(self, text: str) -> int:
         """Count tokens for the provided text using the active inference backend."""
         return self.agent.count_tokens(text)
 
+    # WARNING: public contract – do not modify signature or return type.
     def filter_questions(
         self, questions: List[str | Dict[str, str | Any]]
     ) -> List[Dict[str, str | Any]]:
@@ -258,6 +306,7 @@ class QuestioningAgent(object):
             return correct_format_question
         return list()
 
+    # WARNING: public contract – do not modify signature or return type.
     def save_questions(self, questions: Any, file_path: str | Path) -> None:
         """Save generated questions to a JSON file"""
         # Ensure dir exist
@@ -267,6 +316,7 @@ class QuestioningAgent(object):
         with open(file_path, "w") as f:
             json.dump(questions, f, indent=4)
 
+    # WARNING: public contract – do not modify signature or return type.
     def populate_topics(
         self, topics: Dict[str, List[str]], num_questions: int
     ) -> List[str]:
@@ -284,6 +334,7 @@ class QuestioningAgent(object):
         return selected_topics
 
     @staticmethod
+    # WARNING: public contract – do not modify signature or return type.
     def load_icl_samples(file_path: str | Path) -> Dict[str, List[Dict[str, str]]]:
         """Load in-context learning samples from a JSON file"""
         file_path = Path(file_path)

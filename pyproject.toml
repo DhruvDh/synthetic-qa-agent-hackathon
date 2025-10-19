@@ -14,6 +14,7 @@ dependencies = [
     "torchvision; sys_platform == 'linux'",
     "unsloth>=2025.7.2",
     "unsloth-zoo>=2025.7.4",
+    "openai-harmony>=0.0.4",
 ]
 
 [tool.uv.sources]

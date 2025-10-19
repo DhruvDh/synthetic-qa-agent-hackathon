@@ -18,7 +18,7 @@ QGEN_FILE = REPO_ROOT / "qgen.yaml"
 AGEN_FILE = REPO_ROOT / "agen.yaml"
 
 _DEFAULT_PROVIDER: Dict[str, Any] = {
-    "type": "hf",
+    "type": "openai",
     "hf_model": "Qwen/Qwen3-4B",
     "openai": {
         "base_url": "http://localhost:8000/v1",
@@ -31,16 +31,18 @@ _DEFAULT_SAMPLING: Dict[str, Dict[str, Any]] = {
     "question": {
         "max_new_tokens": 1024,
         "temperature": 0.7,
-        "top_p": 0.9,
+        "top_p": 1.0,
+        "repetition_penalty": 0,
+        "top_k": 0,
         "do_sample": True,
-        "repetition_penalty": 1.2,
     },
     "answer": {
         "max_new_tokens": 512,
-        "temperature": 0.1,
-        "top_p": 0.9,
+        "temperature": 0.7,
+        "top_p": 1.0,
+        "repetition_penalty": 0,
+        "top_k": 0,
         "do_sample": True,
-        "repetition_penalty": 1.2,
     },
 }
 
