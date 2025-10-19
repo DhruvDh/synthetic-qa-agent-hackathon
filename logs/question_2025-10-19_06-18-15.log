@@ -1,0 +1,58 @@
+STEPS:   0%|                                                                                                               | 0/8 [00:00<?, ?it/s]STEPS:  12%|████████████▉                                                                                          | 1/8 [00:11<01:20, 11.46s/it]STEPS:  25%|█████████████████████████▊                                                                             | 2/8 [00:21<01:03, 10.67s/it]STEPS:  38%|██████████████████████████████████████▋                                                                | 3/8 [00:34<00:59, 11.81s/it]STEPS:  50%|███████████████████████████████████████████████████▌                                                   | 4/8 [00:44<00:44, 11.08s/it]STEPS:  62%|████████████████████████████████████████████████████████████████▍                                      | 5/8 [00:51<00:28,  9.50s/it]STEPS:  75%|█████████████████████████████████████████████████████████████████████████████▎                         | 6/8 [00:59<00:18,  9.16s/it]STEPS:  88%|██████████████████████████████████████████████████████████████████████████████████████████▏            | 7/8 [01:06<00:08,  8.18s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:12<00:00,  7.61s/it]STEPS: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████| 8/8 [01:12<00:00,  9.06s/it]
+Generated 40 questions!
+Invalid JSON format in question: {"topic":"Blood Relations and Family Tree","question":"At a reunion, Maya says: \"My father's sister's son is married to the woman who is the daughter of my mother's brother's wife, and that woman is also the niece of the man who is my paternal grandfather's only son’s wife’s brother. How is the man who is my father's sister's son related to Maya?\"","choices":["A) Maternal Uncle","B) Paternal Cousin","C) Brother-in-law","D) Second Cousin","explanation":"Maya's father's sister is her paternal aunt; her son is Maya's paternal cousin. The additional description identifies that cousin’s wife as the daughter of Maya's maternal uncle’s wife, making that wife Maya's sister. Therefore Maya’s paternal cousin is married to her sister, which makes him Maya’s brother‑in‑law, the only relationship fitting the clues.","answer":"C"}
+Error: Expecting ',' delimiter: line 1 column 458 (char 457)
+Invalid JSON format in question: {"topic":"Seating Arrangements (Linear, Circular)","question":"Six colleagues—F, G, H, I, J, K—sit around a circular table. Each drinks a different beverage: tea, coffee, juice, water, soda, and milk. The clues are: (1) F sits directly opposite K. (2) G is two seats to the right of the coffee‑drinker. (3) H sits adjacent to the person who drinks juice and the person who drinks milk (i.e., both neighbours are juice and mismatch of the same type — the same as the by the ...). (4) I ... ... ... ...  …  …  …  …  …  ... ... …  …  ...  … …   … … …  ...  …  … …   … … ... …  …  …  … … … … ... …  … …  … … … … … … … … …  … … … … … … … … … … … … … … … … … … … … … … … …  … … … … ...  ……  … … ... … … ... …  … … ... …  … … ...
+","choices":["A) Juice","B) Coffee","C) Milk","D) Soda","answer":"A","explanation":"The only configuration that satisfies all given clues places the coffee‑..."}
+Error: Invalid control character at: line 1 column 723 (char 722)
+Invalid JSON format in question: {"topic":"Seating Arrangements (Circular)","question":"Eight friends sit around a circular table, numbered clockwise 1 to 8. Each person has a distinct favorite color among red, blue, green, yellow, orange, purple, pink, and teal. The following conditions hold: (1) The person in seat 1 loves the color that is two seats clockwise from the person who loves the green color. (2) The person who loves purple sits exactly three seats clockwise from the person who loves red and is adjacent to the person who loves blue (only one such adj­acency). (3) The person who loves yellow and the person who loves orange the same as the same same same same … ... … … … … … … … … … … … … ... ... …  …  … … … … … … … … … … … … ... … ... … … … … … … … … ... … … … … … ... …  … …  … … … …  … … …        … … ……  … … … … … ... ……  … … … … … … … … … … … … … … … … … … … … … … … … ... ……………… ... ...… … …… … …… … … … … … … … … … … … … … … … … ... ……… … …… … … … … … …… … …… … …… ... ... ……... ... … ... … … … … … ... … … The  …… … … the … ... … … … … … … … … … … … … … …\n(4)             …  …  ...   … … …… ... ... ... … … … … … … … … … ... … … ... ... ...","choices":["A) Seat 2","B) Seat 5","C)      …    … … ... ???"","D)  …  ..." ,"E","E","??","etc","etc","...","...","…","....","…","…","…","…","…","…","…","…","…","…","…","…","..."]}
+Error: Expecting ',' delimiter: line 1 column 1199 (char 1198)
+Invalid JSON format in question: {"topic":"Seating Arrangements (Linear, Circular)","question":"Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct role (Manager, Engineer, Analyst, Designer, Consultant, Director, HR, Intern) and a unique favorite color (Red, Blue, Green, Yellow, Purple, Orange, Black, White). The following hold: 1) The Engineer sits two seats clockwise from the Manager. 2) The person in seat 5 likes the color that the Director likes — but only the same as the Director’s color — and the Director’s seat is adjacent to the person who has the same color by the [   ] blank ‑                 ... … … ??? … … ?      … ... ... 
+3) \"​​​​​                                                                      \"   
+4)}","choices":["A) Analyst","B)    ","C) Engineer","D) Director","answer":"D","explanation":"The only ..."}
+Error: Invalid control character at: line 1 column 660 (char 659)
+Invalid JSON format in question: {"topic":"Seating Arrangements (Circular)","question":"Eight friends sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct favorite fruit: apple, banana, cherry, date, elderberry, fig, grape, or honeydew. The following conditions hold: (1) The person at seat 1 likes the fruit two seats to the right of the fruit that Alex enjoys. (2) Sam sits exactly four seats clockwise away from the person who likes the date fruit and is adjacent to the person who likes the fig fruit (thereby any any any). (3) the ...","choices":["A) Alex","B) Sam","C) D
+","D)    ","None","None","..."]}
+Error: Invalid control character at: line 1 column 574 (char 573)
+Skipping invalid JSON at index 4: <|channel|>analysis<|message|>We need to extract only the topic, question, choices, answer, explanation. Remove code block markers. Provide JSON with those fields. Answer should be only the option letter. In original answer field is "C". So answer should be "C". Provide JSON.
+Skipping invalid JSON at index 11: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. The input JSON includes those fields but question is garbled. We just output JSON with those fields. Ensure no code block markers. Provide answer as letter only. The answer field currently "A". So output.
+Skipping invalid JSON at index 14: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. The given JSON has many garbled text. We need to output JSON with those fields. But answer and explanation are not present in the input. So we likely output null or empty? The instruction: Extract ONLY the topic, question, choices, answer, and explanation while discarding the rest. If answer/explanation not present, maybe leave empty strings. Provide JSON.
+
+Choices list currently includes many items, but we need only four? The given format expects four choices. But input has many nonsense entries. We could include them as is? Probably include the array as given. But answer unknown. Could set answer as "" and explanation as "".
+
+Thus output JSON with those fields.
+Skipping invalid JSON at index 16: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. Remove code block markers. Provide JSON with those fields. The input string includes weird characters. We need to parse.
+
+Input:
+
+{"topic":"Seating Arrangements (Linear, Circular)","question":"Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct role (Manager, Engineer, Analyst, Designer, Consultant, Director, HR, Intern) and a unique favorite color (Red, Blue, Green, Yellow, Purple, Orange, Black, White). The following hold: 1) The Engineer sits two seats clockwise from the Manager. 2) The person in seat 5 likes the color that the Director likes — but only the same as the Director’s color — and the Director’s seat is adjacent to the person who has the same color by the [   ] blank ‑                 ... … … ??? … … ?      … ... ... 
+3) "​​​​​                                                                      "    
+4)}","choices":["A) Analyst","B)    ","C) Engineer","D) Director","answer":"D","explanation":"The only ..."}
+
+We need to output JSON with fields.
+
+Choices array currently includes 4 items: "A) Analyst","B)    ","C) Engineer","D) Director". That's fine.
+
+Answer is "D". Explanation "The only ..."
+
+Thus output:
+
+{
+  "topic": "Seating Arrangements (Linear, Circular)",
+  "question": "Eight colleagues sit around a circular table, numbered 1 to 8 clockwise. Each person has a distinct role (Manager, Engineer, Analyst, Designer, Consultant, Director, HR, Intern) and a unique favorite color (Red, Blue, Green, Yellow, Purple, Orange, Black, White). The following hold: 1) The Engineer sits two seats clockwise from the Manager. 2) The person in seat 5 likes the color that the Director likes — but only the same as the Director’s color — and the Director’s seat is adjacent to the person who has the same color by the [   ] blank ‑                 ... … … ??? … … ?      … ... ... 3) \"​​​​​                                                                      \"    4)}",
+  "choices": ["A) Analyst", "B)    ", "C) Engineer", "D) Director"],
+  "answer": "D",
+  "explanation": "The only ..."
+}
+
+Make sure no code fences.
+Skipping invalid JSON at index 30: <|channel|>analysis<|message|>We need to extract only topic, question, choices, answer, explanation. The input JSON includes many fields but truncated. We must output JSON with those fields only. However answer and explanation not present in input. Probably we cannot infer. Should we output empty strings? The instruction: Extract ONLY the topic, question, choices, answer, and explanation while discarding the rest. If answer/explanation missing, maybe leave them blank or null. Provide JSON.
+
+We have topic: "Seating Arrangements (Circular)". question: the long string truncated but we include as given. choices array includes many items, but we need only first four? The format expects exactly four choices. Input choices list includes many items like "A) Alex","B) Sam","C) D\n","D)    ","None","None","...". We should probably take first four entries: "A) Alex","B) Sam","C) D\n","D)    ". Clean them maybe remove newline. We'll keep as is.
+
+Answer: not provided. We'll set empty string.
+
+Explanation: not provided. empty string.
+
+Return JSON without code fences.
+Saved to outputs/questions.json!
