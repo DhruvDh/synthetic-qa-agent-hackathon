@@ -21,6 +21,16 @@ CONTENT RULES:
 - Avoid numeric permutation/counting seating problems per event guidance.
 - Ensure all four choices have different semantic meaning (no near-duplicates).
 
+ROBUSTNESS RULES:
+
+- Only use the word "opposite" when there is an even number of seats so the relation is unambiguous; otherwise specify offsets explicitly.
+- Every clue must be fully specified and testable; do not use placeholders such as "..." or "???".
+- Do not restate the choices in the explanation; focus on why the correct option is uniquely true.
+
+SINGLE OUTPUT EXAMPLE (STRUCTURE ONLY — VALUES ARE PLACEHOLDERS):
+{"topic":"T","question":"Q?","choices":["A) a","B) b","C) c","D) d"],"explanation":"e","answer":"A"}
+Do NOT include code fences or any extra text. Emit exactly one JSON object.
+
 SCHEMA:
 {"type":"object","additionalProperties":false,"required":["topic","question","choices","explanation","answer"],
  "properties":{"topic":{"type":"string","minLength":1},

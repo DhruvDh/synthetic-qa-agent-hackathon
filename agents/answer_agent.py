@@ -277,9 +277,11 @@ if __name__ == "__main__":
                 # ++++++++++++++++++++++++++
                 # TODO: IMPROVE THE FOLLOWING
                 if len(a["answer"]) != 1:
-                    a["answer"] = agent.agent.generate_response(
+                    raw_resp, _, _ = agent.agent.generate_response(
                         option_extractor_prompt(a["answer"], q["choices"])
                     )
+                    extracted = raw_resp[0] if isinstance(raw_resp, list) else raw_resp
+                    a["answer"] = str(extracted).strip()
                 # ++++++++++++++++++++++++++
             else:
                 # the dictionary is not as expected. So extract it using the same model: Self-Reflection
@@ -293,11 +295,13 @@ if __name__ == "__main__":
                     '    "reasoning": "..."\n'
                     "}}"
                 )
-                a = agent.agent.generate_response(
+                raw_resp, _, _ = agent.agent.generate_response(
                     prompt.format(json.dumps(a, indent=4))
                 )
+                a = raw_resp[0] if isinstance(raw_resp, list) else raw_resp
         except json.JSONDecodeError:
-            a = agent.agent.generate_response(auto_json(a))
+            raw_resp, _, _ = agent.agent.generate_response(auto_json(a))
+            a = raw_resp[0] if isinstance(raw_resp, list) else raw_resp
         ans.append(a)
 
     if args.verbose:

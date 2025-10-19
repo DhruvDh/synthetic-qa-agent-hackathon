@@ -18,6 +18,12 @@ QUALITY RULES:
 - "reasoning" must be 1–3 concise sentences (<= 60 words), grounded in the prompt.
 - Never reveal hidden scratch work or chain-of-thought.
 - If uncertain, still choose exactly one letter from ["A","B","C","D"].
+- Do not reprint the choices; refer to them only by their letter if needed.
+- If two options seem plausible, select the one that most directly satisfies the stated conditions—never answer with uncertainty.
+
+SINGLE OUTPUT EXAMPLE (STRUCTURE ONLY — VALUES ARE PLACEHOLDERS):
+{"reasoning":"r","answer":"A"}
+Do NOT include code fences or any extra text. Emit exactly one JSON object.
 
 SCHEMA:
 {"type":"object","additionalProperties":false,"required":["reasoning","answer"],

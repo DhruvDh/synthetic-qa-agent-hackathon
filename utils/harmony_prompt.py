@@ -24,7 +24,11 @@ DEVELOPER_TEMPLATE = """<|start|>developer<|message|># Instructions
 {json_schema}<|end|>
 """
 
-USER_TEMPLATE = "<|start|>user<|message|>{user}<|end|>\n<|start|>assistant"
+# Prime the assistant to immediately emit the final channel content we expect.
+USER_TEMPLATE = (
+    "<|start|>user<|message|>{user}<|end|>\n"
+    "<|start|>assistant<|channel|>final<|message|>"
+)
 
 _FINAL_RE = re.compile(
     r"<\|channel\|>final<\|message\|>(?P<body>.*?)(?:<\|return\|>|<\|end\|>|(?=<\|channel\|>[a-zA-Z]+<\|message\|>)|\Z)",

@@ -479,13 +479,14 @@ if __name__ == "__main__":
                 '  "explanation": "..."\n'
                 "}}"
             )
-            q = agent.agent.generate_response(
+            raw_resp, _, _ = agent.agent.generate_response(
                 prompt.format(q),
                 "You are an expert JSON extractor.",
                 max_new_tokens=1024,
                 temperature=0.0,
                 do_sample=False,
             )
+            q = raw_resp[0] if isinstance(raw_resp, list) else raw_resp
         ques.append(q)
     # Save the questions for later analysis
     agent.save_questions(ques, args.output_file)
