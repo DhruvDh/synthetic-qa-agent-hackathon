@@ -15,17 +15,6 @@ from .config import (
 from .question_model import QAgent
 from utils.harmony_prompt import render_harmony_prompt, extract_final
 
-Q_RESPONSE_FORMAT_NAME = "mcq_question"
-Q_RESPONSE_FORMAT_SCHEMA = r"""
-{"type":"object","additionalProperties":false,"required":["topic","question","explanation","choices","answer"],
-"properties":{"topic":{"type":"string","minLength":1},
-"question":{"type":"string","minLength":1},
-"explanation":{"type":"string","maxLength":540},
-"choices":{"type":"array","minItems":4,"maxItems":4,
-"items":{"type":"string","pattern":"^[ABCD]\\)\\s.+$"}},
-"answer":{"type":"string","enum":["A","B","C","D"]}}}
-"""
-
 
 class QuestioningAgent(object):
     r"""Agent responsible for generating questions"""
@@ -151,12 +140,9 @@ class QuestioningAgent(object):
         for prompt_text, sys_prompt in prompts:
             combined_user = prompt_text.strip()
             harmony_prompt = render_harmony_prompt(
-                developer_instructions=developer_text,
-                response_format_name=Q_RESPONSE_FORMAT_NAME,
-                response_format_json_schema=Q_RESPONSE_FORMAT_SCHEMA,
+                system_prompt=sys_prompt,
+                developer_prompt=developer_text,
                 user_prompt=combined_user,
-                reasoning="low",
-                system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(
                 harmony_prompt, **gen_kwargs

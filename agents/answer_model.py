@@ -61,7 +61,7 @@ class AAgent(object):
         }
         extra_args.update({"use_completions": True, "raw_harmony": True})
         extra_args.setdefault(
-            "stop", ["<|return|>", "<|end|>", "<|assistant", "<|start|>"]
+            "stop", ["<|return|>", "<|end|>", "<|assistant", "<|start|>", "<|channel|>"]
         )
         return self._provider.generate(
             [harmony_prompt],

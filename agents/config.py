@@ -21,13 +21,13 @@ def _read_prompt(path: Path) -> "PromptBlocks":
     with path.open("r") as handle:
         for line in handle:
             header = line.strip()
-            if header == "# System":
+            if header == "@=@= System =@=@":
                 current = system
                 continue
-            if header == "# Developer":
+            if header == "@=@= Developer =@=@":
                 current = developer
                 continue
-            if header == "# User Template":
+            if header == "@=@= User Template =@=@":
                 current = user
                 continue
             if current is not None:
@@ -44,8 +44,8 @@ CONFIG_FILE = REPO_ROOT / "config" / "inference.yaml"
 QGEN_FILE = REPO_ROOT / "qgen.yaml"
 AGEN_FILE = REPO_ROOT / "agen.yaml"
 PROMPTS_DIR = REPO_ROOT / "prompts"
-Q_PROMPT_FILE = PROMPTS_DIR / "q_agent.md"
-A_PROMPT_FILE = PROMPTS_DIR / "a_agent.md"
+Q_PROMPT_FILE = PROMPTS_DIR / "q_agent.prompt"
+A_PROMPT_FILE = PROMPTS_DIR / "a_agent.prompt"
 
 _DEFAULT_PROVIDER: Dict[str, Any] = {
     "type": "openai",

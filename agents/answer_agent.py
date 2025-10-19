@@ -15,13 +15,6 @@ from .config import (
 )
 from utils.harmony_prompt import render_harmony_prompt, extract_final
 
-A_RESPONSE_FORMAT_NAME = "mcq_answer"
-A_RESPONSE_FORMAT_SCHEMA = r"""
-{"type":"object","additionalProperties":false,"required":["reasoning","answer"],
-"properties":{"reasoning":{"type":"string","maxLength":480},
-"answer":{"type":"string","enum":["A","B","C","D"]}}}
-"""
-
 
 class AnsweringAgent(object):
     r"""Agent responsible for answering MCQ questions with confidence scoring"""
@@ -65,12 +58,9 @@ class AnsweringAgent(object):
             prompt_text, sys_prompt = self.build_prompt(entry)
             user_prompt = prompt_text.strip()
             harmony_prompt = render_harmony_prompt(
-                developer_instructions=developer_text,
-                response_format_name=A_RESPONSE_FORMAT_NAME,
-                response_format_json_schema=A_RESPONSE_FORMAT_SCHEMA,
+                system_prompt=sys_prompt,
+                developer_prompt=developer_text,
                 user_prompt=user_prompt,
-                reasoning="low",
-                system_extra=sys_prompt,
             )
             resp_text, tokens, elapsed = self.agent.generate_completion_raw(
                 harmony_prompt, **kwargs
@@ -206,18 +196,19 @@ class AnsweringAgent(object):
         """
         try:
             data = json.loads(text)
-            reasoning = " ".join(data.get("reasoning", "").strip().split())
-            words = reasoning.split()
-            if len(words) > 60:
-                reasoning = " ".join(words[:60])
-
-            answer = self._normalize_answer_letter(data.get("answer", ""))
-            ordered = OrderedDict()
-            ordered["reasoning"] = reasoning
-            ordered["answer"] = answer
-            return json.dumps(ordered, ensure_ascii=False)
         except json.JSONDecodeError:
             return text
+
+        reasoning = " ".join(str(data.get("reasoning", "")).strip().split())
+        words = reasoning.split()
+        if len(words) > 45:
+            reasoning = " ".join(words[:45])
+
+        answer = self._normalize_answer_letter(str(data.get("answer", "")))
+        ordered = OrderedDict()
+        ordered["reasoning"] = reasoning
+        ordered["answer"] = answer
+        return json.dumps(ordered, ensure_ascii=False)
 
 
 # Example usage

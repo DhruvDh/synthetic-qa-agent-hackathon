@@ -1,69 +1,50 @@
-"""Harmony prompt renderer and parser utilities."""
+"""Harmony prompt rendering utilities leveraging the openai_harmony library."""
 
 from __future__ import annotations
 
-import re
-from typing import Optional
-
-SYSTEM_TEMPLATE = """<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
-Knowledge cutoff: 2024-06
-Current date: 2025-10-19
-
-Reasoning: {reasoning}
-
-{system_extra}
-# Valid channels: final. Channel must be included for every message.<|end|>
-"""
-
-DEVELOPER_TEMPLATE = """<|start|>developer<|message|># Instructions
-{instructions}
-
-# Response Formats
-
-## {format_name}
-{json_schema}<|end|>
-"""
-
-# Prime the assistant to immediately emit the final channel content we expect.
-USER_TEMPLATE = (
-    "<|start|>user<|message|>{user}<|end|>\n"
-    "<|start|>assistant<|channel|>final<|message|>"
+from openai_harmony import (
+    Conversation,
+    HarmonyEncodingName,
+    Message,
+    Role,
+    load_harmony_encoding,
 )
 
-_FINAL_RE = re.compile(
-    r"<\|channel\|>final<\|message\|>(?P<body>.*?)(?:<\|return\|>|<\|end\|>|(?=<\|channel\|>[a-zA-Z]+<\|message\|>)|\Z)",
-    flags=re.DOTALL,
-)
+
+_ENCODING = load_harmony_encoding(HarmonyEncodingName.HARMONY_GPT_OSS)
 
 
 def render_harmony_prompt(
-    developer_instructions: str,
-    response_format_name: str,
-    response_format_json_schema: str,
+    system_prompt: str,
+    developer_prompt: str,
     user_prompt: str,
-    reasoning: str = "medium",
-    system_extra: str = "",
 ) -> str:
-    """Render a single Harmony-formatted prompt suitable for /v1/completions."""
-    extra = system_extra.strip()
-    if extra:
-        extra = extra + "\n"
-    sys_prompt = SYSTEM_TEMPLATE.format(
-        reasoning=reasoning.strip(),
-        system_extra=extra,
-    )
-    dev_prompt = DEVELOPER_TEMPLATE.format(
-        instructions=developer_instructions.strip(),
-        format_name=response_format_name.strip(),
-        json_schema=response_format_json_schema.strip(),
-    )
-    user_block = USER_TEMPLATE.format(user=user_prompt.strip())
-    return f"{sys_prompt}{dev_prompt}{user_block}"
+    """Render a Harmony-formatted prompt using openai_harmony."""
+
+    messages = [
+        Message.from_role_and_content(Role.SYSTEM, system_prompt.strip()),
+        Message.from_role_and_content(Role.DEVELOPER, developer_prompt.strip()),
+        Message.from_role_and_content(Role.USER, user_prompt.strip()),
+    ]
+    conversation = Conversation.from_messages(messages)
+    rendered = _ENCODING.render_conversation_for_completion(conversation, Role.ASSISTANT)
+    prompt = rendered if isinstance(rendered, str) else _ENCODING.decode_tokens(rendered)
+
+    if "<|start|>assistant" in prompt:
+        if not prompt.rstrip().endswith("<|channel|>final<|message|>"):
+            prompt = f"{prompt.rstrip()}<|channel|>final<|message|>"
+    else:
+        prompt = f"{prompt.rstrip()}\n<|start|>assistant<|channel|>final<|message|>"
+    return prompt
 
 
-def extract_final(text: str) -> Optional[str]:
-    """Extract the assistant final channel from a Harmony completion, if present."""
-    match = _FINAL_RE.search(text)
-    if not match:
-        return None
-    return match.group("body").strip()
+def extract_final(text: str) -> str | None:
+    """Extract the assistant final-channel payload using openai_harmony."""
+
+    messages = _ENCODING.parse_messages_from_completion_text(text, Role.ASSISTANT)
+    for msg in messages:
+        if msg.role == Role.ASSISTANT and msg.channel == "final":
+            content = getattr(msg, "content", "")
+            if isinstance(content, str):
+                return content.strip()
+    return None
