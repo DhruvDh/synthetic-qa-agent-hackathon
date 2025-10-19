@@ -34,6 +34,7 @@ class InferenceProvider:
                     self.base_sampling[key] = value
 
         self._client: Optional[Any] = None
+        self._harmony_stops = ["<|return|>", "<|end|>", "<|assistant", "<|start|>"]
 
     def generate(
         self,
@@ -104,15 +105,20 @@ class InferenceProvider:
         total_tokens = 0
         start = time.time() if tgps_show else None
         for msg in messages:
-            resp = self._client.chat.completions.create(  # type: ignore[union-attr]
-                model=self.provider_settings.openai_model,
-                messages=[
+            request_kwargs = {
+                "model": self.provider_settings.openai_model,
+                "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": msg},
                 ],
-                temperature=sampling.get("temperature"),
-                top_p=sampling.get("top_p"),
-                max_tokens=sampling.get("max_new_tokens"),
+                "temperature": sampling.get("temperature"),
+                "top_p": sampling.get("top_p"),
+                "max_tokens": sampling.get("max_new_tokens"),
+                "stop": self._harmony_stops,
+            }
+            request_kwargs = {k: v for k, v in request_kwargs.items() if v is not None}
+            resp = self._client.chat.completions.create(  # type: ignore[union-attr]
+                **request_kwargs
             )
             choice = resp.choices[0]
             message = getattr(choice, "message", None)
@@ -134,14 +140,17 @@ class InferenceProvider:
     ) -> Tuple[str, Optional[int], Optional[float]]:
         self._ensure_openai_client()
         start = time.time() if tgps_show else None
+        request_kwargs = {
+            "model": self.provider_settings.openai_model,
+            "prompt": prompt,
+            "temperature": sampling.get("temperature"),
+            "top_p": sampling.get("top_p"),
+            "max_tokens": sampling.get("max_new_tokens"),
+            "stop": stop if stop is not None else self._harmony_stops,
+        }
+        request_kwargs = {k: v for k, v in request_kwargs.items() if v is not None}
         resp = self._client.completions.create(  # type: ignore[union-attr]
-            model=self.provider_settings.openai_model,
-            prompt=prompt,
-            temperature=sampling.get("temperature"),
-            top_p=sampling.get("top_p"),
-            max_tokens=sampling.get("max_new_tokens"),
-            repetition_penalty=sampling.get("repetition_penalty"),
-            stop=stop,
+            **request_kwargs
         )
         text = resp.choices[0].text if resp.choices else ""
         usage = getattr(resp, "usage", None)
