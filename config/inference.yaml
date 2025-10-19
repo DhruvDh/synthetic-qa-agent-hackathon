@@ -1,0 +1,7 @@
+provider:
+  type: hf
+  hf_model: Qwen/Qwen3-4B
+  openai:
+    base_url: http://192.168.8.215:1234/v1
+    api_key: sk-noop
+    model: openai/gpt-oss-120b

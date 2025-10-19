@@ -8,6 +8,7 @@ from tqdm import tqdm
 from typing import List, Tuple, Dict, Any
 
 from .answer_model import AAgent
+from .config import get_sampling_settings
 
 
 class AnsweringAgent(object):
@@ -94,23 +95,12 @@ class AnsweringAgent(object):
             tls.append(tl)
             gts.append(gt)
             pbar.update(1)
-
-        # Handle last batch with less than batch_size
-        if len(questions) % batch_size != 0:
-            batch_questions = questions[-(len(questions) % batch_size) :]
-            batch_answers = self.answer_question(batch_questions, **kwargs)
-            answers.extend(batch_answers[0])
-            tls.append(batch_answers[1])
-            gts.append(batch_answers[2])
-            pbar.update(1)
         pbar.close()
         return answers, tls, gts
 
     def count_tokens_a(self, text: str) -> int:
-        """Count the number of tokens in the text using the agent's tokenizer"""
-        if not hasattr(self.agent, "tokenizer"):
-            raise AttributeError("The agent does not have a tokenizer attribute.")
-        return len(self.agent.tokenizer.encode(text, add_special_tokens=False))
+        """Count the number of tokens in the text using the active backend."""
+        return self.agent.count_tokens(text)
 
     def filter_answers(self, ans: List[str | Dict[str, str]]) -> List[Dict[str, str]]:
         r"""Filter answers to ensure they are in the correct format"""
@@ -119,7 +109,8 @@ class AnsweringAgent(object):
             # check required keys
             required_keys = ["answer"]
             if all((key in a1) and isinstance(a1[key], str) for key in required_keys):
-                if len(a1["answer"]) == 1 and (a1["answer"] not in "ABCDabcd"):
+                ans = a1["answer"].strip()
+                if len(ans) != 1 or ans.upper() not in "ABCD":
                     return False
                 check_len = self.count_tokens_a(a1["answer"])
                 if check_len < 50:
@@ -183,7 +174,6 @@ class AnsweringAgent(object):
 # Example usage
 if __name__ == "__main__":
     import json
-    import yaml
     import argparse
     from utils.build_prompt import auto_json, option_extractor_prompt
 
@@ -221,15 +211,14 @@ if __name__ == "__main__":
 
     # gen_kwargs = {"tgps_show": True, "max_new_tokens": 512, "temperature": 0.1, "top_p": 0.9, "do_sample": True}
     gen_kwargs = {"tgps_show": True}
-    with open("agen.yaml", "r") as f:
-        gen_kwargs.update(yaml.safe_load(f))
+    gen_kwargs.update(get_sampling_settings("answer"))
     answer, tls, gts = agent.answer_batches(
         questions=sample_questions, batch_size=args.batch_size, **gen_kwargs
     )
     ans = []
     for idx, (q, a) in enumerate(zip(sample_questions, answer)):
         if args.verbose:
-            print(f"\n=== Question {idx+1} ===")
+            print(f"\n=== Question {idx + 1} ===")
             print(f"Question: {q.get('question', 'N/A')}")
             print(f"Expected: {q.get('answer', 'N/A')}")
             print(f"Model Answer:\n{a}")
@@ -267,10 +256,10 @@ if __name__ == "__main__":
             for idx, (tl, gt) in enumerate(zip(tls, gts)):
                 print(f"BATCH - {idx}")
                 print(f"Tokens: {tl}, Time: {gt:.3f} seconds")
-                print(f"TGPS: {tl/gt:.3f} seconds")
+                print(f"TGPS: {tl / gt:.3f} seconds")
             print("\n" + "=" * 50)
             print(
-                f"Total Time: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls)/sum(gts):.3f} seconds"
+                f"Total Time: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls) / sum(gts):.3f} seconds"
             )
 
     # Save answers

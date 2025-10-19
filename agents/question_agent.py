@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 
+import random
+import json
+
 from tqdm import tqdm
 from pathlib import Path
 from typing import List, Tuple, Dict, Any
 
+from .config import get_sampling_settings
 from .question_model import QAgent
-
-import random
-import json
 
 
 class QuestioningAgent(object):
@@ -185,28 +186,18 @@ class QuestioningAgent(object):
             batch_questions = self.generate_question(
                 batch_topics, wadvsys, wicl, inc_samples, **kwargs
             )
-            questions.extend(batch_questions[0]), tls.append(
-                batch_questions[1]
-            ), gts.append(batch_questions[2])
-            pbar.update(1)
-        # for last batch with less than batch_size
-        if len(extended_topics) % batch_size != 0:
-            batch_topics = extended_topics[-(len(extended_topics) % batch_size) :]
-            batch_questions = self.generate_question(
-                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+            (
+                questions.extend(batch_questions[0]),
+                tls.append(batch_questions[1]),
+                gts.append(batch_questions[2]),
             )
-            questions.extend(batch_questions[0]), tls.append(
-                batch_questions[1]
-            ), gts.append(batch_questions[2])
             pbar.update(1)
         pbar.close()
         return questions, tls, gts
 
     def count_tokens_q(self, text: str) -> int:
-        """Count the number of tokens using model.tokenizer"""
-        if not hasattr(self.agent, "tokenizer"):
-            raise AttributeError("The agent does not have a tokenizer attribute.")
-        return len(self.agent.tokenizer.encode(text, add_special_tokens=False))
+        """Count tokens for the provided text using the active inference backend."""
+        return self.agent.count_tokens(text)
 
     def filter_questions(
         self, questions: List[str | Dict[str, str | Any]]
@@ -242,8 +233,8 @@ class QuestioningAgent(object):
                             + self.count_tokens_q(q2.get("explanation", "None"))
                             <= 1024
                         ):
-                            # Extra Checks: (PLUS checks) len(q2['answer']) == 1 and q2['answer'].upper() in 'ABCD':
-                            if isinstance(q2["answer"], str):
+                            ans = str(q2.get("answer", "")).strip()
+                            if len(ans) == 1 and ans.upper() in "ABCD":
                                 return True
             return False
 
@@ -308,7 +299,6 @@ class QuestioningAgent(object):
 # Example usage
 if __name__ == "__main__":
     import argparse
-    import yaml
 
     # ++++++++++++++++++++++++++
     # Run: python -m agents.question_agent --num_questions 20 --output_file outputs/questions.json --batch_size 5 --verbose
@@ -346,8 +336,7 @@ if __name__ == "__main__":
     agent = QuestioningAgent()
     # gen_kwargs = {"tgps_show": True, "max_new_tokens": 1024, "temperature": 0.1, "top_p": 0.9, "do_sample": True}
     gen_kwargs = {"tgps_show": True}
-    with open("qgen.yaml", "r") as f:
-        gen_kwargs.update(yaml.safe_load(f))
+    gen_kwargs.update(get_sampling_settings("question"))
 
     question, tls, gts = agent.generate_batches(
         num_questions=args.num_questions,
@@ -367,7 +356,7 @@ if __name__ == "__main__":
             print("Time taken per batch generation:", gts)
             print("Tokens generated per batch:", tls)
             print(
-                f"Total Time Taken: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls)/sum(gts):.3f} seconds\n\n"
+                f"Total Time Taken: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls) / sum(gts):.3f} seconds\n\n"
             )
         print("\n" + "+" * 50 + "\n")
 
