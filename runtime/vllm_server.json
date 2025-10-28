@@ -1,0 +1,13 @@
+{
+  "pid": 1502,
+  "launched_at": 1761686488.98182,
+  "command": [
+    "vllm",
+    "serve",
+    "Qwen/Qwen3-4B",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "4200"
+  ]
+}

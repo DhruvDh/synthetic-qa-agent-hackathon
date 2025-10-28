@@ -12,11 +12,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import signal
+import shutil
 
 
 @dataclass
 class VLLMConfig:
-    model: str = "Qwen/Qwen3-4B"
+    model: str = "openai/gpt-oss-120b"
     host: str = "127.0.0.1"
     port: int = 4200
     scheme: str = "http"
@@ -24,6 +25,23 @@ class VLLMConfig:
     sentinel_file: Path = field(default_factory=lambda: Path("runtime/vllm_server.json"))
     startup_timeout: Optional[float] = None
     poll_interval: float = 1.0
+
+    def __post_init__(self) -> None:
+        env_cmd = os.getenv("VLLM_LAUNCH_COMMAND")
+        if env_cmd and not self.launch_command:
+            self.launch_command = env_cmd
+        env_model = os.getenv("VLLM_MODEL")
+        if env_model:
+            self.model = env_model
+        env_host = os.getenv("VLLM_HOST")
+        if env_host:
+            self.host = env_host
+        env_port = os.getenv("VLLM_PORT")
+        if env_port:
+            try:
+                self.port = int(env_port)
+            except ValueError:
+                pass
 
     @property
     def base_url(self) -> str:
@@ -104,10 +122,14 @@ def server_healthy(config: VLLMConfig) -> bool:
 def launch_server(config: VLLMConfig) -> subprocess.Popen:
     cmd = config.command()
     env = os.environ.copy()
+    executable = cmd[0]
+    if "/" not in executable and not shutil.which(executable):
+        raise FileNotFoundError(
+            f"Unable to locate executable '{executable}'. "
+            "Install vLLM or set VLLM_LAUNCH_COMMAND to a valid startup command."
+        )
     process = subprocess.Popen(
         cmd,
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
         text=True,
         env=env,
     )
@@ -205,6 +227,9 @@ def chat_completion(
 
     try:
         request_payload = dict(request_kwargs)
+        unsupported_keys = {"do_sample"}
+        for key in unsupported_keys:
+            request_payload.pop(key, None)
         base_url = cfg.base_url.rstrip("/")
         client = OpenAI(
             base_url=f"{base_url}/v1",
@@ -212,6 +237,8 @@ def chat_completion(
         )
 
         extra_body: Dict[str, Any] = dict(request_payload.pop("extra_body", {}))
+        for key in unsupported_keys:
+            extra_body.pop(key, None)
         transport_keys = {"extra_headers", "extra_query", "timeout"}
         allowed_keys = {
             "model",
@@ -236,6 +263,8 @@ def chat_completion(
             "parallel_tool_calls",
             "functions",
             "function_call",
+            "extra_headers",
+            "extra_query",
         }
 
         migrated: Dict[str, Any] = {}

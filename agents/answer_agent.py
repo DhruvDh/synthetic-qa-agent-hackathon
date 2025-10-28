@@ -229,6 +229,8 @@ if __name__ == "__main__":
     gen_kwargs = {"tgps_show": True}
     with open("agen.yaml", "r") as f:
         gen_kwargs.update(yaml.safe_load(f))
+    for unsupported_key in ("do_sample",):
+        gen_kwargs.pop(unsupported_key, None)
     answer, tls, gts = agent.answer_batches(
         questions=sample_questions, batch_size=args.batch_size, **gen_kwargs
     )
@@ -275,9 +277,15 @@ if __name__ == "__main__":
                 print(f"Tokens: {tl}, Time: {gt:.3f} seconds")
                 print(f"TGPS: {tl/gt:.3f} seconds")
             print("\n" + "=" * 50)
-            print(
-                f"Total Time: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls)/sum(gts):.3f} seconds"
-            )
+            total_time = sum(gts or [])
+            total_tokens = sum(tls or [])
+            if total_time > 0:
+                print(
+                    f"Total Time: {total_time:.3f} seconds; Total Tokens: {total_tokens}; "
+                    f"TGPS: {total_tokens/total_time:.3f} tokens/sec"
+                )
+            else:
+                print("No timing information collected; skipping TGPS aggregate.")
 
     # Save answers
     agent.save_answers(ans, args.output_file)

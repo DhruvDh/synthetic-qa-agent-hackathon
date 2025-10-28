@@ -352,6 +352,8 @@ if __name__ == "__main__":
     gen_kwargs = {"tgps_show": True}
     with open("qgen.yaml", "r") as f:
         gen_kwargs.update(yaml.safe_load(f))
+    for unsupported_key in ("do_sample",):
+        gen_kwargs.pop(unsupported_key, None)
 
     question, tls, gts = agent.generate_batches(
         num_questions=args.num_questions,
@@ -370,9 +372,15 @@ if __name__ == "__main__":
         if gen_kwargs.get("tgps_show", False):
             print("Time taken per batch generation:", gts)
             print("Tokens generated per batch:", tls)
-            print(
-                f"Total Time Taken: {sum(gts):.3f} seconds; Total Tokens: {sum(tls)}; TGPS: {sum(tls)/sum(gts):.3f} seconds\n\n"
-            )
+            total_time = sum(gts or [])
+            total_tokens = sum(tls or [])
+            if total_time > 0:
+                print(
+                    f"Total Time Taken: {total_time:.3f} seconds; Total Tokens: {total_tokens}; "
+                    f"TGPS: {total_tokens/total_time:.3f} tokens/sec\n\n"
+                )
+            else:
+                print("No timing information collected; skipping TGPS aggregate.\n\n")
         print("\n" + "+" * 50 + "\n")
 
     # check if question is JSON format
