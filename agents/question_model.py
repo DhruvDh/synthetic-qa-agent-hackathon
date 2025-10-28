@@ -1,18 +1,34 @@
 # Starting with Qwen3-4B
 import time
-from typing import Optional, Union, List
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from typing import List, Optional
+
+from transformers import AutoTokenizer
+
+from utils.vllm_utils import (
+    VLLMConfig,
+    chat_completion,
+    ensure_vllm_server_running,
+)
 
 
 class QAgent(object):
-    def __init__(self, **kwargs):
-        model_name = "Qwen/Qwen3-4B"
-
-        # load the tokenizer and the model
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_name, torch_dtype="auto", device_map="auto"
+    def __init__(self, config: Optional[VLLMConfig] = None, **kwargs):
+        self.config = ensure_vllm_server_running(config or VLLMConfig())
+        tokenizer_name = kwargs.get("tokenizer", self.config.model)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            tokenizer_name, padding_side="left"
         )
+
+    def _translate_generation_kwargs(self, kwargs: dict) -> tuple[dict, float]:
+        params = {}
+        timeout = kwargs.pop("timeout", 60.0)
+        mapping = {"max_new_tokens": "max_tokens"}
+        for key, value in kwargs.items():
+            if key in mapping:
+                params[mapping[key]] = value
+            elif key != "tgps_show":
+                params[key] = value
+        return params, timeout
 
     def generate_response(
         self, message: str | List[str], system_prompt: Optional[str] = None, **kwargs
@@ -21,80 +37,41 @@ class QAgent(object):
             system_prompt = "You are a helpful assistant."
         if isinstance(message, str):
             message = [message]
-        # Prepare all messages for batch processing
-        all_messages = []
+
+        kwargs = dict(kwargs)
+        tgps_show_var = kwargs.pop("tgps_show", False)
+        params, timeout = self._translate_generation_kwargs(dict(kwargs))
+
+        outputs: List[str] = []
+        token_len = 0
+        start_time = time.time() if tgps_show_var else None
+
         for msg in message:
             messages = [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": msg},
             ]
-            all_messages.append(messages)
+            response = chat_completion(messages, self.config, timeout=timeout, **params)
+            if not response.get("choices"):
+                outputs.append("")
+                continue
+            content = response["choices"][0]["message"].get("content", "").strip()
+            outputs.append(content)
+            usage = response.get("usage") or {}
+            token_len += usage.get("completion_tokens", 0)
 
-        # convert all messages to text format
-        texts = []
-        for messages in all_messages:
-            text = self.tokenizer.apply_chat_template(
-                messages,
-                tokenize=False,
-                add_generation_prompt=True,
-                enable_thinking=False,
-            )
-            texts.append(text)
-
-        # tokenize all texts together with padding
-        model_inputs = self.tokenizer(
-            texts, return_tensors="pt", padding=True, truncation=True
-        ).to(self.model.device)
-
-        tgps_show_var = kwargs.get("tgps_show", False)
-        # conduct batch text completion
-        if tgps_show_var:
-            start_time = time.time()
-        generated_ids = self.model.generate(
-            **model_inputs,
-            max_new_tokens=kwargs.get("max_new_tokens", 1024),
-            pad_token_id=self.tokenizer.pad_token_id,
-        )
-        if tgps_show_var:
+        if tgps_show_var and start_time is not None:
             generation_time = time.time() - start_time
-
-        # decode the batch
-        batch_outs = []
-        if tgps_show_var:
-            token_len = 0
-        for i, (input_ids, generated_sequence) in enumerate(
-            zip(model_inputs.input_ids, generated_ids)
-        ):
-            # extract only the newly generated tokens
-            output_ids = generated_sequence[len(input_ids) :].tolist()
-
-            # compute total tokens generated
-            if tgps_show_var:
-                token_len += len(output_ids)
-
-            # remove thinking content using regex
-            # result = re.sub(r'<think>[\s\S]*?</think>', '', full_result, flags=re.DOTALL).strip()
-            index = (
-                len(output_ids) - output_ids[::-1].index(151668)
-                if 151668 in output_ids
-                else 0
-            )
-
-            # decode the full result
-            content = self.tokenizer.decode(
-                output_ids[index:], skip_special_tokens=True
-            ).strip("\n")
-            batch_outs.append(content)
-        if tgps_show_var:
             return (
-                batch_outs[0] if len(batch_outs) == 1 else batch_outs,
+                outputs[0] if len(outputs) == 1 else outputs,
                 token_len,
                 generation_time,
             )
-        return batch_outs[0] if len(batch_outs) == 1 else batch_outs, None, None
+        return outputs[0] if len(outputs) == 1 else outputs, None, None
 
 
 if __name__ == "__main__":
+    ensure_vllm_server_running()
     # Single example generation
     model = QAgent()
     prompt = f"""

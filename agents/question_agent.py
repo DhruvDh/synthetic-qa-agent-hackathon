@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List, Tuple, Dict, Any
 
 from .question_model import QAgent
+from utils.vllm_utils import VLLMConfig, ensure_vllm_server_running
 
 import random
 import json
@@ -13,8 +14,8 @@ import json
 class QuestioningAgent(object):
     r"""Agent responsible for generating questions"""
 
-    def __init__(self, **kwargs):
-        self.agent = QAgent(**kwargs)
+    def __init__(self, vllm_config: VLLMConfig | None = None, **kwargs):
+        self.agent = QAgent(config=vllm_config, **kwargs)
 
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
         r"""
@@ -343,7 +344,10 @@ if __name__ == "__main__":
     with open("assets/topics.json") as f:
         topics = json.load(f)
 
-    agent = QuestioningAgent()
+    VLLM_CONFIG = VLLMConfig()
+    ensure_vllm_server_running(VLLM_CONFIG)
+
+    agent = QuestioningAgent(vllm_config=VLLM_CONFIG)
     # gen_kwargs = {"tgps_show": True, "max_new_tokens": 1024, "temperature": 0.1, "top_p": 0.9, "do_sample": True}
     gen_kwargs = {"tgps_show": True}
     with open("qgen.yaml", "r") as f:
