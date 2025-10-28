@@ -123,9 +123,10 @@ if __name__ == "__main__":
         prompt,
         tgps_show=True,
         max_new_tokens=512,
-        temperature=0.1,
-        top_p=0.9,
-        do_sample=True,
+        temperature=0.7,
+        top_p=1.0,
+        top_k=0,
+        repetition_penalty=0.0,
     )
     print("Single example response:")
     print("Response: ", response)
@@ -146,9 +147,10 @@ if __name__ == "__main__":
         prompts,
         tgps_show=True,
         max_new_tokens=512,
-        temperature=0.1,
-        top_p=0.9,
-        do_sample=True,
+        temperature=0.7,
+        top_p=1.0,
+        top_k=0,
+        repetition_penalty=0.0,
     )
     print("\nMulti example responses:")
     for i, resp in enumerate(responses):

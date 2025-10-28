@@ -230,6 +230,9 @@ def chat_completion(
         unsupported_keys = {"do_sample"}
         for key in unsupported_keys:
             request_payload.pop(key, None)
+        if request_payload.get("repetition_penalty") is not None:
+            if request_payload["repetition_penalty"] <= 0:
+                request_payload.pop("repetition_penalty", None)
         base_url = cfg.base_url.rstrip("/")
         client = OpenAI(
             base_url=f"{base_url}/v1",
@@ -239,6 +242,9 @@ def chat_completion(
         extra_body: Dict[str, Any] = dict(request_payload.pop("extra_body", {}))
         for key in unsupported_keys:
             extra_body.pop(key, None)
+        if extra_body.get("repetition_penalty") is not None:
+            if extra_body["repetition_penalty"] <= 0:
+                extra_body.pop("repetition_penalty", None)
         transport_keys = {"extra_headers", "extra_query", "timeout"}
         allowed_keys = {
             "model",

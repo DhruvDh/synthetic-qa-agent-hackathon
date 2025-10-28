@@ -102,9 +102,10 @@ if __name__ == "__main__":
         system_prompt="You are a math tutor.",
         tgps_show=True,
         max_new_tokens=512,
-        temperature=0.1,
-        top_p=0.9,
-        do_sample=True,
+        temperature=0.7,
+        top_p=1.0,
+        top_k=0,
+        repetition_penalty=0.0,
     )
     print(f"Single response: {response}")
     print(
@@ -123,9 +124,10 @@ if __name__ == "__main__":
     responses, tl, gt = ans_agent.generate_response(
         messages,
         max_new_tokens=512,
-        temperature=0.1,
-        top_p=0.9,
-        do_sample=True,
+        temperature=0.7,
+        top_p=1.0,
+        top_k=0,
+        repetition_penalty=0.0,
         tgps_show=True,
     )
     print("Responses:")
@@ -138,6 +140,11 @@ if __name__ == "__main__":
 
     # Custom parameters
     response = ans_agent.generate_response(
-        "Write a story", temperature=0.8, max_new_tokens=512
+        "Write a story",
+        temperature=0.7,
+        top_p=1.0,
+        top_k=0,
+        repetition_penalty=0.0,
+        max_new_tokens=512,
     )
     print(f"Custom response: {response}")
