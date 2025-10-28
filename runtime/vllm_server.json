@@ -1,10 +1,10 @@
 {
-  "pid": 1502,
-  "launched_at": 1761686488.98182,
+  "pid": 1804,
+  "launched_at": 1761687261.0235474,
   "command": [
     "vllm",
     "serve",
-    "Qwen/Qwen3-4B",
+    "openai/gpt-oss-120b",
     "--host",
     "127.0.0.1",
     "--port",

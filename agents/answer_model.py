@@ -1,4 +1,5 @@
 # Qwen3-4B in action.
+import json
 import time
 from typing import List, Optional
 
@@ -51,7 +52,7 @@ class AAgent(object):
             if not response.get("choices"):
                 outputs.append("")
                 continue
-            content = response["choices"][0]["message"].get("content", "").strip()
+            content = self._extract_message_content(response["choices"][0])
             outputs.append(content)
             usage = response.get("usage") or {}
             token_len += usage.get("completion_tokens", 0)
@@ -64,6 +65,32 @@ class AAgent(object):
                 generation_time,
             )
         return outputs[0] if len(outputs) == 1 else outputs, None, None
+
+    @staticmethod
+    def _extract_message_content(choice: dict) -> str:
+        message = choice.get("message") or {}
+        content = message.get("content")
+        if isinstance(content, str):
+            return content.strip()
+        if isinstance(content, list):
+            fragments = []
+            for part in content:
+                if isinstance(part, dict):
+                    part_type = part.get("type")
+                    if part_type in {"text", "output_text", None}:
+                        fragments.append(part.get("text", ""))
+            return "".join(fragments).strip()
+        if content is None:
+            tool_calls = message.get("tool_calls")
+            if tool_calls:
+                try:
+                    return json.dumps(tool_calls)
+                except (TypeError, ValueError):
+                    return str(tool_calls)
+            refusal = message.get("refusal")
+            if refusal:
+                return refusal.strip()
+        return str(content).strip() if content is not None else ""
 
 
 if __name__ == "__main__":
