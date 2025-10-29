@@ -541,6 +541,17 @@ def collect_timing_metrics(token_lengths: List[Any], generation_times: List[Any]
     }
 
 
+def summarize_self_reflection(stats: Dict[str, int]) -> Dict[str, Any]:
+    attempts = stats.get("attempts", 0)
+    successes = stats.get("successes", 0)
+    return {
+        "attempts": attempts,
+        "successes": successes,
+        "success_rate": (successes / attempts) if attempts else None,
+        "failures": attempts - successes,
+    }
+
+
 def main() -> None:
     args = parse_args()
 
@@ -620,11 +631,8 @@ def main() -> None:
         **question_kwargs,
     )
 
-    normalized_questions: List[str] = []
-    for item in questions_raw:
-        if isinstance(item, tuple):
-            item = item[0] if item else ""
-        normalized_questions.append(item if isinstance(item, str) else str(item))
+    normalized_questions = q_agent.normalize_outputs(questions_raw)
+    q_self_stats = summarize_self_reflection(q_agent.get_self_reflection_stats())
 
     question_truncations = None
     question_max_tokens = question_kwargs.get("max_new_tokens")
@@ -694,15 +702,23 @@ def main() -> None:
     answer_timing = {}
     answer_truncations = None
     answer_empty_records: List[Dict[str, Any]] = []
+    answer_self_reflection_attempts_total = 0
+    answer_self_reflection_success_total = 0
+    answer_self_reflection_stats = {"attempts": 0, "successes": 0}
 
     if not args.skip_answering:
         ans_agent = AnsweringAgent()
         answer_outputs, answer_token_lengths, answer_generation_times = run_answer_agent(
             args.answer_batch_size, valid_questions, ans_agent, answer_kwargs
         )
-        answers_raw = answer_outputs
+        normalized_answers = ans_agent.normalize_outputs(valid_questions, answer_outputs)
+        stats_answer = summarize_self_reflection(ans_agent.get_self_reflection_stats())
+        answer_self_reflection_attempts_total = stats_answer["attempts"]
+        answer_self_reflection_success_total = stats_answer["successes"]
+        answer_self_reflection_stats = stats_answer
+        answers_raw = normalized_answers
         valid_answers, invalid_answers, answer_metrics = evaluate_answers(
-            valid_questions, answer_outputs
+            valid_questions, normalized_answers
         )
         answer_timing = collect_timing_metrics(
             answer_token_lengths, answer_generation_times
@@ -769,10 +785,17 @@ def main() -> None:
         "question_timing": question_timing,
         "question_truncations": question_truncations,
         "question_empty_events": len(question_empty_records),
+        "question_self_reflection": q_self_stats,
         "answer_metrics": answer_metrics,
         "answer_timing": answer_timing,
         "answer_truncations": answer_truncations,
         "answer_empty_events": len(answer_empty_records) if not args.skip_answering else 0,
+        "answer_self_reflection": answer_self_reflection_stats,
+        "self_reflection_totals": {
+            "attempts": q_self_stats["attempts"] + answer_self_reflection_stats["attempts"],
+            "successes": q_self_stats["successes"] + answer_self_reflection_stats["successes"],
+            "failures": q_self_stats["failures"] + answer_self_reflection_stats["failures"],
+        },
         "completion_monitor": tracker.summary(),
         "config": {
             "num_questions": args.num_questions,

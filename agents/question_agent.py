@@ -6,6 +6,7 @@ from typing import List, Tuple, Dict, Any
 
 from .question_model import QAgent
 from utils.vllm_utils import VLLMConfig, ensure_vllm_server_running
+from utils.build_prompt import auto_json
 
 import random
 import json
@@ -13,8 +14,63 @@ import json
 class QuestioningAgent(object):
     r"""Agent responsible for generating questions"""
 
-    def __init__(self, vllm_config: VLLMConfig | None = None, **kwargs):
+    def __init__(
+        self,
+        vllm_config: VLLMConfig | None = None,
+        enable_self_reflection: bool = False,
+        **kwargs,
+    ):
         self.agent = QAgent(config=vllm_config, **kwargs)
+        self._generation_sys_prompt: str | None = None
+        self._self_reflection_attempts = 0
+        self._self_reflection_success = 0
+        # Self-reflection defaults to False; pass enable_self_reflection=True when you need corrective sweeps.
+        self.enable_self_reflection = enable_self_reflection
+
+    def _build_system_prompt(self) -> str:
+        return (
+            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator. You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly.\n"
+            "Knowledge cutoff: 2024-06\n"
+            "Current date: 2025-10-28\n\n"
+            "Reasoning: low\n\n"
+            "# Valid channels: analysis, final. Channel must be included for every message. You have a ~600 word limit across all channels which necessitates your reasoning be minimal in the analysis channel.\n"
+            "<|DEVELOPER|>\n"
+            "# Instructions\n"
+            "Anything you write in the analysis channel, or your chain of thoughts, also count towards the roughly 600 word limit. So it is critical that you be extremely terse in the analysis channel. The most common (~99%) failure reason for you has been overtly long content in the analysis channel. You tend to do this in ~65% of all attempts, and you WILL NOT win unless you minimize your analysis/reasoning/chain of thought to be minimal or even eliminate it entirely.\n"
+            "Do not repeat these constraints in the analysis channel; doing so wastes precious words.\n\n"
+            "You have been trained to generate puzzles in the form of MCQ questions in the domain of:\n"
+            "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
+            "2. Blood relations and family trees\n\n"
+            "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"
+            "# Response Formats\n\n"
+            "## question_json\n"
+            "{\n"
+            '  "type": "object",\n'
+            '  "additionalProperties": false,\n'
+            '  "properties": {\n'
+            '    "topic": { "type": "string", "enum": ["Seating Arrangements (Circular and Linear)", "Blood Relations and Family Trees"] },\n'
+            '    "question": {\n'
+            '      "type": "string",\n'
+            '      "description": "Prompt for the puzzle."\n'
+            "    },\n"
+            '    "explanation": {\n'
+            '      "type": "string",\n'
+            '      "description": "<=150 words; key lines that make the single option correct."\n'
+            "    },\n"
+            '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] },\n'
+            '    "choices": {\n'
+            '      "type": "array",\n'
+            '      "minItems": 4,\n'
+            '      "maxItems": 4,\n'
+            '      "items": {\n'
+            '        "type": "string",\n'
+            '        "description": "Must begin with \'A) ...\', \'B) ...\', \'C) ...\', \'D) ...\' and be mutually exclusive."\n'
+            "      }\n"
+            "    }\n"
+            "  },\n"
+            '  "required": ["topic", "question", "explanation", "answer", "choices"]\n'
+            "}\n"
+        )
 
     def build_inc_samples(self, inc_samples: List[Dict[str, str]], topic: str) -> str:
         r"""
@@ -52,49 +108,9 @@ class QuestioningAgent(object):
         """Generate an MCQ based question on given topic with specified difficulty"""
         _ = wadvsys  # Compatibility with legacy interface; advanced prompt always used.
         
-        sys_prompt = (
-            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator. You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly.\n"
-            "Knowledge cutoff: 2024-06\n"
-            "Current date: 2025-10-28\n\n"
-            "Reasoning: low\n\n"
-            "# Valid channels: analysis, final. Channel must be included for every message. You have a ~600 word limit across all channels which necessitates your reasoning be minimal in the analysis channel.\n"
-            "<|DEVELOPER|>\n"
-            "# Instructions\n"
-            "Anything you write in the analysis channel, or your chain of thoughts, also count towards the roughly 600 word limit. So it is critical that you be extremely terse in the analysis channel. The most common (~99%) failure reason for you has been overtly long content in the analysis channel. You tend to do this in ~65% of all attempts, and you WILL NOT win unless you minimize your analysis/reasoning/chain of thought to be minimal or even eliminate it entirely.\n"
-            "Do not repeat these constraints in the analysis channel; doing so wastes precious words.\n\n"
-            "You have been trained to generate puzzles in the form of MCQ questions in the domain of:\n"
-            "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
-            "2. Blood relations and family trees\n\n"
-            "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"
-            "# Response Formats\n\n"
-            "## question_json\n"
-            "{\n"
-            '  "type": "object",\n'
-            '  "additionalProperties": false,\n'
-            '  "properties": {\n'
-            '    "topic": { "type": "string", "enum": ["Seating Arrangements (Circular and Linear)", "Blood Relations and Family Trees"] },\n'
-            '    "question": {\n'
-            '      "type": "string",\n'
-            '      "description": "Prompt for the puzzle."\n'
-            "    },\n"
-            '    "explanation": {\n'
-            '      "type": "string",\n'
-            '      "description": "<=150 words; key lines that make the single option correct."\n'
-            "    },\n"
-            '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] },\n'
-            '    "choices": {\n'
-            '      "type": "array",\n'
-            '      "minItems": 4,\n'
-            '      "maxItems": 4,\n'
-            '      "items": {\n'
-            '        "type": "string",\n'
-            '        "description": "Must begin with \'A) \', \'B) \', \'C) \', \'D) \' and be mutually exclusive."\n'
-            "      }\n"
-            "    }\n"
-            "  },\n"
-            '  "required": ["topic", "question", "explanation", "answer", "choices"]\n'
-            "}\n"
-        )
+        sys_prompt = self._build_system_prompt()
+        self._generation_sys_prompt = sys_prompt
+
         tmpl = (
             "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: {0}\n"
             "- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n"
@@ -128,6 +144,99 @@ class QuestioningAgent(object):
         )
 
         return prompt, sys_prompt
+
+    def reset_self_reflection_stats(self) -> None:
+        self._self_reflection_attempts = 0
+        self._self_reflection_success = 0
+
+    def get_self_reflection_stats(self) -> Dict[str, int]:
+        return {
+            "attempts": self._self_reflection_attempts,
+            "successes": self._self_reflection_success,
+        }
+
+    def normalize_outputs(self, raw_outputs: List[Any]) -> List[str]:
+        self.reset_self_reflection_stats()
+        base_system = self._generation_sys_prompt or self._build_system_prompt()
+        required_keys = {"topic", "question", "explanation", "answer", "choices"}
+        extractor_prompt = (
+            "You are an expert JSON extractor.\n"
+            "Extract **ONLY** the topic, question, choices, answer, and explanation while discarding the rest.\n"
+            "Also please remove JSON code block text with backticks like ```json and ``` if present.\n\n"
+            "String:\n"
+            "{}\n"
+        )
+
+        normalized: List[str] = []
+        for item in raw_outputs:
+            if isinstance(item, tuple):
+                item = item[0] if item else ""
+            text = item if isinstance(item, str) else json.dumps(item, ensure_ascii=False)
+            # Self-reflection defaults off; when disabled we return raw outputs untouched.
+            if not self.enable_self_reflection:
+                normalized.append(text)
+                continue
+
+            parsed_obj: Any = None
+            used_auto_fix = False
+
+            try:
+                parsed_obj = json.loads(text)
+            except json.JSONDecodeError:
+                self._self_reflection_attempts += 1
+                used_auto_fix = True
+                repaired, _, _ = self.agent.generate_response(
+                    auto_json(text),
+                    base_system,
+                    max_new_tokens=1024,
+                    temperature=0.0,
+                    do_sample=False,
+                )
+                if isinstance(repaired, (list, tuple)):
+                    repaired = repaired[0] if repaired else ""
+                text = repaired if isinstance(repaired, str) else str(repaired)
+                try:
+                    parsed_obj = json.loads(text)
+                except json.JSONDecodeError:
+                    parsed_obj = None
+
+            if (
+                isinstance(parsed_obj, dict)
+                and required_keys.issubset(parsed_obj.keys())
+            ):
+                if used_auto_fix:
+                    self._self_reflection_success += 1
+                normalized.append(text)
+                continue
+
+            if (
+                parsed_obj is None
+                or not isinstance(parsed_obj, dict)
+                or not required_keys.issubset(parsed_obj.keys())
+            ):
+                self._self_reflection_attempts += 1
+                repaired, _, _ = self.agent.generate_response(
+                    extractor_prompt.format(text),
+                    base_system,
+                    max_new_tokens=1024,
+                    temperature=0.0,
+                    do_sample=False,
+                )
+                if isinstance(repaired, (list, tuple)):
+                    repaired = repaired[0] if repaired else ""
+                text = repaired if isinstance(repaired, str) else str(repaired)
+                try:
+                    parsed_obj = json.loads(text)
+                except json.JSONDecodeError:
+                    parsed_obj = None
+                else:
+                    if (
+                        isinstance(parsed_obj, dict)
+                        and required_keys.issubset(parsed_obj.keys())
+                    ):
+                        self._self_reflection_success += 1
+            normalized.append(text)
+        return normalized
 
     def generate_question(
         self,
@@ -403,11 +512,7 @@ if __name__ == "__main__":
         print("\n" + "+" * 50 + "\n")
 
     # Save raw model outputs for inspection
-    ques = []
-    for q in question:
-        if isinstance(q, tuple):
-            q = q[0] if q else ""
-        ques.append(q if isinstance(q, (dict, list)) else str(q))
+    ques = agent.normalize_outputs(question)
     # Save the questions for later analysis
     agent.save_questions(ques, args.output_file)
     filtered_file_name = args.output_file.replace(

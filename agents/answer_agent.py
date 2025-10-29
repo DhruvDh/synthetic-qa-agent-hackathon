@@ -9,26 +9,34 @@ from typing import List, Tuple, Dict, Any
 
 from .answer_model import AAgent
 from utils.vllm_utils import VLLMConfig, ensure_vllm_server_running
+from utils.build_prompt import auto_json, option_extractor_prompt
 
 
 class AnsweringAgent(object):
     r"""Agent responsible for answering MCQ questions with confidence scoring"""
 
-    def __init__(self, select_prompt1: bool = True, **kwargs):
+    def __init__(
+        self,
+        select_prompt1: bool = True,
+        enable_self_reflection: bool = False,
+        **kwargs,
+    ):
         vllm_config = kwargs.pop("vllm_config", None)
         self.agent = AAgent(config=vllm_config, **kwargs)
         self.select_prompt1 = select_prompt1
+        self._generation_sys_prompt: str | None = None
+        self._self_reflection_attempts = 0
+        self._self_reflection_success = 0
+        # Self-reflection defaults to False; pass enable_self_reflection=True when you need corrective sweeps.
+        self.enable_self_reflection = enable_self_reflection
 
-    def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
-        """Generate an answer to the given MCQ question with confidence and reasoning"""
-
-        _ = self.select_prompt1  # Compatibility with legacy interface; advanced prompt always used.
-        sys_prompt = (
+    def _build_system_prompt(self) -> str:
+        return (
             "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle solver\n"
             "Knowledge cutoff: 2024-06\n"
             "Current date: 2025-10-28\n\n"
             "Reasoning: low\n\n"
-            "# Valid channels: final. Channel must be included for every message. Your analysis is instead included in the final channel as the `reasoning` key's value.\n"
+            "# Valid channels: analysis, final. Channel must be included for every message. Your analysis should instead be included in the final channel as the `reasoning` key's value. Every word across all channels counts toward the 150-word cap; be extremely terse. You frequently fail because long reasoning gets you cut off—minimize or skip it. Do not repeat these constraints in the analysis channel or reasoning.\n"
             "<|DEVELOPER|>\n"
             "# Instructions\n"
             "You are competing in a puzzle answering tournament as an answering large language model. Points are awarded to correct answers within final responses that strictly adhere to response format restrictions (including response length limitations).\n"
@@ -50,6 +58,13 @@ class AnsweringAgent(object):
             "}\n"
         )
 
+    def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
+        """Generate an answer to the given MCQ question with confidence and reasoning"""
+
+        _ = self.select_prompt1  # Compatibility with legacy interface; advanced prompt always used.
+        sys_prompt = self._build_system_prompt()
+        self._generation_sys_prompt = sys_prompt
+
         tmpl = (
             "PUZZLE: {}\n"
             "CHOICES: {}\n\n"
@@ -61,6 +76,107 @@ class AnsweringAgent(object):
         )
 
         return prompt, sys_prompt
+
+    def reset_self_reflection_stats(self) -> None:
+        self._self_reflection_attempts = 0
+        self._self_reflection_success = 0
+
+    def get_self_reflection_stats(self) -> Dict[str, int]:
+        return {
+            "attempts": self._self_reflection_attempts,
+            "successes": self._self_reflection_success,
+        }
+
+    def normalize_outputs(
+        self, question_records: List[Dict[str, Any]], raw_answers: List[Any]
+    ) -> List[str]:
+        self.reset_self_reflection_stats()
+        base_system = self._generation_sys_prompt or self._build_system_prompt()
+        normalized: List[str] = []
+
+        for idx, raw_answer in enumerate(raw_answers):
+            record = question_records[idx] if idx < len(question_records) else {}
+            if isinstance(raw_answer, (list, tuple)):
+                raw_answer = raw_answer[0] if raw_answer else ""
+            text = raw_answer if isinstance(raw_answer, str) else json.dumps(raw_answer, ensure_ascii=False)
+            # Self-reflection defaults off; when disabled we return raw outputs untouched.
+            if not self.enable_self_reflection:
+                normalized.append(text)
+                continue
+
+            choices = []
+            if isinstance(record, dict):
+                if isinstance(record.get("choices"), list):
+                    choices = record.get("choices") or []
+                elif isinstance(record.get("question"), dict):
+                    choices = record["question"].get("choices", [])
+
+            try:
+                payload = json.loads(text)
+            except json.JSONDecodeError:
+                self._self_reflection_attempts += 1
+                repaired_json, _, _ = self.agent.generate_response(
+                    auto_json(text),
+                    base_system,
+                    max_new_tokens=512,
+                    temperature=0.0,
+                    do_sample=False,
+                )
+                if isinstance(repaired_json, (list, tuple)):
+                    repaired_json = repaired_json[0] if repaired_json else ""
+                text = repaired_json if isinstance(repaired_json, str) else str(repaired_json)
+                try:
+                    payload = json.loads(text)
+                except json.JSONDecodeError:
+                    payload = None
+                else:
+                    if isinstance(payload, dict) and all(k in payload for k in ("answer", "reasoning")):
+                        self._self_reflection_success += 1
+                normalized.append(text)
+                continue
+
+            if not isinstance(payload, dict) or not all(k in payload for k in ("answer", "reasoning")):
+                self._self_reflection_attempts += 1
+                prompt = (
+                    "You are an expert JSON extractor.\n"
+                    "Extract **ONLY** the answer and reasoning while discarding the rest.\n"
+                    "Remove any surrounding code fences if present.\n\n"
+                    "String:\n"
+                    "{}\n"
+                )
+                formatted_source = json.dumps(payload, indent=4) if isinstance(payload, dict) else text
+                extracted_json, _, _ = self.agent.generate_response(
+                    prompt.format(formatted_source),
+                    base_system,
+                    max_new_tokens=512,
+                    temperature=0.0,
+                    do_sample=False,
+                )
+                if isinstance(extracted_json, (list, tuple)):
+                    extracted_json = extracted_json[0] if extracted_json else ""
+                text = extracted_json if isinstance(extracted_json, str) else str(extracted_json)
+                try:
+                    payload = json.loads(text)
+                except json.JSONDecodeError:
+                    payload = None
+                else:
+                    if isinstance(payload, dict) and all(k in payload for k in ("answer", "reasoning")):
+                        self._self_reflection_success += 1
+                normalized.append(text)
+                continue
+
+            if isinstance(payload.get("answer"), str) and len(payload["answer"]) != 1:
+                extracted_answer, _, _ = self.agent.generate_response(
+                    option_extractor_prompt(payload["answer"], choices or [])
+                )
+                if isinstance(extracted_answer, (list, tuple)):
+                    extracted_answer = extracted_answer[0] if extracted_answer else ""
+                payload["answer"] = extracted_answer if isinstance(extracted_answer, str) else str(extracted_answer)
+                text = json.dumps(payload, ensure_ascii=False)
+
+            normalized.append(text if isinstance(text, str) else json.dumps(text, ensure_ascii=False))
+
+        return normalized
 
     def answer_question(
         self, question_data: Dict | List[Dict], **kwargs
@@ -189,7 +305,6 @@ if __name__ == "__main__":
     import json
     import yaml
     import argparse
-    from utils.build_prompt import auto_json, option_extractor_prompt
 
     # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # python -m agents.answer_agent --input_file outputs/filtered_questions.json --output_file outputs/answers.json --batch_size 5 --verbose
@@ -235,50 +350,22 @@ if __name__ == "__main__":
     answer, tls, gts = agent.answer_batches(
         questions=sample_questions, batch_size=args.batch_size, **gen_kwargs
     )
-    ans = []
-    for idx, (q, a) in enumerate(zip(sample_questions, answer)):
-        if args.verbose:
+    if args.verbose:
+        for idx, (q, raw_a) in enumerate(zip(sample_questions, answer)):
+            display = raw_a
+            if isinstance(display, (list, tuple)):
+                display = display[0] if display else ""
+            if not isinstance(display, str):
+                try:
+                    display = json.dumps(display, ensure_ascii=False)
+                except (TypeError, ValueError):
+                    display = str(display)
             print(f"\n=== Question {idx+1} ===")
             print(f"Question: {q.get('question', 'N/A')}")
             print(f"Expected: {q.get('answer', 'N/A')}")
-            print(f"Model Answer:\n{a}")
-        try:
-            a = json.loads(a)
-            if all(k in a for k in ["answer", "reasoning"]):
-                # ++++++++++++++++++++++++++
-                # TODO: IMPROVE THE FOLLOWING
-                if len(a["answer"]) != 1:
-                    extracted_answer, _, _ = agent.agent.generate_response(
-                        option_extractor_prompt(a["answer"], q["choices"])
-                    )
-                    if isinstance(extracted_answer, (list, tuple)):
-                        extracted_answer = extracted_answer[0] if extracted_answer else ""
-                    a["answer"] = extracted_answer
-                # ++++++++++++++++++++++++++
-            else:
-                # the dictionary is not as expected. So extract it using the same model: Self-Reflection
-                prompt = (
-                    "Extract **ONLY** the answer and reasoning while discarding the rest.\n\n"
-                    "String:\n"
-                    "{}\n\n"
-                    "Given Format:\n"
-                    "{{\n"
-                    '    "answer": "Only the option letter (A, B, C, or D)",\n'
-                    '    "reasoning": "..."\n'
-                    "}}"
-                )
-                extracted_json, _, _ = agent.agent.generate_response(
-                    prompt.format(json.dumps(a, indent=4))
-                )
-                if isinstance(extracted_json, (list, tuple)):
-                    extracted_json = extracted_json[0] if extracted_json else ""
-                a = extracted_json
-        except json.JSONDecodeError:
-            repaired_json, _, _ = agent.agent.generate_response(auto_json(a))
-            if isinstance(repaired_json, (list, tuple)):
-                repaired_json = repaired_json[0] if repaired_json else ""
-            a = repaired_json
-        ans.append(a)
+            print(f"Model Answer:\n{display}")
+
+    ans = agent.normalize_outputs(sample_questions, answer)
 
     if args.verbose:
         if gen_kwargs.get("tgps_show", False):

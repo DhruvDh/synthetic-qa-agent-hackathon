@@ -1,78 +1,100 @@
 {
   "question_metrics": {
-    "total_generated": 1592,
-    "valid_count": 933,
-    "invalid_count": 659,
+    "total_generated": 128,
+    "valid_count": 108,
+    "invalid_count": 20,
     "invalid_reasons": {
-      "json_decode_error": 659
+      "missing_keys:explanation,answer,choices": 1,
+      "json_decode_error": 14,
+      "choices_count_3": 2,
+      "question_invalid": 1,
+      "choices_count_2": 1,
+      "choices_count_0": 1
     }
   },
   "question_timing": {
-    "batch_count": 13,
-    "total_tokens": 1138947,
-    "total_time_sec": 434.5873625278473,
-    "tokens_per_sec": 2620.7549924487716
+    "batch_count": 1,
+    "total_tokens": 82275,
+    "total_time_sec": 33.538185596466064,
+    "tokens_per_sec": 2453.173853527406
   },
   "question_truncations": 0,
-  "question_empty_events": 521,
+  "question_empty_events": 48,
+  "question_self_reflection": {
+    "attempts": 46,
+    "successes": 32,
+    "success_rate": 0.6956521739130435,
+    "failures": 14
+  },
   "answer_metrics": {
-    "questions_answered": 933,
-    "valid_count": 361,
-    "invalid_count": 572,
+    "questions_answered": 108,
+    "valid_count": 88,
+    "invalid_count": 20,
     "invalid_reasons": {
-      "json_decode_error": 572
+      "json_decode_error": 20
     },
-    "correct_count": 327,
-    "accuracy": 0.9058171745152355
+    "correct_count": 59,
+    "accuracy": 0.6704545454545454
   },
   "answer_timing": {
-    "batch_count": 8,
-    "total_tokens": 421029,
-    "total_time_sec": 140.0786395072937,
-    "tokens_per_sec": 3005.661687470041
+    "batch_count": 1,
+    "total_tokens": 45904,
+    "total_time_sec": 17.170319318771362,
+    "tokens_per_sec": 2673.450571755861
   },
   "answer_truncations": 0,
-  "answer_empty_events": 445,
+  "answer_empty_events": 58,
+  "answer_self_reflection": {
+    "attempts": 57,
+    "successes": 37,
+    "success_rate": 0.6491228070175439,
+    "failures": 20
+  },
+  "self_reflection_totals": {
+    "attempts": 103,
+    "successes": 69,
+    "failures": 34
+  },
   "completion_monitor": {
-    "total_calls": 2525,
+    "total_calls": 339,
     "total_errors": 0,
-    "total_latency_sec": 54346.08551979065,
+    "total_latency_sec": 4805.276796340942,
     "modes": {
       "question": {
-        "total_calls": 1592,
+        "total_calls": 174,
         "finish_reasons": {
-          "stop": 933,
-          "length": 659
+          "stop": 114,
+          "length": 60
         },
         "empty_reason_counts": {
-          "empty_content": 521
+          "empty_content": 48
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: A (others: B, C, D)\n- Keep the explanation <= 90 words\nEXAMPLE RESPONSE:\n{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"questi",
-        "completion_tokens": 1138947,
-        "prompt_tokens": 3322594,
-        "avg_latency_sec": 24.69531917751734,
-        "max_latency_sec": 34.79161477088928,
-        "min_latency_sec": 8.61377215385437
+        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: B (others: A, C, D)\n- Keep the explanation <= 90 words\nEXAMPLE RESPONSE:\n{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"questi",
+        "completion_tokens": 112655,
+        "prompt_tokens": 339361,
+        "avg_latency_sec": 17.98467568830512,
+        "max_latency_sec": 33.53085422515869,
+        "min_latency_sec": 0.7890348434448242
       },
       "answer": {
-        "total_calls": 933,
+        "total_calls": 165,
         "finish_reasons": {
-          "stop": 360,
-          "length": 573
+          "stop": 88,
+          "length": 77
         },
         "empty_reason_counts": {
-          "empty_content": 445
+          "empty_content": 58
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "PUZZLE: In a family where there are no adoptions, no multiple spouses, and all marriages are monogamous, let X and Y be siblings. X has one child, C, and Y has one child, D. What is the precise kinship term for the relationship between C and D?\nCHOICES: A) Siblings B) Half\u2011first cousins C) First cousins D) Second cousins\n\nReturn using response format: answer_json with the **exact JSON key order**:",
-        "completion_tokens": 421029,
-        "prompt_tokens": 417719,
-        "avg_latency_sec": 16.110543825490936,
-        "max_latency_sec": 18.512513637542725,
-        "min_latency_sec": 4.900214910507202
+        "prompt_example": "PUZZLE: L\u2019s father has a sister named N. N has a child named M. Using standard English kinship terms (no adoption, monogamy, remarriage allowed), what is the precise relation of M to L?\nCHOICES: A) First cousin B) Second cousin C) Half\u2011first cousin D) First cousin once removed\n\nReturn using response format: answer_json with the **exact JSON key order**: reasoning, answer.\n",
+        "completion_tokens": 64239,
+        "prompt_tokens": 119716,
+        "avg_latency_sec": 10.15723167621728,
+        "max_latency_sec": 17.14518642425537,
+        "min_latency_sec": 0.7189862728118896
       },
       "other": {
         "total_calls": 0,
@@ -90,7 +112,7 @@
     }
   },
   "config": {
-    "num_questions": 1500,
+    "num_questions": 128,
     "batch_size": 128,
     "answer_batch_size": 128,
     "topics_file": "assets/topics.json",
