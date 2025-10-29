@@ -1,1 +1,122 @@
-[]
+[
+    {
+        "topic": "Puzzles involving generations and family tree logic",
+        "question": "Maya's father's sister is married to the brother of Leo's mother. Leo's mother is the only daughter of Maya's paternal grandfather's sister. How is Leo related to Maya?",
+        "explanation": "Maya's paternal grandfather's sister is Maya's great\u2011aunt. Her only daughter (Leo's mother) is Maya's father's cousin. Thus Leo's mother is Maya's first cousin once removed. Leo, her son, is therefore Maya's second cousin. The extra marriage detail only confirms the same generation link.",
+        "answer": "B",
+        "choices": [
+            "A) Maternal uncle",
+            "B) Second cousin",
+            "C) First cousin",
+            "D) Nephew"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Maya's father's only sister is married to the only son of Maya's mother's brother. That son and Maya's paternal aunt have a daughter named Lila. How is Lila related to Maya?",
+        "explanation": "Maya's father's sister is Maya's paternal aunt. Maya's mother's brother is her maternal uncle; his only son is Maya's male maternal cousin. He is married to Maya's paternal aunt, making him Maya's uncle\u2011in\u2011law. Their child Lila is the daughter of Maya's paternal aunt, so Lila is Maya's first cousin on her father's side (and also on her mother's side). Hence Lila is Maya's first cousin.",
+        "answer": "A",
+        "choices": [
+            "A) First cousin",
+            "B) Second cousin",
+            "C) Aunt",
+            "D) Half\u2011sister"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "At a family gathering, Maya said, \"The woman who is the mother of my father's sister's son is also the wife of the man who is my mother's brother's father.\" How is that woman related to Maya?",
+        "explanation": "My father's sister is Maya's paternal aunt. Her son is Maya's paternal cousin; his mother is the aunt herself. The second clause says she is the wife of Maya's mother's brother's father \u2013 that is Maya's maternal grandfather, so she is his wife, i.e., Maya's maternal grandmother. Hence her primary relation to Maya is maternal grandmother.",
+        "answer": "B",
+        "choices": [
+            "A) Paternal Aunt",
+            "B) Maternal Grandmother",
+            "C) Mother",
+            "D) Sister"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Rohan says: \"My father's only brother's son is married to the daughter of my mother's only sister.\" How is the daughter related to Rohan?",
+        "explanation": "My father's only brother is Rohan's paternal uncle; his son is Rohan's paternal cousin. My mother's only sister is Rohan's maternal aunt; her daughter is Rohan's maternal cousin. Both descriptions point to the same person, making her Rohan's cousin.",
+        "answer": "A",
+        "choices": [
+            "A) Maternal cousin",
+            "B) Paternal uncle",
+            "C) Sister",
+            "D) Aunt"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "At a family gathering, Maya says, \u201cThe woman standing next to me is the daughter of my father\u2019s sister, who is married to the brother of my mother\u2019s brother.\u201d How is the woman related to Maya?",
+        "explanation": "Maya\u2019s father\u2019s sister is Maya\u2019s paternal aunt. Her husband is the brother of Maya\u2019s mother\u2019s brother, i.e., Maya\u2019s maternal uncle. Their daughter is the child of Maya\u2019s paternal aunt and maternal uncle, making her Maya\u2019s cousin on both sides. Hence the woman is Maya\u2019s cousin.",
+        "answer": "B",
+        "choices": [
+            "A) Aunt",
+            "B) Cousin",
+            "C) Sister",
+            "D) Niece"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Maya's father's only brother has a daughter. That daughter married the son of Maya's mother's sister. Their child is Tara. How is Tara related to Maya?",
+        "explanation": "Maya's father's only brother = paternal uncle; his daughter = Maya's paternal first cousin. Maya's mother's sister = maternal aunt; her son = Maya's maternal first cousin. The two cousins marry and have Tara. Tara is the child of Maya's first cousin, making her Maya's first cousin once removed.",
+        "answer": "A",
+        "choices": [
+            "A) First cousin once removed",
+            "B) Second cousin",
+            "C) Aunt",
+            "D) Half-sister"
+        ]
+    },
+    {
+        "topic": "Puzzles involving generations and family tree logic",
+        "question": "Arjun's father's only brother is married to Arjun's mother's only sister. The child of this couple is Arjun's ____?",
+        "explanation": "Arjun's father's only brother = his paternal uncle. He marries Arjun's mother's only sister = his maternal aunt. Their child shares both Arjun's paternal grandparents (through the uncle) and maternal grandparents (through the aunt), making the child Arjun's double cousin.",
+        "answer": "D",
+        "choices": [
+            "A) A) Half-sister",
+            "B) B) First cousin",
+            "C) C) Niece",
+            "D) D) Double cousin"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Rita says, \"The lady standing next to me is the daughter of the man who married my father's sister.\" How is the lady related to Rita?",
+        "explanation": "Rita's father's sister is her paternal aunt. The man who married that aunt is Rita's paternal uncle by marriage. His daughter (assuming no other wives) is Rita's paternal cousin. Hence the lady is Rita's cousin.",
+        "answer": "A",
+        "choices": [
+            "A) Paternal cousin",
+            "B) Maternal aunt",
+            "C) Sister-in-law",
+            "D) Granddaughter"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Maya says, \"My father's sister's son is married to the daughter of the woman who is my mother's brother's wife.\" How is the man (the son) related to Maya?",
+        "explanation": "My father's sister = paternal aunt; her son = Maya's paternal cousin. The marriage detail only adds a cousin\u2011to\u2011cousin link and does not change his primary relation to Maya. Hence he is Maya's paternal cousin.",
+        "answer": "A",
+        "choices": [
+            "A) Paternal cousin",
+            "B) Maternal cousin",
+            "C) Brother",
+            "D) Uncle"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "During a family dinner, Leena says, \"The person sitting opposite me is the son of my father's sister, who is married to my mother's brother.\" How is that person related to Leena?",
+        "explanation": "Leena's father's sister is her paternal aunt. She is married to Leena's mother's brother, her maternal uncle. Their son shares both sets of grandparents with Leena, making him her double cousin (cousin on both paternal and maternal sides).",
+        "answer": "C",
+        "choices": [
+            "A) Uncle",
+            "B) Nephew",
+            "C) Double cousin",
+            "D) Brother-in-law"
+        ]
+    }
+]

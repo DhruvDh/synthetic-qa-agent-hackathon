@@ -10,7 +10,6 @@ from utils.vllm_utils import VLLMConfig, ensure_vllm_server_running
 import random
 import json
 
-
 class QuestioningAgent(object):
     r"""Agent responsible for generating questions"""
 
@@ -51,11 +50,13 @@ class QuestioningAgent(object):
     def build_prompt(
         self,
         topic: str,
+        wadvsys: bool = True,
         wicl: bool = True,
         inc_samples: List[Dict[str, str]] | None = None,
     ) -> Tuple[str, str]:
         """Generate an MCQ based question on given topic with specified difficulty"""
-
+        _ = wadvsys  # Compatibility with legacy interface; advanced prompt always used.
+        
         sys_prompt = (
             "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator.\n"
             "Knowledge cutoff: 2024-06\n"
@@ -74,7 +75,7 @@ class QuestioningAgent(object):
             '  "type": "object",\n'
             '  "additionalProperties": false,\n'
             '  "properties": {\n'
-            '    "topic": { "type": "string" },\n'
+            '    "topic": { "type": "string", "enum": ["Seating Arrangements (Circular and Linear)", "Blood Relations and Family Trees"] },\n'
             '    "question": {\n'
             '      "type": "string",\n'
             '      "description": "Prompt for the puzzle."\n'
@@ -134,6 +135,7 @@ class QuestioningAgent(object):
     def generate_question(
         self,
         topic: Tuple[str, str] | List[Tuple[str, str]],
+        wadvsys: bool,
         wicl: bool,
         inc_samples: Dict[str, List[Dict[str, str]]] | None,
         **gen_kwargs,
@@ -143,12 +145,14 @@ class QuestioningAgent(object):
             prompt = []
             for t in topic:
                 inc_topic_samples = inc_samples[t[1]] if inc_samples else None
-                p, sp = self.build_prompt(f"{t[0]}/{t[1]}", wicl, inc_topic_samples)
+                p, sp = self.build_prompt(
+                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_topic_samples
+                )
                 prompt.append(p)
         else:
             inc_topic_samples = inc_samples[topic[1]] if inc_samples else None
             prompt, sp = self.build_prompt(
-                f"{topic[0]}/{topic[1]}", wicl, inc_topic_samples
+                f"{topic[0]}/{topic[1]}", wadvsys, wicl, inc_topic_samples
             )
 
         resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
@@ -171,6 +175,7 @@ class QuestioningAgent(object):
         num_questions: int,
         topics: Dict[str, List[str]],
         batch_size: int = 5,
+        wadvsys: bool = True,
         wicl: bool = True,
         inc_samples: Dict[str, List[Dict[str, str]]] | None = None,
         **kwargs,
@@ -183,6 +188,7 @@ class QuestioningAgent(object):
             - num_questions (int): Total number of questions to generate.
             - topics (Dict[str, List[str]]): Dictionary of topics with subtopics.
             - batch_size (int): Number of questions to generate in each batch.
+            - wadvsys (bool): Whether to use advance prompt.
             - wicl (bool): Whether to include in-context learning (ICL) samples.
             - inc_samples (Dict[str, List[Dict[str, str]]]|None): In-context learning samples for the topics.
             - **kwargs: Additional keyword arguments for question generation.
@@ -200,7 +206,7 @@ class QuestioningAgent(object):
         for i in range(0, len(extended_topics), batch_size):
             batch_topics = extended_topics[i : i + batch_size]
             batch_questions = self.generate_question(
-                batch_topics, wicl, inc_samples, **kwargs
+                batch_topics, wadvsys, wicl, inc_samples, **kwargs
             )
             questions.extend(batch_questions[0]), tls.append(
                 batch_questions[1]
@@ -210,7 +216,7 @@ class QuestioningAgent(object):
         if len(extended_topics) % batch_size != 0:
             batch_topics = extended_topics[-(len(extended_topics) % batch_size) :]
             batch_questions = self.generate_question(
-                batch_topics, wicl, inc_samples, **kwargs
+                batch_topics, wadvsys, wicl, inc_samples, **kwargs
             )
             questions.extend(batch_questions[0]), tls.append(
                 batch_questions[1]
@@ -375,6 +381,7 @@ if __name__ == "__main__":
         num_questions=args.num_questions,
         topics=topics,
         batch_size=args.batch_size,
+        wadvsys=True,
         wicl=True,
         inc_samples=inc_samples,
         **gen_kwargs,

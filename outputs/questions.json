@@ -1,7 +1,4 @@
 [
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering, Arjun points to a woman and says, \\\"She is the daughter of the man who is the husband of my father's only sister, and she is also the mother of the child of my mother's brother.\\\" How is this woman related to Arjun?\",\n  \"explanation\": \"Arjun's father's only sister is his paternal aunt; her husband is Arjun's uncle by marriage. Their daughter is Arjun's paternal cousin. Arjun's mother's brother is his maternal uncle; his child is Arjun's maternal cousin. The woman is also that child's mother, meaning the maternal uncle married Arjun's paternal cousin. Thus she is Arjun's cousin.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Aunt\",\n    \"B) Uncle\",\n    \"C) Cousin\",\n    \"D) Grandmother\"\n  ]\n}",
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering, Maya said, \\\"My father's sister's son is married to the woman who is the daughter of my mother's brother's wife.\\\" How is that woman related to Maya?\",\n  \"explanation\": \"Maya's father's sister = paternal aunt; her son = Maya's paternal cousin. Maya's mother's brother = maternal uncle; his wife is Maya's aunt by marriage; their daughter = Maya's maternal cousin. The paternal cousin marries the maternal cousin, making the woman Maya's cousin\u2011in\u2011law. No blood link remains beyond the marriage.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Aunt\",\n    \"B) Half\u2011sister\",\n    \"C) Cousin\u2011in\u2011law\",\n    \"D) Niece\"\n  ]\n}",
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering, Maya points to a man and says, \\\"He is the son of my father's sister's husband, who is also the brother of the woman who married my mother's brother.\\\" How is the man related to Maya?\",\n  \"explanation\": \"My father's sister is Maya's paternal aunt. Her husband is Maya's uncle by marriage. His son is Maya's paternal cousin. The extra clause only tells us that this uncle is the brother of a woman who married Maya's maternal uncle; it does not change the cousin relationship.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Uncle\",\n    \"B) Nephew\",\n    \"C) Cousin\",\n    \"D) Brother-in-law\"\n  ]\n}",
     [
         "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
         null,
@@ -12,6 +9,20 @@
         null,
         null
     ],
+    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Maya's father's sister is married to the brother of Leo's mother. Leo's mother is the only daughter of Maya's paternal grandfather's sister. How is Leo related to Maya?\",\n  \"explanation\": \"Maya's paternal grandfather's sister is Maya's great\u2011aunt. Her only daughter (Leo's mother) is Maya's father's cousin. Thus Leo's mother is Maya's first cousin once removed. Leo, her son, is therefore Maya's second cousin. The extra marriage detail only confirms the same generation link.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Maternal uncle\",\n    \"B) Second cousin\",\n    \"C) First cousin\",\n    \"D) Nephew\"\n  ]\n}",
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Maya's father's only sister is married to the only son of Maya's mother's brother. That son and Maya's paternal aunt have a daughter named Lila. How is Lila related to Maya?\",\n  \"explanation\": \"Maya's father's sister is Maya's paternal aunt. Maya's mother's brother is her maternal uncle; his only son is Maya's male maternal cousin. He is married to Maya's paternal aunt, making him Maya's uncle\u2011in\u2011law. Their child Lila is the daughter of Maya's paternal aunt, so Lila is Maya's first cousin on her father's side (and also on her mother's side). Hence Lila is Maya's first cousin.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) First cousin\",\n    \"B) Second cousin\",\n    \"C) Aunt\",\n    \"D) Half\u2011sister\"\n  ]\n}",
+    [
+        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
+        null,
+        null
+    ],
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"At a family gathering, Maya said, \\\"The woman who is the mother of my father's sister's son is also the wife of the man who is my mother's brother's father.\\\" How is that woman related to Maya?\",\n  \"explanation\": \"My father's sister is Maya's paternal aunt. Her son is Maya's paternal cousin; his mother is the aunt herself. The second clause says she is the wife of Maya's mother's brother's father \u2013 that is Maya's maternal grandfather, so she is his wife, i.e., Maya's maternal grandmother. Hence her primary relation to Maya is maternal grandmother.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Paternal Aunt\",\n    \"B) Maternal Grandmother\",\n    \"C) Mother\",\n    \"D) Sister\"\n  ]\n}",
+    [
+        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
+        null,
+        null
+    ],
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Rohan says: \\\"My father's only brother's son is married to the daughter of my mother's only sister.\\\" How is the daughter related to Rohan?\",\n  \"explanation\": \"My father's only brother is Rohan's paternal uncle; his son is Rohan's paternal cousin. My mother's only sister is Rohan's maternal aunt; her daughter is Rohan's maternal cousin. Both descriptions point to the same person, making her Rohan's cousin.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Maternal cousin\",\n    \"B) Paternal uncle\",\n    \"C) Sister\",\n    \"D) Aunt\"\n  ]\n}",
     [
         "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
         null,
@@ -22,53 +33,30 @@
         null,
         null
     ],
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"At a family gathering, Maya says, \u201cThe woman standing next to me is the daughter of my father\u2019s sister, who is married to the brother of my mother\u2019s brother.\u201d How is the woman related to Maya?\",\n  \"explanation\": \"Maya\u2019s father\u2019s sister is Maya\u2019s paternal aunt. Her husband is the brother of Maya\u2019s mother\u2019s brother, i.e., Maya\u2019s maternal uncle. Their daughter is the child of Maya\u2019s paternal aunt and maternal uncle, making her Maya\u2019s cousin on both sides. Hence the woman is Maya\u2019s cousin.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Aunt\",\n    \"B) Cousin\",\n    \"C) Sister\",\n    \"D) Niece\"\n  ]\n}",
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Maya's father's only brother has a daughter. That daughter married the son of Maya's mother's sister. Their child is Tara. How is Tara related to Maya?\",\n  \"explanation\": \"Maya's father's only brother = paternal uncle; his daughter = Maya's paternal first cousin. Maya's mother's sister = maternal aunt; her son = Maya's maternal first cousin. The two cousins marry and have Tara. Tara is the child of Maya's first cousin, making her Maya's first cousin once removed.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) First cousin once removed\",\n    \"B) Second cousin\",\n    \"C) Aunt\",\n    \"D) Half-sister\"\n  ]\n}",
+    [
+        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
+        null,
+        null
+    ],
+    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Arjun's father's only brother is married to Arjun's mother's only sister. The child of this couple is Arjun's ____?\",\n  \"explanation\": \"Arjun's father's only brother = his paternal uncle. He marries Arjun's mother's only sister = his maternal aunt. Their child shares both Arjun's paternal grandparents (through the uncle) and maternal grandparents (through the aunt), making the child Arjun's double cousin.\",\n  \"answer\": \"D\",\n  \"choices\": [\n    \"A) A) Half-sister\",\n    \"B) B) First cousin\",\n    \"C) C) Niece\",\n    \"D) D) Double cousin\"\n  ]\n}",
+    [
+        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
+        null,
+        null
+    ],
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Rita says, \\\"The lady standing next to me is the daughter of the man who married my father's sister.\\\" How is the lady related to Rita?\",\n  \"explanation\": \"Rita's father's sister is her paternal aunt. The man who married that aunt is Rita's paternal uncle by marriage. His daughter (assuming no other wives) is Rita's paternal cousin. Hence the lady is Rita's cousin.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Paternal cousin\",\n    \"B) Maternal aunt\",\n    \"C) Sister-in-law\",\n    \"D) Granddaughter\"\n  ]\n}",
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Maya says, \\\"My father's sister's son is married to the daughter of the woman who is my mother's brother's wife.\\\" How is the man (the son) related to Maya?\",\n  \"explanation\": \"My father's sister = paternal aunt; her son = Maya's paternal cousin. The marriage detail only adds a cousin\u2011to\u2011cousin link and does not change his primary relation to Maya. Hence he is Maya's paternal cousin.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Paternal cousin\",\n    \"B) Maternal cousin\",\n    \"C) Brother\",\n    \"D) Uncle\"\n  ]\n}",
     [
         "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
         null,
         null
     ],
     [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
+        "{\n  \"topic\": \"Seating Arrangements (Linear, Circular)\",\n  \"question\": \"Six friends \u2013 Alex, Bella, Carl, Dana, Ethan, and Fiona \u2013 sit in a single row from left to right. Clues: 1) Fiona sits at an end. 2) Alex sits immediately to the right of the person who is at an end. 3) Ethan sits next to Alex. 4) Bella is not at an end. 5) Carl and Dana have exactly one person between them. Who sits third from the left?\",\n  \"choices\": [\n    \"A) Alex\",\n    \"B) Bella\"\n  ],\n  \"answer\": \"C\",\n  \"explanation\": \"Fiona must be at position\u202f1, so Alex is at\u202f2. Ethan, next to Alex, must be at\u202f3. Bella cannot be at an end, leaving positions\u202f4\u20116 for Carl, Dana, and Bella. Only Carl\u2011Dana with one person between fits positions\u202f4 and\u202f6, leaving Bella at\u202f5. Thus the third seat is Ethan.\"\n}",
         null,
         null
     ],
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Lila announced, \\\"The woman who is the mother of my mother's brother's daughter is also the wife of the only son of my father's sister's husband.\\\" How is that woman related to Lila?\",\n  \"explanation\": \"My mother's brother is Lila's maternal uncle; his daughter is Lila's maternal cousin, so the child's mother is Lila's maternal aunt by blood. The extra clause only says she is married to Lila's paternal cousin, which does not change her blood relationship. Hence she is Lila's maternal aunt.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Paternal Uncle\",\n    \"B) Maternal Aunt\",\n    \"C) Cousin\",\n    \"D) Grandmother\"\n  ]\n}",
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Maya announced, \\\"The woman standing to my left is the daughter of the man who is married to my father's sister.\\\" How is that woman related to Maya?\",\n  \"explanation\": \"Maya's father's sister is Maya's paternal aunt. The man married to her is Maya's uncle by marriage. Their daughter is Maya's cousin. No other relationship fits the description.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Cousin\",\n    \"B) Aunt\",\n    \"C) Sister\",\n    \"D) Niece\"\n  ]\n}",
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    [
-        "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Maya says: \u201cMy father's sister is married to the brother of my mother's brother. The son of that brother is engaged to the daughter of my mother's sister's husband.\u201d How is the daughter mentioned in Maya's statement related to Maya?\",\n  \"choices\": [\n    \"A) Aunt\",\n    \"B) Sister\",\n    \"C) Niece\"\n  ],\n  \"answer\": \"D\",\n  \"explanation\": \"My mother's brother is a maternal uncle; his brother is another maternal uncle. Maya's father's sister (paternal aunt) married that uncle, so his son is Maya's maternal cousin. Maya's mother's sister is her maternal aunt; her husband\u2019s daughter is also Maya's cousin. Hence the daughter is Maya's cousin.\"\n}",
-        null,
-        null
-    ],
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    [
-        "I\u2019m sorry, but there\u2019s no JSON content provided to extract the requested fields from. Please supply the string containing the JSON data, and I\u2019ll be happy to extract the topic, question, choices, answer, and explanation for you.",
-        null,
-        null
-    ],
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"Mira said, \\\"My mother's brother's son is married to the woman who is the daughter of my father's sister's husband.\\\" How is that woman related to Mira?\",\n  \"explanation\": \"Mira's mother's brother is her maternal uncle; his son is Mira's maternal cousin. He is married to a woman. Mira's father's sister is her paternal aunt; her husband is the aunt's husband. Their daughter is Mira's paternal cousin. Thus the woman is Mira's cousin.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Cousin\",\n    \"B) Aunt\",\n    \"C) Sister\",\n    \"D) Niece\"\n  ]\n}",
-    "{\n  \"topic\": \"Puzzles involving generations and family tree logic\",\n  \"question\": \"At a family gathering Maya points to a man and says, \\\"He is the son of my father's only sister's husband, and he is also the husband of my only sister.\\\" How is that man related to Maya?\",\n  \"explanation\": \"My father's only sister is my paternal aunt; her husband is my uncle. Their son is my cousin. Since he is also married to my sister, he becomes my brother\u2011in\u2011law. The same person satisfies both statements, so his relation to me is brother\u2011in\u2011law.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Paternal uncle\",\n    \"B) Cousin\",\n    \"C) Brother-in-law\",\n    \"D) Nephew\"\n  ]\n}"
+    "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"During a family dinner, Leena says, \\\"The person sitting opposite me is the son of my father's sister, who is married to my mother's brother.\\\" How is that person related to Leena?\",\n  \"explanation\": \"Leena's father's sister is her paternal aunt. She is married to Leena's mother's brother, her maternal uncle. Their son shares both sets of grandparents with Leena, making him her double cousin (cousin on both paternal and maternal sides).\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Uncle\",\n    \"B) Nephew\",\n    \"C) Double cousin\",\n    \"D) Brother-in-law\"\n  ]\n}"
 ]
