@@ -254,9 +254,12 @@ if __name__ == "__main__":
                 # ++++++++++++++++++++++++++
                 # TODO: IMPROVE THE FOLLOWING
                 if len(a["answer"]) != 1:
-                    a["answer"] = agent.agent.generate_response(
+                    extracted_answer, _, _ = agent.agent.generate_response(
                         option_extractor_prompt(a["answer"], q["choices"])
                     )
+                    if isinstance(extracted_answer, (list, tuple)):
+                        extracted_answer = extracted_answer[0] if extracted_answer else ""
+                    a["answer"] = extracted_answer
                 # ++++++++++++++++++++++++++
             else:
                 # the dictionary is not as expected. So extract it using the same model: Self-Reflection
@@ -270,11 +273,17 @@ if __name__ == "__main__":
                     '    "reasoning": "..."\n'
                     "}}"
                 )
-                a = agent.agent.generate_response(
+                extracted_json, _, _ = agent.agent.generate_response(
                     prompt.format(json.dumps(a, indent=4))
                 )
+                if isinstance(extracted_json, (list, tuple)):
+                    extracted_json = extracted_json[0] if extracted_json else ""
+                a = extracted_json
         except json.JSONDecodeError:
-            a = agent.agent.generate_response(auto_json(a))
+            repaired_json, _, _ = agent.agent.generate_response(auto_json(a))
+            if isinstance(repaired_json, (list, tuple)):
+                repaired_json = repaired_json[0] if repaired_json else ""
+            a = repaired_json
         ans.append(a)
 
     if args.verbose:

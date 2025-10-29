@@ -2,8 +2,8 @@
     "Seating Arrangements (Circular and Linear)": [
         {
             "topic": "Seating Arrangements (Circular and Linear)",
-            "question": "On a round table with ten seats numbered clockwise from a marked top seat occupied by A (\"right\" = clockwise, \"left\" = counterclockwise), G sits immediately to A's right and B immediately to G's right; E sits directly opposite A with D immediately to E's left; H lies strictly on the clockwise arc from B to E (endpoints excluded); C is not adjacent to H; and I sits immediately to A's left; under these conditions, which statement must be true?",
-            "explanation": "From the constraints H is forced onto the only seat between B and E that is not D, so H's clockwise neighbor is always D. Across all valid arrangements B's opposite varies (C, J, or F), and C is never on the B-to-E arc; C may or may not be adjacent to E. Therefore only \"cw(H) = D\" is invariant.",
+            "question": "On a round table with ten seats numbered clockwise from a marked top seat occupied by A (\"right\" = clockwise, \"left\" = counterclockwise), G sits immediately to A’s right and B immediately to G’s right; E sits directly opposite A with D immediately to E’s left; H lies strictly on the clockwise arc from B to E (endpoints excluded); C is not adjacent to H; and I sits immediately to A’s left; under these conditions, which statement must be true?",
+            "explanation": "From the constraints H is forced onto the only seat between B and E that isn’t D, so H’s clockwise neighbor is always D. Across all valid arrangements B’s opposite varies (C/J/F), and C is never on the B→E arc; C may or may not be adjacent to E. Therefore only “cw(H) = D” is invariant.",
             "answer": "B",
             "choices": [
                 "A) C is adjacent to E.",
@@ -14,8 +14,8 @@
         },
         {
             "topic": "Seating Arrangements (Circular and Linear)",
-            "question": "Arrange A-J in a straight row of ten seats labeled 1 (leftmost) through 10 (rightmost): H sits in seat 1; A sits immediately to H's right; I sits immediately to A's right; D sits in seat 9; F sits in seat 10; the block B-E-G occupies three consecutive seats entirely within seats 3-8 (in that left-to-right order); and C sits somewhere to the left of D but is not adjacent to A or B; which set lists all and only the seats that C can occupy?",
-            "explanation": "With seats fixed as H1-A2-I3 and D9-F10, the B-E-G block must live wholly within seats 3-8. C must be left of D, not adjacent to A (seat 2) or B (the leftmost seat of the block). Exhaustive placement yields C in {4,7,8} only.",
+            "question": "Arrange A–J in a straight row of ten seats labeled 1 (leftmost) through 10 (rightmost): H sits in seat 1; A sits immediately to H’s right; I sits immediately to A’s right; D sits in seat 9; F sits in seat 10; the block B–E–G occupies three consecutive seats entirely within seats 3–8 (in that left‑to‑right order); and C sits somewhere to the left of D but is not adjacent to A or B; which set lists all and only the seats that C can occupy?",
+            "explanation": "With seats fixed as H1–A2–I3 and D9–F10, the B–E–G block must live wholly within 3–8. C must be left of D, not adjacent to A (2) or B (the leftmost of the block). Exhaustive placement yields C ∈ {4,7,8} only.",
             "answer": "D",
             "choices": [
                 "A) {4,6,8}",
@@ -26,7 +26,7 @@
         },
         {
             "topic": "Seating Arrangements (Circular and Linear)",
-            "question": "Around an eight-seat round table with A at the marked top, take table-relative directions as clockwise = right and counterclockwise = left; additionally, A, C, E, and G face the center while B, D, F, and H face outward, so each person's own \"right\" means clockwise if facing the center and counterclockwise if facing outward; with D immediately clockwise of A and F immediately clockwise of D; with E three seats clockwise of A; with C strictly on the clockwise arc from E to A (endpoints excluded); with H immediately clockwise of E; and with G immediately counterclockwise of B, who could have B on their right (from their own perspective)?",
+            "question": "Around an eight‑seat round table with A at the marked top, take table‑relative directions as clockwise = right, counterclockwise = left; additionally, A, C, E, G face the center while B, D, F, H face outward, so each person’s own “right” means clockwise if facing the center and counterclockwise if facing outward; with D immediately clockwise of A and F immediately clockwise of D; with E three seats clockwise of A; with C strictly on the clockwise arc from E to A (endpoints excluded); with H immediately clockwise of E; and with G immediately counterclockwise of B, who could have B on their right (from their own perspective)?",
             "explanation": "The constraints admit exactly two layouts; in both, G (who faces the center) has B as their clockwise neighbor, while A and D never do and H (facing outward) has E, not B, on their right. Hence only G can have B on their right.",
             "answer": "C",
             "choices": [
@@ -38,8 +38,8 @@
         },
         {
             "topic": "Seating Arrangements (Circular and Linear)",
-            "question": "Place A-J in a left-to-right line of ten seats where B sits immediately to the left of E, D sits immediately to the left of G, I sits immediately to the left of J, and C sits strictly between E and G while not adjacent to either; which of the following could be true?",
-            "explanation": "Because C must lie between E and G with at least one seat gap on both sides, E can be either left or right of G in different valid layouts. The other options are impossible: C cannot be immediately left of E (B is there), cannot be immediately right of G (forbidden by the constraint), and D cannot be to G's right (D is immediately left of G).",
+            "question": "Place A–J in a left‑to‑right line of ten seats where B sits immediately to the left of E, D sits immediately to the left of G, I sits immediately to the left of J, and C sits strictly between E and G while not adjacent to either; which of the following could be true?",
+            "explanation": "Because C must lie between E and G with at least one seat gap on both sides, E can be either left or right of G in different valid layouts. The other options are impossible: C can’t be immediately left of E (B is there), can’t be immediately right of G (forbidden), and D cannot be to G’s right (D is immediately left of G).",
             "answer": "A",
             "choices": [
                 "A) E is to the left of G.",
@@ -50,8 +50,8 @@
         },
         {
             "topic": "Seating Arrangements (Circular and Linear)",
-            "question": "On an eight-seat circle with A at the marked top (right = clockwise), suppose F sits immediately clockwise of A; E sits three seats clockwise of A; H sits opposite A; B sits immediately clockwise of H; B, D, and G are consecutive clockwise in that order; and C lies strictly on the clockwise arc from F to E (endpoints excluded); who sits immediately left of the person who is immediately left of the one opposite C?",
-            "explanation": "The constraints force a unique clockwise order: A, F, C, E, H, B, D, G. Opposite C is D; the person immediately left of D is B; the person immediately left of B is H. Therefore the required person is H.",
+            "question": "On an eight‑seat circle with A at the marked top (right = clockwise), suppose F sits immediately clockwise of A; E sits three seats clockwise of A; H sits opposite A; B sits immediately clockwise of H; B, D, and G are consecutive clockwise in that order; and C lies strictly on the clockwise arc from F to E (endpoints excluded); who sits immediately left of the person who is immediately left of the one opposite C?",
+            "explanation": "The constraints force a unique clockwise order: A–F–C–E–H–B–D–G. Opposite C is D; the person immediately left of D is B; the person immediately left of B is H. Therefore the required person is H.",
             "answer": "A",
             "choices": [
                 "A) H",
@@ -63,7 +63,7 @@
         {
             "topic": "Seating Arrangements (Circular and Linear)",
             "question": "On a round table with ten seats numbered clockwise from a marked top seat taken by A (right = clockwise), G sits immediately clockwise of A and B sits immediately clockwise of G; E sits directly opposite A with D immediately counterclockwise of E; H lies strictly on the clockwise arc from B to E (endpoints excluded); C is not adjacent to H; and I sits immediately counterclockwise of A; under these constraints, which person cannot be directly opposite B?",
-            "explanation": "Enumerating all valid arrangements under these constraints shows the person opposite B can be C, F, or J only; E never appears opposite B. Hence \"E\" is the unique impossibility.",
+            "explanation": "Enumerating all valid arrangements under these constraints shows the person opposite B can be C, F, or J only; E never appears opposite B. Hence “E” is the unique impossibility.",
             "answer": "D",
             "choices": [
                 "A) J",
@@ -77,7 +77,7 @@
         {
             "topic": "Blood Relations and Family Trees",
             "question": "Brothers A and B married sisters C and D, respectively; A with C had X, B with D had Y; later X (with an unrelated partner) had P and Y (with an unrelated partner) had Q; in standard English kinship terms and without ignoring doubled ancestry, what is the most precise relation between P and Q?",
-            "explanation": "X and Y are double first cousins because they share both grandparent pairs. Their children P and Q therefore share both great-grandparent pairs, making them second cousins with doubling. Hence the most precise label is double second cousins.",
+            "explanation": "X and Y are double first cousins (they share both grandparent pairs). Their children P and Q therefore share both great-grandparent pairs, making them second cousins with doubling. Hence the most precise label is \"double second cousins.\"",
             "answer": "D",
             "choices": [
                 "A) First cousins",
@@ -88,11 +88,11 @@
         },
         {
             "topic": "Blood Relations and Family Trees",
-            "question": "Using standard English kinship terms only (in-law limited to spouse, spouse's parents or siblings, siblings' spouses, and children's spouses), R is married to S, S's brother is T, T's wife is U, and U's brother is V; who is V to R?",
-            "explanation": "R connects to V through an affinal chain: spouse S, S's sibling T, T's spouse U, and U's sibling V. This passes beyond the usual in-law scope and never introduces a blood link, so V has no standard direct kin term to R.",
+            "question": "Using standard English kinship terms only (in-law limited to spouse, spouse’s parents/siblings, siblings’ spouses, children’s spouses), R is married to S, S’s brother is T, T’s wife is U, and U’s brother is V; who is V to R?",
+            "explanation": "R→S (spouse) →T (sibling-in-law) →U (that sibling’s spouse) →V (that spouse’s sibling). This passes beyond immediate in-law scope and never introduces a blood link. Thus V has no standard direct kin term to R.",
             "answer": "C",
             "choices": [
-                "A) Brother-in-law",
+                "A) Brother‑in‑law",
                 "B) Cousin-in-law",
                 "C) No standard direct relation (affinal chain only)",
                 "D) Nephew-in-law"
@@ -100,11 +100,11 @@
         },
         {
             "topic": "Blood Relations and Family Trees",
-            "question": "In a single breath: let P and Q be, respectively, the child of the only brother of R's mother and the child of the only brother of R's father; if one selects either P or Q and calls that person S, then S is who to R?",
-            "explanation": "Whether S is the child of R's maternal uncle or R's paternal uncle, S is always the child of a parent's brother. That relation to R is first cousin.",
+            "question": "In a single breath: let P and Q be, respectively, the child of the only brother of R’s mother and the child of the only brother of R’s father; if one selects either P or Q and calls that person S, then S is who to R?",
+            "explanation": "Whether S is the child of R’s maternal uncle or paternal uncle, S is the child of a parent’s brother. That relation to R is always a first cousin.",
             "answer": "B",
             "choices": [
-                "A) Nephew or niece",
+                "A) Nephew/Niece",
                 "B) First cousin",
                 "C) First cousin once removed",
                 "D) Not uniquely determinable"
@@ -112,8 +112,8 @@
         },
         {
             "topic": "Blood Relations and Family Trees",
-            "question": "Pointing to a man, I say: \"He is the only son of my mother, I am the only daughter of my mother, and I have no brothers\"; under the standard meaning of \"only\" and monogamy, who is he to me?",
-            "explanation": "If I have no brothers, then my mother has no sons, contradicting the claim that the man is her only son. The statements cannot simultaneously hold, making the configuration impossible.",
+            "question": "“Pointing to a man, I say: \"He is the only son of my mother, I am the only daughter of my mother, and I have no brothers\"; under the standard meaning of \"only\" and monogamy, who is he to me?”",
+            "explanation": "“If I have no brothers, then my mother has no sons. That directly contradicts \"He is the only son of my mother.\" The constraints cannot all hold; the scenario is impossible.”",
             "answer": "C",
             "choices": [
                 "A) Brother",
@@ -125,19 +125,19 @@
         {
             "topic": "Blood Relations and Family Trees",
             "question": "Using standard English kinship, with no adoption and monogamy allowed but remarriage permitted: \"Z is the spouse of the parent that my spouse shares with their sibling\"; who must Z be to me?",
-            "explanation": "The shared parent is my parent-in-law. That parent's spouse could be my other parent-in-law if still married to the other biological parent, or a later spouse who is a step-parent-in-law. Both scenarios occur, so only the A or B ambiguity is guaranteed.",
+            "explanation": "The shared parent is my parent‑in‑law. That parent’s spouse could be my other parent‑in‑law (if still married to the other biological parent) or a later spouse (step‑parent‑in‑law). Both occur; only the A/B indeterminacy is guaranteed.",
             "answer": "D",
             "choices": [
-                "A) Parent-in-law (mother-in-law or father-in-law)",
-                "B) Step-parent-in-law (spouse of a parent-in-law who is not my spouse's parent)",
+                "A) Parent-in-law (mother-/father-in-law)",
+                "B) Step-parent-in-law (spouse of a parent-in-law who is not my spouse’s parent)",
                 "C) No relation",
                 "D) Not uniquely determinable between A and B"
             ]
         },
         {
             "topic": "Blood Relations and Family Trees",
-            "question": "A and B share exactly one parent (are half-siblings), each has one child (X is A's child, Y is B's child), and there are no other intermarriages; what is the precise relation between X and Y?",
-            "explanation": "Children of half-siblings share a single grandparent rather than a full pair. The precise term is half-first cousins, not full first cousins and not second cousins.",
+            "question": "A and B share exactly one parent (are half-siblings), each has one child (X is A’s child, Y is B’s child), there are no other intermarriages; what is the precise relation between X and Y?",
+            "explanation": "Children of half-siblings share a single grandparent rather than a full pair. The precise term is \"half-first cousins\"—not full first cousins (which require both shared grandparents) and not second cousins.",
             "answer": "A",
             "choices": [
                 "A) Half-first cousins",
