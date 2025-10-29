@@ -67,7 +67,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dpo_samples_per_attempt",
         type=int,
-        default=6,
+        default=4,
         help="Number of completions to request per model call when building the DPO dataset.",
     )
     parser.add_argument("--dpo_question_token_limit", type=int, default=1024)
@@ -394,18 +394,77 @@ def validate_question(obj: Dict[str, Any]) -> Tuple[bool, str, Dict[str, Any]]:
     return True, "", cleaned
 
 
+def _completion_token_count(raw_response: Any) -> Optional[int]:
+    if not isinstance(raw_response, dict):
+        return None
+    usage = raw_response.get("usage")
+    if isinstance(usage, dict):
+        tokens = usage.get("completion_tokens")
+        if isinstance(tokens, (int, float)):
+            return int(tokens)
+    return None
+
+
+def _collect_response_fragments(raw_response: Any) -> List[str]:
+    if not isinstance(raw_response, dict):
+        return []
+    choices = raw_response.get("choices")
+    if not isinstance(choices, list) or not choices:
+        return []
+    message = choices[0].get("message") or {}
+    fragments: List[str] = []
+
+    def _append_fragment(value: Any) -> None:
+        if isinstance(value, str):
+            fragments.append(value)
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, str):
+                    fragments.append(item)
+                elif isinstance(item, dict):
+                    text = item.get("text") or item.get("content")
+                    if isinstance(text, str):
+                        fragments.append(text)
+        elif isinstance(value, dict):
+            text = value.get("text") or value.get("content")
+            if isinstance(text, str):
+                fragments.append(text)
+
+    _append_fragment(message.get("content"))
+    _append_fragment(message.get("reasoning_content"))
+    _append_fragment(message.get("reasoning"))
+    return fragments
+
+
+def _enforce_token_limit(
+    normalized_text: str,
+    tokenizer: Any,
+    token_limit: int,
+    raw_response: Any,
+) -> bool:
+    if not token_limit:
+        return True
+    token_count = _completion_token_count(raw_response)
+    if token_count is None and tokenizer is not None:
+        composite_text = normalized_text
+        fragments = _collect_response_fragments(raw_response)
+        if fragments:
+            composite_text = "\n".join(fragments)
+        token_count = len(tokenizer.encode(composite_text, add_special_tokens=False))
+    if token_count is None:
+        return True
+    return token_count <= token_limit
+
+
 def classify_question_output(
     raw_text: str,
     tokenizer: Any,
     token_limit: int,
+    raw_response: Any = None,
 ) -> Tuple[bool, str, str, Optional[Dict[str, Any]]]:
     text = raw_text if isinstance(raw_text, str) else str(raw_text)
     if not text.strip():
         return False, text, "empty_output", None
-    if token_limit and tokenizer is not None:
-        token_count = len(tokenizer.encode(text, add_special_tokens=False))
-        if token_count > token_limit:
-            return False, text, "length_exceeded", None
     try:
         payload = json.loads(text)
     except json.JSONDecodeError:
@@ -416,6 +475,8 @@ def classify_question_output(
     if not ok:
         return False, text, reason or "invalid_question", None
     normalized = json.dumps(cleaned, ensure_ascii=False, separators=(",", ":"))
+    if not _enforce_token_limit(normalized, tokenizer, token_limit, raw_response):
+        return False, text, "length_exceeded", None
     return True, normalized, "", cleaned
 
 
@@ -621,14 +682,11 @@ def classify_answer_output(
     tokenizer: Any,
     token_limit: int,
     require_correct: bool,
+    raw_response: Any = None,
 ) -> Tuple[bool, str, str, None]:
     text = raw_text if isinstance(raw_text, str) else str(raw_text)
     if not text.strip():
         return False, text, "empty_output", None
-    if token_limit and tokenizer is not None:
-        token_count = len(tokenizer.encode(text, add_special_tokens=False))
-        if token_count > token_limit:
-            return False, text, "length_exceeded", None
     try:
         payload = json.loads(text)
     except json.JSONDecodeError:
@@ -655,12 +713,14 @@ def classify_answer_output(
         "answer": normalized_answer,
     }
     normalized = json.dumps(normalized_payload, ensure_ascii=False, separators=(",", ":"))
+    if not _enforce_token_limit(normalized, tokenizer, token_limit, raw_response):
+        return False, text, "length_exceeded", None
     return True, normalized, "", None
 
 
 def sample_preference_pair(
     generate_fn: Callable[[int], List[Any]],
-    classify_fn: Callable[[str], Tuple[bool, str, str, Optional[Any]]],
+    classify_fn: Callable[[str, Any], Tuple[bool, str, str, Optional[Any]]],
     max_calls: int,
     batch_size: int,
 ) -> Tuple[
@@ -695,10 +755,12 @@ def sample_preference_pair(
                     response_obj = candidate[1]
             else:
                 candidate_text = candidate
-            candidate_text = (
+            candidate_text_str = (
                 candidate_text if isinstance(candidate_text, str) else str(candidate_text)
             )
-            is_valid, normalized, reason, extra = classify_fn(candidate_text)
+            is_valid, normalized, reason, extra = classify_fn(
+                candidate_text_str, response_obj
+            )
             if is_valid:
                 if valid_output is None:
                     valid_output = normalized
@@ -706,7 +768,7 @@ def sample_preference_pair(
                     valid_response = response_obj
             else:
                 if invalid_output is None:
-                    invalid_output = candidate_text
+                    invalid_output = candidate_text_str
                     invalid_reason = reason or "invalid_output"
                     invalid_response = response_obj
             if valid_output is not None and invalid_output is not None:
@@ -792,9 +854,11 @@ def build_dpo_dataset(
     question_generation_kwargs = prepare_generation_kwargs(
         question_kwargs, args.dpo_question_max_new_tokens
     )
+    question_generation_kwargs["max_new_tokens"] = 1536
     answer_generation_kwargs = prepare_generation_kwargs(
         answer_kwargs, args.dpo_answer_max_new_tokens
     )
+    answer_generation_kwargs["max_new_tokens"] = 768
 
     topics_sequence = question_agent.populate_topics(topics, args.num_questions)
     question_pairs: List[Dict[str, Any]] = []
@@ -832,10 +896,9 @@ def build_dpo_dataset(
             prompts = [prompt] * batch
             local_kwargs = dict(question_generation_kwargs)
             local_kwargs["concurrency"] = min(128, batch)
-            response, _, _ = question_agent.agent.generate_response(
-                prompts, system_prompt, **local_kwargs
+            response, _, _, raw_responses = question_agent.agent.generate_response(
+                prompts, system_prompt, return_raw=True, **local_kwargs
             )
-            raw_responses = getattr(question_agent.agent, "last_raw_responses", [])
             outputs = [response] if isinstance(response, str) else list(response)
             combined: List[Tuple[str, Any]] = []
             for idx, item in enumerate(outputs):
@@ -856,8 +919,8 @@ def build_dpo_dataset(
             invalid_response_obj,
         ) = sample_preference_pair(
             generate_question,
-            lambda text: classify_question_output(
-                text, question_tokenizer, question_token_limit
+            lambda text, raw: classify_question_output(
+                text, question_tokenizer, question_token_limit, raw
             ),
             max_attempts,
             batch_size,
@@ -928,10 +991,9 @@ def build_dpo_dataset(
             prompts = [prompt] * batch
             local_kwargs = dict(answer_generation_kwargs)
             local_kwargs["concurrency"] = min(128, batch)
-            response, _, _ = answer_agent.agent.generate_response(
-                prompts, system_prompt, **local_kwargs
+            response, _, _, raw_responses = answer_agent.agent.generate_response(
+                prompts, system_prompt, return_raw=True, **local_kwargs
             )
-            raw_responses = getattr(answer_agent.agent, "last_raw_responses", [])
             outputs = [response] if isinstance(response, str) else list(response)
             combined: List[Tuple[str, Any]] = []
             for idx, item in enumerate(outputs):
@@ -952,12 +1014,13 @@ def build_dpo_dataset(
             invalid_response_obj,
         ) = sample_preference_pair(
             generate_answer,
-            lambda text: classify_answer_output(
+            lambda text, raw: classify_answer_output(
                 text,
                 question_payload,
                 answer_tokenizer,
                 answer_token_limit,
                 require_correct,
+                raw,
             ),
             max_attempts,
             batch_size,
@@ -1181,6 +1244,13 @@ def main() -> None:
                 handle,
                 indent=2,
             )
+
+        questions_file_path = output_dir / "questions.json"
+        q_agent.save_questions(normalized_questions, questions_file_path)
+
+        filtered_question_records = q_agent.filter_questions(normalized_questions)
+        filtered_questions_path = output_dir / "filtered_questions.json"
+        q_agent.save_questions(filtered_question_records, filtered_questions_path)
 
         answers_raw: List[Any] = []
         answer_token_lengths: List[int] = []

@@ -1,5 +1,6 @@
 # Starting with Qwen3-4B
 import json
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Dict, List, Optional
@@ -20,11 +21,29 @@ class QAgent(object):
         self.tokenizer = AutoTokenizer.from_pretrained(
             tokenizer_name, padding_side="left"
         )
-        self._last_raw_responses: List[Dict[str, Any]] = []
+        self._local = threading.local()
 
     @property
     def last_raw_responses(self) -> List[Dict[str, Any]]:
-        return list(self._last_raw_responses)
+        stack = getattr(self._local, "raw_responses_stack", None)
+        if stack:
+            try:
+                latest = stack.pop()
+            except IndexError:
+                latest = []
+        else:
+            latest = getattr(self._local, "raw_responses", [])
+        return list(latest)
+
+    def _record_raw_responses(self, responses: List[Dict[str, Any]]) -> None:
+        self._local.raw_responses = responses
+        stack = getattr(self._local, "raw_responses_stack", None)
+        if stack is None:
+            stack = []
+            self._local.raw_responses_stack = stack
+        else:
+            stack.clear()
+        stack.append(responses)
     @staticmethod
     def _split_sys_dev(system_prompt: str) -> tuple[str, Optional[str]]:
         marker = "<|DEVELOPER|>"
@@ -52,6 +71,7 @@ class QAgent(object):
         message_list = [message] if isinstance(message, str) else list(message)
 
         kwargs = dict(kwargs)
+        return_raw = kwargs.pop("return_raw", False)
         tgps_show_var = kwargs.pop("tgps_show", False)
         concurrency_raw = kwargs.pop("concurrency", 128)
         try:
@@ -117,16 +137,21 @@ class QAgent(object):
                 token_len += tokens
 
         results = outputs[0] if len(outputs) == 1 else outputs
-        self._last_raw_responses = raw_responses
+        self._record_raw_responses(raw_responses)
 
         if tgps_show_var and start_time is not None:
             generation_time = time.time() - start_time
-            return (
+            base_return = (
                 results,
                 token_len,
                 generation_time,
             )
-        return results, None, None
+        else:
+            base_return = (results, None, None)
+
+        if return_raw:
+            return (*base_return, list(raw_responses))
+        return base_return
 
     @staticmethod
     def _extract_message_content(choice: dict) -> str:
