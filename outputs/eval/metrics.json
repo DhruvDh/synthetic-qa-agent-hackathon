@@ -1,78 +1,78 @@
 {
   "question_metrics": {
-    "total_generated": 6112,
-    "valid_count": 2246,
-    "invalid_count": 3866,
+    "total_generated": 1592,
+    "valid_count": 933,
+    "invalid_count": 659,
     "invalid_reasons": {
-      "json_decode_error": 3866
+      "json_decode_error": 659
     }
   },
   "question_timing": {
-    "batch_count": 48,
-    "total_tokens": 5522959,
-    "total_time_sec": 1763.7403116226196,
-    "tokens_per_sec": 3131.390127903209
+    "batch_count": 13,
+    "total_tokens": 1138947,
+    "total_time_sec": 434.5873625278473,
+    "tokens_per_sec": 2620.7549924487716
   },
   "question_truncations": 0,
-  "question_empty_events": 3452,
+  "question_empty_events": 521,
   "answer_metrics": {
-    "questions_answered": 2246,
-    "valid_count": 1123,
-    "invalid_count": 1123,
+    "questions_answered": 933,
+    "valid_count": 361,
+    "invalid_count": 572,
     "invalid_reasons": {
-      "json_decode_error": 1123
+      "json_decode_error": 572
     },
-    "correct_count": 1064,
-    "accuracy": 0.9474621549421193
+    "correct_count": 327,
+    "accuracy": 0.9058171745152355
   },
   "answer_timing": {
-    "batch_count": 18,
-    "total_tokens": 969265,
-    "total_time_sec": 318.9195954799652,
-    "tokens_per_sec": 3039.214315261133
+    "batch_count": 8,
+    "total_tokens": 421029,
+    "total_time_sec": 140.0786395072937,
+    "tokens_per_sec": 3005.661687470041
   },
   "answer_truncations": 0,
-  "answer_empty_events": 792,
+  "answer_empty_events": 445,
   "completion_monitor": {
-    "total_calls": 8358,
+    "total_calls": 2525,
     "total_errors": 0,
-    "total_latency_sec": 232453.45330786705,
+    "total_latency_sec": 54346.08551979065,
     "modes": {
       "question": {
-        "total_calls": 6112,
+        "total_calls": 1592,
         "finish_reasons": {
-          "stop": 2245,
-          "length": 3867
+          "stop": 933,
+          "length": 659
         },
         "empty_reason_counts": {
-          "empty_content": 3452
+          "empty_content": 521
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: C (others: A, B, D)\n- Keep the explanation <= 90 words\nEXAMPLE: Blood Relations and Family Trees/Blood Relations and Family Trees\n{",
-        "completion_tokens": 5522959,
-        "prompt_tokens": 12324678,
-        "avg_latency_sec": 32.41101123119524,
-        "max_latency_sec": 37.329577922821045,
-        "min_latency_sec": 12.00022840499878
+        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: A (others: B, C, D)\n- Keep the explanation <= 90 words\nEXAMPLE RESPONSE:\n{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"questi",
+        "completion_tokens": 1138947,
+        "prompt_tokens": 3322594,
+        "avg_latency_sec": 24.69531917751734,
+        "max_latency_sec": 34.79161477088928,
+        "min_latency_sec": 8.61377215385437
       },
       "answer": {
-        "total_calls": 2246,
+        "total_calls": 933,
         "finish_reasons": {
-          "stop": 1115,
-          "length": 1131
+          "stop": 360,
+          "length": 573
         },
         "empty_reason_counts": {
-          "empty_content": 792
+          "empty_content": 445
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "PUZZLE: In a family, siblings A, B and G share the same parents. A has a child C. G has a child F. D, a child of B, marries F (the marriage is irrelevant to blood ties). What is the precise blood relationship between C and F?\nCHOICES: A) A) Siblings B) B) First cousins C) C) Second cousins D) D) Not determinable\n\nReturn using response format: answer_json with the **exact JSON key order**: reasonin",
-        "completion_tokens": 969265,
-        "prompt_tokens": 999128,
-        "avg_latency_sec": 15.29712941353595,
-        "max_latency_sec": 18.251518726348877,
-        "min_latency_sec": 5.510671138763428
+        "prompt_example": "PUZZLE: In a family where there are no adoptions, no multiple spouses, and all marriages are monogamous, let X and Y be siblings. X has one child, C, and Y has one child, D. What is the precise kinship term for the relationship between C and D?\nCHOICES: A) Siblings B) Half\u2011first cousins C) First cousins D) Second cousins\n\nReturn using response format: answer_json with the **exact JSON key order**:",
+        "completion_tokens": 421029,
+        "prompt_tokens": 417719,
+        "avg_latency_sec": 16.110543825490936,
+        "max_latency_sec": 18.512513637542725,
+        "min_latency_sec": 4.900214910507202
       },
       "other": {
         "total_calls": 0,
@@ -90,7 +90,7 @@
     }
   },
   "config": {
-    "num_questions": 6000,
+    "num_questions": 1500,
     "batch_size": 128,
     "answer_batch_size": 128,
     "topics_file": "assets/topics.json",

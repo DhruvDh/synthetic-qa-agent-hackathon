@@ -1,1 +1,31 @@
-[]
+[
+    null,
+    {
+        "reasoning": "M and N are full siblings, so their children O and P are first cousins. The children of first cousins share the same great\u2011grandparents (the parents of M and N) but not the same grandparents, which defines a second\u2011cousin relationship. There is no generational offset (removal) and no half\u2011sibling situation, so the most precise term is second cousins.",
+        "answer": "C"
+    },
+    {
+        "reasoning": "Anna and Ben share both parents; Carla and Dave share both parents. Emma's parents (Anna, Carla) each have a sibling who is one of Frank's parents (Ben, Dave). Therefore Emma and Frank have the same two sets of grandparents, making them children of two sibling pairs\u2014a classic definition of double first cousins.",
+        "answer": "B"
+    },
+    null,
+    null,
+    {
+        "reasoning": "L\u2019s father\u2019s sister is L\u2019s paternal aunt; her child would be L\u2019s first cousin on the paternal side. L\u2019s mother\u2019s brother is L\u2019s maternal uncle; his child would be L\u2019s first cousin on the maternal side. The puzzle states that these two children are the same person, M, meaning the aunt and the uncle are the parents of M. Thus M is simultaneously the child of L\u2019s paternal aunt and maternal uncle, making M a first cousin to L through both parental lines (a double first cousin). The relationship is uniquely determined as a first cousin.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "M and N are siblings, so their children O and P are first cousins (they share the same set of grandparents). Q is O's child and R is P's child, placing them one generation below O and P. Children of first cousins share great\u2011grandparents, making them second cousins. No half\u2011relationship or generational offset is involved, so the precise term is second cousins.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "Anna's paternal aunt is Mary (her father's sister). Tom is Mary's husband, making him Anna's uncle by marriage. He is not a blood uncle nor a cousin, and there is a direct relation (uncle-in-law).",
+        "answer": "B"
+    },
+    {
+        "reasoning": "A's mother and B's father are siblings, making them brother\u2011sister. A is the child of that sister, and B is the child of the brother. Children of siblings are first cousins, so A and B share a pair of grandparents and are first cousins.",
+        "answer": "B"
+    },
+    null,
+    null
+]

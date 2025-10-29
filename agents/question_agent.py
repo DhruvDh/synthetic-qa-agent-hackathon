@@ -22,30 +22,25 @@ class QuestioningAgent(object):
         """
         if not inc_samples:
             return ""
-        fmt = (
-            "EXAMPLE: {}\n"
-            "{{\n"
-            '  "topic": "{}",\n'
-            '  "question": "{}",\n'
-            '  "choices": ["A) {}", "B) {}", "C) {}", "D) {}"],\n'
-            '  "answer": "{}",\n'
-            '  "explanation": "{}"\n'
-            "}}"
-        )
+        topic_suffix = topic.split("/")[-1].strip()
+        matching = [
+            sample
+            for sample in inc_samples
+            if isinstance(sample, dict)
+            and sample.get("topic", "").split("/")[-1].strip() == topic_suffix
+        ]
+        if not matching:
+            matching = [sample for sample in inc_samples if isinstance(sample, dict)]
 
-        sample_str = ""
-        for sample in inc_samples:
-            question = sample.get("question", "")
-            choices = sample.get("choices", [""] * 4)
-            answer = sample.get("answer", "")
-            explanation = sample.get("explanation", "")
-            sample_str += (
-                fmt.format(
-                    topic, topic.split("/")[-1], question, *choices, answer, explanation
-                )
-                + "\n\n"
-            )
-        return sample_str.strip()
+        example_blocks = []
+        for sample in matching:
+            try:
+                rendered = json.dumps(sample, ensure_ascii=False, indent=2)
+            except (TypeError, ValueError):
+                continue
+            example_blocks.append(f"EXAMPLE RESPONSE:\n{rendered}")
+
+        return "\n\n".join(example_blocks)
 
     def build_prompt(
         self,
@@ -58,14 +53,16 @@ class QuestioningAgent(object):
         _ = wadvsys  # Compatibility with legacy interface; advanced prompt always used.
         
         sys_prompt = (
-            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator.\n"
+            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator. You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly.\n"
             "Knowledge cutoff: 2024-06\n"
             "Current date: 2025-10-28\n\n"
             "Reasoning: low\n\n"
-            "# Valid channels: analysis, final. Channel must be included for every message.\n"
+            "# Valid channels: analysis, final. Channel must be included for every message. You have a ~600 word limit across all channels which necessitates your reasoning be minimal in the analysis channel.\n"
             "<|DEVELOPER|>\n"
             "# Instructions\n"
-            "You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly. You have been trained to generate tricky, hard to understand and even harder to solve puzzles in the domain of:\n"
+            "Anything you write in the analysis channel, or your chain of thoughts, also count towards the roughly 600 word limit. So it is critical that you be extremely terse in the analysis channel. The most common (~99%) failure reason for you has been overtly long content in the analysis channel. You tend to do this in ~65% of all attempts, and you WILL NOT win unless you minimize your analysis/reasoning/chain of thought to be minimal or even eliminate it entirely.\n"
+            "Do not repeat these constraints in the analysis channel; doing so wastes precious words.\n\n"
+            "You have been trained to generate puzzles in the form of MCQ questions in the domain of:\n"
             "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
             "2. Blood relations and family trees\n\n"
             "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"

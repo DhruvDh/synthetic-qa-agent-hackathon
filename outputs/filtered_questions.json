@@ -1,1 +1,134 @@
-[]
+[
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "M\u2019s mother has a brother (M\u2019s maternal uncle) whose daughter (M\u2019s maternal cousin) marries M\u2019s father\u2019s brother (M\u2019s paternal uncle). What is the most precise standard English kinship term for the relation between M and the child of that marriage?",
+        "explanation": "The child is the offspring of M\u2019s paternal uncle, making the child M\u2019s first cousin on the father's side. The same child is also the offspring of M\u2019s maternal cousin, which would be a first\u2011cousin\u2011once\u2011removed relation, but the closer blood link (first cousin) dominates as the most specific term.",
+        "answer": "A",
+        "choices": [
+            "A) First cousin",
+            "B) Half\u2011first cousin",
+            "C) Second cousin",
+            "D) No unique standard term"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "In a family, M and N are siblings. M has a daughter O. N has a son P. O and P each marry a person unrelated to the family, and each couple has exactly one child. What is the most precise kinship term for the two grandchildren to each other?",
+        "explanation": "O and P are first cousins (children of siblings). Their children therefore share the same set of great\u2011grandparents, making them second cousins. No additional shared ancestry exists, so the precise term is \"second cousins.\"",
+        "answer": "C",
+        "choices": [
+            "A) First cousins once removed",
+            "B) Half\u2011first cousins",
+            "C) Second cousins",
+            "D) Not determinable"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Anna and Ben are full siblings. Anna marries Carla, Ben marries Dave. Carla and Dave are also full siblings. Their respective children, Emma (Anna\u202f+\u202fCarla) and Frank (Ben\u202f+\u202fDave), are born. Using standard English kinship terms (no adoption, monogamy), what is the precise relation between Emma and Frank?",
+        "explanation": "Emma and Frank share both sets of grandparents: Anna and Ben\u2019s parents, and Carla and Dave\u2019s parents. Thus they have the same four grandparents, making them double first cousins \u2013 a more specific term than ordinary first cousins.",
+        "answer": "B",
+        "choices": [
+            "A) First cousins",
+            "B) Double first cousins",
+            "C) Half\u2011first cousins",
+            "D) Second cousins"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "In a monogamous family with no adoption, let X be the child of the only brother of A\u2019s mother, and also the child of the only sister of A\u2019s father. What is the most precise kinship term for X relative to A?",
+        "explanation": "A\u2019s mother\u2019s brother is A\u2019s maternal uncle; his only child is A\u2019s maternal first cousin. A\u2019s father\u2019s sister is A\u2019s paternal aunt; her only child is A\u2019s paternal first cousin. Since both parents are siblings of A\u2019s parents, X shares both sets of grandparents with A, making X a double first cousin of A.",
+        "answer": "B",
+        "choices": [
+            "A) First cousin",
+            "B) Double first cousin",
+            "C) Half-first cousin",
+            "D) Not determinable"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "A and B are double first cousins (each of their parents are siblings with the other's parents). A\u2019s child is C and B\u2019s child is D, and C and D marry each other. What is the most precise kinship term for the children of C and D?",
+        "explanation": "A and B share both sets of grandparents, so they are double first cousins. Their children C and D therefore share both sets of great\u2011grandparents, making them double second cousins. The offspring of double second cousins are thus \"double second cousins\" to each other, the most specific label.",
+        "answer": "C",
+        "choices": [
+            "A) First cousins",
+            "B) Second cousins",
+            "C) Double second cousins",
+            "D) Third cousins"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "L\u2019s father has exactly one sister, and L\u2019s mother has exactly one brother. The child of that sister and the child of that brother are the same person, M. What is M\u2019s relation to L using standard English kinship terms?",
+        "explanation": "M is the child of L\u2019s paternal aunt (father\u2019s sister) and also the child of L\u2019s maternal uncle (mother\u2019s brother). In either case M is the child of a parent\u2019s sibling, which is exactly a first cousin to L.",
+        "answer": "B",
+        "choices": [
+            "A) Half\u2011first cousin",
+            "B) First cousin",
+            "C) Second cousin",
+            "D) Not uniquely determinable"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "In a family, M and N are siblings. M has a daughter O. N has a son P. O and P each marry a person who is unrelated to the family, and each has one child (O\u2019s child is Q, P\u2019s child is R). Using standard English kinship terms, what is the most precise relationship between Q and R?",
+        "explanation": "O and P are first cousins (children of siblings). Their children Q and R are therefore children of first cousins, which makes Q and R second cousins. No additional double or half relationships exist, so the precise term is \"second cousins.\"",
+        "answer": "B",
+        "choices": [
+            "A) First cousins once removed",
+            "B) Second cousins",
+            "C) Half-first cousins",
+            "D) Not determinable"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Anna\u2019s mother has a brother (her maternal uncle) who is married to Lisa. Lisa\u2019s brother Tom is married to Mary, who is the sister of Anna\u2019s father. What is Tom to Anna?",
+        "explanation": "Tom is the husband of Mary, who is Anna\u2019s paternal aunt (father\u2019s sister). Therefore Tom is Anna\u2019s uncle by marriage, i.e., an uncle\u2011in\u2011law. No blood link exists, so the precise term is \"uncle\u2011in\u2011law\".",
+        "answer": "B",
+        "choices": [
+            "A) Uncle",
+            "B) Uncle-in-law",
+            "C) Cousin",
+            "D) No direct relation"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Person A\u2019s mother and Person B\u2019s father are siblings. Using standard English kinship terms, what is the precise blood relation between A and B?",
+        "explanation": "A\u2019s mother and B\u2019s father share the same parents, making them brother\u2011and\u2011sister. Therefore A and B share those grandparents, which defines them as first cousins. No other listed relation fits.",
+        "answer": "B",
+        "choices": [
+            "A) Half\u2011siblings",
+            "B) First cousins",
+            "C) Uncle or aunt",
+            "D) No blood relation"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "On a round table with eight seats numbered clockwise from a marked top seat occupied by A (right = clockwise, left = counter\u2011clockwise), the following hold: G sits immediately clockwise of A; B sits immediately clockwise of G; E sits directly opposite A; D sits immediately clockwise of E; H lies strictly on the clockwise arc from B to E (endpoints excluded); C is not adjacent to H; and I sits immediately counter\u2011clockwise of A. Which statement must be true?",
+        "explanation": "With A fixed, G and B are forced to the two seats right of A, and E opposite A forces D to its right. The only empty seat on the B\u2192E arc is between B and D, so H must occupy that seat, making D the clockwise neighbor of H in every valid layout. No other option holds universally.",
+        "answer": "B",
+        "choices": [
+            "A) C sits immediately clockwise of H.",
+            "B) The person immediately clockwise of H is D.",
+            "C) B sits opposite F.",
+            "D) G lies on the clockwise arc from D to I (exclusive)."
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Let R be a person whose mother has exactly one brother and whose father also has exactly one brother. S is the child of the mother\u2019s brother, and also the child of the father\u2019s brother (the two brothers are not the same person). What is the precise kinship term for S relative to R?",
+        "explanation": "S is either the child of R\u2019s maternal uncle or the child of R\u2019s paternal uncle. In both cases S is a first cousin of R, because a cousin is defined as the child of any of one\u2019s parents\u2019 siblings. The two possibilities do not change the term.",
+        "answer": "B",
+        "choices": [
+            "A) Nephew/Niece",
+            "B) First cousin",
+            "C) Half\u2011first cousin",
+            "D) Not uniquely determinable"
+        ]
+    }
+]

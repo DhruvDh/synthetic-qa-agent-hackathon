@@ -1,1 +1,31 @@
-[]
+[
+    "{\n    \"result\": \"Unable to extract valid JSON from the provided input.\"\n}",
+    {
+        "reasoning": "M and N are full siblings, so their children O and P are first cousins. The children of first cousins share the same great\u2011grandparents (the parents of M and N) but not the same grandparents, which defines a second\u2011cousin relationship. There is no generational offset (removal) and no half\u2011sibling situation, so the most precise term is second cousins.",
+        "answer": "C"
+    },
+    {
+        "reasoning": "Anna and Ben share both parents; Carla and Dave share both parents. Emma's parents (Anna, Carla) each have a sibling who is one of Frank's parents (Ben, Dave). Therefore Emma and Frank have the same two sets of grandparents, making them children of two sibling pairs\u2014a classic definition of double first cousins.",
+        "answer": "B"
+    },
+    "{\n  \"reasoning\": \"A\u2019s mother has exactly one brother; that brother (maternal uncle) is a parent of X. A\u2019s father has exactly one sister; that sister (paternal aunt) is also a parent of X. Thus X\u2019s father is A\u2019s maternal uncle and X\u2019s mother is A\u2019s paternal aunt, meaning the two are married. X therefore shares both sets of grandparents with A \u2013 the maternal grandparents via his father and the\"\n}",
+    "{}",
+    {
+        "reasoning": "L\u2019s father\u2019s sister is L\u2019s paternal aunt; her child would be L\u2019s first cousin on the paternal side. L\u2019s mother\u2019s brother is L\u2019s maternal uncle; his child would be L\u2019s first cousin on the maternal side. The puzzle states that these two children are the same person, M, meaning the aunt and the uncle are the parents of M. Thus M is simultaneously the child of L\u2019s paternal aunt and maternal uncle, making M a first cousin to L through both parental lines (a double first cousin). The relationship is uniquely determined as a first cousin.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "M and N are siblings, so their children O and P are first cousins (they share the same set of grandparents). Q is O's child and R is P's child, placing them one generation below O and P. Children of first cousins share great\u2011grandparents, making them second cousins. No half\u2011relationship or generational offset is involved, so the precise term is second cousins.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "Anna's paternal aunt is Mary (her father's sister). Tom is Mary's husband, making him Anna's uncle by marriage. He is not a blood uncle nor a cousin, and there is a direct relation (uncle-in-law).",
+        "answer": "B"
+    },
+    {
+        "reasoning": "A's mother and B's father are siblings, making them brother\u2011sister. A is the child of that sister, and B is the child of the brother. Children of siblings are first cousins, so A and B share a pair of grandparents and are first cousins.",
+        "answer": "B"
+    },
+    "\"We need to solve puzzle. Seats 1-8 clockwise. Top seat is marked, occupied by A. So seat numbers: let's assign seat 1 = top marked seat, A sits there. Clockwise direction is right.\\n\\nWe have eight people A,B,C,D,E,F,G,H,I? Wait there are 9 letters? Actually list includes A,B,C,D,E,F,G,H,I - that's 9 people but only 8 seats. Something off. Perhaps one of them is not present (maybe F is missing elsewhere). Let's count: A, B, C, D, E, F, G, H, I = 9. But typical puzzle with 8 seats, maybe one letter is not used? Actually puzzle includes I sits immediately counter\u2011clockwise of A. So I is a person, making 9 persons for 8 seats impossible. Perhaps one of them is not present? Let's examine constraints: G sits immediately clockwise of A. So G at seat 2.\\n\\nB sits immediately clockwise of G. So B at seat 3.\\n\\nE sits directly opposite A. Opposite means 4 seats away (since 8 seats). So E at seat 5.\\n\\nD sits immediately clockwise of E. So D at seat 6.\\n\\nH lies strictly on the clockwise arc from B to E (endpoints excluded). Clockwise arc from B (seat3) to E (seat5) includes seats 4 (since clockwise from 3 to 5 passes seat4). Endpoints excluded, so H must be at seat4.\\n\\nC is not adjacent to H. H at seat4, adjacent seats are 3 (B) and 5 (E). So C cannot be at seat3 or seat5 (already occupied). Fine.\\n\\nI sits immediately counter\u2011clockwise of A. Counter\u2011clockwise of seat1 is seat8. So I at seat8.\\n\\nNow we have placed: seat1 A, seat2 G, seat3 B, seat4 H, seat5 E, seat6 D, seat8 I. Remaining seat7 is empty, to be occupied by remaining person(s): we have C and F not placed yet. Two people for one seat, impossible. Something inconsistent. Perhaps there are only 8 letters, maybe I is actually same as F? Or maybe \\\"I\\\" stands for \\\"the person sitting immediate counter\u2011clockwise of A\\\" but that is actually a placeholder not a distinct person? But statement says \\\"I sits immediately counter\u2011clockwise of A\\\".\"",
+    "{}"
+]
