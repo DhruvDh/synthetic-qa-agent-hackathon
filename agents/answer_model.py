@@ -16,6 +16,14 @@ class AAgent(object):
             tokenizer_name, padding_side="left"
         )
 
+    @staticmethod
+    def _split_sys_dev(system_prompt: str) -> tuple[str, Optional[str]]:
+        marker = "<|DEVELOPER|>"
+        if marker in system_prompt:
+            sys_text, dev_text = system_prompt.split(marker, 1)
+            return sys_text.strip(), dev_text.strip()
+        return system_prompt.strip(), None
+
     def _translate_generation_kwargs(self, kwargs: dict) -> tuple[dict, float]:
         params = {}
         timeout = kwargs.pop("timeout", 60.0)
@@ -44,11 +52,27 @@ class AAgent(object):
         start_time = time.time() if tgps_show_var else None
 
         for msg in message:
-            messages = [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": msg},
-            ]
-            response = chat_completion(messages, self.config, timeout=timeout, **params)
+            sys_text, dev_text = self._split_sys_dev(system_prompt)
+            messages = [{"role": "system", "content": sys_text}]
+            if dev_text:
+                messages.append({"role": "developer", "content": dev_text})
+            messages.append({"role": "user", "content": msg})
+            try:
+                response = chat_completion(messages, self.config, timeout=timeout, **params)
+            except RuntimeError as exc:
+                if dev_text:
+                    fallback_messages = [
+                        {
+                            "role": "system",
+                            "content": f"{sys_text}\n\n# Developer\n{dev_text}",
+                        },
+                        {"role": "user", "content": msg},
+                    ]
+                    response = chat_completion(
+                        fallback_messages, self.config, timeout=timeout, **params
+                    )
+                else:
+                    raise
             if not response.get("choices"):
                 outputs.append("")
                 continue

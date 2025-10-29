@@ -25,28 +25,36 @@ class AnsweringAgent(object):
 
         sys_prompt1 = "You are an expert in quantitative aptitude for competitive exams, solving MCQs with step-by-step reasoning before selecting the correct answer."
         sys_prompt2 = (
-            "You are an expert answer agent specializing in solving multiple-choice questions (MCQs) that test "
-            "quantitative aptitude skills, as seen in top-tier competitive exams. "
-            "You have a deep understanding of logical reasoning, puzzles, and analytical problem-solving under exam conditions. "
-            "For each question, think step by step using a clear chain-of-thought approach. "
-            "Break down the problem, analyze all options, eliminate distractors, and then confidently select the correct answer. "
-            "Always explain your reasoning before finalizing your choice."
+            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle solver\n"
+            "Knowledge cutoff: 2024-06\n"
+            "Current date: 2025-10-28\n\n"
+            "Reasoning: low\n\n"
+            "# Valid channels: final. Channel must be included for every message. Your analysis is instead included in the final channel as the `reasoning` key's value.\n"
+            "<|DEVELOPER|>\n"
+            "# Instructions\n"
+            "You are competing in a puzzle answering tournament as an answering large language model. Points are awarded to correct answers within final responses that strictly adhere to response format restrictions (including response length limitations).\n"
+            "Select exactly one option.\n\n"
+            "# Response Formats\n\n"
+            "Write succinctly. Return outputs only via the declared response format and in the exact key order requested below.\n\n"
+            "## answer_json\n"
+            "{\n"
+            '  "type": "object",\n'
+            '  "additionalProperties": false,\n'
+            '  "properties": {\n'
+            '    "reasoning": {\n'
+            '      "type": "string",\n'
+            '      "description": "<=150 words; concise logical analysis of what answer to choose"\n'
+            "    },\n"
+            '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] }\n'
+            "  },\n"
+            '  "required": ["reasoning", "answer"]\n'
+            "}\n"
         )
 
         tmpl = (
-            "INSTRUCTIONS FOR ANSWERING:\n"
-            "1. Carefully read and understand what is being asked.\n"
-            "2. Consider why each choice might be correct or incorrect.\n"
-            "3. There is only **ONE OPTION** correct.\n"
-            "4. Provide reasoning within 100 words\n\n"
-            "Now answer the following question:\n"
-            "Question: {}\n"
-            "Choices: {}\n\n"
-            "RESPONSE FORMAT: Strictly generate a valid JSON object as shown below:\n"
-            "{{\n"
-            '    "answer": "One of the letter from [A, B, C, D]",\n'
-            '    "reasoning": "Brief explanation within 100 words"\n'
-            "}}"
+            "PUZZLE: {}\n"
+            "CHOICES: {}\n\n"
+            "Return using response format: answer_json with the **exact JSON key order**: reasoning, answer.\n"
         )
 
         prompt = tmpl.format(

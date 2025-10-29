@@ -58,34 +58,57 @@ class QuestioningAgent(object):
         """Generate an MCQ based question on given topic with specified difficulty"""
 
         if wadvsys:
-            # TODO: Manipulate this SYS prompt for better results
-            sys_prompt = """
-            You are an **expert-level examiner** with deep expertise in designing **highly challenging and conceptually rigorous multiple-choice questions (MCQs)** for the **Quantitative Aptitude and Analytical Reasoning** sections of top-tier competitive exams.
-            Think step by step to generate the question and solve the same, but only output the final answer. Do not show your thinking process.
-            **Please DO NOT reveal the solution steps or any intermediate reasoning.**
-            """
+            sys_prompt = (
+                "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator.\n"
+                "Knowledge cutoff: 2024-06\n"
+                "Current date: 2025-10-28\n\n"
+                "Reasoning: low\n\n"
+                "# Valid channels: analysis, final. Channel must be included for every message.\n"
+                "<|DEVELOPER|>\n"
+                "# Instructions\n"
+                "You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly. You have been trained to generate tricky, hard to understand and even harder to solve puzzles in the domain of:\n"
+                "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
+                "2. Blood relations and family trees\n\n"
+                "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"
+                "# Response Formats\n\n"
+                "## question_json\n"
+                "{\n"
+                '  "type": "object",\n'
+                '  "additionalProperties": false,\n'
+                '  "properties": {\n'
+                '    "topic": { "type": "string" },\n'
+                '    "question": {\n'
+                '      "type": "string",\n'
+                '      "description": "Prompt for the puzzle."\n'
+                "    },\n"
+                '    "explanation": {\n'
+                '      "type": "string",\n'
+                '      "description": "<=150 words; key lines that make the single option correct."\n'
+                "    },\n"
+                '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] },\n'
+                '    "choices": {\n'
+                '      "type": "array",\n'
+                '      "minItems": 4,\n'
+                '      "maxItems": 4,\n'
+                '      "items": {\n'
+                '        "type": "string",\n'
+                '        "description": "Must begin with \'A) \', \'B) \', \'C) \', \'D) \' and be mutually exclusive."\n'
+                "      }\n"
+                "    }\n"
+                "  },\n"
+                '  "required": ["topic", "question", "explanation", "answer", "choices"]\n'
+                "}\n"
+            )
         else:
-            sys_prompt = "You are an examiner tasked with creating extremely difficult multiple-choice questions"
+            sys_prompt = "P"
         tmpl = (
-            "Generate an EXTREMELY DIFFICULT MCQ on topic: {0}.\n\n"
-            "**CRITICAL REQUIREMENTS:**\n"
-            '1.  **Topic Alignment**: The "question" must be strictly relevant to the topic: {1}.\n'
-            "2.  **Question Quality**: The question must be EXTREMELY DIFFICULT, clear, and test deep conceptual understanding. Avoid trivial or ambiguous questions.\n"
-            '3.  **Choices (4 total)**: Generate exactly FOUR multiple-choice options, labeled "A)", "B)", "C)", and "D)".\n'
-            "4.  **Single Correct Answer**: Ensure that option {2} is only factually correct.\n"
-            "5.  **Plausible Distractors**: While option {3} are three incorrect UNIQUE choices which are highly plausible and common misconceptions related to the topic, designed to mislead someone without expert knowledge.\n"
-            '6.  **Answer Key**: The "answer" field in the JSON should be ONLY the letter {4}.\n'
-            '7.  **Explanation**: The "explanation" field provides a concise (under 100 words) and clear justification for why the correct answer is correct.\n\n'
-            "{5}"
-            "RESPONSE FORMAT: Strictly generate a valid JSON object ensuring proper syntax and structure as shown below.\n\n"
-            "EXAMPLE: {6}\n"
-            "{{\n"
-            '  "topic": "{7}",\n'
-            '  "question": "...",\n'
-            '  "choices": ["A) ...", "B) ...", "C) ...", "D) ..."],\n'
-            '  "answer": "{8}",\n'
-            '  "explanation": "Provide a brief explanation why {9} is correct within 100 words."\n'
-            "}}"
+            "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: {0}\n"
+            "- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n"
+            "- The only correct answer must be: {2} (others: {3})\n"
+            "- Keep the explanation <= 90 words\n"
+            "{5}\n\n"
+            "Return using response format: question_json with the **exact JSON key order**: "topic", "question", "explanation", "answer", "choices".\n'
+            'Set "topic" = "{7}" and place the correct answer at {8}".'
         )
         # Remove model's preferential bias for options
         correct_option = random.choice(["A", "B", "C", "D"])
