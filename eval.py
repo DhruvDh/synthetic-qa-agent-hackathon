@@ -6,6 +6,7 @@ import json
 import subprocess
 import sys
 from collections import Counter
+from functools import wraps
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 
@@ -359,6 +360,66 @@ def main() -> None:
     answer_kwargs.pop("do_sample", None)
 
     q_agent = QuestioningAgent()
+
+    question_empty_records: List[Dict[str, Any]] = []
+    original_q_generate = q_agent.agent.generate_response
+
+    @wraps(original_q_generate)
+    def instrumented_q_generate(message, system_prompt=None, **kwargs):
+        if isinstance(message, list):
+            prompt_list = [m if isinstance(m, str) else str(m) for m in message]
+        else:
+            prompt_list = [message if isinstance(message, str) else str(message)]
+
+        response, token_len, gen_time = original_q_generate(
+            message, system_prompt, **kwargs
+        )
+
+        if isinstance(response, list):
+            response_list = [r if isinstance(r, str) else ("" if r is None else str(r)) for r in response]
+        else:
+            response_list = [
+                response if isinstance(response, str) else ("" if response is None else str(response))
+            ]
+
+        if len(response_list) < len(prompt_list):
+            response_list.extend([""] * (len(prompt_list) - len(response_list)))
+
+        empties = []
+        for idx, (prompt_text, resp_text) in enumerate(zip(prompt_list, response_list)):
+            resp_clean = resp_text.strip() if isinstance(resp_text, str) else str(resp_text).strip()
+            if not resp_clean:
+                prompt_preview = prompt_text[:400] if isinstance(prompt_text, str) else str(prompt_text)[:400]
+                empties.append(
+                    {
+                        "prompt_index": idx,
+                        "prompt_preview": prompt_preview,
+                        "prompt_length": len(prompt_text) if isinstance(prompt_text, str) else None,
+                    }
+                )
+
+        if empties:
+            filtered_kwargs = {
+                key: value
+                for key, value in kwargs.items()
+                if isinstance(value, (int, float, str, bool)) or value is None
+            }
+            question_empty_records.append(
+                {
+                    "call_index": len(question_empty_records),
+                    "batch_size": len(prompt_list),
+                    "system_prompt_present": isinstance(system_prompt, str) and bool(system_prompt.strip()),
+                    "system_prompt_preview": system_prompt[:400]
+                    if isinstance(system_prompt, str)
+                    else None,
+                    "kwargs": filtered_kwargs,
+                    "empties": empties,
+                }
+            )
+
+        return response, token_len, gen_time
+
+    q_agent.agent.generate_response = instrumented_q_generate  # type: ignore[attr-defined]
     questions_raw, q_token_lengths, q_generation_times = q_agent.generate_batches(
         num_questions=args.num_questions,
         topics=topics,
@@ -369,11 +430,25 @@ def main() -> None:
         **question_kwargs,
     )
 
-    normalized_questions = []
+    normalized_questions: List[str] = []
     for item in questions_raw:
         if isinstance(item, tuple):
             item = item[0] if item else ""
-        normalized_questions.append(item if isinstance(item, (dict, list)) else str(item))
+        normalized_questions.append(item if isinstance(item, str) else str(item))
+
+    question_truncations = None
+    question_max_tokens = question_kwargs.get("max_new_tokens")
+    if question_max_tokens and hasattr(q_agent, "agent") and hasattr(
+        q_agent.agent, "tokenizer"
+    ):
+        tokenizer = q_agent.agent.tokenizer
+        question_truncations = 0
+        for raw in normalized_questions:
+            if not raw:
+                continue
+            token_count = len(tokenizer.encode(raw, add_special_tokens=False))
+            if token_count >= question_max_tokens:
+                question_truncations += 1
 
     valid_questions, invalid_questions, question_metrics = evaluate_questions(
         normalized_questions
@@ -399,6 +474,11 @@ def main() -> None:
     with invalid_questions_path.open("w") as handle:
         json.dump(invalid_questions, handle, indent=2)
 
+    empty_debug_path = output_dir / "question_empty_debug.json"
+    ensure_dir(empty_debug_path)
+    with empty_debug_path.open("w") as handle:
+        json.dump(question_empty_records, handle, indent=2)
+
     answers_raw: List[Any] = []
     answer_token_lengths: List[int] = []
     answer_generation_times: List[float] = []
@@ -413,6 +493,7 @@ def main() -> None:
         "accuracy": None,
     }
     answer_timing = {}
+    answer_truncations = None
 
     if not args.skip_answering:
         ans_agent = AnsweringAgent()
@@ -426,6 +507,23 @@ def main() -> None:
         answer_timing = collect_timing_metrics(
             answer_token_lengths, answer_generation_times
         )
+
+        answer_max_tokens = answer_kwargs.get("max_new_tokens")
+        if answer_max_tokens and hasattr(ans_agent, "agent") and hasattr(
+            ans_agent.agent, "tokenizer"
+        ):
+            tokenizer = ans_agent.agent.tokenizer
+            answer_truncations = 0
+            for raw in answers_raw:
+                if isinstance(raw, str):
+                    raw_text = raw
+                else:
+                    raw_text = json.dumps(raw, ensure_ascii=True)
+                if not raw_text:
+                    continue
+                token_count = len(tokenizer.encode(raw_text, add_special_tokens=False))
+                if token_count >= answer_max_tokens:
+                    answer_truncations += 1
 
         raw_answers_path = output_dir / "answers_raw.json"
         ensure_dir(raw_answers_path)
@@ -455,8 +553,14 @@ def main() -> None:
     metrics = {
         "question_metrics": question_metrics,
         "question_timing": question_timing,
+        "question_truncations": question_truncations,
+        "question_empty_debug": {
+            "batch_events": len(question_empty_records),
+            "total_empty_prompts": sum(len(entry["empties"]) for entry in question_empty_records),
+        },
         "answer_metrics": answer_metrics,
         "answer_timing": answer_timing,
+        "answer_truncations": answer_truncations,
         "config": {
             "num_questions": args.num_questions,
             "batch_size": args.batch_size,

@@ -16,7 +16,6 @@ class AAgent(object):
         self.tokenizer = AutoTokenizer.from_pretrained(
             tokenizer_name, padding_side="left"
         )
-
     @staticmethod
     def _split_sys_dev(system_prompt: str) -> tuple[str, Optional[str]]:
         marker = "<|DEVELOPER|>"
