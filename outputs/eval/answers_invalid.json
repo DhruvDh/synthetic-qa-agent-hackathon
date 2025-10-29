@@ -1,0 +1,1130 @@
+[
+  {
+    "index": 3,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 12,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 20,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 22,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L\u2019s sister\u2019s only son"
+  },
+  {
+    "index": 24,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 30,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Mary and Peter are siblings, so Peter is John\u2019s maternal uncle. Michael and Anna are siblings, so Anna is John\u2019s paternal aunt. Peter and Anna marry and have David. Thus David is the child of John\u2019s maternal uncle and paternal aunt. John is a first cousin to any child of his mother\u2019s sibling, and also a first cousin to any child of his father\u2019s sibling. Since David is simultaneously the child of both such siblings, John and David share both sets of grandparents, making them double"
+  },
+  {
+    "index": 36,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 54,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 55,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 65,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N are siblings; P and R are siblings (children of aunt Q). M marr"
+  },
+  {
+    "index": 73,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 79,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 83,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 84,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 88,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M is X's parent, making Z (X's child) a grandchild of M. At the same time, M is sibling of N, so N's child Y"
+  },
+  {
+    "index": 94,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Alex's maternal uncle's daughter Maya is Alex's first cousin. Alex's paternal uncle's son Noah is also Alex's first cousin (from the other side). Maya and Noah are unrelated to each other, so their child Sam is the child of Alex's first cousin on both sides. In kinship terminology, the child of a first cousin is a first cousin once"
+  },
+  {
+    "index": 100,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's father has one sister (paternal aunt) and L's mother has one brother (maternal uncle). M is the child of that sister and that brother, meaning M's mother is L's paternal aunt and M's father is L's maternal uncle. Thus M is a first cousin to L through the father's side and also a first cousin through the"
+  },
+  {
+    "index": 101,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 104,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 110,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 121,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"X's paternal uncle's daughter Y is X's first cousin (paternal). X's maternal aunt's son Z is also X's first cousin (maternal). Y and Z are unrelated to each other, so their marriage is permissible. Their child W is the offspring of X's first cousin (Y) and also of another first cousin (Z). In kinship terms, the child of your first cousin is your first cousin once removed. Hence"
+  },
+  {
+    "index": 124,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 134,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 143,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and W are spouses. M's sister S and W's brother B are also spouses. The grandparents of S2 are M's parents (paternal) and W's parents (maternal). Since S is M's sister, S shares M's parents as her parents, making them grandparents of D. Likewise, B shares W's parents, also grandparents of D. Thus D and S2 share both sets of"
+  },
+  {
+    "index": 153,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 156,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 3 (char 4)",
+    "raw": "{\n  \"reasoning"
+  },
+  {
+    "index": 168,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"R's paternal aunt (father's sister) is child of R's paternal grandparents, and R's maternal uncle (mother's brother) is child of R's maternal"
+  },
+  {
+    "index": 169,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 170,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 172,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 186,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"N\u2019s father\u2019s sibling is N\u2019s paternal aunt/uncle; the child of that sibling is N\u2019s paternal first cousin. Likewise, N\u2019s mother\u2019s sibling is N\u2019s maternal aunt/uncle; the child of that sibling is N\u2019s maternal first cousin. M is the same child"
+  },
+  {
+    "index": 212,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 232,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 236,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's mother has exactly one brother; he is L's maternal uncle. L's father has exactly one sister; she is L's paternal aunt. M is described as the child of both these people, meaning the maternal uncle and paternal aunt are married and together have M. Therefore M is the child of L's maternal uncle and also the child of L's paternal aunt, making M L's cousin on both the maternal and paternal sides\u2014a double first cousin. Double cousins are still classified"
+  },
+  {
+    "index": 246,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 249,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 258,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"X's mother is the sister of Y's father, i.e., Y's paternal aunt. X's father is the brother of Y's mother, i.e., Y's maternal uncle. In a monogamous family they are married, so X is the child of Y's paternal aunt and maternal uncle. Therefore X and Y share both sets of grandparents (the father's parents via the"
+  },
+  {
+    "index": 259,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L is the child of a mother whose brother (U) has daughter X, making X L's maternal first cousin. L is also child of a father whose sister (V) has son Y, making Y L's paternal first cousin. X and Y marry; their child Z is thus the child of L's two first cousins. The standard term for the relationship between a person and the child of their first cousin is \\\"first cousin once removed.\\\" Since this precise term"
+  },
+  {
+    "index": 275,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 277,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 283,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 294,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Laura\u2019s mother is sister to Mark\u2019s father, making Laura the child of Mark\u2019s paternal aunt. Laura\u2019s father is brother to Mark\u2019s mother, making Laura the child of Mark\u2019s maternal uncle. Thus Laura"
+  },
+  {
+    "index": 296,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 302,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 305,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 308,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 313,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L is sibling to S and B. S's son"
+  },
+  {
+    "index": 321,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 3 (char 4)",
+    "raw": "{\n  \""
+  },
+  {
+    "index": 324,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N share the same parents, as do P and Q. M marries Q and N marries P. Therefore X\u2019s paternal grandparents are M\u2019s parents"
+  },
+  {
+    "index": 326,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 328,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"John\u2019s mother\u2019s brother Mike is John\u2019s maternal uncle; Mike\u2019s daughter Anna is John\u2019s first cousin. John\u2019s father\u2019s sister Laura is his paternal aunt; her son Ben is also John\u2019s first cousin. Anna and Ben each are first cousins of John, and they have a child Clara. A child of your first cousin is a first cousin once removed, regardless of which side the line comes from. Since Clara is the child of"
+  },
+  {
+    "index": 333,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 337,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 339,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 355,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 356,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 358,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M's mother (MM) has a brother B. B is Q's father, making B M's maternal uncle. Therefore Q is the child of M"
+  },
+  {
+    "index": 361,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 363,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 364,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 367,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 370,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"John's mother Mary and"
+  },
+  {
+    "index": 374,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 380,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"O is the daughter of M;"
+  },
+  {
+    "index": 396,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 406,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 413,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 419,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 423,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's father\u2019s sister (paternal aunt) is M\u2019s mother, and L's mother\u2019s brother (maternal uncle) is M\u2019s father. Therefore L\u2019s father is sibling of M\u2019s mother, and L\u2019s mother is sibling of M\u2019s father. Consequently L and M are first cousins through the"
+  },
+  {
+    "index": 426,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 439,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 441,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 444,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 448,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 2 column 248 (char 249)",
+    "raw": "{\n  \"reasoning\": \"Z is sibling to both L's mother and father, meaning the parents are themselves siblings. Thus Z is both a maternal and paternal aunt/uncle to L. M, as Z's child, is therefore L's cousin on both sides, i.e., a double first cousin.\","
+  },
+  {
+    "index": 457,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 458,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 462,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 484,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N are siblings, so their children D and S are first cousins. D\u2019s child C is one generation below D, making C the child of S\u2019s first cousin. In standard kinship terminology, the child of a first cousin is a first cousin once removed. There"
+  },
+  {
+    "index": 485,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 492,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 493,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 501,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 502,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N share the same mother. M\u2019s daughter O is the mother\u2019s grandchild, and N\u2019s son P is also her grandchild. O and P (first cousins) have a child Q. Thus Q is one generation below O and P, making Q the mother\u2019s great\u2011grandchild. No half\u2011blood"
+  },
+  {
+    "index": 507,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 511,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"John's mother Mary has a brother Peter (John's maternal uncle). Peter's wife Linda is John's aunt by"
+  },
+  {
+    "index": 514,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 2 column 442 (char 443)",
+    "raw": "{\n  \"reasoning\": \"X's mother\u2019s brother is X\u2019s maternal uncle; his daughter Y is X\u2019s first cousin. X\u2019s father\u2019s sister is X\u2019s paternal aunt; her son Z is also X\u2019s first cousin. Y and Z (both first cousins of X) have a child W. The child of your first cousin is defined as a first cousin once removed. Since W is the child of X\u2019s first cousin (via Y and also via Z), the precise kinship term for W\u2019s relation to X is first cousin once removed.\","
+  },
+  {
+    "index": 515,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's sister S is mother of N, making N L's nephew. L's brother B is parent of D, making D"
+  },
+  {
+    "index": 534,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 538,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Alan and Brian are brothers; Clara and Diana are sisters. Their children Ethan and Fiona share both sets of grandparents, making them double first cousins. George ("
+  },
+  {
+    "index": 541,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 560,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 568,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 569,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 571,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 574,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 2 column 310 (char 311)",
+    "raw": "{\n  \"reasoning\": \"M and S are siblings (S is M's brother). S is the parent of R, making R the child of M's brother. In kinship terms, a sibling's child is a niece or nephew. Other connections (N-O-P-Q) involve marriages but do not alter the blood relationship between M and R. Therefore R is M's niece/nephew.\","
+  },
+  {
+    "index": 577,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 579,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"A's mother is sister of B's father, and A's father is brother of B's mother. Thus each parent of A is a sibling of the opposite parent of B, meaning the two families intermarried with each other's siblings. This makes A and B children of two sibling pairs,"
+  },
+  {
+    "index": 583,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 585,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 587,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 589,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 598,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 600,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 606,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 607,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 3 (char 364)",
+    "raw": "{\n  \"reasoning\": \"A is parent of C, so E is A's grandchild via C. A is also sibling of B, making D A's niece/nephew; D's child E is therefore A's great\u2011niece/nephew. Both relations are true simultaneously, and there is no single standard term that captures both. Hence the most precise description is that E is both a grandchild and a great\u2011niece/nephew of A.\",\n  \"answer"
+  },
+  {
+    "index": 612,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 620,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 631,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"P is the child of N's father's only brother (paternal uncle) and N's mother's only sister (maternal aunt). The child of a paternal uncle is a first cousin; the child of a maternal aunt is also a first cousin. Since the two parents are from opposite sides of N's family, P shares both sets of grandparents with N, making them double first cousins. The relation"
+  },
+  {
+    "index": 634,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 636,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 643,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 647,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 650,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 655,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"N's father and X are brothers, sharing paternal grandparents. N's mother and Y are sisters, sharing maternal grandparents. X and Y are married and have child C. Therefore N (child of the brother\u2011sister pair) and C (child of the"
+  },
+  {
+    "index": 656,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 657,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 660,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 664,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 667,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 670,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's sister's son is L's nephew; the brother's daughter is L's niece. Their child is therefore the offspring of L's nephew and niece, i.e., one generation below L's nieces/nephews. In standard kinship terms,"
+  },
+  {
+    "index": 676,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 691,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 694,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Emma and Lisa share a step\u2011mother (Mary) but have no blood link, making them step\u2011siblings. A nephew is the child of a sibling; thus the child of a step\u2011sibling is a step\u2011nephew. Mark is Lisa's son, so he is Emma's step\u2011nephew. The"
+  },
+  {
+    "index": 705,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 710,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 711,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 724,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 734,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N are full siblings, and O and P are full siblings. X is the child of M (sibling of N) and O (sibling of P). Y is the child of N (sibling of M) and P (sibling of O). Therefore X and Y are"
+  },
+  {
+    "index": 739,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 741,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"R's mother\u2019s brother U is R\u2019s maternal uncle, so U\u2019s daughter S is R\u2019s first cousin. R's father\u2019s sister V is R\u2019s paternal aunt, so V\u2019s son T is also R\u2019s first cousin. S and"
+  },
+  {
+    "index": 746,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 763,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 767,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 792,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 796,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 798,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 802,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 804,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's mother has one brother (her brother = L's maternal uncle). L's father has one sister (her sister = L's paternal aunt). M is child"
+  },
+  {
+    "index": 807,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 812,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 814,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 815,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 817,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 821,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L"
+  },
+  {
+    "index": 830,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 832,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 834,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 837,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 839,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M is child of L's father's only sister, making that parent L's paternal aunt. M is also child of L's mother's only brother, making that parent L's maternal uncle. For M to have both parents, the paternal aunt (female) must be married to the maternal uncle (male). Thus"
+  },
+  {
+    "index": 842,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 845,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 861,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 863,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Adam and Ben are brothers; Clara and Dana are sisters. Their children Ethan and Fiona therefore share both sets of grandparents, making them double first cousins. The children of double first cousins inherit the same dual line of descent,"
+  },
+  {
+    "index": 864,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 866,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 869,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 872,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 881,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 885,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 889,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 2 column 15 (char 16)",
+    "raw": "{\n  \"reasoning\":"
+  },
+  {
+    "index": 890,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 897,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 899,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 906,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 912,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 916,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 921,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 923,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 931,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 935,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 941,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"Alan's mother\u2019s brother Ben is Alan\u2019s maternal uncle; Ben\u2019s daughter Dana is Alan\u2019s maternal first cousin. Alan\u2019s father\u2019s sister Carol is Alan\u2019s paternal aunt; Carol\u2019s son Ethan is Alan\u2019s paternal first cousin. Dana and Ethan each are Alan\u2019s first cousin, so their child Fiona is the child of Alan\u2019s cousin. In kinship terms,"
+  },
+  {
+    "index": 942,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 944,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"A and B are siblings, sharing grandparents P1 and P2. C and D are siblings, sharing grandparents Q1 and Q2. A marries C and has child X; B marries D and has child Y. X\u2019s parents are A (a child of P1/P2) and C (a child of Q1/Q2). Y\u2019s parents are B (a child of P1/P2) and D (a child of Q1/Q2). Therefore X and Y share *both* sets of grandparents (P1/P2 and Q1/Q2). Sharing two grandparent pairs makes them double first cousins, the most"
+  },
+  {
+    "index": 947,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 13 (char 458)",
+    "raw": "{\n  \"reasoning\": \"A\u2081 and A\u2082 are brothers; B\u2081 and B\u2082 are sisters, so X and Y are double first cousins, sharing both sets of grandparents. P is X's child and Q is Y's child. Their nearest common ancestors are the great\u2011grandparents (the parents of A\u2081/A\u2082 and of B\u2081/B\u2082). Because they share both sets of great\u2011grandparents, P and Q are second cousins through each line, i.e., double second cousins. This is the most specific term among the choices.\",\n  \"answer\": \""
+  },
+  {
+    "index": 957,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"N's father's only sister is N's paternal aunt. N's mother's only brother is N's maternal uncle. M is the child of both the paternal aunt and the maternal uncle. The child of a paternal aunt"
+  },
+  {
+    "index": 959,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"L's father has an only sister (paternal aunt). M is her child, making M a first cousin of L via the paternal side. L's mother has an only brother (maternal uncle). M is also his child, making M a first cousin via the maternal side. The two parents (the aunt and the uncle) are married, meaning M descends from both of L's parental families. Children whose parents are a pair of siblings from opposite sides are double first cousins, sharing both sets of grandparents. Hence M is a double first cousin"
+  },
+  {
+    "index": 972,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 977,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 983,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 984,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 985,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 16 (char 17)",
+    "raw": "{\n  \"reasoning\": \"M and N are full siblings; O and Q are full siblings. M marries O and N marries Q, so each child (R and S) is born to a pair consisting of one sibling from each set. Consequently, R and S share both sets of grandparents (the parents of M/N and the parents of O/Q). Sharing both grandparents makes them first"
+  },
+  {
+    "index": 989,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 990,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 993,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 995,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1000,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1002,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1019,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  }
+]

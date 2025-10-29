@@ -100,18 +100,12 @@ class AnsweringAgent(object):
         for i in range(0, len(questions), batch_size):
             batch_questions = questions[i : i + batch_size]
             batch_answers, tl, gt = self.answer_question(batch_questions, **kwargs)
-            answers.extend(batch_answers)
+            if isinstance(batch_answers, list):
+                answers.extend(batch_answers)
+            else:
+                answers.append(batch_answers)
             tls.append(tl)
             gts.append(gt)
-            pbar.update(1)
-
-        # Handle last batch with less than batch_size
-        if len(questions) % batch_size != 0:
-            batch_questions = questions[-(len(questions) % batch_size) :]
-            batch_answers = self.answer_question(batch_questions, **kwargs)
-            answers.extend(batch_answers[0])
-            tls.append(batch_answers[1])
-            gts.append(batch_answers[2])
             pbar.update(1)
         pbar.close()
         return answers, tls, gts

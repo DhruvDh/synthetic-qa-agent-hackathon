@@ -1,0 +1,3962 @@
+[
+  {
+    "index": 0,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 2,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 6,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 7,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 8,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 9,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 10,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M, N and F are siblings. M has a daughter A; N has a son B. A and B marry and have a child C. F has a daughter E, who has a child D. Using standard"
+  },
+  {
+    "index": 11,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 13,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 14,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 15,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 16,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 18,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 23,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 27,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 28,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 29,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 7 column 5 (char 713)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a family tree, G and H are married and have two children, M (daughter) and R (son). M marries A and they have a child N. R marries B and they have a child S. N marries C. C has a sister D (who is unrelated to G\u2011H). D marries S, and they have a child Q. Using standard English blood\u2011kinship terms, what is Q\u2019s relation to N?\",\n  \"explanation\": \"M and R are siblings, so their children N and S are first cousins. S\u2019s child Q is therefore one generation below N, making Q N\u2019s first cousin once removed. The fact that Q\u2019s other parent D is N\u2019s spouse\u2019s sister adds no blood link, so it does not change the term.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Half\u2011c"
+  },
+  {
+    "index": 31,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 33,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 34,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 8 column 5 (char 605)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Adam and Brian are brothers. Clara and Diana are sisters. Adam marries Clara and Brian marries Diana. Adam and Clara have a child X; Brian and Diana have a child Y. Using standard English kinship terms, what is the most precise relationship between X and Y?\",\n  \"explanation\": \"X and Y share both sets of grandparents\u2014one set through their fathers (Adam and Brian) and another through their mothers (Clara and Diana). Hence they are double first cousins, the most specific term.\",\n  \"answer\": \"D\",\n  \"choices\": [\n    \"A) First cousins\",\n    \"B"
+  },
+  {
+    "index": 35,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 37,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 38,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 340)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"John and Mary are married. Mary\u2019s sister Lisa is married to Tom. Tom\u2019s brother Kevin is married to Susan, who is John\u2019s sister. What is Kevin\u2019s precise relation to Mary using standard English kinship terms (adoption, polygamy, and step\u2011relations excluded)?\",\n  \"explanation\": \"Kevin is John\u2019s sister\u2019s husband, making him John\u2019s brother\u2011in\u2011law. Mary is John\u2019s spouse, not Kevin\u2019s sibling nor sibling\u2011in"
+  },
+  {
+    "index": 39,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 40,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 42,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 43,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 364)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Two brothers, Adam and Brian, each marry two sisters, Clara and Diana, respectively. Adam and Clara have a son Ethan. Brian and Diana have a son Felix. Using standard English kinship terms (no adoption, monogamy allowed), what is the most precise relation between Ethan and Felix?\",\n  \"explanation\": \"Ethan\u2019s father is Adam, Felix\u2019s father is Brian \u2013 brothers. Ethan\u2019s mother is Clara, Felix\u2019s mother is Diana \u2013 sisters. Thus Ethan"
+  },
+  {
+    "index": 44,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 46,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 47,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 48,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 49,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 50,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 51,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 52,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 53,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 56,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 58,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 60,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 62,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 64,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 67,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 68,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 69,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 70,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 71,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 72,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 74,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 75,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 76,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 77,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 78,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 80,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 81,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 82,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 86,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 87,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 89,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 90,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 93,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 95,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 96,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 97,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 102,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 103,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 105,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 106,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 107,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 6 column 3 (char 732)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Using standard English kinship terms only (blood, marriage, step, in\u2011law), consider a man M. M\u2019s mother, after being widowed, marries a man S, who already has an adult daughter D from a previous marriage. Later, M marries D. What is the precise kinship term for S with respect to M?\",\n  \"explanation\": \"S is M\u2019s mother\u2019s husband, so he is M\u2019s step\u2011father. Because M marries S\u2019s daughter, S is also M\u2019s father\u2011in\u2011law. English kinship has separate terms for each role but no single word covering both simultaneously. Hence the precise relation cannot be fixed to one of the standard terms; it is indeterminate between step\u2011father and father\u2011in\u2011law.\",\n  \"answer\": \"D\",\n  \""
+  },
+  {
+    "index": 108,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 109,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 2 column 11 (char 12)",
+    "raw": "{\n  \"topic\":"
+  },
+  {
+    "index": 112,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 113,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 114,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 243)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"X is the child of Y's only brother. Y is married to Z, who is the only sibling of X's mother. What is the precise standard kinship term for Z in relation to X?\",\n  \"explanation\": \"Y's only brother must be X's father. Z is the sole sibling of X's mother, so Z is either her sister or brother. Thus Z is X's maternal aunt if female, or maternal uncle if male. Because the gender"
+  },
+  {
+    "index": 117,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 118,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 119,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 120,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 122,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 126,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 127,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 128,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 129,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 130,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 131,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 132,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 135,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 136,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 139,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 516)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Arrange A\u2013J in a straight row of ten seats numbered 1 (leftmost) to 10 (rightmost): H sits in seat\u202f1; A sits immediately to H\u2019s right; I sits immediately to A\u2019s right; D sits in seat\u202f9; F sits in seat\u202f10; the block B\u2013E\u2013G occupies three consecutive seats in that order somewhere within seats\u202f4\u20138; and C sits somewhere to the left of D but is not adjacent to A or B. Which set lists all and only the seats that C can occupy?\",\n  \"explanation\": \"Seats 1\u20113 and 9\u201110 are fixed. The block B\u2011E\u2011G can start at 4,\u202f5 or\u202f6. These give remaining free seats for C: {7,8}, {8}, or {4} respectively, respecting \u201cleft of\u202fD\u201d and non\u2011adjacency to A (seat\u202f2) and"
+  },
+  {
+    "index": 140,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 142,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 144,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 145,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 147,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 148,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 149,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 150,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 6 column 15 (char 626)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A man's father married twice. From the first marriage he had a daughter named C; from the second marriage he had a son named A (the only child of that marriage). C later gave birth to a child named B. Using standard English kinship terms, what is the precise relation of B to A?\",\n  \"explanation\": \"C and A share only their father, so they are half\u2011siblings. B is C\u2019s child, therefore B is the child of A\u2019s half\u2011sister, i.e., A\u2019s half\u2011niece. The term \u201chalf\u2011niece\u201d is required because the aunt/uncle link is half\u2011blood, not full.\",\n  \"answer\": \"A\",\n  \"choices\": ["
+  },
+  {
+    "index": 151,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 152,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 300)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Z has a sister and a brother. X is the child of the only son of Z's sister. Y is the child of Z's brother. Using standard English kinship terms (no adoption, monogamy allowed), what is the precise relation of X to Y?\",\n  \"explanation\": \"Z's sister's son is Z's nephew; his child X is Z's"
+  },
+  {
+    "index": 155,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 157,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 158,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 159,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 160,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 161,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 162,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 163,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 164,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 165,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 166,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 167,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 171,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 173,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 174,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 175,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 177,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 178,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 179,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 180,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a monogamous family with no adoption, let P be a person. P\u2019s father has a sister (P\u2019s paternal aunt) who is married to Q. Q\u2019s mother is the sister of P\u2019s mother (i.e., Q\u2019s mother is P\u2019s maternal aunt). Using standard"
+  },
+  {
+    "index": 181,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 182,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 183,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 184,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 187,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 188,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 189,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 190,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 191,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 192,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 193,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 195,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 332)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a family with no adoption, let A be a person. A\u2019s father has a sister B. B is married to C. C\u2019s only child is D, and D is the parent of A\u2019s spouse. What is the precise kinship term for B relative to A (using standard English kinship terms only)?\",\n  \"explanation\": \"B is A\u2019s father\u2019s sister (paternal aunt)."
+  },
+  {
+    "index": 196,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 198,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 199,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 200,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 202,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Around a round table"
+  },
+  {
+    "index": 203,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 204,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 205,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 206,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 207,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 209,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 210,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 211,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 213,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 214,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 217,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 219,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 220,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 221,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"R is married to"
+  },
+  {
+    "index": 222,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 10 column 5 (char 775)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"John and Mary are siblings. John marries Anna, who is the daughter of Peter and Susan. Mary marries Peter. John and Anna have a child Lily; Mary and Peter have a child Mark. Using standard English kinship terms (no adoption, monogamy allowed, remarriage permitted), what is the precise relation of Lily to Mark?\",\n  \"explanation\": \"John and Mary are siblings, so Lily (John\u2019s child) is Mary\u2019s niece. Mary is Mark\u2019s mother, therefore Lily, as Mary\u2019s niece, is Mark\u2019s aunt (or uncle). This is the most specific standard term; other options do not capture the direct aunt/uncle relationship.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) A) First cousin\",\n    \"B) B) Aunt/uncle\",\n    \"C) C) Half\u2011aunt/half\u2011uncle\",\n    \"D) D) No"
+  },
+  {
+    "index": 223,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 226,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 227,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 228,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 230,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 231,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 233,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 234,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 235,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 237,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 238,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 239,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 240,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 241,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 242,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 243,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 244,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 245,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 247,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 248,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 250,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 251,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 252,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M is married to N. N's brother is O. O's wife is P. P's brother is Q. Q is married to R, who is the sister of S. S is the mother of T. T is the son of U, who is the brother of V. V"
+  },
+  {
+    "index": 253,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 254,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 255,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 256,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 257,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 260,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Two brothers, Raj and Sam, each marry a sister, Maya and Nina, respectively, and Maya and Nina are themselves sisters. Raj and Maya have a daughter Priya; Sam and Nina have a son Rahul"
+  },
+  {
+    "index": 261,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Arrange A\u2013I in a straight row of nine seats numbered 1 (leftmost) through 9 (rightmost) with the following conditions: H sits in seat\u202f1; A sits immediately to H\u2019s right; I sits immediately to A\u2019s right; D sits in seat\u202f9; F sits in seat\u202f8; the three\u2011person block B\u2011E\u2011G occupies three consecutive seats entirely within seats\u202f4\u20137 in that left\u2011to\u2011right order; and C sits somewhere to the left of D but is not"
+  },
+  {
+    "index": 264,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 265,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 266,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 267,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 569)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Around a round table with eight seats numbered clockwise from the marked top seat taken by A (right = clockwise), the following hold: B sits immediately clockwise of A; D sits directly opposite A; E sits immediately clockwise of D; G sits somewhere on the clockwise arc from B to D (exclusive); H sits immediately counter\u2011clockwise of G; C sits strictly on the clockwise arc from E to A (exclusive); and F sits immediately clockwise of C. Who sits immediately clockwise of H?\",\n  \"explanation\": \"A is fixed at seat\u202f1, so B is seat\u202f2 and D opposite A is seat\u202f5; E is seat\u202f6. G must be on the B\u2192D arc (seats\u202f3\u20114) but H is ccw of G, so G"
+  },
+  {
+    "index": 268,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 269,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 3 (char 4)",
+    "raw": "{\n  \""
+  },
+  {
+    "index": 270,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 271,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 272,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 274,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M and N share exactly one parent (they are half\u2011siblings). M has"
+  },
+  {
+    "index": 276,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 278,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 279,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 280,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a family, two brothers, Alan and Brian, each"
+  },
+  {
+    "index": 281,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 284,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 285,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 288,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 290,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 291,
+    "reason": "json_decode_error",
+    "detail": "Expecting ',' delimiter: line 11 column 4 (char 689)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"R is married to S. S\u2019s sister is T. T\u2019s husband is U. U\u2019s sister is V. Using standard English kinship terms (in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, and children\u2019s spouses), what is V to R?\",\n  \"explanation\": \"R \u2192 S (spouse) \u2192 T (sibling\u2011in\u2011law) \u2192 U (that sibling\u2019s spouse) \u2192 V (that spouse\u2019s sibling). This chain goes beyond the immediate in\u2011law scope and never creates a blood link, so no standard direct kin term applies.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) Brother\u2011in\u2011law\",\n    \"B) Cousin\u2011in\u2011law\",\n    \"C) No standard direct relation (affinal chain only)\",\n    \"D) Nephew\u2011in\u2011law\"\n  ]"
+  },
+  {
+    "index": 292,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 293,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 295,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 297,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 298,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 304,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 340)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Mr. and Mrs. P have three children: Alice, Bob, and George. Bob has a daughter Clara. Alice has a son David. David marries Emma, who is Clara\u2019s daughter. Emma\u2019s brother Frank is the son of George. What is the precise blood relation between Frank and Clara?\",\n  \"explanation\": \"Frank is the child of George and Clara is the"
+  },
+  {
+    "index": 306,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 307,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 309,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 311,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 312,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 316,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 317,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 318,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 319,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 320,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 322,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 325,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 327,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 329,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 330,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 332,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 334,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 336,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 338,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 340,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 341,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 342,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 344,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 345,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 347,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 350,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 351,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 352,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 353,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 244)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Person A\u2019s mother has a brother named B. B has a daughter C. A\u2019s father has a sister D, and D is married to B. What is the precise relationship between A and C?\",\n  \"explanation\": \"B is A\u2019s maternal uncle, so his daughter C is A\u2019s first cousin on the mother"
+  },
+  {
+    "index": 354,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 357,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 359,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 362,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 365,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 6 column 15 (char 674)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a family, X\u2019s mother has a brother who is married to Y\u2019s sister. Y is the child of X\u2019s father\u2019s sister. Using standard English kinship terms (no adoption, monogamy, in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), what is the precise relationship of Y to X?\",\n  \"explanation\": \"X\u2019s father\u2019s sister is X\u2019s paternal aunt, so Y (her child) is X\u2019s first cousin on the paternal side. The fact that X\u2019s maternal uncle is married to Y\u2019s sister only creates an affinal link and does not affect the blood tie. Hence Y is X\u2019s first cousin.\",\n  \"answer\": \"A\",\n  \"choices\": ["
+  },
+  {
+    "index": 366,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 369,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 371,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 372,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 375,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 376,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 377,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M and N are siblings. M has a daughter O. N has two children: a son"
+  },
+  {
+    "index": 378,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 381,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 382,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 383,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 385,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 386,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 387,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 389,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 391,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 392,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 394,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 395,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 397,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 398,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 445)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Eight people A\u2013H sit in a left\u2011to\u2011right row of seats 1 through 8. H occupies seat\u202f1, G sits immediately to H\u2019s right, D sits in seat\u202f8, and B sits immediately to D\u2019s left. The three people C, E, F must occupy three consecutive seats in that order, entirely within seats\u202f3\u20116. A must sit to the right of G but not adjacent to G. Which seat can A occupy?\",\n  \"explanation\": \"Seats\u202f1,2,7,8 are fixed (H,G,B,D). The block C\u2011E\u2011F can only be placed at"
+  },
+  {
+    "index": 401,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 402,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 403,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 404,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 407,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 408,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 411,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 412,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 414,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 417,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 418,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 420,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 421,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 422,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 424,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 425,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 427,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 428,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 429,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 431,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 434,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 435,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 436,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 437,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 442,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 443,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 446,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 447,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 449,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A and B share exactly one parent (they are half\u2011siblings). A has a child C and B has a child D. Assuming no other intermarriages,"
+  },
+  {
+    "index": 450,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 451,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 277)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M and N are half\u2011siblings (they share only one parent). M has a child A and N has a child B, with no other intermarriages. What is the precise kinship term for the relationship between A and B?\",\n  \"explanation\": \"A and B are"
+  },
+  {
+    "index": 453,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Using standard English kinship terms (allowing only spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, and children\u2019s spouses as in\u2011law relations), what is the precise relation"
+  },
+  {
+    "index": 454,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 455,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 456,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 459,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 460,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 461,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 463,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 465,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 466,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 467,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 468,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 469,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 470,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 472,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 474,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 475,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 2 column 47 (char 48)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\","
+  },
+  {
+    "index": 476,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 477,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 478,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M\u2019s mother has exactly one sibling, a brother B. M\u2019s father has"
+  },
+  {
+    "index": 479,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 480,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 481,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"P's mother has exactly one brother, whose daughter is Q. P's father has exactly one sister, whose son is R. Q and R marry and have a child S. Using standard English kinship terms (no adoption, monogamy allowed), what is the precise relationship of S to"
+  },
+  {
+    "index": 482,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 483,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 486,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 487,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 488,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 6 column 3 (char 590)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"R\u2019s mother has exactly one brother, and R\u2019s father has exactly one sister. The brother and the sister marry each other and have a child S. Using standard English kinship terms, what is the most precise description of S\u2019s relation to R?\",\n  \"explanation\": \"S is the child of R\u2019s maternal uncle (who shares R\u2019s maternal grandparents) and R\u2019s paternal aunt (who shares R\u2019s paternal grandparents). Thus S shares both grandparent pairs with R, making them double first cousins\u2014the most specific standard term.\",\n  \"answer\": \"A\",\n  \"choices"
+  },
+  {
+    "index": 489,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 490,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 491,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"John and Mary are siblings. John marries Anna, who is the daughter of Mary\u2019s brother Peter (so Anna is John\u2019s niece). John and Anna have two children, Kevin and Laura. Mary has a son David, who marries Laura. Using standard English kinship terms (no adoption, monogamy allowed, remarriage permitted), what is the precise blood relationship between"
+  },
+  {
+    "index": 494,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 495,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 496,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 497,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 498,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 499,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 3 (char 289)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Using standard English kinship terms only (in-law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), A is married to B. B\u2019s brother is C. C\u2019s wife is D. D\u2019s sister is E. What is E to A?\",\n  \""
+  },
+  {
+    "index": 500,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 12 (char 13)",
+    "raw": "{\n  \"topic\": \"Blood"
+  },
+  {
+    "index": 503,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 504,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Place A\u2013J in"
+  },
+  {
+    "index": 505,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 508,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 509,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 512,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 516,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 517,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 519,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 520,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 521,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 523,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 524,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 525,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 526,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 527,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 528,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 529,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Arrange A\u2013J in a straight row of ten seats numbered 1 (leftmost) to 10 (rightmost) with the following conditions: H sits in seat\u202f1; A sits immediately to H\u2019s right; I sits immediately to A\u2019s right; D sits in seat\u202f9; F sits in seat\u202f10; the block B\u2013E\u2013G occupies three"
+  },
+  {
+    "index": 530,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 531,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 533,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Emma\u2019s mother has a brother named Carl. Carl is married to Diane. Diane\u2019s sister, Fiona, is the mother of Greg. Greg\u2019s father is the only son of Emma\u2019s paternal grandfather. Using standard English kinship terms (no adoption, monogamy allowed, remarriage permitted), what is"
+  },
+  {
+    "index": 535,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A is the"
+  },
+  {
+    "index": 536,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 537,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 539,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 540,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 542,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 543,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 544,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Eight people A\u2013H sit around a circular table with eight numbered seats clockwise"
+  },
+  {
+    "index": 545,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 546,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 548,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 319)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M is the child of the sister of P\u2019s father and also the child of the brother of P\u2019s mother. Assuming standard monogamy and that these two relatives are married to each other, what is the most precise kinship term for M\u2019s relation to P?\",\n  \"explanation\": \"M\u2019s mother is P\u2019s father\u2019s sister and M\u2019s father is P\u2019s mother\u2019s brother. Thus M\u2019s"
+  },
+  {
+    "index": 549,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 550,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 551,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 552,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 553,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 554,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 557,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 558,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 559,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 561,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Eight people A\u2013H sit in a straight row of eight seats numbered 1 (leftmost) to 8 (rightmost). The following conditions hold:\\n- A occupies seat\u202f1 and H occupies seat\u202f8.\\n- B sits immediately to the right of A.\\n- D sits immediately to the left of H.\\n- C sits somewhere between B and D but is not adjacent to either.\\n- E sits immediately to the left of G.\\n- G sits somewhere to the right of C.\\nWhich of the following statements must be"
+  },
+  {
+    "index": 562,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 564,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 565,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 566,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 567,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 570,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 572,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 573,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 576,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 580,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 581,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 582,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 586,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 588,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 10 column 5 (char 751)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Two brothers, Adam and Brian, each marry a sister, Clara and Diana respectively. Adam and Clara have a child Ethan; Brian and Diana have a child Fiona. Using only standard English kinship terms (no adoption, monogamy, and no in\u2011law extensions), what is the most precise relationship between Ethan and Fiona?\",\n  \"explanation\": \"Ethan and Fiona share both sets of grandparents because their fathers are brothers and their mothers are sisters. This double sharing makes them double first cousins, a distinct term from ordinary first cousins or half\u2011cousins.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) A) First cousins\",\n    \"B) B) Half\u2011first cousins\",\n    \"C) C) Double first cousins\",\n    \"D) D) Second"
+  },
+  {
+    "index": 590,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 591,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 592,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 593,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 594,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 595,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 597,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 599,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Person X\u2019s mother has a brother whose daughter is Y. X\u2019s father has a sister whose son is Z. Y and Z marry"
+  },
+  {
+    "index": 601,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 602,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 603,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 605,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 608,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 609,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 505)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"A, G, B, D, E, I are seated around a ten\u2011seat round table (seat numbers increase clockwise, A occupies the marked top seat). G sits immediately clockwise of A, B immediately clockwise of G, E opposite A, D immediately counter\u2011clockwise of E, and I immediately counter\u2011clockwise of A. H lies strictly on the clockwise arc from B to E (endpoints excluded) and C is not adjacent to H. Which statement must be true?\",\n  \"explanation\": \"A at 0 forces G at 1, B at 2, E at 5, D at 4, I at"
+  },
+  {
+    "index": 610,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 611,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 613,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 615,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 616,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 618,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 619,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 621,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 623,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 624,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 626,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 627,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 628,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 629,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 630,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 632,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 638,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 639,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 640,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 641,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 642,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 644,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 2 column 11 (char 12)",
+    "raw": "{\n  \"topic\":"
+  },
+  {
+    "index": 646,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 648,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 649,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 253)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"T's mother, S, has a brother U. U's daughter V has a son W. Using standard English kinship terms (no adoption, monogamy allowed), what is the precise relation of W to T?\",\n  \"explanation\": \"S is T's mother; U is T's maternal uncle; V is T's"
+  },
+  {
+    "index": 652,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 654,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 658,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Mia's father's sister (her paternal aunt) has a son Alex. Alex's daughter Bella has a son Carl. Using standard English kinship terms (no"
+  },
+  {
+    "index": 659,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 662,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 663,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 666,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 671,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Around a round table with eight seats, A occupies the marked top seat. Clockwise = right. The following conditions hold: B sits immediately clockwise of A; D sits opposite A; E sits immediately clockwise of D; F sits somewhere on"
+  },
+  {
+    "index": 672,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 674,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"In a family with no adoption, monogamy allowed but remarriage permitted: P\u2019s mother has a full sister who has exactly one child, and P\u2019s father has a half\u2011sister (they share only one parent) who also has exactly one"
+  },
+  {
+    "index": 675,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 678,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 679,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 680,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 682,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 683,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 684,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 685,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 686,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 692,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 693,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 695,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 696,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 698,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 699,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 700,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 701,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 702,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 703,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 707,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 709,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 7 column 5 (char 608)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Person X\u2019s mother Anne and Person Y\u2019s mother Beth are half\u2011sisters (they share the same father but have different mothers). X and Y have no other common ancestors. Using standard English kinship terms, what is the precise relationship between X and Y?\",\n  \"explanation\": \"Anne and Beth share only one parent, so X and Y share only one grandparent. Children of half\u2011siblings are called \u201chalf\u2011first cousins\u201d. They are not full first cousins (require both grandparents), nor second cousins, nor once\u2011removed.\",\n  \"answer\": \"D\",\n  \"choices\": [\n    \"A) A) First cousins"
+  },
+  {
+    "index": 712,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 714,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 715,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 716,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 717,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 718,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 719,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 720,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 722,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 723,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 725,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"John and Paul are brothers. John\u2019s daughter Alice marries Carl, and Paul\u2019s daughter Betty marries Dave. Carl and Dave are brothers. Alice and Carl have a son"
+  },
+  {
+    "index": 726,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 730,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 731,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 732,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 733,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 735,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 736,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Eight people A\u2013H sit around a circular table. Clockwise = right, and seat 0 (the marked top) is occupied by A. The following hold:\\n1. B sits immediately clockwise of A.\\n2. D sits immediately counter\u2011clockwise of A.\\n3. E sits opposite A.\\n4. F sits immediately clockwise of E.\\n5."
+  },
+  {
+    "index": 738,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 742,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 743,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 744,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 745,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 747,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 748,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 750,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 7 column 5 (char 517)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A's mother has exactly one brother, B. A's father has exactly one sister, C. B and C are married and have only one child, D. Using standard English kinship terms (ignoring adoption), what is the precise relation of D to A?\",\n  \"explanation\": \"B is A's maternal uncle; C is A's paternal aunt. Their child D shares both sets of grandparents with A, making D a double first cousin, i.e., a first cousin on both sides.\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) Half\u2011"
+  },
+  {
+    "index": 751,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M and N are married. M has a sister S1 and a brother B1. N has a sister S2 and a brother B2. S1 marries B2 and they have"
+  },
+  {
+    "index": 752,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 9 column 5 (char 822)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Two brothers, Adam and Brian, each marry two sisters, Clara and Diana respectively. Adam and Clara have a son Ethan; Brian and Diana have a daughter Fiona. Ethan and Fiona marry unrelated partners and each have one child, George and Hannah respectively. Using standard English kinship terms, what is the most precise relationship between George and Hannah?\",\n  \"explanation\": \"Adam & Clara and Brian & Diana are brother\u2011sister pairs, so Ethan and Fiona are double first cousins (they share both sets of grandparents). Their children George and Hannah therefore share both sets of great\u2011grandparents, which makes them double second cousins \u2013 the most precise term.\",\n  \"answer\": \"A\",\n  \"choices\": [\n    \"A) Double second cousins\",\n    \"B) First cousins\",\n    \"C)"
+  },
+  {
+    "index": 753,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 12 (char 13)",
+    "raw": "{\n  \"topic\": \""
+  },
+  {
+    "index": 756,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 757,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 758,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 759,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 760,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 761,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 762,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 765,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 766,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 770,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 771,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 772,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Using standard English kinship terms only (in\u2011"
+  },
+  {
+    "index": 773,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 775,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 776,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 777,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 778,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 779,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 780,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 781,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 782,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 783,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 786,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 787,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 788,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 789,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 790,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 793,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 794,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 795,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 799,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 800,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 801,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 803,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 805,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 806,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 808,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 809,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 811,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 813,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 816,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 818,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 820,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 822,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 823,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 824,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 825,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 4 column 309 (char 627)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A is the child of B\u2019s sister. B is married to C. C\u2019s brother is D, and D\u2019s daughter is E. Using standard English kinship terms (in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), what is the relation of E to A?\",\n  \"explanation\": \"B\u2019s sister is A\u2019s aunt, so B is A\u2019s uncle\u2011in\u2011law. C, B\u2019s spouse, is also A\u2019s aunt\u2011in\u2011law. D is C\u2019s brother, a sibling of an aunt\u2011in\u2011law, which has no standard term for A. E, D\u2019s daughter, remains outside any direct blood or permitted affinal link. Hence no recognized kinship term exists.\","
+  },
+  {
+    "index": 826,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 827,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 828,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 829,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 831,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 833,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 835,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 836,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 840,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 841,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 843,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 844,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 847,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 848,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 849,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 850,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 852,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 854,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 857,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 858,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 859,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 860,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 862,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 865,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 867,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 868,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 312)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"A is married to B. B\u2019s sister is C. C\u2019s husband is D. D\u2019s sister is E. Using standard English kinship terms (in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), what is E\u2019s relation to A?\",\n  \"explanation\": \"A\u2192B (spouse) \u2192C (sibling\u2011in\u2011law) \u2192D (that sibling\u2019s spouse) \u2192E (that spouse\u2019s sibling). This chain goes beyond immediate affinal ties; no standard English term names such a relation, so"
+  },
+  {
+    "index": 870,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 871,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 874,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 875,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 876,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 349)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"R is the child of a woman whose only brother is B1. S is the child of a man whose only brother is B2. It is known that B1 and B2 are either the same individual or are brothers. Using standard English kinship terms, what is the most precise relation between R and S?\",\n  \"explanation\": \"If the two uncles are the same person, R and S are children of siblings of that man, i.e., first cousins. If the uncles are distinct brothers, then R\u2019s mother and S\u2019s father are first cousins, making R and S second cousins. Because the information does not specify which case"
+  },
+  {
+    "index": 878,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 879,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 883,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 884,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 886,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 887,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 888,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 892,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 893,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 894,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+    "raw": "{"
+  },
+  {
+    "index": 895,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 896,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 898,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 900,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Eight people A\u2013H sit around a circular table with seat 1 at the top (clockwise = right). A occupies seat\u202f1. The following conditions hold:\\n- B sits immediately clockwise of A.\\n- D sits opposite A.\\n- E sits immediately clockwise of D.\\n- G sits immediately counter\u2011clockwise of A.\\n- F sits somewhere on the clockwise"
+  },
+  {
+    "index": 901,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 902,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 907,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 908,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 909,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 293)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M\u2019s mother has a brother A, and M\u2019s father has a sister B. A\u2019s daughter is C and B\u2019s son is D. C and D marry and have a child E. What is the most precise standard kinship term for the relation between M and E?\",\n  \"explanation\": \"C is M\u2019s maternal first cousin (child of M\u2019s maternal uncle). D is M\u2019s paternal first cousin (child of M\u2019s paternal aunt). Their child E is the child of two of M\u2019s first cousins, so E is a first cousin once removed on both"
+  },
+  {
+    "index": 910,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 911,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 913,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 4 column 18 (char 335)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"John and Mary are siblings. John marries Anna, who is the daughter of Mary's brother Peter. John and Anna have a child Sam. Mary and her spouse have a child Lisa. Using standard English kinship terms, what is the precise relation between Sam and Lisa?\",\n  \"explanation\": \"John and Mary share the same parents, so their children Sam and Lisa have the same grandparents"
+  },
+  {
+    "index": 914,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 915,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 917,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 920,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 922,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 924,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 925,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 926,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Two brothers, A and B,"
+  },
+  {
+    "index": 927,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 928,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 929,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 10 column 5 (char 820)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"Alan's mother is the sister of Beth's father. Beth's mother is the sister of Carl's father. Carl's mother is the sister of Alan's father. Assuming monogamy, no adoption, and that all persons are distinct, what is the precise kinship term between Alan and Carl?\",\n  \"explanation\": \"Alan's mother and Beth's father are siblings, making Alan and Beth first cousins. Beth's mother and Carl's father are siblings, so Beth and Carl are first cousins. Carl's mother and Alan's father are siblings, which directly makes Alan and Carl first cousins. No half\u2011relationships or generational gaps exist, so the exact term is \\\"first cousins\\\".\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A) A) Half\u2011first cousins\",\n    \"B) B) Second cousins\",\n    \"C) C) First cousins\",\n    \"D) D) Not uniquely determinable"
+  },
+  {
+    "index": 930,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 932,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 933,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 934,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 2 column 12 (char 13)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear"
+  },
+  {
+    "index": 936,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 937,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 5 column 17 (char 552)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M and N are married. M\u2019s sister S is married to N\u2019s brother T. M has a child X (with a previous partner) and N has a child Y (with a previous partner). What is the precise kinship term between X and Y using standard English kinship terminology?\",\n  \"explanation\": \"Because M and N are spouses, X is N\u2019s step\u2011child and Y is M\u2019s step\u2011child, making them step\u2011siblings. The marriage between S and T creates only an affinal link, not a blood link, so no cousin term applies.\",\n  \"answer\": \"A\","
+  },
+  {
+    "index": 938,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 939,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 943,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 945,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 946,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 948,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 949,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 950,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 951,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 952,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 953,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 954,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 955,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 956,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 958,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 960,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 961,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 962,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 964,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 965,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 966,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 967,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 969,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 970,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 971,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M's mother has exactly one sibling, who shares only one parent with her (a half\u2011sibling). M's father also has exactly one sibling, who likewise shares only one parent with him. The child of each of these siblings is called C. What is"
+  },
+  {
+    "index": 973,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 975,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 976,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 978,
+    "reason": "json_decode_error",
+    "detail": "Expecting value: line 9 column 31 (char 645)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"R is the child of the only brother of S's mother, and S is the child of the only brother of R's mother. Using standard English kinship terms, what is the precise relation of R to S?\",\n  \"explanation\": \"R is the child of S's maternal uncle, and S is the child of R's paternal uncle. In each case the person is the child of a parent\u2019s sibling, which by definition makes them first cousins. No half\u2011sibling or other link exists, so the exact term is \\\"first cousin\\\".\",\n  \"answer\": \"B\",\n  \"choices\": [\n    \"A) A) Nephew/Niece\",\n    \"B) B) First cousin\",\n    \"C) C) Half-first cousin\","
+  },
+  {
+    "index": 979,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 980,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 981,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 982,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 986,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 991,
+    "reason": "json_decode_error",
+    "detail": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+    "raw": "{"
+  },
+  {
+    "index": 994,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"Ten people A\u2013J sit in a straight row of ten seats numbered left\u2011to\u2011right 1\u201310. H occupies seat\u202f1 and F occupies seat\u202f10. A sits immediately to the right of H;"
+  },
+  {
+    "index": 996,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 73)",
+    "raw": "{\n  \"topic\": \"Seating Arrangements (Circular and Linear)\",\n  \"question\": \"A round table has ten equally spaced seats numbered clockwise 0 (the marked top seat) through 9. A sits in seat\u202f0. B sits immediately"
+  },
+  {
+    "index": 997,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 998,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 999,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1001,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1004,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1005,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1006,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1007,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1008,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1010,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1011,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1012,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1013,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 7 column 5 (char 655)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"L has one sister S and one brother B. S has exactly one son X, and B has exactly one daughter Y. X and Y marry and have a child M. Using standard English kinship terms (no adoption, monogamy allowed), what is M's relation to L?\",\n  \"explanation\": \"S is L\u2019s sister; her only son X is L\u2019s nephew. B is L\u2019s brother; his only daughter Y is L\u2019s niece. X and Y are first cousins, and their child M is the grandchild of both S and B. Since L is sibling of each of M\u2019s grandparents, L is the great\u2011uncle/aunt of M. No other choice matches this precise kinship.\",\n  \"answer\": \"C\",\n  \"choices\": [\n    \"A"
+  },
+  {
+    "index": 1014,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1015,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1016,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1018,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1020,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1021,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1022,
+    "reason": "empty_output",
+    "detail": "",
+    "raw": ""
+  },
+  {
+    "index": 1023,
+    "reason": "json_decode_error",
+    "detail": "Unterminated string starting at: line 3 column 15 (char 63)",
+    "raw": "{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"question\": \"M\u2019s mother is the sister of N\u2019s father. N\u2019s mother is the sister of O\u2019s father. O\u2019s mother is the sister of P\u2019s father. Q is the child of"
+  }
+]

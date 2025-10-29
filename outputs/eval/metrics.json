@@ -1,0 +1,44 @@
+{
+  "question_metrics": {
+    "total_generated": 1024,
+    "valid_count": 364,
+    "invalid_count": 660,
+    "invalid_reasons": {
+      "empty_output": 580,
+      "json_decode_error": 80
+    }
+  },
+  "question_timing": {
+    "batch_count": 8,
+    "total_tokens": 933051,
+    "total_time_sec": 298.4954824447632,
+    "tokens_per_sec": 3125.846302121714
+  },
+  "answer_metrics": {
+    "questions_answered": 364,
+    "valid_count": 176,
+    "invalid_count": 188,
+    "invalid_reasons": {
+      "empty_output": 138,
+      "json_decode_error": 50
+    },
+    "correct_count": 169,
+    "accuracy": 0.9602272727272727
+  },
+  "answer_timing": {
+    "batch_count": 3,
+    "total_tokens": 159351,
+    "total_time_sec": 54.210089445114136,
+    "tokens_per_sec": 2939.508154867323
+  },
+  "config": {
+    "num_questions": 1024,
+    "batch_size": 128,
+    "answer_batch_size": 128,
+    "topics_file": "assets/topics.json",
+    "icl_file": "assets/topics_example.json",
+    "skip_answering": false,
+    "question_concurrency": 128,
+    "answer_concurrency": 128
+  }
+}

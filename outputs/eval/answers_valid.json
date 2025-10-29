@@ -1,0 +1,1234 @@
+[
+  {
+    "index": 1,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John\u2019s mother is the paternal aunt of Mary\u2019s mother, meaning she is the sister of Mary\u2019s maternal grandfather. Therefore John\u2019s mother is the aunt of Mary\u2019s mother, making John and Mary\u2019s mother first cousins. Since John is one generation above Mary, their relationship is first cousin once removed."
+  },
+  {
+    "index": 4,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A and B are siblings, so their children C (A's daughter) and D (B's son) are first cousins. E is D's son, making E the child of C's first cousin. In English kinship, a child of one's cousin is a first cousin once removed. Therefore E is C's first cousin once removed."
+  },
+  {
+    "index": 5,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "John and Mary share the same parents; Alice and Peter share another set of parents. Ethan\u2019s father (John) and Fiona\u2019s mother (Mary) are siblings, making Ethan and Fiona first cousins through that side. Likewise, Ethan\u2019s mother (Alice) and Fiona\u2019s father (Peter) are siblings, giving a second first\u2011cousin link. Because the two children are related through both parental sibling pairs, they share both sets of grandparents, which is the definition of double first cousins."
+  },
+  {
+    "index": 17,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "R's mother\u2019s only brother is R\u2019s maternal uncle. His sole child X is R\u2019s first cousin. Y is the child of that cousin. In kinship terms, a person\u2019s relationship to the child of his/her cousin is \"first cousin once removed\". This relationship is uniquely determined by the given information."
+  },
+  {
+    "index": 19,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so they share the same parents (paternal grandparents for both A and B). X and Y are also siblings, sharing another set of parents (maternal grandparents for both A and B). A\u2019s parents are M (child of the first set) and X (child of the second set); B\u2019s parents are N (child of the first set) and Y (child of the second set). Thus A and B share both sets of grandparents, making them first cousins on both the paternal and maternal sides\u2014i.e., double first cousins."
+  },
+  {
+    "index": 21,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "R's mother\u2019s brother (maternal uncle) marries R's father\u2019s sister (paternal aunt). Their only child is therefore both the child of R\u2019s maternal uncle and the child of R\u2019s paternal aunt. Hence the child shares R\u2019s maternal grandparents (through the uncle) and paternal grandparents (through the aunt). This makes the child a double first cousin of R, the definition of a double cousin."
+  },
+  {
+    "index": 25,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Martha and Kevin have the same mother but different fathers, making them half\u2011siblings. Their children (Alex and Bella) each inherit one of those half\u2011siblings as a parent. Therefore Alex and Bella share exactly one grandparent\u2014their common maternal grandmother\u2014rather than a full pair of grandparents. Children of half\u2011siblings are termed half\u2011first cousins. Since the relationship is fully determined, the correct choice is half\u2011first cousins."
+  },
+  {
+    "index": 26,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "N and O are siblings. Their children M (son of N) and P (son of O) are first cousins. Q is P's daughter, one generation below P. Therefore M is the first cousin of Q's parent, making M Q's first cousin once removed."
+  },
+  {
+    "index": 32,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M is the child of N's paternal aunt (the only sister of N's father) and also the child of N's maternal uncle (the only brother of N's mother). For a single individual M to have both as parents, those two relatives must be married, making M the offspring of a paternal aunt and a maternal uncle. Thus M shares both sets of grandparents with N, i.e., they are first cousins on both sides, which is the definition of a double first cousin."
+  },
+  {
+    "index": 41,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "R's spouse S has brother T, making T R's brother\u2011in\u2011law. T's spouse U is therefore R's sister\u2011in\u2011law. V is U's sister, i.e., the sister of R's sister\u2011in\u2011law. No standard English kinship term covers the sibling of a sibling\u2011in\u2011law, and the allowed in\u2011law scope does not include this level. Hence V has no direct standard relation to R."
+  },
+  {
+    "index": 45,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N share the same parents, and O and P share another set of parents. M marries O, N marries P, so their children X and Y each inherit both sets of grandparents. Therefore X and Y have both grandparents in common, making them double first cousins\u2014the most precise term among the options."
+  },
+  {
+    "index": 57,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are full siblings, sharing the same two parents. P and Q are also full siblings, sharing another pair of parents. X is the child of M (a sibling of N) and P (a sibling of Q). Y is the child of N and Q. Therefore X and Y each have the same four grandparents: the parents of M/N and the parents of P/Q. Sharing both sets of grandparents makes them children of two sibling pairs, which is the definition of double first cousins."
+  },
+  {
+    "index": 59,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "L's mother and her sister are siblings. The sister's son K is the child of L's aunt, making K the child of L's parent's sibling. By standard kinship terminology this is a first cousin relationship. No half\u2011sibling information is given, so it is not a half\u2011first cousin."
+  },
+  {
+    "index": 61,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Tom and Sam are full brothers, so they share the same parents. Alice and Beth are full sisters, sharing their own parents. Clara\u2019s father (Tom) and David\u2019s father (Sam) give Clara and David a common set of paternal grandparents. Clara\u2019s mother (Alice) and David\u2019s mother (Beth) give them a second common set of maternal grandparents. Because the two children share both sets of grandparents, they are double first cousins, not merely first cousins, half\u2011first cousins, or second cousins."
+  },
+  {
+    "index": 63,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M is Q's maternal uncle (mother's brother) and F is Q's paternal uncle (father's brother). Since M and F marry each other, their child P is the offspring of both Q's maternal and paternal uncles. Therefore P is a cousin to Q through both parental lines, i.e., a double first cousin. The standard term for this relationship is simply \"first cousin\" (the \"double\" qualifier does not change the basic category). Hence the correct choice is C."
+  },
+  {
+    "index": 66,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Tom's father's mother is his paternal grandmother. The sister of that grandmother is Tom's great\u2011aunt (sibling of a grandparent). The inverse of great\u2011aunt is great\u2011nephew (or great\u2011niece). Therefore Tom is the great\u2011nephew of his father's mother\u2019s sister."
+  },
+  {
+    "index": 85,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "A and B are siblings, making their children (C, D, and E) first cousins. E is the mother of F, so F is one generation below E. Therefore, F is the child of C's first cousin, which is the definition of a first cousin once removed."
+  },
+  {
+    "index": 91,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "John and Mark are brothers; Anna and Beth are sisters. Their children Carl and Dana are each the product of a brother-sister pair, thus they share both sets of grandparents, making them double first cousins. Ethan (child of Carl) and Fiona (child of Dana) are the next generation. Children of first cousins are second cousins; because Carl and Dana are double first cousins, their children share both sets of great\u2011grandparents, yielding double second cousins. Hence the most precise term is double second cousins."
+  },
+  {
+    "index": 92,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Emma and Frank share only one parent, making them half\u2011siblings. Lily is Emma's child and Noah is Frank's child. Children of siblings are first cousins; when the siblings are half\u2011siblings, their children are half\u2011first cousins (cousins of the half\u2011blood variety). No other family connections affect this relationship, so the most precise term is half\u2011first cousins."
+  },
+  {
+    "index": 98,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children are first cousins. O is M's daughter, making O a first cousin to N's children P and R. R is the parent of Q, putting Q one generation below R. Therefore O is a first cousin of Q's parent, which defines a first\u2011cousin\u2011once\u2011removed relationship. The other options do not match this generational link."
+  },
+  {
+    "index": 99,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John, Paul, and Diana are siblings. Their children\u2014Anna (John's), Bella (Paul's), and Carl (Diana's)\u2014are first cousins. David is Bella's son, making him one generation below Bella. Therefore David is a first cousin once removed of Carl, who is in the same generation as Bella."
+  },
+  {
+    "index": 111,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Peter and Paul are brothers, making their children Emma and Sarah first cousins. Lily is Sarah's daughter, placing her one generation below Sarah. Therefore Emma and Lily are separated by one generational step while sharing the same set of great-grandparents (John's parents), which defines a first\u2011cousin\u2011once\u2011removed relationship."
+  },
+  {
+    "index": 115,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Adam and Brian are full brothers, and Clara and Diana are full sisters. Ethan is the child of Adam (brother) and Clara (sister), while Fiona is the child of Brian (brother) and Diana (sister). Therefore Ethan and Fiona share both sets of grandparents\u2014the parents of Adam/Brian and the parents of Clara/Diana. Sharing both paternal and maternal grandparents makes them double first cousins, the most precise term among the options."
+  },
+  {
+    "index": 116,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Margaret and Victor are half\u2011siblings, sharing only their mother Helen. Clara is Margaret's daughter, Daniel is Victor's son. Thus Clara and Daniel share a single grandparent (Helen) but not the other, making them half\u2011first cousins."
+  },
+  {
+    "index": 123,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N share only a mother, making them half\u2011siblings. The children of siblings are first cousins. When the siblings are half\u2011siblings, their children are half\u2011cousins (sometimes called half\u2011first cousins). Thus S and D, being the offspring of half\u2011siblings, are half\u2011first cousins."
+  },
+  {
+    "index": 125,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "John and Mary are siblings. Mary\u2019s son Paul is John\u2019s nephew. John\u2019s daughter Lisa is Mary\u2019s niece, making Paul and Lisa first cousins. Emma is Lisa\u2019s daughter, so she is one generation below Lisa. Therefore Emma is the child of Paul\u2019s first cousin, which is the definition of a first cousin once removed. Hence Emma and Paul are blood relatives of that type."
+  },
+  {
+    "index": 133,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "W's mother has exactly one sibling. That sibling is W's aunt or uncle. Z is described as the child of this sibling, making Z the child of W's aunt/uncle. In standard kinship terms, the child of one's aunt or uncle is a first cousin. No other family structures (adoption, incest) are allowed, so the relationship is uniquely determined as first cousin."
+  },
+  {
+    "index": 137,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "X's mother is Y's daughter; Y's son Z is X's maternal uncle. W is married to Z, making her the spouse of X's maternal uncle, i.e., an aunt by marriage. Additionally, W is the sister of X's father, a paternal aunt by blood. In either case the standard kinship term is \"aunt.\""
+  },
+  {
+    "index": 138,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M is mother of N and O, so N and O are siblings. O is married to Q, making Q the spouse of N's sibling. N is married to P, and P is a sibling of Q, so Q is also the sibling of N's spouse. In standard kinship, a sibling of one's spouse or the spouse of one's sibling is termed a brother\u2011in\u2011law (or sister\u2011in\u2011law). The option matching this is B."
+  },
+  {
+    "index": 141,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N share only a mother, making them half\u2011siblings. Their children C and D each have that mother\u2019s parents as grandparents, but they have different paternal grandparents. First cousins share both sets of grandparents; half\u2011first cousins share only one set. Therefore C and D are half\u2011first cousins."
+  },
+  {
+    "index": 146,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "R's paternal grandmother and S are siblings. S's daughter T is therefore the child of R's great-uncle, making T the first cousin of R's father. Since R is one generation down from his father, R and T are separated by one generation, which is the definition of a first cousin once removed."
+  },
+  {
+    "index": 154,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "L's father's only sister is L's paternal aunt, and L's mother's only brother is L's maternal uncle. M is the child of both the paternal aunt and the maternal uncle. Thus M is a first cousin of L through the father's side and also a first cousin through the mother's side, making M a double first cousin of L."
+  },
+  {
+    "index": 176,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "B and S are Y's siblings. B's daughter D is Y's niece; S's son N is Y's nephew. D and N, being children of siblings, are first cousins who marry. Their child X is therefore the child of Y's niece and nephew. The child of a niece or nephew is a grandniece/grandnephew to the aunt/uncle. Thus X is Y's grandniece/grandnephew."
+  },
+  {
+    "index": 185,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N share only their mother, so they are half\u2011siblings. Their respective children C and D each have that mother as a grandparent, but they do not share the other grandparent. Therefore C and D share exactly one grandparent, making them half\u2011first cousins, the standard term for cousins who share only one grandparent."
+  },
+  {
+    "index": 194,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so X and Y share the same paternal grandparents (the parents of M and N). O and P are also siblings, so X and Y share the same maternal grandparents (the parents of O and P). Thus X and Y have both sets of grandparents in common, making them children of two sibling pairs. This relationship is defined as double first cousins."
+  },
+  {
+    "index": 197,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Q's maternal uncle (mother's brother) and Q's paternal aunt (father's sister) are the parents of P. Thus P is the child of Q's mother's brother, making P a first cousin on the maternal side, and also the child of Q's father's sister, making P a first cousin on the paternal side. The two siblings (uncle and aunt) must be married to each other, so P is related to Q through both parental lines, which is defined as a double first cousin."
+  },
+  {
+    "index": 201,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Peter is John\u2019s nephew (son of John\u2019s sister). Susan is John\u2019s daughter. Lily is Susan\u2019s child, making her John\u2019s granddaughter. Lily is also Peter\u2019s child, and Peter is John\u2019s nephew, so Lily is John\u2019s great\u2011niece. Both relations apply, and the most precise description lists both."
+  },
+  {
+    "index": 208,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John and Kate share the same parents, as do Lily and Mike. John marries Lily and Kate marries Mike. Their children, Paul and Anna, each have one set of grandparents from John/Kate's family and the other set from Lily/Mike's family. Thus Paul and Anna share both sets of grandparents, making them double first cousins."
+  },
+  {
+    "index": 215,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "B1 and B2 share the same parents, as do S1 and S2. B1 marries S1 and B2 marries S2, so X\u2019s father is B1 and mother is S1, while Y\u2019s father is B2 and mother is S2. Thus X and Y have both sets of grandparents in common \u2013 they are double first cousins. A is X\u2019s child and B is Y\u2019s child, so they are one generation removed from X and Y. Children of double first cousins share both sets of great\u2011grandparents, making them double second cousins. Hence the most precise term is double second cousins."
+  },
+  {
+    "index": 216,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Alice and Bob are siblings, making their children Carol and Dave first cousins. Frank is Carol's child and Grace is Dave's child. Children of first cousins are second cousins, as they share great\u2011grandparents (G1 and G2) but not grandparents. Therefore Frank and Grace are second cousins."
+  },
+  {
+    "index": 218,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M's maternal uncle's daughter X is M's first cousin (maternal side). M's paternal aunt's son Y is M's first cousin (paternal side). X and Y's child Z is the offspring of M's first cousin(s). In kinship terms, the child of your first cousin is your first cousin once removed. Thus M is first cousin once removed to Z."
+  },
+  {
+    "index": 224,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, sharing grandparents X. P and Q are siblings, sharing grandparents Y. M marries Q, N marries P, so A\u2019s parents are M (child of X) and Q (child of Y); B\u2019s parents are N (child of X) and P (child of Y). Consequently A and B each have the same two sets of grandparents (X and Y). Sharing both pairs of grandparents makes them the children of two sibling couples, which is the definition of double first cousins. They are not merely half\u2011first cousins (which would share only one grandparent set) nor second cousins (which share great\u2011grandparents)."
+  },
+  {
+    "index": 225,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and O are siblings, sharing the same parents. N and P are siblings, sharing a different set of parents. X is the child of M and N; Y is the child of O and P. Therefore X and Y are each the child of one sibling from each of the two sibling pairs. They share both sets of grandparents (M/O's parents and N/P's parents), making them first cousins through two distinct lines. This is the definition of double first cousins."
+  },
+  {
+    "index": 229,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N share the same mother. M\u2019s child A makes M\u2019s mother a grandparent of A. A\u2019s child C makes her a great\u2011grandparent of C. Independently, N\u2019s child B is also a grandchild of M\u2019s mother, and B\u2019s child C again makes M\u2019s mother a great\u2011grandparent. Therefore C is the great\u2011grandchild of M\u2019s mother."
+  },
+  {
+    "index": 262,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "A and B are siblings, so their children (E and F) are first cousins through their fathers. C and D are siblings, so E and F are also first cousins through their mothers. Because the two cousin relationships involve both parental lines, E and F share both sets of grandparents, making them double first cousins. They are not half\u2011first cousins (which would require only one shared grandparent line) nor second cousins."
+  },
+  {
+    "index": 263,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Paul's father Adam and Quinn's father Brian are brothers, making Paul and Quinn first cousins through their paternal line. Their mothers, Clara and Diana, are sisters, so Paul and Quinn are also first cousins through their maternal line. Sharing both sets of grandparents qualifies them as double first cousins, a more specific term than just first cousins."
+  },
+  {
+    "index": 273,
+    "model_answer": "C",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "M and N are siblings. Their children L (M's daughter) and R (N's son) are first cousins. R's son S is one generation below R, making S the child of L's cousin. In kinship terms, a child of one's cousin is a first cousin once removed. Hence S is L's first cousin once removed."
+  },
+  {
+    "index": 282,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "L's mother has one brother, who is L's maternal uncle. The uncle's only child K is therefore L's first cousin (child of a parent's sibling). The father's lack of brothers does not affect this relationship. Hence K is L's first cousin."
+  },
+  {
+    "index": 286,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children (O, P, R) are first cousins. R is O's first cousin. Q is R's child, one generation down from O. The standard term for the relationship between a person and the child of their first cousin is \"first cousin once removed.\" Therefore O and Q are first cousins once removed."
+  },
+  {
+    "index": 287,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John and Mary are siblings (share grandparents P). Lisa and Tom are siblings (share grandparents Q). Anna is child of John (P) and Lisa (Q). Ben is child of Mary (P) and Tom (Q). Therefore Anna and Ben share both sets of grandparents (P and Q), making them children of two pairs of siblings. This is the definition of double first cousins."
+  },
+  {
+    "index": 289,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children O (M's daughter) and R (N's daughter) are first cousins. Q is R's child, placing Q one generation below R. Therefore Q is one generation removed from O, making Q O's first cousin once removed."
+  },
+  {
+    "index": 299,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Carl is John\u2019s maternal uncle, making his daughter Lisa John\u2019s first cousin. Mark is the son of John\u2019s paternal aunt, also a first cousin. Tom is the child of Lisa and Mark, i.e., the child of John\u2019s first cousin(s). The child of a first cousin is a first cousin once removed, which matches standard kinship terminology."
+  },
+  {
+    "index": 300,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "E is child of F; G is F's sister, so G is E's aunt. H, G's son, is therefore E's first cousin. I, H's daughter, is one generation down from that cousin, making I a first cousin once removed to E. J is E's son, so J is one generation down from E. The children of first cousins (I and J) are second cousins to each other. Hence I and J are second cousins."
+  },
+  {
+    "index": 301,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "E and F are half\u2011siblings, sharing only mother G. Their children X and Y each have G as a grandparent, but they have different other grandparents. First cousins share both grandparents; half\u2011cousins share only one. Therefore X and Y are half\u2011first cousins, matching option D."
+  },
+  {
+    "index": 303,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Aaron and Carl are brothers, making Carl Bella's paternal uncle. Carl's daughter Diana is therefore Bella's first cousin by blood. Additionally, Diana is married to Ethan, who is the brother of Bella's mother Fiona, making Ethan Bella's maternal uncle and Diana his wife. That would make Diana an aunt by marriage, but the direct blood relationship is first cousin, which is a standard term. The puzzle asks for the precise relation using standard kinship terms, so the primary direct relation is first cousin."
+  },
+  {
+    "index": 310,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Adam and Brian share the same parents, and Clara and Diana also share the same parents. Ethan is the child of Adam (one brother) and Clara (one sister), while Fiona is the child of Brian (the other brother) and Diana (the other sister). Hence Ethan and Fiona have both sets of grandparents in common, making them double first cousins."
+  },
+  {
+    "index": 314,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are full siblings sharing the same parents, and O and Q are full siblings sharing another set of parents. Their children X (of M and O) and Y (of N and Q) therefore share both sets of grandparents. This makes them double first cousins, a more specific term than regular first cousins."
+  },
+  {
+    "index": 315,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A and B are half\u2011siblings, sharing only one parent. Their children (M and N) are therefore the offspring of half\u2011siblings. In kinship terminology, children of half\u2011siblings are called half\u2011first cousins (or first cousins, half\u2011blood). This distinguishes them from full first cousins whose parents are full siblings. Thus the precise term is half\u2011first cousins."
+  },
+  {
+    "index": 323,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are full siblings, so they share the same set of paternal grandparents. A and B are full sisters, sharing the same set of maternal grandparents. X is child of M (father) and A (mother); Y is child of N (father) and B (mother). Thus X and Y have both pairs of grandparents in common: the grandparents of M/N and the grandparents of A/B. This makes them first cousins on both the paternal and maternal sides, i.e., double first cousins."
+  },
+  {
+    "index": 331,
+    "model_answer": "A",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Clara is Diana's mother. Diana is Grace's mother. Therefore Clara is Grace's maternal grandmother, making Grace Clara's granddaughter. The standard term for this relationship is \"granddaughter\"."
+  },
+  {
+    "index": 335,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Adam and Brian are full brothers, so their children (Ethan and Fiona) share a pair of paternal grandparents. Clara and Diana are full sisters, so their children also share a pair of maternal grandparents. Because the two children share both sets of grandparents, they are cousins through both parents, which is defined as double first cousins. They are not half\u2011first cousins (that would require sharing only one grandparent) nor second cousins (which would require sharing great\u2011grandparents)."
+  },
+  {
+    "index": 343,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Emma's mother\u2019s only brother Peter is Emma\u2019s maternal uncle; his daughter Lily is therefore Emma\u2019s first cousin. Emma\u2019s father\u2019s only sister Susan is Emma\u2019s paternal aunt; her son Mark is likewise Emma\u2019s first cousin. Both possible Xs are first cousins, so the precise kinship term is \"first cousin\"."
+  },
+  {
+    "index": 346,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Y's maternal uncle is the brother of Y's mother, so his child (X) is Y's first cousin on the maternal side. Y's paternal aunt is the sister of Y's father, so her child (X) is also Y's first cousin on the paternal side. Since X is a first cousin to Y through both parents, they are double first cousins. No half\u2011cousin or second\u2011cousin relationship applies."
+  },
+  {
+    "index": 348,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M is R's maternal uncle (mother's brother) and S is R's paternal aunt (father's sister). Their child T is therefore R's first cousin via the maternal line (child of maternal uncle) and also R's first cousin via the paternal line (child of paternal aunt). Because T is a first cousin on both sides, they are double first cousins, sharing both sets of grandparents. The other options do not fit the described relationships."
+  },
+  {
+    "index": 349,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are siblings. M's child A is also the child of M's spouse. A and B (N's child) have a child C. Therefore C is the grandchild of A's parents, i.e., of M and M's spouse. The direct kinship term for C relative to M's spouse is \"grandchild\"."
+  },
+  {
+    "index": 360,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "A and C are siblings, so their children (M and E) are first cousins through that side. B and D are also siblings, making M and E first cousins through the other side as well. Because the two children are related as first cousins via both parental lines, they are double first cousins, the most specific term."
+  },
+  {
+    "index": 368,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "N\u2019s mother\u2019s brother O is N\u2019s maternal uncle, making O\u2019s daughter P N\u2019s first cousin. Q is the son of M\u2019s father\u2019s sister, i.e., M\u2019s paternal aunt\u2019s son, making Q M\u2019s first cousin. Since P is married to Q, P is the spouse of M\u2019s first cousin. The allowed kinship terms do not include \"cousin\u2011in\u2011law,\" so no standard direct relation applies; it is only an affinal chain."
+  },
+  {
+    "index": 373,
+    "model_answer": "A",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Ethan is married to Fiona, who is Aaron's sister. Therefore Ethan is Aaron's brother\u2011in\u2011law. As Aaron is Bella's father, Ethan is Bella's uncle by marriage, which is the standard term used for a parent's sibling\u2011in\u2011law. No closer blood or generational link exists."
+  },
+  {
+    "index": 379,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Q is the mother of P. O is married to P, making O the spouse of Q's child. In English kinship, the spouse of one's child is called a daughter\u2011in\u2011law (or son\u2011in\u2011law). This fits the allowed in\u2011law categories (children\u2019s spouses). Therefore O is Q's daughter\u2011in\u2011law."
+  },
+  {
+    "index": 384,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Mark and John are siblings. Mark's daughter Lisa is John's niece. Lisa's son Ben is therefore the child of John's niece, making Ben John's grandnephew. The standard term for the relationship from the elder's perspective (John to Ben) is great\u2011uncle (also called granduncle). This matches choice A."
+  },
+  {
+    "index": 388,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so they share the same two parents. X and Y are also siblings, sharing another pair of parents. P\u2019s paternal grandparents are M/N\u2019s parents, and his maternal grandparents are X/Y\u2019s parents. Q has the same paternal grandparents (through N) and the same maternal grandparents (through Y). Thus P and Q share both sets of grandparents, making them first cousins through both parental lines\u2014i.e., double first cousins."
+  },
+  {
+    "index": 390,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "N's father's sister (paternal aunt) and N's mother's brother (maternal uncle) are both married and share the same child M. Thus M is the child of N's paternal aunt and also of N's maternal uncle, making M N's first cousin on both the father's and mother's sides\u2014i.e., a double first cousin."
+  },
+  {
+    "index": 393,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "L's mother has exactly one brother, making that brother L's maternal uncle. His only child, A, is therefore the child of L's maternal uncle, which defines a first cousin relationship. No intermarriages ensure no overlapping relations, confirming A is L's first cousin."
+  },
+  {
+    "index": 399,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M is the child of L's paternal aunt (father's sister) and maternal uncle (mother's brother). Through the aunt, M is L's first cousin on the father's side; through the uncle, M is L's first cousin on the mother's side. Being first cousins via both parents makes them double first cousins, matching choice B."
+  },
+  {
+    "index": 400,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John is Paul's father, making Sam his grandson. John is also Kate's uncle (sibling of her mother Mary), making him great\u2011uncle to Sam. Since Sam is simultaneously John\u2019s grandchild and great\u2011nephew, there is no single standard English kinship term that captures both; thus the correct choice is that there is no direct standard relation covering both roles."
+  },
+  {
+    "index": 405,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Mary and Tom are siblings. Their children, Peter (Mary's son) and Lisa (Tom's daughter), are therefore the children of siblings, which makes them first cousins under standard kinship terms."
+  },
+  {
+    "index": 409,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "L\u2019s mother has one brother (maternal uncle). His only child is L\u2019s first cousin. The child of that cousin is one generation down, making it L\u2019s first cousin once removed. Similarly, L\u2019s father has one sister (paternal aunt). Her only child is also a first cousin of L, and that child\u2019s child is likewise a first cousin once removed. Both possible S are exactly one generation below a first cousin, so the relationship is uniquely first cousin once removed."
+  },
+  {
+    "index": 410,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Anna and Ben share the same father John but have different mothers (Anna's mother is John's first wife, Ben's mother is Mary). This makes them half\u2011siblings, specifically Anna is Ben's half\u2011sister."
+  },
+  {
+    "index": 415,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "John's brother Peter's son Michael is John's nephew. Anna is Michael's wife, making her the spouse of John's nephew. In standard kinship, the spouse of a nephew is called a niece\u2011in\u2011law. Other links (Anna being Tom's cousin, Tom being John's brother\u2011in\u2011law) do not create a closer term. Therefore the correct kinship term is niece\u2011in\u2011law."
+  },
+  {
+    "index": 416,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "N and O are half\u2011siblings, sharing only their mother G. G is therefore the grandmother of both R (through N) and Q (through O). Because R\u2019s parent N and Q\u2019s parent O are half\u2011siblings, their children share only one grandparent, not both. Children of half\u2011siblings are classified as half\u2011first cousins. Hence Q and R are half\u2011first cousins."
+  },
+  {
+    "index": 430,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "L's mother and K's father are siblings, so L and K are children of those siblings and therefore first cousins. M is L's child and N is K's child. Children of first cousins are second cousins, sharing the same great\u2011grandparents. The relationship is thus precisely \"second cousins\"."
+  },
+  {
+    "index": 432,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "A and C are brothers, so they share the same parents. B and D are sisters, also sharing the same parents. M is the child of A (son of the paternal grandparents) and B (daughter of the maternal grandparents). N is the child of C (son of the same paternal grandparents) and D (daughter of the same maternal grandparents). Thus M and N have both sets of grandparents in common, making them double first cousins, the most precise term."
+  },
+  {
+    "index": 433,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M is R's maternal uncle (mother's brother) and S is R's paternal aunt (father's sister). Their child T is therefore the child of R's maternal uncle, making T a first cousin on the mother's side, and also the child of R's paternal aunt, making T a first cousin on the father's side. Being first cousins through both parental lines constitutes a double first cousin relationship."
+  },
+  {
+    "index": 438,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John's mother Mary has a brother Peter, making Peter John\u2019s maternal uncle. Peter\u2019s daughter Susan is therefore John\u2019s first cousin. Susan\u2019s son Michael is one generation below Susan, so Michael is the child of John\u2019s cousin, which is defined as a first cousin once removed. The additional detail about Laura and Emma involves marriage and does not affect the blood\u2011relation classification, which the question specifies."
+  },
+  {
+    "index": 440,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Clara and Ben share the same father (Adam) but have different mothers, making them half\u2011siblings. Ben is Daisy's father, so Clara is the sister of Daisy's parent. Because the sibling relationship is a half\u2011sibling, Clara is a half\u2011aunt to Daisy. The correct choice is therefore D."
+  },
+  {
+    "index": 445,
+    "model_answer": "C",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Tom is married to Linda, who is Mary's sister. Mary is John's spouse, making Linda John's sister-in-law. However, Tom is the spouse of John's sister-in-law, i.e., the spouse of his spouse's sibling. The allowed in-law categories do not include a spouse's sibling's spouse, so no standard term applies. Therefore Tom has no direct kinship term to John."
+  },
+  {
+    "index": 452,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Adam and Ben share both parents, making them full brothers. Claire and Diana also share both parents, making them full sisters. Ethan is the child of Adam and Claire; Fiona is the child of Ben and Diana. Thus Ethan and Fiona are related as first cousins through their fathers and also as first cousins through their mothers. Because they are first cousins on both parental lines, they are double first cousins, sharing both sets of grandparents."
+  },
+  {
+    "index": 464,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are half\u2011siblings, sharing one parent. The children of siblings are first cousins. When the siblings are half\u2011siblings, their children are first cousins who share only one grandparent, i.e., half\u2011first cousins. This is the most precise standard term."
+  },
+  {
+    "index": 471,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A and B are half\u2011siblings because they share only mother M (different fathers). Their children X and Y are therefore the offspring of half\u2011siblings. First cousins share both grandparents; half\u2011first cousins share only one grandparent (the common grandparent of the half\u2011sibling parents). Since X and Y have exactly one common grandparent (the parent of M), their correct kinship term is half\u2011first cousins."
+  },
+  {
+    "index": 473,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, making their children O and R first cousins. R\u2019s child Q is one generation below R. The relationship between a person and the child of their cousin is defined as first cousin once removed. Therefore O is Q\u2019s first cousin once removed."
+  },
+  {
+    "index": 506,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "A and B are brothers, so X and Y share paternal grandparents. C and D are sisters, so X and Y also share maternal grandparents. Because they share both sets of grandparents, they are first cousins through both parents, i.e., double first cousins, which is more specific than regular first cousins."
+  },
+  {
+    "index": 510,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "R\u2019s mother\u2019s only brother is R\u2019s maternal uncle; his child X is R\u2019s first cousin. R\u2019s father\u2019s only sister is R\u2019s paternal aunt; her child Y is also R\u2019s first cousin. Whether S is X or Y, S is a first cousin of R. Hence the relationship is uniquely determined as first cousin."
+  },
+  {
+    "index": 513,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "X's mother\u2019s sister is X\u2019s maternal aunt, so her child is X\u2019s first cousin on the mother's side. X\u2019s father\u2019s brother is X\u2019s paternal uncle, so his child is X\u2019s first cousin on the father's side. The same child is therefore a first cousin through both parents, i.e., a double first cousin."
+  },
+  {
+    "index": 518,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M and N share the same parents, as do O and P. X is child of M (from parents A\u2011B) and O (from parents C\u2011D); Y is child of N (same A\u2011B) and P (same C\u2011D). Therefore X and Y share both sets of grandparents (A\u2011B and C\u2011D). Sharing two distinct grandparent pairs makes them first cousins through each parent, i.e., double first cousins."
+  },
+  {
+    "index": 522,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and P share only their father F, making them half\u2011siblings. The children of half\u2011siblings are classified as half\u2011first cousins. Since X is M's child and Q is P's child, X and Q are half\u2011first cousins."
+  },
+  {
+    "index": 532,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are full siblings, and P and Q are full siblings. X is child of M (from family A) and P (from family B); Y is child of N (same family A) and Q (same family B). Thus X and Y share the same paternal grandparents (parents of M and N) and the same maternal grandparents (parents of P and Q). Sharing both sets of grandparents makes them double first cousins, not just single (first) cousins or half\u2011cousins."
+  },
+  {
+    "index": 547,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Alan and Beth share only their father X, making them half\u2011siblings. Their children, Clara (Alan\u2019s daughter) and David (Beth\u2019s son), therefore each have X as a single common grandparent. Children of half\u2011siblings are half\u2011first cousins, as they share one grandparent rather than both. Hence Clara is a half\u2011first cousin to David."
+  },
+  {
+    "index": 555,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "X is the child of the woman's brother and Y is the child of her sister. If the brother and sister are full siblings, X and Y are first cousins. If they are half\u2011siblings, X and Y are half\u2011first cousins. The puzzle gives no information about whether the siblings share both parents, so the exact kinship cannot be uniquely determined."
+  },
+  {
+    "index": 556,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M's maternal uncle's daughter (C1) is M's first cousin. M's paternal aunt's son (C2) is also M's first cousin. Their child is the offspring of a first cousin of M. In kinship terminology, the child of your first cousin is your first cousin once removed. The fact that the two parents are unrelated does not change the standard term, and no special half\u2011 or double\u2011cousin term applies."
+  },
+  {
+    "index": 563,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Anna and Ben share both parents, and Carl and Diana share both parents. Emma is child of Anna (child of P1,P2) and Carl (child of Q1,Q2). Frank is child of Ben (child of P1,P2) and Diana (child of Q1,Q2). Hence Emma and Frank share all four grandparents, making them double first cousins, the most precise term."
+  },
+  {
+    "index": 575,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Beth and Carl are siblings, making Dana Beth's niece and Alan's cousin. George and Fiona are siblings, so Fiona is Alan's paternal aunt and Ethan's mother. Ethan (Fiona's son) marries Dana. Therefore Dana is the wife of Fiona's son, which in standard kinship terms makes Dana Fiona's daughter\u2011in\u2011law. No blood relationship exists between Dana and Fiona, so the precise term is daughter\u2011in\u2011law."
+  },
+  {
+    "index": 578,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "B is A's parent. B's sister C is A's aunt. C's son D is A's first cousin. D's daughter E is the child of A's first cousin, making E A's first cousin once removed (the \"once removed\" indicates a generational difference)."
+  },
+  {
+    "index": 584,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are full siblings, sharing both parents (L). Their children are each descended from one of these siblings. Since the spouses (W and H) are unrelated to L\u2019s family, the only common ancestry between the two children is through M and N. Children of full siblings are first cousins. Half\u2011first cousins would require the parents to be half\u2011siblings, which is not the case. No further relationship (e.g., second cousins) applies."
+  },
+  {
+    "index": 596,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and P are brothers; N and Q are sisters. Their children X and Y each have the same paternal grandparents (parents of M and P) and the same maternal grandparents (parents of N and Q). Therefore X and Y are first cousins through both parents, i.e., double first cousins."
+  },
+  {
+    "index": 604,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Y's great-aunt is the sister of Y's grandparent. The great-aunt's child Z is therefore the child of Y's grandparent's sibling, making Z a first cousin of Y's parent (they share grandparents). Since Y is one generation below the parent, Y and Z are first cousins once removed."
+  },
+  {
+    "index": 614,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "R's father's brother is R's paternal uncle. His only child U is therefore R's first cousin. V is U's daughter, placing V one generation below R's cousin. In kinship terms, the child of one's cousin is a first cousin once removed. The maternal aunt and her son W are unrelated to V, so no alternative relationship arises."
+  },
+  {
+    "index": 617,
+    "model_answer": "A",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "R's mother has one brother (her sibling) and one sister (another sibling). The brother's child is P, the sister's child is Q. Since the brother and sister are siblings to each other, their children are the children of two siblings, which by standard kinship terminology are first cousins. No other marriages affect this relationship."
+  },
+  {
+    "index": 622,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Y's father's sister (paternal aunt) is married to Y's mother's brother (maternal uncle) according to statement (1). Therefore the husband of Y's father's sister is Y's mother's brother, i.e., Y's maternal uncle."
+  },
+  {
+    "index": 625,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are brothers; C and D are sisters. Their children X and Y therefore share both sets of grandparents, making them double first cousins. The children of first cousins are second cousins; since X and Y are double first cousins, their children P and Q share both sets of great\u2011grandparents, i.e., they are double second cousins. Hence the most precise term is double second cousins."
+  },
+  {
+    "index": 633,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "X\u2019s paternal aunt (father\u2019s sister) and X\u2019s maternal uncle (mother\u2019s brother) are the parents of Y. Since they are married (no adoption or remarriage), Y is the child of X\u2019s aunt on the father\u2019s side and also the child of X\u2019s uncle on the mother\u2019s side. Thus Y is a first cousin through the father and also a first cousin through the mother, making Y a double first cousin of X."
+  },
+  {
+    "index": 635,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "G is the child of X and H is the child of Y. If X and Y are full siblings, G and H are first cousins; if X and Y are half\u2011siblings, they are half\u2011first cousins. Since the puzzle states the sibling relationship is unknown, the exact kinship cannot be uniquely determined."
+  },
+  {
+    "index": 637,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "X's father A and Y's father B are brothers, making X and Y first cousins through their fathers. Likewise, X's mother C and Y's mother D are sisters, making X and Y first cousins through their mothers. Since they are first cousins via both parental lines, they are double first cousins, the most precise term."
+  },
+  {
+    "index": 645,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "X is the child of the only sibling of Y's mother, making X a first cousin on the maternal side. X is also the child of the only sibling of Y's father, making X a first cousin on the paternal side. For X to satisfy both conditions, the mother's sibling and the father's sibling must be the married couple who are each other's sibling-in-law. Hence X is the child of two of Y's aunts/uncles, which is the definition of a double first cousin. The relation is determinable and specific."
+  },
+  {
+    "index": 651,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "R's father and Y are brothers, making Y R's paternal uncle. X is Y's daughter, so X is the child of R's uncle, which is the definition of a first cousin. Other connections (through S, V, W) are indirect, but the direct kinship via shared grandparents places X as R's first cousin."
+  },
+  {
+    "index": 653,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Adam and Ben share both parents, making them full brothers. Clara and Diana also share both parents, making them full sisters. Ethan is the child of Adam (brother) and Clara (sister); Felix is the child of Ben (brother) and Diana (sister). Thus Ethan and Felix have the same paternal grandparents (parents of Adam and Ben) and the same maternal grandparents (parents of Clara and Diana). Sharing both sets of grandparents makes them double first cousins, not just regular first cousins or half cousins."
+  },
+  {
+    "index": 661,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "P\u2019s mother and Q are siblings, so Q is P\u2019s maternal uncle. Q\u2019s son R is therefore P\u2019s first cousin. S is R\u2019s daughter, making S the child of P\u2019s cousin. In kinship terms, the child of one\u2019s cousin is a first cousin once removed. Hence S is P\u2019s first cousin once removed."
+  },
+  {
+    "index": 665,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are brothers. A's son E is A's direct descendant, so G (child of E) is A's grandchild. B's daughter F is A's niece (brother's child). The child of a niece is a great\u2011niece (or grand\u2011niece). Since G is also the child of F, G is A's great\u2011niece. Thus G holds both relations simultaneously: grandchild via E and great\u2011niece via F."
+  },
+  {
+    "index": 668,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "P\u2019s father has a sister (paternal aunt). M is her child, making M a first cousin of P on the paternal side. P\u2019s mother has a brother (maternal uncle). M is also his child, making M a first cousin on the maternal side. For M to satisfy both conditions, the paternal aunt and maternal uncle must be married to each other, and M is their shared child. Hence M is simultaneously a first cousin through both parents \u2013 a double first cousin."
+  },
+  {
+    "index": 669,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M and S are siblings; W and N are siblings. C is the child of M (one sibling) and W (the other sibling). D is the child of S (the first sibling) and N (the second sibling). Thus C and D are each the offspring of two sibling pairs, sharing both sets of grandparents. This makes them double first cousins, not merely first, half\u2011first, or second cousins."
+  },
+  {
+    "index": 673,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "W is the only daughter of Y, making Y W's parent. Z is Y's brother, so Z is sibling of W's parent, i.e., W's uncle. X is W's child, thus Z is the uncle of X's parent, which in standard terminology is a great\u2011uncle (uncle of one's parent). Therefore the correct kinship term is great\u2011uncle."
+  },
+  {
+    "index": 677,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Y's mother has exactly one brother, making him Y's maternal uncle; P, his child, is Y's first cousin. Similarly, Y's father has exactly one brother, his paternal uncle; Q, that brother's child, is also Y's first cousin. Selecting either P or Q yields a person who is a first cousin of Y. The relation is uniquely determined as first cousin."
+  },
+  {
+    "index": 681,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "M and N are half\u2011siblings, sharing only their mother. Their common ancestor for the next generation is that mother\u2019s parents (the shared grandparents). S is M's child, D is N's child, so S and D are the children of half\u2011siblings. They therefore share exactly one grandparent, not both, which defines the relationship called half\u2011first cousins. Full first cousins would require both grandparents in common, which is not the case. Hence the most precise term is half\u2011first cousins."
+  },
+  {
+    "index": 687,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "J's mother and her sister are siblings, making the sister J's maternal aunt. J's father and his brother are siblings, making the brother J's paternal uncle. The aunt and uncle marry and have a child M. M is therefore the child of J's maternal aunt (a first cousin on the mother's side) and also the child of J's paternal uncle (a first cousin on the father's side). Being first cousins through both parental lines makes M and J double first cousins."
+  },
+  {
+    "index": 688,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "P is the child of L (X) and O (Y); Q is the child of M (X) and N (Y). L and M are siblings, as are O and N. Thus P and Q are children of two sibling pairs, sharing both sets of grandparents. This makes them double first cousins, the most specific term."
+  },
+  {
+    "index": 689,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Y's father has a sister (paternal aunt). X is her child, making X Y's first cousin on the paternal side. Y's mother has a brother (maternal uncle). X is also his child, making X Y's first cousin on the maternal side. The two parents (the aunt and the uncle) are married, so X shares both sets of grandparents with Y. This situation defines a double first cousin, where the cousins are related through both parental lines."
+  },
+  {
+    "index": 690,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Y\u2019s mother\u2019s brother is Y\u2019s maternal uncle; Y\u2019s father\u2019s sister is Y\u2019s paternal aunt. They marry and have child X. X is the child of Y\u2019s maternal uncle, making X a first cousin on the mother\u2019s side, and also the child of Y\u2019s paternal aunt, making X a first cousin on the father\u2019s side. Being a first cousin through both parental lines defines a double first cousin. Hence the precise relationship is double first cousin."
+  },
+  {
+    "index": 697,
+    "model_answer": "D",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "L's father has a sister (paternal aunt) and L's mother has a brother (maternal uncle). The puzzle states these two relatives are the same individual. That would require one person to be both a sister (female) of L's father and a brother (male) of L's mother, which cannot occur under standard English kinship definitions. Hence the situation is impossible, and there is no standard term for M's relation to L."
+  },
+  {
+    "index": 704,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "R, S, and T are three siblings (R's brother S and sister T). S's child is U, T's child is V. Children of siblings are first cousins, assuming the siblings share both parents as no half\u2011sibling information is given. Hence U and V are first cousins."
+  },
+  {
+    "index": 706,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "John and Mary share only a father, making them half\u2011siblings. Their children (Alan and Beth) are therefore half\u2011first cousins. Carl is Beth's son, one generation below Beth. Thus Alan is one generation removed from his half\u2011first cousin relationship with Beth, making Alan and Carl half\u2011first cousins once removed."
+  },
+  {
+    "index": 708,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children A and B share the same paternal grandparents. X and Y are also siblings, so A and B share the same maternal grandparents as well. Thus A and B have both sets of grandparents in common, which is the definition of double first cousins."
+  },
+  {
+    "index": 713,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "The speaker says the same person is both his mother's brother's son and his father's brother's son. Thus his mother's brother and his father's brother are the same individual, meaning his mother and father share that sibling \u2013 they are siblings. The shared sibling is the speaker's uncle on both maternal and paternal sides. His son is therefore the speaker's cousin through both parents, i.e., a double first cousin."
+  },
+  {
+    "index": 721,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M and N share the same parents, and O and P share another set of parents. X is child of M (from the first sibling pair) and O (from the second pair); Y is child of N (the other sibling of M) and P (the other sibling of O). Hence X and Y have both sets of grandparents in common, i.e., they are children of two sibling couples. This is the definition of double first cousins, not half\u2011cousins or any removed/second\u2011cousin relationship."
+  },
+  {
+    "index": 727,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "R's maternal uncle is the brother of R's mother; his child (X) is the child of a sibling of R's parent, which makes X a first cousin of R. Similarly, R's paternal aunt is the sister of R's father; her child (Y) is also the child of a sibling of R's parent, making Y a first cousin of R. Since both possible selections lead to the same relation, S is uniquely a first cousin."
+  },
+  {
+    "index": 728,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "L, S, and B are full siblings (same parents). S's daughter D and B's son F are therefore first cousins. M is D's child and N is F's child, making M and N the children of first cousins. Children of first cousins share the same great\u2011grandparents (the parents of L, S, and B), which defines a second\u2011cousin relationship. No half\u2011sibling information is given, so they are not half\u2011first cousins."
+  },
+  {
+    "index": 729,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Emma's mother Alice and Frank's mother Bob are full siblings, sharing the same two parents. Emma's father Charlie and Frank's father Diana are also full siblings, sharing another pair of parents. Thus Emma and Frank have both sets of grandparents in common, making them first cousins through two sibling pairs, i.e., double first cousins."
+  },
+  {
+    "index": 737,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Adam and Brian are brothers; Clara and Diana are sisters. Their children Ethan and Felix are therefore first cousins on both paternal and maternal sides, i.e., double first cousins. Lily and Maya are the offspring of Ethan and Felix respectively. Children of first cousins are second cousins; because Ethan and Felix are double first cousins, Lily and Maya share both sets of great\u2011grandparents, making them double second cousins."
+  },
+  {
+    "index": 740,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Alice and Ben are siblings, making their children (Carol and Eve) first cousins. Frank is Eve's child, one generation down from Eve. The relationship between a person and the child of their first cousin is defined as first cousin once removed. Therefore Carol and Frank are first cousins once removed."
+  },
+  {
+    "index": 749,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Mike is John\u2019s maternal uncle, making his daughter Sarah John\u2019s maternal first cousin. Tom is the son of John\u2019s paternal uncle, making Tom John\u2019s paternal first cousin. Lily is the child of Sarah (a first cousin of John) and Tom (also a first cousin of John). The child of any first cousin is a first cousin once removed, regardless of which side of the family the cousin is on. Therefore Lily is John\u2019s first cousin once removed."
+  },
+  {
+    "index": 754,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Mark and Luke are brothers, so their children share the same paternal grandparents. Anna and Beth are sisters, so their children share the same maternal grandparents. Carl and Dana therefore are first cousins through both parents, i.e., double first cousins, which is the most specific term."
+  },
+  {
+    "index": 755,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "A's father's sister is A's paternal aunt; her child is A's first cousin on the paternal side. A's mother's brother is A's maternal uncle; his child is A's first cousin on the maternal side. Since the same child B is born of the marriage between the paternal aunt and the maternal uncle, B is simultaneously a first cousin through both parental lines, i.e., a double first cousin."
+  },
+  {
+    "index": 764,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are siblings. B marries C, making C A's brother\u2011in\u2011law. D is C's brother, but the key link is that D marries E, who is also A's sister. By definition, a sibling's spouse is a brother\u2011in\u2011law, so D is A's brother\u2011in\u2011law. No other listed term applies."
+  },
+  {
+    "index": 768,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "S\u2019s father\u2019s brother is S\u2019s paternal uncle. The sister of that uncle is S\u2019s paternal aunt (the uncle\u2019s sister is also the father\u2019s sister). T is the child of this aunt, making T S\u2019s first cousin."
+  },
+  {
+    "index": 769,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Anna and Peter are John's siblings. Their children Mark and Lisa are John's nephew and niece, respectively. The child of a nephew or niece is the grandnephew/grandniece (also called great\u2011nephew/niece) of the sibling's parent. Since Sam is the offspring of Mark (nephew) and Lisa (niece), Sam is John's grandnephew/grandniece. This matches option B, while the other terms do not describe this generational relationship."
+  },
+  {
+    "index": 774,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "L is the daughter of R\u2019s maternal uncle (the mother\u2019s brother). That makes L R\u2019s first cousin on the mother\u2019s side. M is the daughter of R\u2019s paternal aunt (the father\u2019s sister). That makes M R\u2019s first cousin on the father\u2019s side. In both cases the shared ancestor is a grandparent, so the relationship is a first cousin. No half\u2011sibling information is given, so the relation is uniquely first cousin."
+  },
+  {
+    "index": 784,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Father\u2019s sister is X\u2019s paternal aunt; her son is X\u2019s paternal first cousin. Mother\u2019s brother is X\u2019s maternal uncle; his daughter is X\u2019s maternal first cousin. The statement says the paternal cousin is married to the maternal cousin, i.e., the spouse is X\u2019s maternal first cousin. Hence the precise kinship term between X and that spouse is \u2018first cousin.\u2019"
+  },
+  {
+    "index": 785,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "P\u2019s father and Q\u2019s mother are half\u2011siblings, sharing only a mother. The children of half\u2011siblings are called half\u2011first cousins (they are first cousins but only share one grandparent). Since no other intermarriages exist, P and Q fit this precise relationship. Hence the most accurate term is half\u2011first cousins."
+  },
+  {
+    "index": 791,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Z\u2019s paternal grandfather and G are brothers. Therefore G is Z\u2019s great\u2011uncle. G\u2019s child S is the child of Z\u2019s great\u2011uncle, making S a first cousin of Z\u2019s father. A first cousin of one\u2019s parent is a first cousin once removed to the individual. Hence the precise term is \"first cousin once removed\"."
+  },
+  {
+    "index": 797,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M's mother\u2019s brother\u2019s daughter (N) is M\u2019s maternal first cousin. M\u2019s father\u2019s sister\u2019s son (O) is M\u2019s paternal first cousin. N and O are unrelated to each other, each being a first cousin of M. Their child Z is therefore the child of M\u2019s first cousin, which by standard kinship terminology is a first cousin once removed (one generation down). This matches option C."
+  },
+  {
+    "index": 810,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A and B are brothers, sharing both parents; C and D are sisters, sharing both parents. X is child of A and C, Y of B and D. Therefore X and Y share the same paternal grandparents (parents of A/B) and the same maternal grandparents (parents of C/D). Sharing both sets of grandparents makes them double first cousins, the standard term for such a relationship."
+  },
+  {
+    "index": 819,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Adam and Brian are brothers, so their parents are the paternal grandparents of both Ethan and Fiona. Clara and Diana are sisters, so their parents are the maternal grandparents of both children. Ethan and Fiona therefore share both sets of grandparents, making them first cousins through two sibling pairs. This situation is defined as double first cousins."
+  },
+  {
+    "index": 838,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "A is P's paternal aunt (father's sister) and B is P's maternal uncle (mother's brother). Their child C is thus the child of P's aunt on the father's side and also the child of P's uncle on the mother's side. Consequently C is P's first cousin through the paternal line and also a first cousin through the maternal line. When two cousins share both sets of grandparents, they are called double first cousins. This is more specific than a simple first cousin, and none of the other options fit."
+  },
+  {
+    "index": 846,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Ben is Anna's maternal uncle and Clara is Anna's paternal aunt; their daughter Eva is Anna's first cousin (through both sides). David is Anna's son, making him one generation below Anna. The child of a first cousin is a first cousin once removed, so David and Eva are first cousins once removed."
+  },
+  {
+    "index": 851,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "H and M are parents of N and O. H's sibling Q has daughter P, making P H's niece. O, child of H, marries P. Therefore P is the spouse of N's sibling O. In English kinship, the spouse of one's sibling is called a sister\u2011in\u2011law (if female) or brother\u2011in\u2011law. No other listed term fits."
+  },
+  {
+    "index": 853,
+    "model_answer": "C",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "M and N are siblings, so they share the same parents. X and Y are also siblings, sharing another set of parents. A is the child of M and X; B is the child of N and Y. Therefore A and B each have one parent from each sibling pair, giving them two distinct lines of first\u2011cousin relationship (through M/N and through X/Y). Since both lines are full (no half\u2011siblings involved), they are double first cousins, the most specific term."
+  },
+  {
+    "index": 855,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "The phrase \"my mother's brother's daughter\" refers to the man's maternal uncle's daughter, which is his first cousin. The statement says this cousin is his wife's mother. Therefore the wife's mother is his first cousin by blood. Although she is also his mother\u2011in\u2011law by marriage, the question restricts to blood relations, so the correct kinship term is \"first cousin\"."
+  },
+  {
+    "index": 856,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Q\u2019s mother\u2019s only brother is Q\u2019s maternal uncle; his child is Q\u2019s first cousin. Q\u2019s father\u2019s only sister is Q\u2019s paternal aunt; her child is also Q\u2019s first cousin. Since the maternal uncle and paternal aunt are married (standard monogamy), P is the offspring of both, making P related to Q through both parental lines. This is the definition of a double first cousin."
+  },
+  {
+    "index": 873,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A's father and B's mother are first cousins, meaning they share a set of grandparents. Their children (A and B) therefore share the great\u2011grandparents of those cousins. Children of first cousins are second cousins, so A and B are second cousins."
+  },
+  {
+    "index": 877,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "George and David are listed as siblings, implying they share both parents (full siblings). Their respective children, Alice (George's daughter) and Carol (David's daughter), therefore descend from two siblings. Children of full siblings are first cousins. No half\u2011sibling information is given, so the relation is precisely \"first cousins\"."
+  },
+  {
+    "index": 880,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children A, B (M's) and C (N's) are first cousins. D is C's daughter, making D one generation below C. A first cousin's child is a first cousin once removed. Since B is also a first cousin of C, B's relationship to C's child D is likewise first cousins once removed."
+  },
+  {
+    "index": 882,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "John and Mary are full siblings; Anna and Ben are full siblings. Clara's parents (John, Anna) and David's parents (Mary, Ben) are two sibling pairs. Therefore Clara and David share both sets of grandparents, making them double first cousins\u2014the most specific term."
+  },
+  {
+    "index": 891,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N share the same parents, and O and P share another set of parents. X is child of M (grandparents A,B) and O (grandparents C,D). Y is child of N (same grandparents A,B) and P (same grandparents C,D). Thus X and Y share both sets of grandparents, making them first cousins through both parental lines\u2014i.e., double first cousins."
+  },
+  {
+    "index": 903,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Carl's father Alan and Dana's father Brian are brothers, making Carl and Dana first cousins on their paternal side. Likewise, Carl's mother Emma and Dana's mother Fiona are sisters, making them first cousins on their maternal side. Because they are first cousins through both parents, they share both sets of grandparents, which is defined as double first cousins."
+  },
+  {
+    "index": 904,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Anna's sister Beth is John's maternal aunt. Mark, Beth's husband, is the brother of John's father David, making Mark John's paternal uncle. Their daughter Sarah is therefore the child of John's maternal aunt and paternal uncle, meaning she is John's first cousin through his mother and also his first cousin through his father. This makes Sarah a double first cousin of John, a recognized kinship term."
+  },
+  {
+    "index": 905,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Mary is John's sister, so Peter is John's brother\u2011in\u2011law. Peter's sister Linda marries Kevin, who is John\u2019s son, making Linda John\u2019s daughter\u2011in\u2011law. Their child Emma is the daughter of John\u2019s son, therefore she is John\u2019s granddaughter. No other relations affect this, so the relationship is uniquely determined as granddaughter."
+  },
+  {
+    "index": 918,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so they share the same set of parents (Grandparents A). O and P are siblings, sharing another set of parents (Grandparents B). X is the child of M (from A) and O (from B); Y is the child of N (from A) and P (from B). Thus X and Y have both sets of grandparents in common, making them first cousins through both their fathers and their mothers. This specific relationship is called double first cousins."
+  },
+  {
+    "index": 919,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children O (M's daughter) and R (N's daughter) are first cousins. Q is R's son, making Q one generation below R. Therefore O is a first cousin of Q's parent, which defines a first\u2011cousin\u2011once\u2011removed relationship between O and Q. No standard term like aunt or half\u2011aunt applies."
+  },
+  {
+    "index": 940,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are siblings, so their children O (M's daughter) and R (N's daughter) are first cousins. Q is R's daughter, one generation below R. The relationship between a person and the child of their first cousin is \"first cousin once removed\". Hence O and Q are first cousins once removed."
+  },
+  {
+    "index": 963,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "R's only sibling is either a brother or sister; that sibling's sole child S is R's niece if S is female and nephew if S is male. The puzzle gives no gender information for S, so the exact term cannot be fixed. A cousin is a child of a parent's sibling, not of a sibling. Therefore the relation cannot be uniquely determined among the given options."
+  },
+  {
+    "index": 968,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M and R are siblings. M's child is J, making J the niece/nephew of R. R's child is Q, so Q is the child of J's uncle. Children of siblings are first cousins, so J and Q share grandparents and are first cousins."
+  },
+  {
+    "index": 974,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "P\u2019s mother\u2019s brother is P\u2019s maternal uncle; his only child is Q, making Q P\u2019s maternal first cousin. P\u2019s father\u2019s sister is P\u2019s paternal aunt; her only child is also Q, making Q P\u2019s paternal first cousin. Since the same Q is child of both the maternal uncle and paternal aunt (who are married), Q is a double first cousin of P. No parent is shared, so Q is not a half\u2011sibling, nor an aunt/uncle, nor unrelated."
+  },
+  {
+    "index": 987,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Emma's father Alan and Frank's father Brian are brothers, making Emma and Frank first cousins on their fathers' side. Their mothers Clara and Diana are sisters, also making them first cousins on their mothers' side. Sharing both sets of grandparents means they are double first cousins, the most precise term."
+  },
+  {
+    "index": 988,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M is X's maternal uncle (mother's brother) and S is X's paternal aunt (father's sister). Their child Y is therefore the child of X's maternal uncle and, separately, the child of X's paternal aunt. Y is thus X's first cousin on the mother's side and also X's first cousin on the father's side. Being a first cousin through both parental lines makes Y a double first cousin of X."
+  },
+  {
+    "index": 992,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "R's mother\u2019s brother (maternal uncle) is a sibling of R\u2019s mother, so his child is R\u2019s first cousin on the maternal side. R\u2019s father\u2019s sister (paternal aunt) is a sibling of R\u2019s father, so her child is R\u2019s first cousin on the paternal side. Because the same person S is the child of both the maternal uncle and the paternal aunt, S is simultaneously a first cousin through both parental lines, i.e., a double first cousin."
+  },
+  {
+    "index": 1003,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "L\u2019s paternal aunt is his blood aunt. She becomes stepmother to S when she marries R, S\u2019s biological mother\u2019s ex\u2011spouse. Thus S is the aunt\u2019s step\u2011daughter, but has no blood or direct affinal tie to L. No standard English kinship term (cousin, aunt\u2011in\u2011law, etc.) covers a person who is the step\u2011child of one\u2019s aunt; it is merely an affinal chain. Therefore the correct choice is that there is no standard direct relation."
+  },
+  {
+    "index": 1009,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "M's father\u2019s sister is M\u2019s paternal aunt. Her son N is therefore the child of M\u2019s aunt, making N and M first cousins. No other relationships (half\u2011sibling, sibling, second cousin) fit given monogamy and the fact M is the only child of both parents."
+  },
+  {
+    "index": 1017,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M's brother is the father of P, making P the nephew of M. Since J is the child of M, J and P are children of siblings, which defines a first\u2011cousin relationship. Although marriage links P to J as a brother\u2011in\u2011law, the question asks for the most precise blood\u2011relation term, which is first cousin."
+  }
+]

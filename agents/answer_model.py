@@ -1,6 +1,7 @@
 # Qwen3-4B in action.
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Optional
 
 from transformers import AutoTokenizer
@@ -40,25 +41,32 @@ class AAgent(object):
     ) -> str:
         if system_prompt is None:
             system_prompt = "You are a helpful assistant."
-        if isinstance(message, str):
-            message = [message]
+        message_list = [message] if isinstance(message, str) else list(message)
 
         kwargs = dict(kwargs)
         tgps_show_var = kwargs.pop("tgps_show", False)
+        concurrency_raw = kwargs.pop("concurrency", 128)
+        try:
+            concurrency = int(concurrency_raw)
+        except (TypeError, ValueError):
+            concurrency = 1
+        concurrency = max(1, min(concurrency, 128))
         params, timeout = self._translate_generation_kwargs(dict(kwargs))
 
-        outputs: List[str] = []
+        outputs: List[str] = [""] * len(message_list)
         token_len = 0
         start_time = time.time() if tgps_show_var else None
+        sys_text, dev_text = self._split_sys_dev(system_prompt)
 
-        for msg in message:
-            sys_text, dev_text = self._split_sys_dev(system_prompt)
-            messages = [{"role": "system", "content": sys_text}]
+        def handle_single(idx: int, prompt_text: str) -> tuple[int, str, int]:
+            local_messages = [{"role": "system", "content": sys_text}]
             if dev_text:
-                messages.append({"role": "developer", "content": dev_text})
-            messages.append({"role": "user", "content": msg})
+                local_messages.append({"role": "developer", "content": dev_text})
+            local_messages.append({"role": "user", "content": prompt_text})
             try:
-                response = chat_completion(messages, self.config, timeout=timeout, **params)
+                response = chat_completion(
+                    local_messages, self.config, timeout=timeout, **params
+                )
             except RuntimeError as exc:
                 if dev_text:
                     fallback_messages = [
@@ -66,7 +74,7 @@ class AAgent(object):
                             "role": "system",
                             "content": f"{sys_text}\n\n# Developer\n{dev_text}",
                         },
-                        {"role": "user", "content": msg},
+                        {"role": "user", "content": prompt_text},
                     ]
                     response = chat_completion(
                         fallback_messages, self.config, timeout=timeout, **params
@@ -74,21 +82,39 @@ class AAgent(object):
                 else:
                     raise
             if not response.get("choices"):
-                outputs.append("")
-                continue
+                return idx, "", 0
             content = self._extract_message_content(response["choices"][0])
-            outputs.append(content)
             usage = response.get("usage") or {}
-            token_len += usage.get("completion_tokens", 0)
+            return idx, content, usage.get("completion_tokens", 0)
+
+        if concurrency > 1 and len(message_list) > 1:
+            with ThreadPoolExecutor(
+                max_workers=min(concurrency, len(message_list))
+            ) as executor:
+                futures = {
+                    executor.submit(handle_single, idx, msg): idx
+                    for idx, msg in enumerate(message_list)
+                }
+                for future in as_completed(futures):
+                    idx, content, tokens = future.result()
+                    outputs[idx] = content
+                    token_len += tokens
+        else:
+            for idx, msg in enumerate(message_list):
+                _, content, tokens = handle_single(idx, msg)
+                outputs[idx] = content
+                token_len += tokens
+
+        results = outputs[0] if len(outputs) == 1 else outputs
 
         if tgps_show_var and start_time is not None:
             generation_time = time.time() - start_time
             return (
-                outputs[0] if len(outputs) == 1 else outputs,
+                results,
                 token_len,
                 generation_time,
             )
-        return outputs[0] if len(outputs) == 1 else outputs, None, None
+        return results, None, None
 
     @staticmethod
     def _extract_message_content(choice: dict) -> str:
