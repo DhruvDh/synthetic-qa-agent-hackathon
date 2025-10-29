@@ -9,9 +9,12 @@ import threading
 import time
 from collections import Counter
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, Dict, List, Tuple
+from typing import TYPE_CHECKING, Any, Callable, Dict, List, Optional, Tuple, Type
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import yaml
+from tqdm import tqdm
 
 if TYPE_CHECKING:
     from agents.answer_agent import AnsweringAgent
@@ -49,6 +52,33 @@ def parse_args() -> argparse.Namespace:
         help="Maximum concurrent answer-generation requests.",
     )
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument("--build_dpo_dataset", action="store_true")
+    parser.add_argument(
+        "--dpo_question_file",
+        type=str,
+        default="outputs/eval/dpo_questions.jsonl",
+    )
+    parser.add_argument(
+        "--dpo_answer_file",
+        type=str,
+        default="outputs/eval/dpo_answers.jsonl",
+    )
+    parser.add_argument("--dpo_max_attempts", type=int, default=15)
+    parser.add_argument(
+        "--dpo_samples_per_attempt",
+        type=int,
+        default=6,
+        help="Number of completions to request per model call when building the DPO dataset.",
+    )
+    parser.add_argument("--dpo_question_token_limit", type=int, default=1024)
+    parser.add_argument("--dpo_answer_token_limit", type=int, default=512)
+    parser.add_argument("--dpo_question_max_new_tokens", type=int, default=2048)
+    parser.add_argument("--dpo_answer_max_new_tokens", type=int, default=1024)
+    parser.add_argument(
+        "--dpo_allow_incorrect_answers",
+        action="store_true",
+        help="Allow chosen answers that do not match the reference answer.",
+    )
     return parser.parse_args()
 
 
@@ -71,6 +101,38 @@ def _filter_kwargs(kwargs: Dict[str, Any]) -> Dict[str, Any]:
         if isinstance(value, (int, float, str, bool)) or value is None:
             filtered[key] = value
     return filtered
+
+
+def split_system_developer(system_prompt: str) -> Tuple[str, Optional[str]]:
+    marker = "<|DEVELOPER|>"
+    if marker in system_prompt:
+        sys_text, dev_text = system_prompt.split(marker, 1)
+        return sys_text.strip(), dev_text.strip()
+    return system_prompt.strip(), None
+
+
+def build_chat_messages(system_prompt: str, user_prompt: str) -> List[Dict[str, str]]:
+    sys_text, dev_text = split_system_developer(system_prompt)
+    messages: List[Dict[str, str]] = [{"role": "system", "content": sys_text}]
+    if dev_text:
+        messages.append({"role": "developer", "content": dev_text})
+    messages.append({"role": "user", "content": user_prompt})
+    return messages
+
+
+def _distribute_workers(total_workers: int, item_count: int) -> List[int]:
+    if item_count <= 0:
+        return []
+    total_workers = max(1, total_workers)
+    if total_workers <= item_count:
+        return [1] * item_count
+    base = total_workers // item_count
+    remainder = total_workers % item_count
+    distribution = []
+    for idx in range(item_count):
+        extra = 1 if idx < remainder else 0
+        distribution.append(base + extra)
+    return distribution
 
 
 class ModeStats:
@@ -332,6 +394,31 @@ def validate_question(obj: Dict[str, Any]) -> Tuple[bool, str, Dict[str, Any]]:
     return True, "", cleaned
 
 
+def classify_question_output(
+    raw_text: str,
+    tokenizer: Any,
+    token_limit: int,
+) -> Tuple[bool, str, str, Optional[Dict[str, Any]]]:
+    text = raw_text if isinstance(raw_text, str) else str(raw_text)
+    if not text.strip():
+        return False, text, "empty_output", None
+    if token_limit and tokenizer is not None:
+        token_count = len(tokenizer.encode(text, add_special_tokens=False))
+        if token_count > token_limit:
+            return False, text, "length_exceeded", None
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return False, text, "json_decode_error", None
+    if not isinstance(payload, dict):
+        return False, text, "not_dict", None
+    ok, reason, cleaned = validate_question(payload)
+    if not ok:
+        return False, text, reason or "invalid_question", None
+    normalized = json.dumps(cleaned, ensure_ascii=False, separators=(",", ":"))
+    return True, normalized, "", cleaned
+
+
 def evaluate_questions(raw_entries: List[Any]) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
     valid: List[Dict[str, Any]] = []
     invalid: List[Dict[str, Any]] = []
@@ -528,6 +615,116 @@ def evaluate_answers(
     return valid, invalid, metrics
 
 
+def classify_answer_output(
+    raw_text: str,
+    question: Dict[str, Any],
+    tokenizer: Any,
+    token_limit: int,
+    require_correct: bool,
+) -> Tuple[bool, str, str, None]:
+    text = raw_text if isinstance(raw_text, str) else str(raw_text)
+    if not text.strip():
+        return False, text, "empty_output", None
+    if token_limit and tokenizer is not None:
+        token_count = len(tokenizer.encode(text, add_special_tokens=False))
+        if token_count > token_limit:
+            return False, text, "length_exceeded", None
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return False, text, "json_decode_error", None
+    if not isinstance(payload, dict):
+        return False, text, "not_dict", None
+    if "answer" not in payload or "reasoning" not in payload:
+        return False, text, "missing_keys", None
+    answer_value = payload["answer"]
+    reasoning_value = payload["reasoning"]
+    if not isinstance(answer_value, str):
+        return False, text, "answer_not_string", None
+    if not isinstance(reasoning_value, str):
+        return False, text, "reasoning_not_string", None
+    normalized_answer = answer_value.strip().upper()
+    if normalized_answer not in {"A", "B", "C", "D"}:
+        return False, text, "answer_invalid_value", None
+    if require_correct:
+        expected = (question.get("answer") or "").strip().upper()
+        if expected and normalized_answer != expected:
+            return False, text, "incorrect_answer", None
+    normalized_payload = {
+        "reasoning": reasoning_value.strip(),
+        "answer": normalized_answer,
+    }
+    normalized = json.dumps(normalized_payload, ensure_ascii=False, separators=(",", ":"))
+    return True, normalized, "", None
+
+
+def sample_preference_pair(
+    generate_fn: Callable[[int], List[Any]],
+    classify_fn: Callable[[str], Tuple[bool, str, str, Optional[Any]]],
+    max_calls: int,
+    batch_size: int,
+) -> Tuple[
+    Optional[str],
+    Optional[str],
+    Optional[Any],
+    Optional[str],
+    int,
+    Optional[Any],
+    Optional[Any],
+]:
+    valid_output: Optional[str] = None
+    valid_extra: Optional[Any] = None
+    invalid_output: Optional[str] = None
+    invalid_reason: Optional[str] = None
+    attempts = 0
+    valid_response: Optional[Any] = None
+    invalid_response: Optional[Any] = None
+
+    for attempt in range(1, max_calls + 1):
+        attempts = attempt
+        candidates = generate_fn(batch_size)
+        if isinstance(candidates, str):
+            candidates = [candidates]
+        elif not isinstance(candidates, list):
+            candidates = list(candidates)
+        for candidate in candidates:
+            response_obj: Any = None
+            if isinstance(candidate, tuple) and candidate:
+                candidate_text = candidate[0]
+                if len(candidate) > 1:
+                    response_obj = candidate[1]
+            else:
+                candidate_text = candidate
+            candidate_text = (
+                candidate_text if isinstance(candidate_text, str) else str(candidate_text)
+            )
+            is_valid, normalized, reason, extra = classify_fn(candidate_text)
+            if is_valid:
+                if valid_output is None:
+                    valid_output = normalized
+                    valid_extra = extra
+                    valid_response = response_obj
+            else:
+                if invalid_output is None:
+                    invalid_output = candidate_text
+                    invalid_reason = reason or "invalid_output"
+                    invalid_response = response_obj
+            if valid_output is not None and invalid_output is not None:
+                break
+        if valid_output is not None and invalid_output is not None:
+            break
+
+    return (
+        valid_output,
+        invalid_output,
+        valid_extra,
+        invalid_reason,
+        attempts,
+        valid_response,
+        invalid_response,
+    )
+
+
 def collect_timing_metrics(token_lengths: List[Any], generation_times: List[Any]) -> Dict[str, Any]:
     tokens = [t for t in token_lengths if isinstance(t, (int, float))]
     times = [t for t in generation_times if isinstance(t, (int, float))]
@@ -541,6 +738,19 @@ def collect_timing_metrics(token_lengths: List[Any], generation_times: List[Any]
     }
 
 
+def prepare_generation_kwargs(
+    base_kwargs: Dict[str, Any],
+    max_new_tokens_override: Optional[int] = None,
+) -> Dict[str, Any]:
+    prepared = dict(base_kwargs)
+    prepared.pop("tgps_show", None)
+    if max_new_tokens_override is not None:
+        current = prepared.get("max_new_tokens")
+        if current is None or current < max_new_tokens_override:
+            prepared["max_new_tokens"] = max_new_tokens_override
+    return prepared
+
+
 def summarize_self_reflection(stats: Dict[str, int]) -> Dict[str, Any]:
     attempts = stats.get("attempts", 0)
     successes = stats.get("successes", 0)
@@ -550,6 +760,255 @@ def summarize_self_reflection(stats: Dict[str, int]) -> Dict[str, Any]:
         "success_rate": (successes / attempts) if attempts else None,
         "failures": attempts - successes,
     }
+
+
+def write_jsonl_records(path: Path, records: List[Dict[str, Any]]) -> None:
+    ensure_dir(path)
+    with path.open("w", encoding="utf-8") as handle:
+        for record in records:
+            handle.write(json.dumps(record, ensure_ascii=False))
+            handle.write("\n")
+
+
+def build_dpo_dataset(
+    args: argparse.Namespace,
+    topics: Dict[str, List[str]],
+    icl_samples: Optional[Dict[str, List[Dict[str, str]]]],
+    question_kwargs: Dict[str, Any],
+    answer_kwargs: Dict[str, Any],
+    question_agent_cls: Type[Any],
+    answer_agent_cls: Type[Any],
+    question_workers: int,
+    answer_workers: int,
+    samples_per_attempt: int,
+) -> None:
+    question_agent = question_agent_cls(enable_self_reflection=False)
+    answer_agent = answer_agent_cls(enable_self_reflection=False)
+
+    max_attempts = max(1, args.dpo_max_attempts)
+    question_token_limit = max(0, args.dpo_question_token_limit)
+    answer_token_limit = max(0, args.dpo_answer_token_limit)
+
+    question_generation_kwargs = prepare_generation_kwargs(
+        question_kwargs, args.dpo_question_max_new_tokens
+    )
+    answer_generation_kwargs = prepare_generation_kwargs(
+        answer_kwargs, args.dpo_answer_max_new_tokens
+    )
+
+    topics_sequence = question_agent.populate_topics(topics, args.num_questions)
+    question_pairs: List[Dict[str, Any]] = []
+    question_failures = 0
+    selected_questions: List[Dict[str, Any]] = []
+    question_tokenizer = getattr(question_agent.agent, "tokenizer", None)
+    samples_per_attempt = max(1, samples_per_attempt)
+    question_worker_count = max(1, question_workers)
+
+    worker_allocations = _distribute_workers(question_worker_count, len(topics_sequence))
+    if not worker_allocations:
+        worker_allocations = []
+    question_jobs: List[Tuple[Tuple[str, str], int]] = []
+    for idx, topic in enumerate(topics_sequence):
+        share = worker_allocations[idx] if idx < len(worker_allocations) else 1
+        question_jobs.append((topic, max(1, share)))
+
+    def process_question(
+        topic: Tuple[str, str],
+        worker_share: int,
+    ) -> Optional[Tuple[Dict[str, Any], Dict[str, Any]]]:
+        topic_family, topic_name = topic
+        inc_topic_samples = icl_samples.get(topic_name) if icl_samples else None
+        prompt, system_prompt = question_agent.build_prompt(
+            f"{topic_family}/{topic_name}",
+            wadvsys=True,
+            wicl=bool(inc_topic_samples),
+            inc_samples=inc_topic_samples,
+        )
+        messages = build_chat_messages(system_prompt, prompt)
+
+        batch_size = max(1, samples_per_attempt * worker_share)
+
+        def generate_question(batch: int) -> List[Tuple[str, Any]]:
+            prompts = [prompt] * batch
+            local_kwargs = dict(question_generation_kwargs)
+            local_kwargs["concurrency"] = min(128, batch)
+            response, _, _ = question_agent.agent.generate_response(
+                prompts, system_prompt, **local_kwargs
+            )
+            raw_responses = getattr(question_agent.agent, "last_raw_responses", [])
+            outputs = [response] if isinstance(response, str) else list(response)
+            combined: List[Tuple[str, Any]] = []
+            for idx, item in enumerate(outputs):
+                raw = None
+                if isinstance(raw_responses, list) and idx < len(raw_responses):
+                    raw = raw_responses[idx]
+                text = item if isinstance(item, str) else str(item)
+                combined.append((text, raw))
+            return combined
+
+        (
+            valid,
+            invalid,
+            cleaned,
+            _invalid_reason,
+            _attempts,
+            valid_response_obj,
+            invalid_response_obj,
+        ) = sample_preference_pair(
+            generate_question,
+            lambda text: classify_question_output(
+                text, question_tokenizer, question_token_limit
+            ),
+            max_attempts,
+            batch_size,
+        )
+        if valid is None or invalid is None or cleaned is None:
+            return None
+        chosen_payload = {
+            "response": valid_response_obj
+            if valid_response_obj is not None
+            else {"content": valid},
+            "normalized": valid,
+        }
+        rejected_payload = {
+            "response": invalid_response_obj
+            if invalid_response_obj is not None
+            else {"content": invalid},
+            "normalized": invalid,
+        }
+        return (
+            {
+                "messages": messages,
+                "chosen": chosen_payload,
+                "rejected": rejected_payload,
+            },
+            cleaned,
+        )
+
+    worker_pool_size = max(1, min(question_worker_count, len(question_jobs))) if question_jobs else 1
+    with ThreadPoolExecutor(max_workers=worker_pool_size) as executor:
+        future_map = {}
+        for topic, share in question_jobs:
+            future = executor.submit(process_question, topic, share)
+            future_map[future] = topic
+        with tqdm(total=len(future_map), desc="DPO Questions", unit="prompt") as progress:
+            for future in as_completed(future_map):
+                progress.update(1)
+                result = future.result()
+                if result is None:
+                    question_failures += 1
+                    continue
+                pair, cleaned = result
+                question_pairs.append(pair)
+                selected_questions.append(cleaned)
+
+    answer_pairs: List[Dict[str, Any]] = []
+    answer_failures = 0
+    answer_tokenizer = getattr(answer_agent.agent, "tokenizer", None)
+    require_correct = not args.dpo_allow_incorrect_answers
+    answer_worker_count = max(1, answer_workers)
+    answer_allocations = _distribute_workers(answer_worker_count, len(selected_questions))
+    if not answer_allocations:
+        answer_allocations = []
+    answer_jobs: List[Tuple[Dict[str, Any], int]] = []
+    for idx, payload in enumerate(selected_questions):
+        share = answer_allocations[idx] if idx < len(answer_allocations) else 1
+        answer_jobs.append((payload, max(1, share)))
+
+    def process_answer(
+        question_payload: Dict[str, Any],
+        worker_share: int,
+    ) -> Optional[Dict[str, Any]]:
+        prompt, system_prompt = answer_agent.build_prompt(question_payload)
+        messages = build_chat_messages(system_prompt, prompt)
+
+        batch_size = max(1, samples_per_attempt * worker_share)
+
+        def generate_answer(batch: int) -> List[Tuple[str, Any]]:
+            prompts = [prompt] * batch
+            local_kwargs = dict(answer_generation_kwargs)
+            local_kwargs["concurrency"] = min(128, batch)
+            response, _, _ = answer_agent.agent.generate_response(
+                prompts, system_prompt, **local_kwargs
+            )
+            raw_responses = getattr(answer_agent.agent, "last_raw_responses", [])
+            outputs = [response] if isinstance(response, str) else list(response)
+            combined: List[Tuple[str, Any]] = []
+            for idx, item in enumerate(outputs):
+                raw = None
+                if isinstance(raw_responses, list) and idx < len(raw_responses):
+                    raw = raw_responses[idx]
+                text = item if isinstance(item, str) else str(item)
+                combined.append((text, raw))
+            return combined
+
+        (
+            valid,
+            invalid,
+            _,
+            _invalid_reason,
+            _attempts,
+            valid_response_obj,
+            invalid_response_obj,
+        ) = sample_preference_pair(
+            generate_answer,
+            lambda text: classify_answer_output(
+                text,
+                question_payload,
+                answer_tokenizer,
+                answer_token_limit,
+                require_correct,
+            ),
+            max_attempts,
+            batch_size,
+        )
+        if valid is None or invalid is None:
+            return None
+        chosen_payload = {
+            "response": valid_response_obj
+            if valid_response_obj is not None
+            else {"content": valid},
+            "normalized": valid,
+        }
+        rejected_payload = {
+            "response": invalid_response_obj
+            if invalid_response_obj is not None
+            else {"content": invalid},
+            "normalized": invalid,
+        }
+        return {
+            "messages": messages,
+            "chosen": chosen_payload,
+            "rejected": rejected_payload,
+        }
+
+    answer_pool_size = max(1, min(answer_worker_count, len(answer_jobs))) if answer_jobs else 1
+    with ThreadPoolExecutor(max_workers=answer_pool_size) as executor:
+        future_map = {}
+        for payload, share in answer_jobs:
+            future = executor.submit(process_answer, payload, share)
+            future_map[future] = payload
+        with tqdm(total=len(future_map), desc="DPO Answers", unit="prompt") as progress:
+            for future in as_completed(future_map):
+                progress.update(1)
+                result = future.result()
+                if result is None:
+                    answer_failures += 1
+                    continue
+                answer_pairs.append(result)
+
+    question_output_path = Path(args.dpo_question_file)
+    answer_output_path = Path(args.dpo_answer_file)
+    write_jsonl_records(question_output_path, question_pairs)
+    write_jsonl_records(answer_output_path, answer_pairs)
+
+    print(
+        f"DPO dataset generated: {len(question_pairs)} question pairs "
+        f"(skipped {question_failures}), {len(answer_pairs)} answer pairs "
+        f"(skipped {answer_failures})."
+    )
+    print(f"Questions saved to: {question_output_path}")
+    print(f"Answers saved to: {answer_output_path}")
 
 
 def main() -> None:
@@ -591,246 +1050,300 @@ def main() -> None:
     vllm_utils.chat_completion = tracking_chat_completion
     qm.chat_completion = tracking_chat_completion  # type: ignore[attr-defined]
     am.chat_completion = tracking_chat_completion  # type: ignore[attr-defined]
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        output_dir = Path(args.output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-    topics_path = Path(args.topics_file)
-    if not topics_path.exists():
-        raise FileNotFoundError(f"Topics file not found: {topics_path}")
-    with topics_path.open("r") as handle:
-        topics = json.load(handle)
+        topics_path = Path(args.topics_file)
+        if not topics_path.exists():
+            raise FileNotFoundError(f"Topics file not found: {topics_path}")
+        with topics_path.open("r") as handle:
+            topics = json.load(handle)
 
-    icl_samples = None
-    if args.icl_file:
-        icl_path = Path(args.icl_file)
-        if not icl_path.exists():
-            raise FileNotFoundError(f"ICL sample file not found: {icl_path}")
-        icl_samples = QuestioningAgent.load_icl_samples(str(icl_path))
+        icl_samples = None
+        if args.icl_file:
+            icl_path = Path(args.icl_file)
+            if not icl_path.exists():
+                raise FileNotFoundError(f"ICL sample file not found: {icl_path}")
+            icl_samples = QuestioningAgent.load_icl_samples(str(icl_path))
 
-    question_concurrency = max(1, min(args.question_concurrency, 128))
-    answer_concurrency = max(1, min(args.answer_concurrency, 128))
+        question_concurrency = max(1, min(args.question_concurrency, 128))
+        answer_concurrency = max(1, min(args.answer_concurrency, 128))
 
-    question_kwargs = {"tgps_show": True}
-    question_kwargs.update(load_yaml(args.question_config))
-    question_kwargs["concurrency"] = question_concurrency
-    question_kwargs.pop("do_sample", None)
+        if args.build_dpo_dataset:
+            question_concurrency = max(1, question_concurrency // 4)
+            answer_concurrency = max(1, answer_concurrency // 4)
 
-    answer_kwargs = {"tgps_show": True}
-    answer_kwargs.update(load_yaml(args.answer_config))
-    answer_kwargs["concurrency"] = answer_concurrency
-    answer_kwargs.pop("do_sample", None)
+        question_kwargs = {"tgps_show": True}
+        question_kwargs.update(load_yaml(args.question_config))
+        question_kwargs.pop("do_sample", None)
 
-    q_agent = QuestioningAgent()
-    questions_raw, q_token_lengths, q_generation_times = q_agent.generate_batches(
-        num_questions=args.num_questions,
-        topics=topics,
-        batch_size=args.batch_size,
-        wadvsys=True,
-        wicl=bool(icl_samples),
-        inc_samples=icl_samples,
-        **question_kwargs,
-    )
+        answer_kwargs = {"tgps_show": True}
+        answer_kwargs.update(load_yaml(args.answer_config))
+        answer_kwargs.pop("do_sample", None)
 
-    normalized_questions = q_agent.normalize_outputs(questions_raw)
-    q_self_stats = summarize_self_reflection(q_agent.get_self_reflection_stats())
+        samples_per_attempt = max(1, args.dpo_samples_per_attempt)
 
-    question_truncations = None
-    question_max_tokens = question_kwargs.get("max_new_tokens")
-    if question_max_tokens and hasattr(q_agent, "agent") and hasattr(
-        q_agent.agent, "tokenizer"
-    ):
-        tokenizer = q_agent.agent.tokenizer
-        question_truncations = 0
-        for raw in normalized_questions:
-            if not raw:
-                continue
-            token_count = len(tokenizer.encode(raw, add_special_tokens=False))
-            if token_count >= question_max_tokens:
-                question_truncations += 1
+        if args.build_dpo_dataset:
+            question_kwargs["concurrency"] = samples_per_attempt
+            answer_kwargs["concurrency"] = samples_per_attempt
+            question_workers = question_concurrency
+            answer_workers = answer_concurrency
+            build_dpo_dataset(
+                args,
+                topics,
+                icl_samples,
+                question_kwargs,
+                answer_kwargs,
+                QuestioningAgent,
+                AnsweringAgent,
+                question_workers,
+                answer_workers,
+                samples_per_attempt,
+            )
+            return
 
-    valid_questions, invalid_questions, question_metrics = evaluate_questions(
-        normalized_questions
-    )
-    question_timing = collect_timing_metrics(q_token_lengths, q_generation_times)
+        question_kwargs["concurrency"] = question_concurrency
+        answer_kwargs["concurrency"] = answer_concurrency
 
-    raw_questions_path = output_dir / "questions_raw.json"
-    ensure_dir(raw_questions_path)
-    with raw_questions_path.open("w") as handle:
-        json.dump(
-            [{"index": idx, "raw": raw} for idx, raw in enumerate(normalized_questions)],
-            handle,
-            indent=2,
+        q_agent = QuestioningAgent()
+        questions_raw, q_token_lengths, q_generation_times = q_agent.generate_batches(
+            num_questions=args.num_questions,
+            topics=topics,
+            batch_size=args.batch_size,
+            wadvsys=True,
+            wicl=bool(icl_samples),
+            inc_samples=icl_samples,
+            **question_kwargs,
         )
 
-    valid_questions_path = output_dir / "questions_valid.json"
-    ensure_dir(valid_questions_path)
-    with valid_questions_path.open("w") as handle:
-        json.dump([item["question"] | {"index": item["index"]} for item in valid_questions], handle, indent=2)
+        normalized_questions = q_agent.normalize_outputs(questions_raw)
+        q_self_stats = summarize_self_reflection(q_agent.get_self_reflection_stats())
 
-    invalid_questions_path = output_dir / "questions_invalid.json"
-    ensure_dir(invalid_questions_path)
-    with invalid_questions_path.open("w") as handle:
-        json.dump(invalid_questions, handle, indent=2)
-
-    question_empty_records = tracker.get_empty_records("question")
-    question_empty_path = output_dir / "question_empty_debug.json"
-    ensure_dir(question_empty_path)
-    with question_empty_path.open("w") as handle:
-        json.dump(
-            {
-                "prompt_example": tracker.get_prompt_example("question"),
-                "event_count": len(question_empty_records),
-                "events": question_empty_records,
-            },
-            handle,
-            indent=2,
-        )
-
-    answers_raw: List[Any] = []
-    answer_token_lengths: List[int] = []
-    answer_generation_times: List[float] = []
-    valid_answers: List[Dict[str, Any]] = []
-    invalid_answers: List[Dict[str, Any]] = []
-    answer_metrics: Dict[str, Any] = {
-        "questions_answered": 0,
-        "valid_count": 0,
-        "invalid_count": 0,
-        "invalid_reasons": {},
-        "correct_count": 0,
-        "accuracy": None,
-    }
-    answer_timing = {}
-    answer_truncations = None
-    answer_empty_records: List[Dict[str, Any]] = []
-    answer_self_reflection_attempts_total = 0
-    answer_self_reflection_success_total = 0
-    answer_self_reflection_stats = {"attempts": 0, "successes": 0}
-
-    if not args.skip_answering:
-        ans_agent = AnsweringAgent()
-        answer_outputs, answer_token_lengths, answer_generation_times = run_answer_agent(
-            args.answer_batch_size, valid_questions, ans_agent, answer_kwargs
-        )
-        normalized_answers = ans_agent.normalize_outputs(valid_questions, answer_outputs)
-        stats_answer = summarize_self_reflection(ans_agent.get_self_reflection_stats())
-        answer_self_reflection_attempts_total = stats_answer["attempts"]
-        answer_self_reflection_success_total = stats_answer["successes"]
-        answer_self_reflection_stats = stats_answer
-        answers_raw = normalized_answers
-        valid_answers, invalid_answers, answer_metrics = evaluate_answers(
-            valid_questions, normalized_answers
-        )
-        answer_timing = collect_timing_metrics(
-            answer_token_lengths, answer_generation_times
-        )
-
-        answer_max_tokens = answer_kwargs.get("max_new_tokens")
-        if answer_max_tokens and hasattr(ans_agent, "agent") and hasattr(
-            ans_agent.agent, "tokenizer"
+        question_truncations = None
+        question_max_tokens = question_kwargs.get("max_new_tokens")
+        if question_max_tokens and hasattr(q_agent, "agent") and hasattr(
+            q_agent.agent, "tokenizer"
         ):
-            tokenizer = ans_agent.agent.tokenizer
-            answer_truncations = 0
-            for raw in answers_raw:
-                if isinstance(raw, str):
-                    raw_text = raw
-                else:
-                    raw_text = json.dumps(raw, ensure_ascii=True)
-                if not raw_text:
+            tokenizer = q_agent.agent.tokenizer
+            question_truncations = 0
+            for raw in normalized_questions:
+                if not raw:
                     continue
-                token_count = len(tokenizer.encode(raw_text, add_special_tokens=False))
-                if token_count >= answer_max_tokens:
-                    answer_truncations += 1
+                token_count = len(tokenizer.encode(raw, add_special_tokens=False))
+                if token_count >= question_max_tokens:
+                    question_truncations += 1
 
-        raw_answers_path = output_dir / "answers_raw.json"
-        ensure_dir(raw_answers_path)
-        with raw_answers_path.open("w") as handle:
+        valid_questions, invalid_questions, question_metrics = evaluate_questions(
+            normalized_questions
+        )
+        question_timing = collect_timing_metrics(q_token_lengths, q_generation_times)
+
+        raw_questions_path = output_dir / "questions_raw.json"
+        ensure_dir(raw_questions_path)
+        with raw_questions_path.open("w") as handle:
             json.dump(
                 [
-                    {
-                        "index": valid_questions[pos]["index"],
-                        "raw": ans if isinstance(ans, str) else json.dumps(ans, ensure_ascii=True),
-                    }
-                    for pos, ans in enumerate(answers_raw)
+                    {"index": idx, "raw": raw}
+                    for idx, raw in enumerate(normalized_questions)
                 ],
                 handle,
                 indent=2,
             )
 
-        valid_answers_path = output_dir / "answers_valid.json"
-        ensure_dir(valid_answers_path)
-        with valid_answers_path.open("w") as handle:
-            json.dump(valid_answers, handle, indent=2)
+        valid_questions_path = output_dir / "questions_valid.json"
+        ensure_dir(valid_questions_path)
+        with valid_questions_path.open("w") as handle:
+            json.dump(
+                [
+                    item["question"] | {"index": item["index"]}
+                    for item in valid_questions
+                ],
+                handle,
+                indent=2,
+            )
 
-        invalid_answers_path = output_dir / "answers_invalid.json"
-        ensure_dir(invalid_answers_path)
-        with invalid_answers_path.open("w") as handle:
-            json.dump(invalid_answers, handle, indent=2)
+        invalid_questions_path = output_dir / "questions_invalid.json"
+        ensure_dir(invalid_questions_path)
+        with invalid_questions_path.open("w") as handle:
+            json.dump(invalid_questions, handle, indent=2)
 
-        answer_empty_records = tracker.get_empty_records("answer")
-        answer_empty_path = output_dir / "answer_empty_debug.json"
-        ensure_dir(answer_empty_path)
-        with answer_empty_path.open("w") as handle:
+        question_empty_records = tracker.get_empty_records("question")
+        question_empty_path = output_dir / "question_empty_debug.json"
+        ensure_dir(question_empty_path)
+        with question_empty_path.open("w") as handle:
             json.dump(
                 {
-                    "prompt_example": tracker.get_prompt_example("answer"),
-                    "event_count": len(answer_empty_records),
-                    "events": answer_empty_records,
+                    "prompt_example": tracker.get_prompt_example("question"),
+                    "event_count": len(question_empty_records),
+                    "events": question_empty_records,
                 },
                 handle,
                 indent=2,
             )
 
-    metrics = {
-        "question_metrics": question_metrics,
-        "question_timing": question_timing,
-        "question_truncations": question_truncations,
-        "question_empty_events": len(question_empty_records),
-        "question_self_reflection": q_self_stats,
-        "answer_metrics": answer_metrics,
-        "answer_timing": answer_timing,
-        "answer_truncations": answer_truncations,
-        "answer_empty_events": len(answer_empty_records) if not args.skip_answering else 0,
-        "answer_self_reflection": answer_self_reflection_stats,
-        "self_reflection_totals": {
-            "attempts": q_self_stats["attempts"] + answer_self_reflection_stats["attempts"],
-            "successes": q_self_stats["successes"] + answer_self_reflection_stats["successes"],
-            "failures": q_self_stats["failures"] + answer_self_reflection_stats["failures"],
-        },
-        "completion_monitor": tracker.summary(),
-        "config": {
-            "num_questions": args.num_questions,
-            "batch_size": args.batch_size,
-            "answer_batch_size": args.answer_batch_size,
-            "topics_file": str(topics_path),
-            "icl_file": str(args.icl_file) if args.icl_file else "",
-            "skip_answering": args.skip_answering,
-            "question_concurrency": question_concurrency,
-            "answer_concurrency": answer_concurrency,
-        },
-    }
+        answers_raw: List[Any] = []
+        answer_token_lengths: List[int] = []
+        answer_generation_times: List[float] = []
+        valid_answers: List[Dict[str, Any]] = []
+        invalid_answers: List[Dict[str, Any]] = []
+        answer_metrics: Dict[str, Any] = {
+            "questions_answered": 0,
+            "valid_count": 0,
+            "invalid_count": 0,
+            "invalid_reasons": {},
+            "correct_count": 0,
+            "accuracy": None,
+        }
+        answer_timing = {}
+        answer_truncations = None
+        answer_empty_records: List[Dict[str, Any]] = []
+        answer_self_reflection_attempts_total = 0
+        answer_self_reflection_success_total = 0
+        answer_self_reflection_stats = {"attempts": 0, "successes": 0}
 
-    metrics_path = output_dir / "metrics.json"
-    ensure_dir(metrics_path)
-    with metrics_path.open("w") as handle:
-        json.dump(metrics, handle, indent=2)
+        if not args.skip_answering:
+            ans_agent = AnsweringAgent()
+            (
+                answer_outputs,
+                answer_token_lengths,
+                answer_generation_times,
+            ) = run_answer_agent(
+                args.answer_batch_size, valid_questions, ans_agent, answer_kwargs
+            )
+            normalized_answers = ans_agent.normalize_outputs(
+                valid_questions, answer_outputs
+            )
+            stats_answer = summarize_self_reflection(
+                ans_agent.get_self_reflection_stats()
+            )
+            answer_self_reflection_attempts_total = stats_answer["attempts"]
+            answer_self_reflection_success_total = stats_answer["successes"]
+            answer_self_reflection_stats = stats_answer
+            answers_raw = normalized_answers
+            valid_answers, invalid_answers, answer_metrics = evaluate_answers(
+                valid_questions, normalized_answers
+            )
+            answer_timing = collect_timing_metrics(
+                answer_token_lengths, answer_generation_times
+            )
 
-    print("=== Question Generation ===")
-    print(json.dumps({**question_metrics, **question_timing}, indent=2))
-    if invalid_questions and args.verbose:
-        print("Sample invalid question reasons:")
-        for item in invalid_questions[:5]:
-            print(f"- idx {item['index']}: {item['reason']}")
-    if not args.skip_answering:
-        print("\n=== Answering ===")
-        print(json.dumps({**answer_metrics, **answer_timing}, indent=2))
-        if invalid_answers and args.verbose:
-            print("Sample invalid answers:")
-            for item in invalid_answers[:5]:
+            answer_max_tokens = answer_kwargs.get("max_new_tokens")
+            if answer_max_tokens and hasattr(ans_agent, "agent") and hasattr(
+                ans_agent.agent, "tokenizer"
+            ):
+                tokenizer = ans_agent.agent.tokenizer
+                answer_truncations = 0
+                for raw in answers_raw:
+                    if isinstance(raw, str):
+                        raw_text = raw
+                    else:
+                        raw_text = json.dumps(raw, ensure_ascii=True)
+                    if not raw_text:
+                        continue
+                    token_count = len(
+                        tokenizer.encode(raw_text, add_special_tokens=False)
+                    )
+                    if token_count >= answer_max_tokens:
+                        answer_truncations += 1
+
+            raw_answers_path = output_dir / "answers_raw.json"
+            ensure_dir(raw_answers_path)
+            with raw_answers_path.open("w") as handle:
+                json.dump(
+                    [
+                        {
+                            "index": valid_questions[pos]["index"],
+                            "raw": ans
+                            if isinstance(ans, str)
+                            else json.dumps(ans, ensure_ascii=True),
+                        }
+                        for pos, ans in enumerate(answers_raw)
+                    ],
+                    handle,
+                    indent=2,
+                )
+
+            valid_answers_path = output_dir / "answers_valid.json"
+            ensure_dir(valid_answers_path)
+            with valid_answers_path.open("w") as handle:
+                json.dump(valid_answers, handle, indent=2)
+
+            invalid_answers_path = output_dir / "answers_invalid.json"
+            ensure_dir(invalid_answers_path)
+            with invalid_answers_path.open("w") as handle:
+                json.dump(invalid_answers, handle, indent=2)
+
+            answer_empty_records = tracker.get_empty_records("answer")
+            answer_empty_path = output_dir / "answer_empty_debug.json"
+            ensure_dir(answer_empty_path)
+            with answer_empty_path.open("w") as handle:
+                json.dump(
+                    {
+                        "prompt_example": tracker.get_prompt_example("answer"),
+                        "event_count": len(answer_empty_records),
+                        "events": answer_empty_records,
+                    },
+                    handle,
+                    indent=2,
+                )
+
+        metrics = {
+            "question_metrics": question_metrics,
+            "question_timing": question_timing,
+            "question_truncations": question_truncations,
+            "question_empty_events": len(question_empty_records),
+            "question_self_reflection": q_self_stats,
+            "answer_metrics": answer_metrics,
+            "answer_timing": answer_timing,
+            "answer_truncations": answer_truncations,
+            "answer_empty_events": len(answer_empty_records)
+            if not args.skip_answering
+            else 0,
+            "answer_self_reflection": answer_self_reflection_stats,
+            "self_reflection_totals": {
+                "attempts": q_self_stats["attempts"]
+                + answer_self_reflection_stats["attempts"],
+                "successes": q_self_stats["successes"]
+                + answer_self_reflection_stats["successes"],
+                "failures": q_self_stats["failures"]
+                + answer_self_reflection_stats["failures"],
+            },
+            "completion_monitor": tracker.summary(),
+            "config": {
+                "num_questions": args.num_questions,
+                "batch_size": args.batch_size,
+                "answer_batch_size": args.answer_batch_size,
+                "topics_file": str(topics_path),
+                "icl_file": str(args.icl_file) if args.icl_file else "",
+                "skip_answering": args.skip_answering,
+                "question_concurrency": question_concurrency,
+                "answer_concurrency": answer_concurrency,
+            },
+        }
+
+        metrics_path = output_dir / "metrics.json"
+        ensure_dir(metrics_path)
+        with metrics_path.open("w") as handle:
+            json.dump(metrics, handle, indent=2)
+
+        print("=== Question Generation ===")
+        print(json.dumps({**question_metrics, **question_timing}, indent=2))
+        if invalid_questions and args.verbose:
+            print("Sample invalid question reasons:")
+            for item in invalid_questions[:5]:
                 print(f"- idx {item['index']}: {item['reason']}")
-
-    vllm_utils.chat_completion = original_chat_completion
-    qm.chat_completion = original_qm_chat  # type: ignore[attr-defined]
-    am.chat_completion = original_am_chat  # type: ignore[attr-defined]
+        if not args.skip_answering:
+            print("\n=== Answering ===")
+            print(json.dumps({**answer_metrics, **answer_timing}, indent=2))
+            if invalid_answers and args.verbose:
+                print("Sample invalid answers:")
+                for item in invalid_answers[:5]:
+                    print(f"- idx {item['index']}: {item['reason']}")
+    finally:
+        vllm_utils.chat_completion = original_chat_completion
+        qm.chat_completion = original_qm_chat  # type: ignore[attr-defined]
+        am.chat_completion = original_am_chat  # type: ignore[attr-defined]
 
 
 if __name__ == "__main__":

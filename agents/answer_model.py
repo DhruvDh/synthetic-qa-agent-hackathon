@@ -2,7 +2,7 @@
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from transformers import AutoTokenizer
 
@@ -16,6 +16,11 @@ class AAgent(object):
         self.tokenizer = AutoTokenizer.from_pretrained(
             tokenizer_name, padding_side="left"
         )
+        self._last_raw_responses: List[Dict[str, Any]] = []
+
+    @property
+    def last_raw_responses(self) -> List[Dict[str, Any]]:
+        return list(self._last_raw_responses)
     @staticmethod
     def _split_sys_dev(system_prompt: str) -> tuple[str, Optional[str]]:
         marker = "<|DEVELOPER|>"
@@ -53,11 +58,12 @@ class AAgent(object):
         params, timeout = self._translate_generation_kwargs(dict(kwargs))
 
         outputs: List[str] = [""] * len(message_list)
+        raw_responses: List[Dict[str, Any]] = [{}] * len(message_list)
         token_len = 0
         start_time = time.time() if tgps_show_var else None
         sys_text, dev_text = self._split_sys_dev(system_prompt)
 
-        def handle_single(idx: int, prompt_text: str) -> tuple[int, str, int]:
+        def handle_single(idx: int, prompt_text: str) -> tuple[int, str, int, Dict[str, Any]]:
             local_messages = [{"role": "system", "content": sys_text}]
             if dev_text:
                 local_messages.append({"role": "developer", "content": dev_text})
@@ -81,10 +87,10 @@ class AAgent(object):
                 else:
                     raise
             if not response.get("choices"):
-                return idx, "", 0
+                return idx, "", 0, response
             content = self._extract_message_content(response["choices"][0])
             usage = response.get("usage") or {}
-            return idx, content, usage.get("completion_tokens", 0)
+            return idx, content, usage.get("completion_tokens", 0), response
 
         if concurrency > 1 and len(message_list) > 1:
             with ThreadPoolExecutor(
@@ -95,16 +101,19 @@ class AAgent(object):
                     for idx, msg in enumerate(message_list)
                 }
                 for future in as_completed(futures):
-                    idx, content, tokens = future.result()
+                    idx, content, tokens, raw = future.result()
                     outputs[idx] = content
+                    raw_responses[idx] = raw
                     token_len += tokens
         else:
             for idx, msg in enumerate(message_list):
-                _, content, tokens = handle_single(idx, msg)
+                _, content, tokens, raw = handle_single(idx, msg)
                 outputs[idx] = content
+                raw_responses[idx] = raw
                 token_len += tokens
 
         results = outputs[0] if len(outputs) == 1 else outputs
+        self._last_raw_responses = raw_responses
 
         if tgps_show_var and start_time is not None:
             generation_time = time.time() - start_time
