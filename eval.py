@@ -1128,12 +1128,12 @@ def main() -> None:
                 raise FileNotFoundError(f"ICL sample file not found: {icl_path}")
             icl_samples = QuestioningAgent.load_icl_samples(str(icl_path))
 
-        question_concurrency = max(1, min(args.question_concurrency, 128))
-        answer_concurrency = max(1, min(args.answer_concurrency, 128))
+        question_concurrency = max(1, min(args.question_concurrency, 256))
+        answer_concurrency = max(1, min(args.answer_concurrency, 256))
 
         if args.build_dpo_dataset:
-            question_concurrency = max(1, question_concurrency // 4)
-            answer_concurrency = max(1, answer_concurrency // 4)
+            question_concurrency = max(1, question_concurrency // 2)
+            answer_concurrency = max(1, answer_concurrency // 2)
 
         question_kwargs = {"tgps_show": True}
         question_kwargs.update(load_yaml(args.question_config))
