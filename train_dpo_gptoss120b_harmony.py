@@ -10,6 +10,8 @@ Fine-tune GPT-OSS-120B with DPO using Harmony chat templates end-to-end.
 - Expects DPO preference pairs in outputs/eval/dpo_answers.jsonl and outputs/eval/dpo_questions.jsonl.
 """
 
+from unsloth import FastLanguageModel, PatchDPOTrainer, is_bfloat16_supported
+
 import json
 import os
 import random
@@ -18,8 +20,6 @@ from typing import Any, Dict, Iterator, List
 from datasets import Dataset
 from transformers import TrainingArguments
 from trl import DPOTrainer
-
-from unsloth import FastLanguageModel, PatchDPOTrainer, is_bfloat16_supported
 
 
 # =========================================================
