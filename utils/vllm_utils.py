@@ -22,6 +22,9 @@ class VLLMConfig:
     port: int = 4200
     scheme: str = "http"
     launch_command: Optional[str] = None
+    tensor_parallel_size: Optional[int] = None
+    lora_adapter_path: Optional[str] = None
+    lora_module_name: str = "sql-lora"
     sentinel_file: Path = field(default_factory=lambda: Path("runtime/vllm_server.json"))
     startup_timeout: Optional[float] = None
     poll_interval: float = 1.0
@@ -42,6 +45,27 @@ class VLLMConfig:
                 self.port = int(env_port)
             except ValueError:
                 pass
+        if self.tensor_parallel_size is None:
+            env_tp = os.getenv("VLLM_TENSOR_PARALLEL_SIZE")
+            if env_tp:
+                try:
+                    self.tensor_parallel_size = int(env_tp)
+                except ValueError:
+                    self.tensor_parallel_size = 1
+            else:
+                self.tensor_parallel_size = 1
+        if self.tensor_parallel_size <= 0:
+            raise ValueError("tensor_parallel_size must be a positive integer.")
+        if not self.lora_adapter_path:
+            env_lora_path = os.getenv("VLLM_LORA_ADAPTER_PATH")
+            if env_lora_path:
+                self.lora_adapter_path = env_lora_path
+        env_lora_module = os.getenv("VLLM_LORA_MODULE_NAME")
+        if env_lora_module:
+            self.lora_module_name = env_lora_module
+        if self.lora_adapter_path:
+            expanded = os.path.expanduser(os.path.expandvars(self.lora_adapter_path))
+            self.lora_adapter_path = expanded
 
     @property
     def base_url(self) -> str:
@@ -50,7 +74,8 @@ class VLLMConfig:
     def command(self) -> List[str]:
         if self.launch_command:
             return shlex.split(self.launch_command)
-        return [
+        compilation_config = {"cudagraph_mode": "FULL_AND_PIECEWISE"}
+        command = [
             "vllm",
             "serve",
             self.model,
@@ -58,8 +83,32 @@ class VLLMConfig:
             self.host,
             "--port",
             str(self.port),
+            "--tensor-parallel-size",
+            str(self.tensor_parallel_size),
+            "--gpu-memory-utilization",
+            "0.95",
+            "--compilation-config",
+            json.dumps(compilation_config),
+            "--block-size",
+            "64",
+            "--disable-log-requests",
+            "--async-scheduling",
+            "--tool-call-parser",
+            "openai",
+            "--reasoning-parser",
+            "openai_gptoss",
+            "--enable-auto-tool-choice",
         ]
 
+        if self.lora_adapter_path:
+            command.extend(
+                [
+                    "--enable-lora",
+                    "--lora-modules",
+                    f"{self.lora_module_name}={self.lora_adapter_path}",
+                ]
+            )
+        return command
 
 def _ensure_package(module_name: str, package_name: Optional[str] = None):
     try:
@@ -122,6 +171,11 @@ def server_healthy(config: VLLMConfig) -> bool:
 def launch_server(config: VLLMConfig) -> subprocess.Popen:
     cmd = config.command()
     env = os.environ.copy()
+    env.setdefault("OMP_NUM_THREADS", "20")
+    env.setdefault("VLLM_USE_AITER_UNIFIED_ATTENTION", "1")
+    env.setdefault("VLLM_ROCM_USE_AITER_MHA", "0")
+    env.setdefault("VLLM_ROCM_USE_AITER_TRITON_BF16_GEMM", "0")
+    env.setdefault("VLLM_ROCM_QUICK_REDUCE_QUANTIZATION", "INT4")
     executable = cmd[0]
     if "/" not in executable and not shutil.which(executable):
         raise FileNotFoundError(
@@ -318,6 +372,21 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Ensure the vLLM server is running (launch if needed).",
     )
+    parser.add_argument(
+        "--tensor-parallel-size",
+        type=int,
+        help="Override the tensor parallel size used when launching the managed server.",
+    )
+    parser.add_argument(
+        "--lora-adapter-path",
+        type=str,
+        help="Enable LoRA support using the adapter directory located at PATH.",
+    )
+    parser.add_argument(
+        "--lora-module-name",
+        type=str,
+        help="Name to assign the enabled LoRA module (defaults to 'sql-lora').",
+    )
     return parser.parse_args()
 
 
@@ -334,7 +403,14 @@ def _status_message(cfg: VLLMConfig) -> str:
 
 if __name__ == "__main__":
     args = _parse_args()
-    config = VLLMConfig()
+    config_kwargs: Dict[str, Any] = {}
+    if args.tensor_parallel_size is not None:
+        config_kwargs["tensor_parallel_size"] = args.tensor_parallel_size
+    if args.lora_adapter_path:
+        config_kwargs["lora_adapter_path"] = args.lora_adapter_path
+    if args.lora_module_name:
+        config_kwargs["lora_module_name"] = args.lora_module_name
+    config = VLLMConfig(**config_kwargs)
 
     if args.stop:
         stopped = stop_vllm_server(config, force=args.force)
