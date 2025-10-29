@@ -51,64 +51,60 @@ class QuestioningAgent(object):
     def build_prompt(
         self,
         topic: str,
-        wadvsys: bool = True,
         wicl: bool = True,
         inc_samples: List[Dict[str, str]] | None = None,
     ) -> Tuple[str, str]:
         """Generate an MCQ based question on given topic with specified difficulty"""
 
-        if wadvsys:
-            sys_prompt = (
-                "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator.\n"
-                "Knowledge cutoff: 2024-06\n"
-                "Current date: 2025-10-28\n\n"
-                "Reasoning: low\n\n"
-                "# Valid channels: analysis, final. Channel must be included for every message.\n"
-                "<|DEVELOPER|>\n"
-                "# Instructions\n"
-                "You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly. You have been trained to generate tricky, hard to understand and even harder to solve puzzles in the domain of:\n"
-                "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
-                "2. Blood relations and family trees\n\n"
-                "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"
-                "# Response Formats\n\n"
-                "## question_json\n"
-                "{\n"
-                '  "type": "object",\n'
-                '  "additionalProperties": false,\n'
-                '  "properties": {\n'
-                '    "topic": { "type": "string" },\n'
-                '    "question": {\n'
-                '      "type": "string",\n'
-                '      "description": "Prompt for the puzzle."\n'
-                "    },\n"
-                '    "explanation": {\n'
-                '      "type": "string",\n'
-                '      "description": "<=150 words; key lines that make the single option correct."\n'
-                "    },\n"
-                '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] },\n'
-                '    "choices": {\n'
-                '      "type": "array",\n'
-                '      "minItems": 4,\n'
-                '      "maxItems": 4,\n'
-                '      "items": {\n'
-                '        "type": "string",\n'
-                '        "description": "Must begin with \'A) \', \'B) \', \'C) \', \'D) \' and be mutually exclusive."\n'
-                "      }\n"
-                "    }\n"
-                "  },\n"
-                '  "required": ["topic", "question", "explanation", "answer", "choices"]\n'
-                "}\n"
-            )
-        else:
-            sys_prompt = "P"
+        sys_prompt = (
+            "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle creator.\n"
+            "Knowledge cutoff: 2024-06\n"
+            "Current date: 2025-10-28\n\n"
+            "Reasoning: low\n\n"
+            "# Valid channels: analysis, final. Channel must be included for every message.\n"
+            "<|DEVELOPER|>\n"
+            "# Instructions\n"
+            "You are competing in a puzzle answering tournament as an puzzle cearting large language model. Points are awarded if (a) you generate correct questions that strictly adhere to response format restrictions and (b) your opponent is unable to answer your puzzle correctly. You have been trained to generate tricky, hard to understand and even harder to solve puzzles in the domain of:\n"
+            "1. Seating Arrangements (Circular and Linear). Don’t include any numeric style seating arrangements questions, e.g., how many permutations such arrangements possible, etc.\n"
+            "2. Blood relations and family trees\n\n"
+            "Points are not awarded if the answer to your own question is not correct or your explanation is not sufficient.\n\n"
+            "# Response Formats\n\n"
+            "## question_json\n"
+            "{\n"
+            '  "type": "object",\n'
+            '  "additionalProperties": false,\n'
+            '  "properties": {\n'
+            '    "topic": { "type": "string" },\n'
+            '    "question": {\n'
+            '      "type": "string",\n'
+            '      "description": "Prompt for the puzzle."\n'
+            "    },\n"
+            '    "explanation": {\n'
+            '      "type": "string",\n'
+            '      "description": "<=150 words; key lines that make the single option correct."\n'
+            "    },\n"
+            '    "answer": { "type": "string", "enum": ["A", "B", "C", "D"] },\n'
+            '    "choices": {\n'
+            '      "type": "array",\n'
+            '      "minItems": 4,\n'
+            '      "maxItems": 4,\n'
+            '      "items": {\n'
+            '        "type": "string",\n'
+            '        "description": "Must begin with \'A) \', \'B) \', \'C) \', \'D) \' and be mutually exclusive."\n'
+            "      }\n"
+            "    }\n"
+            "  },\n"
+            '  "required": ["topic", "question", "explanation", "answer", "choices"]\n'
+            "}\n"
+        )
         tmpl = (
             "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: {0}\n"
             "- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n"
             "- The only correct answer must be: {2} (others: {3})\n"
             "- Keep the explanation <= 90 words\n"
             "{5}\n\n"
-            "Return using response format: question_json with the **exact JSON key order**: "topic", "question", "explanation", "answer", "choices".\n'
-            'Set "topic" = "{7}" and place the correct answer at {8}".'
+            "Return using response format: question_json with the **exact JSON key order**: \"topic\", \"question\", \"explanation\", \"answer\", \"choices\".\n"
+            'Set "topic" = "{7}" and place the correct answer at "{8}".'
         )
         # Remove model's preferential bias for options
         correct_option = random.choice(["A", "B", "C", "D"])
@@ -138,7 +134,6 @@ class QuestioningAgent(object):
     def generate_question(
         self,
         topic: Tuple[str, str] | List[Tuple[str, str]],
-        wadvsys: bool,
         wicl: bool,
         inc_samples: Dict[str, List[Dict[str, str]]] | None,
         **gen_kwargs,
@@ -147,13 +142,13 @@ class QuestioningAgent(object):
         if isinstance(topic, list):
             prompt = []
             for t in topic:
-                p, sp = self.build_prompt(
-                    f"{t[0]}/{t[1]}", wadvsys, wicl, inc_samples[t[1]]
-                )
+                inc_topic_samples = inc_samples[t[1]] if inc_samples else None
+                p, sp = self.build_prompt(f"{t[0]}/{t[1]}", wicl, inc_topic_samples)
                 prompt.append(p)
         else:
+            inc_topic_samples = inc_samples[topic[1]] if inc_samples else None
             prompt, sp = self.build_prompt(
-                f"{topic[0]}/{topic[1]}", wadvsys, wicl, inc_samples[topic[1]]
+                f"{topic[0]}/{topic[1]}", wicl, inc_topic_samples
             )
 
         resp, tl, gt = self.agent.generate_response(prompt, sp, **gen_kwargs)
@@ -176,7 +171,6 @@ class QuestioningAgent(object):
         num_questions: int,
         topics: Dict[str, List[str]],
         batch_size: int = 5,
-        wadvsys: bool = True,
         wicl: bool = True,
         inc_samples: Dict[str, List[Dict[str, str]]] | None = None,
         **kwargs,
@@ -189,7 +183,6 @@ class QuestioningAgent(object):
             - num_questions (int): Total number of questions to generate.
             - topics (Dict[str, List[str]]): Dictionary of topics with subtopics.
             - batch_size (int): Number of questions to generate in each batch.
-            - wadvsys (bool): Whether to use advance prompt.
             - wicl (bool): Whether to include in-context learning (ICL) samples.
             - inc_samples (Dict[str, List[Dict[str, str]]]|None): In-context learning samples for the topics.
             - **kwargs: Additional keyword arguments for question generation.
@@ -207,7 +200,7 @@ class QuestioningAgent(object):
         for i in range(0, len(extended_topics), batch_size):
             batch_topics = extended_topics[i : i + batch_size]
             batch_questions = self.generate_question(
-                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+                batch_topics, wicl, inc_samples, **kwargs
             )
             questions.extend(batch_questions[0]), tls.append(
                 batch_questions[1]
@@ -217,7 +210,7 @@ class QuestioningAgent(object):
         if len(extended_topics) % batch_size != 0:
             batch_topics = extended_topics[-(len(extended_topics) % batch_size) :]
             batch_questions = self.generate_question(
-                batch_topics, wadvsys, wicl, inc_samples, **kwargs
+                batch_topics, wicl, inc_samples, **kwargs
             )
             questions.extend(batch_questions[0]), tls.append(
                 batch_questions[1]
@@ -382,7 +375,6 @@ if __name__ == "__main__":
         num_questions=args.num_questions,
         topics=topics,
         batch_size=args.batch_size,
-        wadvsys=True,
         wicl=True,
         inc_samples=inc_samples,
         **gen_kwargs,

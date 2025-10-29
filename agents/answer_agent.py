@@ -14,17 +14,13 @@ from utils.vllm_utils import VLLMConfig, ensure_vllm_server_running
 class AnsweringAgent(object):
     r"""Agent responsible for answering MCQ questions with confidence scoring"""
 
-    def __init__(
-        self, select_prompt1: bool = True, vllm_config: VLLMConfig | None = None, **kwargs
-    ):
+    def __init__(self, vllm_config: VLLMConfig | None = None, **kwargs):
         self.agent = AAgent(config=vllm_config, **kwargs)
-        self.select_prompt1 = select_prompt1
 
     def build_prompt(self, question_data: Dict[str, str | Any]) -> Tuple[str, str]:
         """Generate an answer to the given MCQ question with confidence and reasoning"""
 
-        sys_prompt1 = "You are an expert in quantitative aptitude for competitive exams, solving MCQs with step-by-step reasoning before selecting the correct answer."
-        sys_prompt2 = (
+        sys_prompt = (
             "You are ChatGPT, a large language model trained by OpenAI. You have been fine-tuned to be a winning competetive logical puzzle solver\n"
             "Knowledge cutoff: 2024-06\n"
             "Current date: 2025-10-28\n\n"
@@ -61,7 +57,7 @@ class AnsweringAgent(object):
             question_data["question"], self._format_choices(question_data["choices"])
         )
 
-        return prompt, sys_prompt1 if self.select_prompt1 else sys_prompt2
+        return prompt, sys_prompt
 
     def answer_question(
         self, question_data: Dict | List[Dict], **kwargs
@@ -222,8 +218,6 @@ if __name__ == "__main__":
     )
     args = argparser.parse_args()
 
-    SELECT_PROMPT1 = False  # Use the first system prompt for answering
-
     VLLM_CONFIG = VLLMConfig()
     ensure_vllm_server_running(VLLM_CONFIG)
 
@@ -231,7 +225,7 @@ if __name__ == "__main__":
     with open(args.input_file, "r") as f:
         sample_questions = json.load(f)
 
-    agent = AnsweringAgent(select_prompt1=SELECT_PROMPT1, vllm_config=VLLM_CONFIG)
+    agent = AnsweringAgent(vllm_config=VLLM_CONFIG)
 
     # gen_kwargs = {"tgps_show": True, "max_new_tokens": 512, "temperature": 0.1, "top_p": 0.9, "do_sample": True}
     gen_kwargs = {"tgps_show": True}
