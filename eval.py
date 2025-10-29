@@ -5,8 +5,9 @@ import importlib
 import json
 import subprocess
 import sys
+import threading
+import time
 from collections import Counter
-from functools import wraps
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, List, Tuple
 
@@ -62,6 +63,222 @@ def load_yaml(path_str: str) -> Dict[str, Any]:
 
 def ensure_dir(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+
+
+def _filter_kwargs(kwargs: Dict[str, Any]) -> Dict[str, Any]:
+    filtered: Dict[str, Any] = {}
+    for key, value in kwargs.items():
+        if isinstance(value, (int, float, str, bool)) or value is None:
+            filtered[key] = value
+    return filtered
+
+
+class ModeStats:
+    __slots__ = (
+        "total_calls",
+        "finish_counts",
+        "empty_reason_counts",
+        "empty_records",
+        "error_counts",
+        "error_samples",
+        "prompt_example",
+        "completion_tokens",
+        "prompt_tokens",
+        "total_latency",
+        "max_latency",
+        "min_latency",
+    )
+
+    def __init__(self) -> None:
+        self.total_calls = 0
+        self.finish_counts: Counter[str] = Counter()
+        self.empty_reason_counts: Counter[str] = Counter()
+        self.empty_records: List[Dict[str, Any]] = []
+        self.error_counts: Counter[str] = Counter()
+        self.error_samples: List[Dict[str, Any]] = []
+        self.prompt_example: str | None = None
+        self.completion_tokens = 0
+        self.prompt_tokens = 0
+        self.total_latency = 0.0
+        self.max_latency = 0.0
+        self.min_latency: float | None = None
+
+    def record_latency(self, elapsed: float) -> None:
+        self.total_latency += elapsed
+        if elapsed > self.max_latency:
+            self.max_latency = elapsed
+        if self.min_latency is None or elapsed < self.min_latency:
+            self.min_latency = elapsed
+
+    def summary(self) -> Dict[str, Any]:
+        avg_latency = (
+            self.total_latency / self.total_calls if self.total_calls else None
+        )
+        return {
+            "total_calls": self.total_calls,
+            "finish_reasons": dict(self.finish_counts),
+            "empty_reason_counts": dict(self.empty_reason_counts),
+            "errors": dict(self.error_counts),
+            "error_samples": self.error_samples,
+            "prompt_example": self.prompt_example[:400]
+            if isinstance(self.prompt_example, str)
+            else None,
+            "completion_tokens": self.completion_tokens,
+            "prompt_tokens": self.prompt_tokens,
+            "avg_latency_sec": avg_latency,
+            "max_latency_sec": self.max_latency if self.total_calls else None,
+            "min_latency_sec": self.min_latency,
+        }
+
+
+class CompletionTracker:
+    def __init__(self) -> None:
+        self.lock = threading.Lock()
+        self.mode_stats: Dict[str, ModeStats] = {
+            "question": ModeStats(),
+            "answer": ModeStats(),
+            "other": ModeStats(),
+        }
+        self.total_calls = 0
+        self.total_errors = 0
+        self.total_latency = 0.0
+
+    def _detect_mode(self, messages: List[Dict[str, Any]]) -> str:
+        for message in messages:
+            if message.get("role") != "system":
+                continue
+            content = message.get("content", "") or ""
+            lowered = content.lower()
+            if "puzzle creator" in lowered:
+                return "question"
+            if "puzzle solver" in lowered:
+                return "answer"
+        return "other"
+
+    def _append_empty_record(
+        self,
+        stats: ModeStats,
+        kwargs: Dict[str, Any],
+        response: Dict[str, Any],
+        reason: str,
+    ) -> None:
+        stats.empty_reason_counts[reason] += 1
+        stats.empty_records.append(
+            {
+                "reason": reason,
+                "kwargs": _filter_kwargs(kwargs),
+                "response": response,
+            }
+        )
+
+    def record_success(
+        self,
+        messages: List[Dict[str, Any]],
+        kwargs: Dict[str, Any],
+        response: Dict[str, Any],
+        elapsed: float,
+    ) -> None:
+        mode = self._detect_mode(messages)
+        stats = self.mode_stats[mode]
+        with self.lock:
+            stats.total_calls += 1
+            self.total_calls += 1
+            stats.record_latency(elapsed)
+            self.total_latency += elapsed
+
+            if stats.prompt_example is None:
+                user_content = next(
+                    (
+                        msg.get("content", "")
+                        for msg in messages
+                        if msg.get("role") == "user"
+                    ),
+                    "",
+                )
+                stats.prompt_example = user_content
+
+            choices = response.get("choices") or []
+            if not choices:
+                self._append_empty_record(stats, kwargs, response, "no_choices")
+                return
+
+            logged_empty = False
+            for choice in choices:
+                finish_reason = (choice.get("finish_reason") or "unknown").lower()
+                stats.finish_counts[finish_reason] += 1
+
+                content = ""
+                message = choice.get("message")
+                if isinstance(message, dict):
+                    content = message.get("content", "") or ""
+                elif isinstance(message, str):
+                    content = message
+                if not isinstance(content, str):
+                    content = str(content)
+
+                if not content.strip() and not logged_empty:
+                    self._append_empty_record(
+                        stats, kwargs, response, "empty_content"
+                    )
+                    logged_empty = True
+
+            usage = response.get("usage") or {}
+            stats.completion_tokens += usage.get("completion_tokens", 0)
+            stats.prompt_tokens += usage.get("prompt_tokens", 0)
+
+    def record_error(
+        self,
+        messages: List[Dict[str, Any]],
+        kwargs: Dict[str, Any],
+        exc: Exception,
+        elapsed: float,
+    ) -> None:
+        mode = self._detect_mode(messages)
+        stats = self.mode_stats[mode]
+        error_category = classify_error(exc)
+        with self.lock:
+            stats.total_calls += 1
+            self.total_calls += 1
+            stats.error_counts[error_category] += 1
+            if len(stats.error_samples) < 50:
+                stats.error_samples.append(
+                    {
+                        "category": error_category,
+                        "error": str(exc),
+                        "kwargs": _filter_kwargs(kwargs),
+                    }
+                )
+            stats.record_latency(elapsed)
+            self.total_errors += 1
+            self.total_latency += elapsed
+
+    def summary(self) -> Dict[str, Any]:
+        with self.lock:
+            return {
+                "total_calls": self.total_calls,
+                "total_errors": self.total_errors,
+                "total_latency_sec": self.total_latency,
+                "modes": {
+                    mode: stats.summary() for mode, stats in self.mode_stats.items()
+                },
+            }
+
+    def get_empty_records(self, mode: str) -> List[Dict[str, Any]]:
+        return list(self.mode_stats[mode].empty_records)
+
+    def get_prompt_example(self, mode: str) -> str | None:
+        return self.mode_stats[mode].prompt_example
+
+
+def classify_error(exc: Exception) -> str:
+    message = str(exc).lower()
+    if "timeout" in message or "timed out" in message:
+        return "timeout"
+    if "connection" in message or "network" in message:
+        return "connection"
+    if "failed to reach" in message or "503" in message or "502" in message:
+        return "backend"
+    return "other"
 
 
 def normalize_choice(choice: Any, idx: int) -> Tuple[bool, str]:
@@ -330,6 +547,39 @@ def main() -> None:
     ensure_module("tqdm")
     from agents.question_agent import QuestioningAgent
     from agents.answer_agent import AnsweringAgent
+    from agents import question_model as qm
+    from agents import answer_model as am
+    from utils import vllm_utils
+
+    tracker = CompletionTracker()
+    original_chat_completion = vllm_utils.chat_completion
+    original_qm_chat = qm.chat_completion
+    original_am_chat = am.chat_completion
+
+    def tracking_chat_completion(
+        messages: List[Dict[str, Any]],
+        config: Any = None,
+        timeout: float = 60.0,
+        **params: Any,
+    ) -> Dict[str, Any]:
+        params_copy = dict(params)
+        kwargs_for_log = {**params_copy, "timeout": timeout}
+        start_time = time.time()
+        try:
+            response = original_chat_completion(
+                messages, config=config, timeout=timeout, **params
+            )
+        except Exception as exc:  # noqa: BLE001
+            tracker.record_error(messages, kwargs_for_log, exc, time.time() - start_time)
+            raise
+        tracker.record_success(
+            messages, kwargs_for_log, response, time.time() - start_time
+        )
+        return response
+
+    vllm_utils.chat_completion = tracking_chat_completion
+    qm.chat_completion = tracking_chat_completion  # type: ignore[attr-defined]
+    am.chat_completion = tracking_chat_completion  # type: ignore[attr-defined]
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -360,66 +610,6 @@ def main() -> None:
     answer_kwargs.pop("do_sample", None)
 
     q_agent = QuestioningAgent()
-
-    question_empty_records: List[Dict[str, Any]] = []
-    original_q_generate = q_agent.agent.generate_response
-
-    @wraps(original_q_generate)
-    def instrumented_q_generate(message, system_prompt=None, **kwargs):
-        if isinstance(message, list):
-            prompt_list = [m if isinstance(m, str) else str(m) for m in message]
-        else:
-            prompt_list = [message if isinstance(message, str) else str(message)]
-
-        response, token_len, gen_time = original_q_generate(
-            message, system_prompt, **kwargs
-        )
-
-        if isinstance(response, list):
-            response_list = [r if isinstance(r, str) else ("" if r is None else str(r)) for r in response]
-        else:
-            response_list = [
-                response if isinstance(response, str) else ("" if response is None else str(response))
-            ]
-
-        if len(response_list) < len(prompt_list):
-            response_list.extend([""] * (len(prompt_list) - len(response_list)))
-
-        empties = []
-        for idx, (prompt_text, resp_text) in enumerate(zip(prompt_list, response_list)):
-            resp_clean = resp_text.strip() if isinstance(resp_text, str) else str(resp_text).strip()
-            if not resp_clean:
-                prompt_preview = prompt_text[:400] if isinstance(prompt_text, str) else str(prompt_text)[:400]
-                empties.append(
-                    {
-                        "prompt_index": idx,
-                        "prompt_preview": prompt_preview,
-                        "prompt_length": len(prompt_text) if isinstance(prompt_text, str) else None,
-                    }
-                )
-
-        if empties:
-            filtered_kwargs = {
-                key: value
-                for key, value in kwargs.items()
-                if isinstance(value, (int, float, str, bool)) or value is None
-            }
-            question_empty_records.append(
-                {
-                    "call_index": len(question_empty_records),
-                    "batch_size": len(prompt_list),
-                    "system_prompt_present": isinstance(system_prompt, str) and bool(system_prompt.strip()),
-                    "system_prompt_preview": system_prompt[:400]
-                    if isinstance(system_prompt, str)
-                    else None,
-                    "kwargs": filtered_kwargs,
-                    "empties": empties,
-                }
-            )
-
-        return response, token_len, gen_time
-
-    q_agent.agent.generate_response = instrumented_q_generate  # type: ignore[attr-defined]
     questions_raw, q_token_lengths, q_generation_times = q_agent.generate_batches(
         num_questions=args.num_questions,
         topics=topics,
@@ -474,10 +664,19 @@ def main() -> None:
     with invalid_questions_path.open("w") as handle:
         json.dump(invalid_questions, handle, indent=2)
 
-    empty_debug_path = output_dir / "question_empty_debug.json"
-    ensure_dir(empty_debug_path)
-    with empty_debug_path.open("w") as handle:
-        json.dump(question_empty_records, handle, indent=2)
+    question_empty_records = tracker.get_empty_records("question")
+    question_empty_path = output_dir / "question_empty_debug.json"
+    ensure_dir(question_empty_path)
+    with question_empty_path.open("w") as handle:
+        json.dump(
+            {
+                "prompt_example": tracker.get_prompt_example("question"),
+                "event_count": len(question_empty_records),
+                "events": question_empty_records,
+            },
+            handle,
+            indent=2,
+        )
 
     answers_raw: List[Any] = []
     answer_token_lengths: List[int] = []
@@ -494,6 +693,7 @@ def main() -> None:
     }
     answer_timing = {}
     answer_truncations = None
+    answer_empty_records: List[Dict[str, Any]] = []
 
     if not args.skip_answering:
         ans_agent = AnsweringAgent()
@@ -550,17 +750,30 @@ def main() -> None:
         with invalid_answers_path.open("w") as handle:
             json.dump(invalid_answers, handle, indent=2)
 
+        answer_empty_records = tracker.get_empty_records("answer")
+        answer_empty_path = output_dir / "answer_empty_debug.json"
+        ensure_dir(answer_empty_path)
+        with answer_empty_path.open("w") as handle:
+            json.dump(
+                {
+                    "prompt_example": tracker.get_prompt_example("answer"),
+                    "event_count": len(answer_empty_records),
+                    "events": answer_empty_records,
+                },
+                handle,
+                indent=2,
+            )
+
     metrics = {
         "question_metrics": question_metrics,
         "question_timing": question_timing,
         "question_truncations": question_truncations,
-        "question_empty_debug": {
-            "batch_events": len(question_empty_records),
-            "total_empty_prompts": sum(len(entry["empties"]) for entry in question_empty_records),
-        },
+        "question_empty_events": len(question_empty_records),
         "answer_metrics": answer_metrics,
         "answer_timing": answer_timing,
         "answer_truncations": answer_truncations,
+        "answer_empty_events": len(answer_empty_records) if not args.skip_answering else 0,
+        "completion_monitor": tracker.summary(),
         "config": {
             "num_questions": args.num_questions,
             "batch_size": args.batch_size,
@@ -591,6 +804,10 @@ def main() -> None:
             print("Sample invalid answers:")
             for item in invalid_answers[:5]:
                 print(f"- idx {item['index']}: {item['reason']}")
+
+    vllm_utils.chat_completion = original_chat_completion
+    qm.chat_completion = original_qm_chat  # type: ignore[attr-defined]
+    am.chat_completion = original_am_chat  # type: ignore[attr-defined]
 
 
 if __name__ == "__main__":

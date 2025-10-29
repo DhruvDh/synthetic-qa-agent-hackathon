@@ -2,7 +2,7 @@
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from transformers import AutoTokenizer
 
@@ -124,7 +124,7 @@ class QAgent(object):
         message = choice.get("message") or {}
         content = message.get("content")
         if isinstance(content, str):
-            return content.strip()
+            text = content.strip()
         if isinstance(content, list):
             fragments = []
             for part in content:
@@ -132,7 +132,15 @@ class QAgent(object):
                     part_type = part.get("type")
                     if part_type in {"text", "output_text", None}:
                         fragments.append(part.get("text", ""))
-            return "".join(fragments).strip()
+            text = "".join(fragments).strip()
+        else:
+            text = str(content).strip() if content is not None else ""
+
+        if not text:
+            fallback = QAgent._extract_reasoning(choice, message)
+            if fallback:
+                return fallback
+
         if content is None:
             tool_calls = message.get("tool_calls")
             if tool_calls:
@@ -143,7 +151,40 @@ class QAgent(object):
             refusal = message.get("refusal")
             if refusal:
                 return refusal.strip()
-        return str(content).strip() if content is not None else ""
+        return text
+
+    @staticmethod
+    def _extract_reasoning(choice: dict, message: dict) -> str:
+        def _collect_text(source: Any) -> str:
+            if isinstance(source, str):
+                return source.strip()
+            if isinstance(source, list):
+                parts = []
+                for item in source:
+                    if isinstance(item, dict):
+                        text = item.get("content") or item.get("text")
+                        if isinstance(text, str):
+                            parts.append(text)
+                    elif isinstance(item, str):
+                        parts.append(item)
+                return "".join(parts).strip()
+            if isinstance(source, dict):
+                text = source.get("content") or source.get("text")
+                if isinstance(text, str):
+                    return text.strip()
+            return ""
+
+        candidates = [
+            message.get("reasoning_content"),
+            message.get("reasoning"),
+            choice.get("reasoning_content"),
+            choice.get("reasoning"),
+        ]
+        for candidate in candidates:
+            text = _collect_text(candidate)
+            if text:
+                return text
+        return ""
 
 
 if __name__ == "__main__":

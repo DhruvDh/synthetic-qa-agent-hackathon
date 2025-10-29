@@ -1,45 +1,96 @@
 {
   "question_metrics": {
-    "total_generated": 60096,
-    "valid_count": 21969,
-    "invalid_count": 38127,
+    "total_generated": 6112,
+    "valid_count": 2246,
+    "invalid_count": 3866,
     "invalid_reasons": {
-      "empty_output": 33957,
-      "json_decode_error": 4169,
-      "explanation_too_long": 1
+      "json_decode_error": 3866
     }
   },
   "question_timing": {
-    "batch_count": 470,
-    "total_tokens": 54280532,
-    "total_time_sec": 17259.491261720657,
-    "tokens_per_sec": 3144.967089521768
+    "batch_count": 48,
+    "total_tokens": 5522959,
+    "total_time_sec": 1763.7403116226196,
+    "tokens_per_sec": 3131.390127903209
   },
   "question_truncations": 0,
-  "question_empty_debug": {
-    "batch_events": 470,
-    "total_empty_prompts": 33957
-  },
+  "question_empty_events": 3452,
   "answer_metrics": {
-    "questions_answered": 21969,
-    "valid_count": 11041,
-    "invalid_count": 10928,
+    "questions_answered": 2246,
+    "valid_count": 1123,
+    "invalid_count": 1123,
     "invalid_reasons": {
-      "empty_output": 7773,
-      "json_decode_error": 3155
+      "json_decode_error": 1123
     },
-    "correct_count": 10595,
-    "accuracy": 0.9596051082329499
+    "correct_count": 1064,
+    "accuracy": 0.9474621549421193
   },
   "answer_timing": {
-    "batch_count": 172,
-    "total_tokens": 9508083,
-    "total_time_sec": 3102.9864485263824,
-    "tokens_per_sec": 3064.171615868776
+    "batch_count": 18,
+    "total_tokens": 969265,
+    "total_time_sec": 318.9195954799652,
+    "tokens_per_sec": 3039.214315261133
   },
   "answer_truncations": 0,
+  "answer_empty_events": 792,
+  "completion_monitor": {
+    "total_calls": 8358,
+    "total_errors": 0,
+    "total_latency_sec": 232453.45330786705,
+    "modes": {
+      "question": {
+        "total_calls": 6112,
+        "finish_reasons": {
+          "stop": 2245,
+          "length": 3867
+        },
+        "empty_reason_counts": {
+          "empty_content": 3452
+        },
+        "errors": {},
+        "error_samples": [],
+        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: C (others: A, B, D)\n- Keep the explanation <= 90 words\nEXAMPLE: Blood Relations and Family Trees/Blood Relations and Family Trees\n{",
+        "completion_tokens": 5522959,
+        "prompt_tokens": 12324678,
+        "avg_latency_sec": 32.41101123119524,
+        "max_latency_sec": 37.329577922821045,
+        "min_latency_sec": 12.00022840499878
+      },
+      "answer": {
+        "total_calls": 2246,
+        "finish_reasons": {
+          "stop": 1115,
+          "length": 1131
+        },
+        "empty_reason_counts": {
+          "empty_content": 792
+        },
+        "errors": {},
+        "error_samples": [],
+        "prompt_example": "PUZZLE: In a family, siblings A, B and G share the same parents. A has a child C. G has a child F. D, a child of B, marries F (the marriage is irrelevant to blood ties). What is the precise blood relationship between C and F?\nCHOICES: A) A) Siblings B) B) First cousins C) C) Second cousins D) D) Not determinable\n\nReturn using response format: answer_json with the **exact JSON key order**: reasonin",
+        "completion_tokens": 969265,
+        "prompt_tokens": 999128,
+        "avg_latency_sec": 15.29712941353595,
+        "max_latency_sec": 18.251518726348877,
+        "min_latency_sec": 5.510671138763428
+      },
+      "other": {
+        "total_calls": 0,
+        "finish_reasons": {},
+        "empty_reason_counts": {},
+        "errors": {},
+        "error_samples": [],
+        "prompt_example": null,
+        "completion_tokens": 0,
+        "prompt_tokens": 0,
+        "avg_latency_sec": null,
+        "max_latency_sec": null,
+        "min_latency_sec": null
+      }
+    }
+  },
   "config": {
-    "num_questions": 60000,
+    "num_questions": 6000,
     "batch_size": 128,
     "answer_batch_size": 128,
     "topics_file": "assets/topics.json",
