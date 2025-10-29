@@ -72,8 +72,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--dpo_question_token_limit", type=int, default=1024)
     parser.add_argument("--dpo_answer_token_limit", type=int, default=512)
-    parser.add_argument("--dpo_question_max_new_tokens", type=int, default=2048)
-    parser.add_argument("--dpo_answer_max_new_tokens", type=int, default=1024)
+    parser.add_argument("--dpo_question_max_new_tokens", type=int, default=1536)
+    parser.add_argument("--dpo_answer_max_new_tokens", type=int, default=768)
     parser.add_argument(
         "--dpo_allow_incorrect_answers",
         action="store_true",
@@ -854,11 +854,9 @@ def build_dpo_dataset(
     question_generation_kwargs = prepare_generation_kwargs(
         question_kwargs, args.dpo_question_max_new_tokens
     )
-    question_generation_kwargs["max_new_tokens"] = 1536
     answer_generation_kwargs = prepare_generation_kwargs(
         answer_kwargs, args.dpo_answer_max_new_tokens
     )
-    answer_generation_kwargs["max_new_tokens"] = 768
 
     topics_sequence = question_agent.populate_topics(topics, args.num_questions)
     question_pairs: List[Dict[str, Any]] = []
