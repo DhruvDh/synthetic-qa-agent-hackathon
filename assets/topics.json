@@ -1,8 +1,8 @@
 {
-    "Puzzles": [
-        "Seating Arrangements (Linear, Circular)"
+    "Seating Arrangements": [
+        "Seating Arrangements (Circular and Linear)"
     ],
-    "Blood Relations and Family Tree": [
-        "Puzzles involving generations and family tree logic"
+    "Blood Relations and Family Trees": [
+        "Blood Relations and Family Trees"
     ]
 }

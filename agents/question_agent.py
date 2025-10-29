@@ -405,38 +405,12 @@ if __name__ == "__main__":
                 print("No timing information collected; skipping TGPS aggregate.\n\n")
         print("\n" + "+" * 50 + "\n")
 
-    # check if question is JSON format
+    # Save raw model outputs for inspection
     ques = []
     for q in question:
-        try:
-            json.loads(q)
-        except json.JSONDecodeError as e:
-            print(f"Invalid JSON format in question: {q}\nError: {e}")
-            # use agent itself to extract JSON: Self-Reflection
-            # the dictionary is not as expected.
-            # TODO: IMPROVE THE FOLLOWING
-            prompt = (
-                "Extract **ONLY** the topic, question, choices, answer, and explanation while discarding the rest.\n"
-                "Also please remove JSON code block text with backticks** like **```json** and **```**.\n\n"
-                "String:\n"
-                "{}\n\n"
-                "Given Format:\n"
-                "{{\n"
-                '  "topic": "...",\n'
-                '  "question": "...",\n'
-                '  "choices": ["A) ...", "B) ...", "C) ...", "D) ..."],\n'
-                '  "answer": "Only the option letter (A, B, C, or D)",\n'
-                '  "explanation": "..."\n'
-                "}}"
-            )
-            q = agent.agent.generate_response(
-                prompt.format(q),
-                "You are an expert JSON extractor.",
-                max_new_tokens=1024,
-                temperature=0.0,
-                do_sample=False,
-            )
-        ques.append(q)
+        if isinstance(q, tuple):
+            q = q[0] if q else ""
+        ques.append(q if isinstance(q, (dict, list)) else str(q))
     # Save the questions for later analysis
     agent.save_questions(ques, args.output_file)
     filtered_file_name = args.output_file.replace(

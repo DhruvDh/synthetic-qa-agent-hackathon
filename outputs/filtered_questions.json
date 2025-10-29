@@ -1,122 +1,158 @@
 [
     {
-        "topic": "Puzzles involving generations and family tree logic",
-        "question": "Maya's father's sister is married to the brother of Leo's mother. Leo's mother is the only daughter of Maya's paternal grandfather's sister. How is Leo related to Maya?",
-        "explanation": "Maya's paternal grandfather's sister is Maya's great\u2011aunt. Her only daughter (Leo's mother) is Maya's father's cousin. Thus Leo's mother is Maya's first cousin once removed. Leo, her son, is therefore Maya's second cousin. The extra marriage detail only confirms the same generation link.",
+        "topic": "Blood Relations and Family Trees",
+        "question": "Anna and Ben are full siblings. Ben has one child, Carla, who has one child, David. Anna has one child, Emma, who has one child, Fiona. Using standard English kinship terms, what is the precise relation between David and Fiona?",
+        "explanation": "Carla and Emma are first cousins (children of siblings). Their children, David and Fiona, are therefore second cousins. No other family links exist, so the exact term is second cousins.",
         "answer": "B",
         "choices": [
-            "A) Maternal uncle",
-            "B) Second cousin",
-            "C) First cousin",
-            "D) Nephew"
+            "A) A) First cousins",
+            "B) B) Second cousins",
+            "C) C) First cousins once removed",
+            "D) D) Not determinable"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "Maya's father's only sister is married to the only son of Maya's mother's brother. That son and Maya's paternal aunt have a daughter named Lila. How is Lila related to Maya?",
-        "explanation": "Maya's father's sister is Maya's paternal aunt. Maya's mother's brother is her maternal uncle; his only son is Maya's male maternal cousin. He is married to Maya's paternal aunt, making him Maya's uncle\u2011in\u2011law. Their child Lila is the daughter of Maya's paternal aunt, so Lila is Maya's first cousin on her father's side (and also on her mother's side). Hence Lila is Maya's first cousin.",
-        "answer": "A",
+        "question": "J's father has a sister who is married to J's mother's brother. They have a single child, M. What is the most precise kinship term for M's relation to J, using standard English terms and without ignoring doubled ancestry?",
+        "explanation": "M is the child of J's paternal aunt (father's sister) and J's maternal uncle (mother's brother). Because those two relatives are married, M shares both of J's sets of grandparents, making M a double first cousin of J.",
+        "answer": "C",
         "choices": [
             "A) First cousin",
-            "B) Second cousin",
-            "C) Aunt",
-            "D) Half\u2011sister"
+            "B) Half\u2011first cousin",
+            "C) Double first cousin",
+            "D) Second cousin"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "At a family gathering, Maya said, \"The woman who is the mother of my father's sister's son is also the wife of the man who is my mother's brother's father.\" How is that woman related to Maya?",
-        "explanation": "My father's sister is Maya's paternal aunt. Her son is Maya's paternal cousin; his mother is the aunt herself. The second clause says she is the wife of Maya's mother's brother's father \u2013 that is Maya's maternal grandfather, so she is his wife, i.e., Maya's maternal grandmother. Hence her primary relation to Maya is maternal grandmother.",
+        "question": "M and N are siblings. M marries O, who is the sister of P. N marries Q, who is the brother of O. M and O have a daughter R; N and Q have a son S. Using standard English kinship terms (in\u2011law limited to spouse, spouse\u2019s parents or siblings, siblings\u2019 spouses, and children\u2019s spouses), what is the most precise relation between R and S?",
+        "explanation": "M and N share the same parents; O and Q share the same parents. Thus R and S share both sets of grandparents, making them cousins through two independent lines. The exact term for such cousins is double first cousins.",
+        "answer": "D",
+        "choices": [
+            "A) A) First cousins",
+            "B) B) Half-first cousins",
+            "C) C) Second cousins",
+            "D) D) Double first cousins"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "In a family, two men, Alan and Brian, are double first cousins (their fathers are brothers and their mothers are sisters). Alan\u2019s child is Clara and Brian\u2019s child is David. Using standard English kinship terms, what is the most precise relation between Clara and David?",
+        "explanation": "Alan and Brian share both sets of grandparents, so they are double first cousins. Their children therefore share both sets of great\u2011grandparents, making Clara and David double second cousins. No simpler term captures the doubled ancestry.",
+        "answer": "D",
+        "choices": [
+            "A) A) First cousins once removed",
+            "B) B) Second cousins",
+            "C) C) Double first cousins",
+            "D) D) Double second cousins"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "L\u2019s father has exactly one sister and L\u2019s mother has exactly one brother. The sister of L\u2019s father marries the brother of L\u2019s mother, and they have a child M. Using standard English kinship terms, what is the precise relation of M to L?",
+        "explanation": "M is the child of L\u2019s paternal aunt (father\u2019s sister) and maternal uncle (mother\u2019s brother). Thus M shares both of L\u2019s grandparent pairs, making them double first cousins \u2013 the most specific term available.",
         "answer": "B",
         "choices": [
-            "A) Paternal Aunt",
-            "B) Maternal Grandmother",
-            "C) Mother",
-            "D) Sister"
+            "A) First cousin",
+            "B) Double first cousin",
+            "C) Second cousin",
+            "D) Not determinable"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "Rohan says: \"My father's only brother's son is married to the daughter of my mother's only sister.\" How is the daughter related to Rohan?",
-        "explanation": "My father's only brother is Rohan's paternal uncle; his son is Rohan's paternal cousin. My mother's only sister is Rohan's maternal aunt; her daughter is Rohan's maternal cousin. Both descriptions point to the same person, making her Rohan's cousin.",
+        "question": "Mary has one brother and one sister. John is the son of Mary's brother. Mary's sister is married to Paul's father, and Paul is their child. What is the precise kinship term for Paul with respect to John, using standard English blood relations?",
+        "explanation": "John is the child of Mary's brother; Paul is the child of Mary's sister. Their parents are siblings, so John and Paul are children of siblings, which makes them first cousins. No other shared ancestry or half\u2011relations exist.",
+        "answer": "B",
+        "choices": [
+            "A) A) Siblings",
+            "B) B) First cousins",
+            "C) C) Half\u2011first cousins",
+            "D) D) Unrelated"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "S's mother has exactly one brother and S's father has exactly one brother. The child of the maternal uncle is called A; the child of the paternal uncle is called B. If a person C is either A or B (but we do not know which), what is the precise kinship term for C with respect to S?",
+        "explanation": "Both A and B are children of a parent's brother, so each is a first cousin of S. Therefore, regardless of whether C is A or B, C is uniquely S's first cousin.",
+        "answer": "B",
+        "choices": [
+            "A) Aunt/Uncle",
+            "B) First cousin",
+            "C) Second cousin",
+            "D) Not uniquely determinable"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "A has a brother B and a sister D. B's child is C, D's child is E. C and E marry and have a child F. Using standard English kinship terms (no adoption, monogamy allowed), what is the most precise relation of F to A?",
+        "explanation": "A is the sibling of both of F's parents (C and E). Therefore A is the aunt/uncle of each parent, making A the great\u2011aunt/uncle (also called grand\u2011aunt/uncle) of F. No closer term applies.",
         "answer": "A",
         "choices": [
-            "A) Maternal cousin",
-            "B) Paternal uncle",
-            "C) Sister",
-            "D) Aunt"
+            "A) A) Great\u2011aunt/uncle",
+            "B) B) First cousin once removed",
+            "C) C) Grandparent",
+            "D) D) No standard direct relation"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "At a family gathering, Maya says, \u201cThe woman standing next to me is the daughter of my father\u2019s sister, who is married to the brother of my mother\u2019s brother.\u201d How is the woman related to Maya?",
-        "explanation": "Maya\u2019s father\u2019s sister is Maya\u2019s paternal aunt. Her husband is the brother of Maya\u2019s mother\u2019s brother, i.e., Maya\u2019s maternal uncle. Their daughter is the child of Maya\u2019s paternal aunt and maternal uncle, making her Maya\u2019s cousin on both sides. Hence the woman is Maya\u2019s cousin.",
-        "answer": "B",
-        "choices": [
-            "A) Aunt",
-            "B) Cousin",
-            "C) Sister",
-            "D) Niece"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "Maya's father's only brother has a daughter. That daughter married the son of Maya's mother's sister. Their child is Tara. How is Tara related to Maya?",
-        "explanation": "Maya's father's only brother = paternal uncle; his daughter = Maya's paternal first cousin. Maya's mother's sister = maternal aunt; her son = Maya's maternal first cousin. The two cousins marry and have Tara. Tara is the child of Maya's first cousin, making her Maya's first cousin once removed.",
+        "question": "U and W are brothers. T is the son of U. V is the child of W. X is the child of V. Using standard English kinship terms (in\u2011law limited to spouse, spouse's parents or siblings, siblings' spouses, and children's spouses), what is the precise relation of X to T?",
+        "explanation": "U and W are siblings, so their children T and V are first cousins. X is V's child, making X a first cousin once removed of T. No other term is more precise.",
         "answer": "A",
         "choices": [
             "A) First cousin once removed",
             "B) Second cousin",
-            "C) Aunt",
-            "D) Half-sister"
+            "C) Half-first cousin",
+            "D) No standard direct relation"
         ]
     },
     {
-        "topic": "Puzzles involving generations and family tree logic",
-        "question": "Arjun's father's only brother is married to Arjun's mother's only sister. The child of this couple is Arjun's ____?",
-        "explanation": "Arjun's father's only brother = his paternal uncle. He marries Arjun's mother's only sister = his maternal aunt. Their child shares both Arjun's paternal grandparents (through the uncle) and maternal grandparents (through the aunt), making the child Arjun's double cousin.",
+        "topic": "Blood Relations and Family Trees",
+        "question": "John\u2019s mother\u2019s brother (Mike) has a daughter Sarah. John\u2019s father\u2019s brother has a son Tom. Sarah and Tom marry and have a daughter Lily. John has a son Alex. Using standard English kinship terms (no adoption, monogamy), what is the most precise relation between Alex and Lily?",
+        "explanation": "Sarah and Tom are each John\u2019s first cousin (maternal and paternal). Their marriage makes Lily a double first cousin of John, sharing both grandparent pairs. Consequently John\u2019s child Alex and Lily share both great\u2011grandparent pairs, which is precisely a double second\u2011cousin relationship.",
+        "answer": "A",
+        "choices": [
+            "A) Double second cousins",
+            "B) First cousins once removed",
+            "C) Second cousins",
+            "D) Half second cousins"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Adam has a sister Beth. Adam marries Clara, whose brother is David. Beth marries David. Adam and Clara have a daughter Eva; Beth and David have a son Frank. Using standard English kinship terms, what is the most precise relation between Eva and Frank?",
+        "explanation": "Eva and Frank are children of two sibling pairs (Adam\u2013Beth and Clara\u2013David). Each child inherits one set of grandparents from the Adam/Beth side and the other set from the Clara/David side, so they share both grandparent pairs. That makes them double first cousins, the most precise term.",
         "answer": "D",
         "choices": [
-            "A) A) Half-sister",
-            "B) B) First cousin",
-            "C) C) Niece",
-            "D) D) Double cousin"
+            "A) A) First cousins",
+            "B) B) Half-first cousins",
+            "C) C) Second cousins",
+            "D) D) Double first cousins"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "Rita says, \"The lady standing next to me is the daughter of the man who married my father's sister.\" How is the lady related to Rita?",
-        "explanation": "Rita's father's sister is her paternal aunt. The man who married that aunt is Rita's paternal uncle by marriage. His daughter (assuming no other wives) is Rita's paternal cousin. Hence the lady is Rita's cousin.",
+        "question": "M is married to F. Their child is N. F\u2019s sister is O. O\u2019s son is P, and P\u2019s daughter is Q. Using standard English kinship terms (allowing only blood and spouse relations, no in\u2011law extensions beyond spouse, parents\u2011in\u2011law, siblings\u2011in\u2011law, and children\u2011in\u2011law), what is Q\u2019s relation to M?",
+        "explanation": "O is F\u2019s sister, so O is M\u2019s sister\u2011in\u2011law. O\u2019s son P is M\u2019s nephew (by marriage). P\u2019s daughter Q is therefore M\u2019s grandniece (by marriage). No closer term exists under the given limits.",
         "answer": "A",
         "choices": [
-            "A) Paternal cousin",
-            "B) Maternal aunt",
-            "C) Sister-in-law",
-            "D) Granddaughter"
+            "A) Grandniece",
+            "B) Great\u2011aunt",
+            "C) Second cousin",
+            "D) No direct kin term"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "Maya says, \"My father's sister's son is married to the daughter of the woman who is my mother's brother's wife.\" How is the man (the son) related to Maya?",
-        "explanation": "My father's sister = paternal aunt; her son = Maya's paternal cousin. The marriage detail only adds a cousin\u2011to\u2011cousin link and does not change his primary relation to Maya. Hence he is Maya's paternal cousin.",
-        "answer": "A",
+        "question": "In a family with no adoptions, monogamy, and no twins: Person M is the child of the only sibling of N's mother, and the same M is also the grandchild of the only sibling of O's father. If P is the child of N's father, what is the precise kinship term for M in relation to P?",
+        "explanation": "M could be the child of N's maternal aunt (making M a first cousin of N) or the grandchild of O's paternal aunt. Since we do not know whether N's father and O's father are the same person, M's relation to P (who is N's sibling) can be either first cousin or half\u2011first cousin, or even more distant. Hence the exact term cannot be fixed.",
+        "answer": "D",
         "choices": [
-            "A) Paternal cousin",
-            "B) Maternal cousin",
-            "C) Brother",
-            "D) Uncle"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "During a family dinner, Leena says, \"The person sitting opposite me is the son of my father's sister, who is married to my mother's brother.\" How is that person related to Leena?",
-        "explanation": "Leena's father's sister is her paternal aunt. She is married to Leena's mother's brother, her maternal uncle. Their son shares both sets of grandparents with Leena, making him her double cousin (cousin on both paternal and maternal sides).",
-        "answer": "C",
-        "choices": [
-            "A) Uncle",
-            "B) Nephew",
-            "C) Double cousin",
-            "D) Brother-in-law"
+            "A) A) First cousin",
+            "B) B) Half\u2011first cousin",
+            "C) C) First cousin once removed",
+            "D) D) Not uniquely determinable"
         ]
     }
 ]
