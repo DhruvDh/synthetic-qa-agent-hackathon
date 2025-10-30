@@ -163,7 +163,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from typing import Any, List, Optional, Tuple, Union, Dict, Set, Callable
-from transformers.models.gpt_oss.modeling_gpt_oss import (__name__, F, Optional, Union, torch, nn, Cache, GenerationMixin, use_kernel_forward_from_hub, MoeCausalLMOutputWithPast, MoeModelOutputWithPast, ROPE_INIT_FUNCTIONS, dynamic_rope_update, PreTrainedModel, Unpack, TransformersKwargs, can_return_tuple, GptOssConfig, GptOssPreTrainedModel, GptOssModel, GptOssForCausalLM, GptOssMLP, GptOssExperts)
+from transformers.models.gpt_oss.modeling_gpt_oss import (__name__, F, Optional, Union, torch, nn, Cache, GenerationMixin, use_kernel_forward_from_hub, MoeCausalLMOutputWithPast, MoeModelOutputWithPast, ROPE_INIT_FUNCTIONS, dynamic_rope_update, PreTrainedModel, Unpack, TransformersKwargs, can_return_tuple, GptOssConfig, GptOssPreTrainedModel, GptOssModel, GptOssForCausalLM, GptOssExperts, GptOssMLP)
 
 @torch.compile(fullgraph = True, dynamic = True, options = torch_compile_options)
 def GptOssRMSNorm_forward(self, hidden_states):

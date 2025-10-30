@@ -15,8 +15,9 @@ from unsloth import FastLanguageModel, PatchDPOTrainer, is_bfloat16_supported
 import json
 import os
 import random
-from types import SimpleNamespace
 from typing import Any, Dict, Iterator, List
+
+import torch
 
 from datasets import Dataset
 from transformers import TrainingArguments
@@ -43,7 +44,7 @@ def ensure_mxfp4_activation_shim() -> None:
     def _ensure_act(module):
         if hasattr(module, "act"):
             return
-        specs = fn_specs("swiglu", swiglu_fn, ("alpha", "limit"))
+        specs = fn_specs("swiglu", swiglu_fn, ("alpha", "limit"), tuple(), 2)
         try:
             module.act = fused_activation(specs, (module.alpha, module.limit), 2)
         except TypeError:
@@ -83,25 +84,73 @@ def ensure_mxfp4_activation_shim() -> None:
                     block_schedule = expt_data.block_schedule_fn
                 if block_offs is None and hasattr(expt_data, "block_offs_fn"):
                     block_offs = expt_data.block_offs_fn
+                if block_schedule is None and hasattr(expt_data, "block_schedule_tensor"):
+                    tensor = expt_data.block_schedule_tensor
+                    block_schedule = lambda block, t=tensor: t
+                if block_offs is None and hasattr(expt_data, "block_offsets"):
+                    offsets = expt_data.block_offsets
+                    block_offs = lambda block, o=offsets: o
 
-                if block_schedule is None and slice_offs is not None:
-                    block_schedule = lambda block: slice_offs
-                if block_offs is None and slice_offs is not None:
-                    block_offs = lambda block: slice_offs
+                if slice_offs is not None:
+                    captured_offs = slice_offs
+                    if block_schedule is None:
+                        block_schedule = lambda block, offs=captured_offs: offs
+                    if block_offs is None:
+                        block_offs = lambda block, offs=captured_offs: offs
+                else:
+                    captured_sizes = slice_sizes
+                    if block_schedule is None:
+                        block_schedule = lambda block, sizes=captured_sizes: sizes
+                    if block_offs is None:
+                        block_offs = lambda block, sizes=captured_sizes: sizes
+                if slice_sizes is not None:
+                    try:
+                        setattr(expt_data, "slice_sizes", slice_sizes)
+                    except Exception:
+                        pass
+                if slice_offs is None and slice_sizes is not None:
+                    try:
+                        import torch
 
-                expt_data = SimpleNamespace(
-                    slice_sizes=slice_sizes,
-                    slice_offs=slice_offs,
-                    block_schedule=block_schedule,
-                    block_offs=block_offs,
-                )
+                        if isinstance(slice_sizes, torch.Tensor):
+                            slice_offs = torch.cat([torch.zeros(1, dtype=slice_sizes.dtype, device=slice_sizes.device), slice_sizes.cumsum(0)])
+                        else:
+                            import numpy as np
+
+                            slice_sizes_np = np.array(slice_sizes)
+                            slice_offs = np.concatenate([[0], slice_sizes_np.cumsum()])
+                    except Exception:
+                        slice_offs = None
+                if slice_offs is not None:
+                    try:
+                        setattr(expt_data, "slice_offs", slice_offs)
+                    except Exception:
+                        pass
+                if block_schedule is not None:
+                    try:
+                        setattr(expt_data, "block_schedule", block_schedule)
+                    except Exception:
+                        pass
+                if block_offs is not None:
+                    try:
+                        setattr(expt_data, "block_offs", block_offs)
+                    except Exception:
+                        pass
+                expt_data = getattr(data, "expt_data", None)
+
+            gate_scal = getattr(data, "gate_scal", None)
+            expt_hist = getattr(data, "expt_hist", None)
+            n_expts_tot = getattr(data, "n_expts_tot", None)
+            n_expts_act = getattr(data, "n_expts_act", None)
+            expected_tokens = getattr(data, "expected_tokens_per_expt", None)
+
             return RoutingData(
-                gate_scal=getattr(data, "gate_scal"),
-                expt_hist=getattr(data, "expt_hist"),
-                n_expts_tot=getattr(data, "n_expts_tot"),
-                n_expts_act=getattr(data, "n_expts_act"),
+                gate_scal=gate_scal,
+                expt_hist=expt_hist,
+                n_expts_tot=n_expts_tot,
+                n_expts_act=n_expts_act,
                 expt_data=expt_data,
-                expected_tokens_per_expt=getattr(data, "expected_tokens_per_expt", None),
+                expected_tokens_per_expt=expected_tokens,
             )
         except AttributeError:
             return data
@@ -113,6 +162,19 @@ def ensure_mxfp4_activation_shim() -> None:
     def forward(self, hidden_states, routing_data, gather_idx, scatter_idx):
         _ensure_act(self)
         coerced = _coerce_routing_data(routing_data)
+        if not hasattr(self, "_unsloth_routing_debugged"):
+            expt_data = getattr(coerced, "expt_data", None)
+            try:
+                print("[unsloth-shim] coerced RoutingData:", type(coerced))
+                if expt_data is not None:
+                    print("[unsloth-shim] expt_data type:", type(expt_data))
+                    print("[unsloth-shim] expt_data attrs:", [attr for attr in dir(expt_data) if not attr.startswith("__")][:10])
+                    for attr in ("slice_sizes", "hist", "token_offs_raw", "token_offs_pad", "block_offs", "block_schedule"):
+                        value = getattr(expt_data, attr, None)
+                        print(f"[unsloth-shim] attr {attr!r}: type={type(value)}")
+            except Exception:
+                pass
+            self._unsloth_routing_debugged = True
         return original_forward(self, hidden_states, coerced, gather_idx, scatter_idx)
 
     forward._unsloth_shimmed = True
