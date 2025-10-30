@@ -1,146 +1,230 @@
 [
     {
         "topic": "Seating Arrangements (Circular and Linear)",
-        "question": "On a round table with eight seats numbered clockwise from a marked top seat occupied by A (right = clockwise, left = counter\u2011clockwise), the following hold: G sits immediately clockwise of A; B sits immediately clockwise of G; E sits directly opposite A; D sits immediately counter\u2011clockwise of E; H lies strictly on the clockwise arc from B to E (endpoints excluded); C is not adjacent to H; and I sits immediately counter\u2011clockwise of A. Which statement must be true?",
-        "explanation": "Seats 1\u20138 clockwise are fixed as A\u2011G\u2011B\u2011?\u2011?\u2011?\u2011?\u2011I. E must be opposite A (seat\u202f5) and D is its immediate left (seat\u202f4). The only empty seat between B (seat\u202f3) and E (seat\u202f5) that is not D is seat\u202f6, so H must occupy seat\u202f6. Consequently the seat clockwise of H is seat\u202f7, which is D. Thus \u201cthe person immediately clockwise of H is D\u201d holds in every valid arrangement.",
-        "answer": "B",
-        "choices": [
-            "A) C sits opposite G.",
-            "B) The person immediately clockwise of H is D.",
-            "C) B sits opposite F.",
-            "D) C lies on the clockwise arc from B to E (exclusive)."
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "M is the child of the only sister of N\u2019s father, and also the child of the only brother of N\u2019s mother. Using standard English kinship terms, what is M\u2019s relation to N?",
-        "explanation": "M is the child of a sibling of N\u2019s father (paternal aunt\u2019s child) and also the child of a sibling of N\u2019s mother (maternal uncle\u2019s child). In either case M is the child of a parent\u2019s sibling, which is defined as a first cousin. The double description does not change the basic kinship term.",
-        "answer": "B",
-        "choices": [
-            "A) Nephew/Niece",
-            "B) First cousin",
-            "C) Half-first cousin",
-            "D) Not uniquely determinable"
-        ]
-    },
-    {
-        "topic": "Seating Arrangements (Circular and Linear)",
-        "question": "In a left\u2011to\u2011right line of nine seats numbered 1 (leftmost) to 9 (rightmost): A sits in seat\u202f1, F sits immediately to A\u2019s right, H sits in seat\u202f9, B sits immediately to the left of H, and D sits immediately to the left of B. The three\u2011person block C\u2011E\u2011G must occupy three consecutive seats in that order, entirely within seats\u202f3\u20116. Which set lists all and only the seats that C can occupy?",
-        "explanation": "Seats\u202f1,\u202f2,\u202f7,\u202f8,\u202f9 are occupied (A,\u202fF,\u202fD,\u202fB,\u202fH). The only free positions are 3\u20116. Placing the block C\u2011E\u2011G consecutively gives two possibilities: C\u2011E\u2011G in seats\u202f3\u20115 or in seats\u202f4\u20116. Thus C can be in seat\u202f3 or seat\u202f4 and no other seat.",
-        "answer": "D",
-        "choices": [
-            "A) {2,3}",
-            "B) {3,5}",
-            "C) {4,6}",
-            "D) {3,4}"
-        ]
-    },
-    {
-        "topic": "Seating Arrangements (Circular and Linear)",
-        "question": "Arrange A\u2013J in a straight row of ten seats numbered 1 (leftmost) to 10 (rightmost) satisfying: A occupies seat\u202f1; J occupies seat\u202f10; B sits immediately to the right of D; E sits immediately to the left of G; H is somewhere to the right of B but to the left of J; C is to the left of F and not adjacent to F. Which statement must be true?",
-        "explanation": "The condition \u201cE sits immediately to the left of G\u201d is given explicitly, so it holds in every admissible arrangement. No other listed relation follows from the constraints; each can be violated by a suitable placement of the remaining people.",
+        "question": "On a round table with eight seats, A sits at the marked top. B sits immediately to A\u2019s right. C sits immediately to B\u2019s right. D sits immediately to C\u2019s right. The remaining seats are filled by E, F, G, H. E sits opposite A, F sits immediately to E\u2019s right, G sits immediately to F\u2019s right, and H sits immediately to G\u2019s right. Which person must sit immediately to the left of H?",
+        "explanation": "E is opposite A, so F is to E\u2019s right and G to F\u2019s right, making G adjacent to H. Thus H\u2019s left neighbor is G in every valid arrangement.",
         "answer": "C",
         "choices": [
-            "A) D sits immediately to the right of B.",
-            "B) H sits immediately to the left of J.",
-            "C) E sits immediately to the left of G.",
-            "D) C sits immediately to the right of F."
+            "A) E",
+            "B) F",
+            "C) G",
+            "D) H"
         ]
     },
     {
-        "topic": "Blood Relations and Family Trees",
-        "question": "Anna\u2019s mother, Maya, has a half\u2011sister Sara (they share only their father). Sara\u2019s son is Leo. Anna\u2019s father, Paul, has a half\u2011brother Neil (they share only their mother). Neil\u2019s daughter is Maya. What is the most precise standard English kinship term between Leo and Maya?",
-        "explanation": "Leo is the child of Anna\u2019s maternal half\u2011aunt, sharing only one grandparent with Anna. Maya is the child of Anna\u2019s paternal half\u2011uncle, sharing a different grandparent. Leo and Maya therefore have no common ancestor, so no blood kinship term applies.",
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "Place A, B, C, D, and E in a straight line of five seats numbered 1 (leftmost) to 5 (rightmost). B sits immediately left of C; D sits somewhere to the right of B; E occupies seat 5; C is not adjacent to D. Which statement must be true?",
+        "explanation": "B is left of C and D is right of B, so B is always to the left of D. The other statements can vary with different valid arrangements, so only A is invariant.",
+        "answer": "A",
+        "choices": [
+            "A) B is to the left of D.",
+            "B) C occupies seat 3.",
+            "C) E occupies seat 5.",
+            "D) D occupies seat 4."
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "In a straight line of eight seats numbered 1 to 8, A sits in seat 1, B sits immediately to the right of A, C sits somewhere to the right of B but not adjacent to B, D sits immediately to the left of E, F sits to the right of E, and G sits in seat 8. Which of the following sets lists all and only the seats that C can occupy?",
+        "explanation": "B is seat\u202f2, so C cannot be seat\u202f3. D and E occupy two consecutive seats to the right, so C must be to the right of B but not adjacent to B, leaving seats\u202f5,\u202f6, or\u202f7. All three are possible, and no other seat satisfies the constraints.",
         "answer": "D",
         "choices": [
+            "A) {4,6,8}",
+            "B) {5,7,8}",
+            "C) {4,7,9}",
+            "D) {5,6,7}"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "Five people A, B, C, D, and E occupy seats 1 through 5 from left to right. A sits in seat 1 and B in seat 5. C is adjacent to A. D is not adjacent to B. E sits somewhere between B and D. Which of the following statements must be true?",
+        "explanation": "With A in seat 1, C must be in seat 2. B occupies seat 5. D cannot be seat 4 (adjacent to B), so D must be seat 3. E must be between B(5) and D(3), leaving seat 4. Thus D is always in seat 3.",
+        "answer": "D",
+        "choices": [
+            "A) C sits in seat 3.",
+            "B) E sits in seat 2.",
+            "C) B sits next to D.",
+            "D) D sits in seat 3."
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "In a line of eight seats numbered 1\u20118 from left to right, A sits in seat 1, B sits immediately right of A, C sits immediately left of D, E sits immediately right of F, G sits immediately left of H, and I sits immediately right of G. Which seat can C *not* occupy?",
+        "explanation": "C must be left of D and cannot be seat 1 because A is there. If C were seat 2, B would be seat 3, violating B\u2019s right of A. Seat 3 forces B seat 2, impossible. Seat 4 forces D seat 5, C seat 3, but then F seat 6 and E seat 7 conflict with G/H/I placement. Thus seat 4 is impossible, making 4 the only forbidden seat.",
+        "answer": "C",
+        "choices": [
+            "A) 2",
+            "B) 3",
+            "C) 4",
+            "D) 5"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Anna\u2019s daughter, Beth, marries Carl\u2019s son, Dan. Beth\u2019s brother, Eli, marries Dan\u2019s sister, Fiona. If Eli and Fiona have a child, what is that child\u2019s relation to Anna and Carl?",
+        "explanation": "Eli and Fiona share the same parents (Anna and Carl\u2019s children). Their child is thus the grandchild of both Anna and Carl. Anna and Carl are the child\u2019s grandparents, so the child is their great\u2011grandchild. The correct term is \"great\u2011grandchild.\"",
+        "answer": "C",
+        "choices": [
+            "A) Grandchild",
+            "B) Great\u2011great\u2011grandchild",
+            "C) Great\u2011grandchild",
+            "D) First cousin"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "A and B are full siblings. A has a son X and B has a daughter Y. No other marriages or children exist. What is the precise relation between X and Y?",
+        "explanation": "A and B share both parents, so their children X and Y share both grandparents. By definition, they are first cousins. No other term fits better, and they are neither second cousins nor half\u2011first cousins. Thus the correct answer is A.",
+        "answer": "A",
+        "choices": [
             "A) First cousins",
-            "B) Half\u2011first cousins",
-            "C) Second cousins",
-            "D) No blood relation"
+            "B) Second cousins",
+            "C) Half\u2011first cousins",
+            "D) No relation"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "In a straight row of seven seats numbered 1 to 7, H sits in seat 1, A immediately to the right of H, and I immediately to the right of A. The block B\u2013E\u2013G occupies three consecutive seats somewhere between seats 3 and 6 in that left\u2011to\u2011right order. C must be left of D, cannot be adjacent to A or B, and must be in seat 4 or 5. Which statement must be true?",
+        "explanation": "The block B\u2013E\u2013G must occupy seats 3\u20135 or 4\u20136. C left of D forces D to seat 6 or 7. C cannot be seat 6; thus C is seat 4 or 5. Only C in seat 4 works with B\u2013E\u2013G at 3\u20135, giving D seat 6. Hence C must be seat 4.",
+        "answer": "A",
+        "choices": [
+            "A) C sits in seat 4.",
+            "B) D sits in seat 7.",
+            "C) B sits in seat 5.",
+            "D) G sits in seat 6."
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "On a round table with seven seats, A sits at the marked top. B sits immediately clockwise of A. C sits immediately counterclockwise of B. D sits three seats clockwise of A. E sits immediately counterclockwise of D. F sits immediately clockwise of E. G sits immediately counterclockwise of F. Which person could be seated directly opposite D?",
+        "explanation": "With A fixed, B and C are forced at seats 2 and 1. D must be seat 4, so opposite seat is 1. Only G occupies seat 1 in any arrangement, so G is the only possible opposite.",
+        "answer": "C",
+        "choices": [
+            "A) A",
+            "B) B",
+            "C) G",
+            "D) F"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "On a round table with eight seats, A sits at the marked top. B sits immediately clockwise of A. C sits immediately counter\u2011clockwise of A. D sits immediately clockwise of B. E sits immediately counter\u2011clockwise of D. F sits immediately clockwise of E. G sits immediately counter\u2011clockwise of F. H sits immediately clockwise of G. Which person is seated immediately counter\u2011clockwise of the person who is immediately clockwise of H?",
+        "explanation": "H\u2019s clockwise neighbor is G, whose counter\u2011clockwise neighbor is F. Thus the required person is F. No other seat satisfies the chain of immediate neighbors in this fixed order.",
+        "answer": "C",
+        "choices": [
+            "A) B",
+            "B) D",
+            "C) F",
+            "D) H"
         ]
     },
     {
         "topic": "Blood Relations and Family Trees",
-        "question": "M is the child of L. L has a brother N. N is married to O. O\u2019s sister is P, who is the mother of Q. Using standard English kinship terms (blood relations only, in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), what is the relation of Q to M?",
-        "explanation": "M \u2192 L (parent) \u2192 N (parent\u2019s brother, i.e., uncle) \u2192 O (uncle\u2019s spouse, aunt\u2011by\u2011marriage, no blood) \u2192 P (spouse\u2019s sister, unrelated by blood) \u2192 Q (P\u2019s child). No blood link exists between M and Q, and the affinal chain exceeds the allowed in\u2011law scope, so there is no standard direct kin term.",
-        "answer": "A",
+        "question": "R has two siblings, S and T. S has a child X and T has a child Y. What is the relationship between X and Y?",
+        "explanation": "X is the child of R\u2019s brother S, and Y is the child of R\u2019s sister T. Both X and Y share the same set of grandparents (R\u2019s parents). Thus they are first cousins. No other closer or more distant relation applies.",
+        "answer": "B",
         "choices": [
-            "A) No standard direct relation (affinal chain only)",
-            "B) First cousin",
-            "C) Second cousin once removed",
-            "D) Half\u2011cousin"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "M and N are siblings. M marries X, and N marries Y, who are also siblings. M and X have a child P; N and Y have a child Q. Using standard English kinship terms without ignoring doubled ancestry, what is the most precise relationship between P and Q?",
-        "explanation": "P and Q share both sets of grandparents because their parents are two pairs of siblings. This makes them double first cousins, i.e., first cousins with doubled ancestry. No other term is more precise.",
-        "answer": "A",
-        "choices": [
-            "A) Double first cousins",
+            "A) Half\u2011first cousins",
             "B) First cousins",
+            "C) Second cousins",
+            "D) No relation"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "A circle has eight seats. A sits at the top. B sits immediately clockwise of A. C sits immediately clockwise of B. D sits immediately clockwise of C. E sits immediately clockwise of D. F sits immediately clockwise of E. G sits immediately clockwise of F. H sits immediately clockwise of G. The rule: the person immediately clockwise of H must be either A or C. Which statement must be true?",
+        "explanation": "With H\u2019s clockwise neighbor forced to A or C, only A can occupy that seat because A is already at the top. Thus H must be immediately counter\u2011clockwise of A. Consequently E and G are fixed relative to H, making D always opposite H. The invariant statement is that D sits opposite H.",
+        "answer": "B",
+        "choices": [
+            "A) E sits immediately clockwise of G.",
+            "B) D sits directly opposite H.",
+            "C) F sits immediately clockwise of C.",
+            "D) B sits immediately counter\u2011clockwise of A."
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "If M and N are siblings, M\u2019s daughter O marries P, and P\u2019s sister Q is married to R, who is R to M\u2019s daughter O?",
+        "explanation": "O\u2019s husband P\u2019s sister Q is R\u2019s wife. R is therefore O\u2019s sister\u2011in\u2011law through marriage, not a blood relation. The only valid kinship term is sister\u2011in\u2011law.",
+        "answer": "B",
+        "choices": [
+            "A) Brother\u2011in\u2011law",
+            "B) Sister\u2011in\u2011law",
+            "C) Cousin",
+            "D) No relation"
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Eve and Frank are married. Eve\u2019s sister, Grace, is married to Frank\u2019s brother, Henry. Grace\u2019s son, Ian, and Henry\u2019s daughter, Julia, are now married. What is the most precise kinship term for Ian to Julia, ignoring any in\u2011law terms?",
+        "explanation": "Ian and Julia share both sets of grandparents through Eve/Frank and Grace/Henry, making them double first cousins. Their marriage does not change the blood relation. Thus the precise term is \"double first cousins.\"",
+        "answer": "B",
+        "choices": [
+            "A) First cousins",
+            "B) Double first cousins",
             "C) Second cousins",
             "D) Half\u2011first cousins"
         ]
     },
     {
         "topic": "Seating Arrangements (Circular and Linear)",
-        "question": "Ten people A\u2013J sit around a circular table. A occupies the marked top seat. G sits immediately clockwise of A, and B sits immediately clockwise of G. E sits directly opposite A, with D immediately counter\u2011clockwise of E. H lies strictly on the clockwise arc from B to E (endpoints excluded). C is not adjacent to H. I sits immediately counter\u2011clockwise of A. Which statement must be true?",
-        "explanation": "The fixed segment A\u2011G\u2011B forces the clockwise arc B\u2192E to contain exactly three seats. D occupies the seat just before E, so H must take the middle seat of that arc; thus the person immediately clockwise of H is always D. No other relation is invariant across all valid arrangements.",
+        "question": "Eight people A\u2011H sit around a circular table. A is at the top. B sits immediately clockwise of A. C sits immediately counterclockwise of A. D sits immediately clockwise of B. E sits immediately counterclockwise of C. F sits immediately clockwise of E. G sits immediately counterclockwise of D. H sits immediately clockwise of G. Which statement must be true?",
+        "explanation": "The seating forces a single order: A\u2013B\u2013D\u2013G\u2013H\u2013F\u2013E\u2013C. Thus H is adjacent to G on the left and to F on the right, so H\u2019s left neighbor is G. No other statements hold in all arrangements.",
         "answer": "A",
         "choices": [
-            "A) The person immediately clockwise of H is D.",
-            "B) C sits directly opposite G.",
-            "C) I is adjacent to B.",
-            "D) D sits directly opposite H."
+            "A) H\u2019s left neighbor is G.",
+            "B) E sits opposite A.",
+            "C) C sits next to B.",
+            "D) F sits next to D."
         ]
     },
     {
-        "topic": "Blood Relations and Family Trees",
-        "question": "M is the only child of his mother. His mother\u2019s sister has a son N. M\u2019s father\u2019s brother has a daughter O. N and O marry and have a child X. What is the precise kinship term for X\u2019s relation to M, using standard English terms?",
-        "explanation": "N is M\u2019s maternal first cousin; O is M\u2019s paternal first cousin. N and O are unrelated by blood, so X is the child of M\u2019s first cousins. The child of a first cousin is a first cousin once removed. No other shared ancestry applies.",
-        "answer": "C",
-        "choices": [
-            "A) Second cousin",
-            "B) Half\u2011first cousin",
-            "C) First cousin once removed",
-            "D) No direct kinship term"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "M's mother has exactly two sisters. The daughter of the elder sister is P, and the son of the younger sister is Q. Assuming no other intermarriages, what is the precise kinship term for the relationship between P and Q?",
-        "explanation": "Both P and Q are children of M's maternal aunts, i.e., the sisters of M's mother. Children of sisters are first cousins, regardless of gender. No double or half relationship exists, so the exact term is \"first cousins.\"",
-        "answer": "C",
-        "choices": [
-            "A) Half\u2011first cousins",
-            "B) Second cousins",
-            "C) First cousins",
-            "D) Not determinable"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "P and Q are first cousins. P\u2019s child is R, and Q\u2019s child is S. Using standard English kinship terms, what is the precise relation between R and S?",
-        "explanation": "P and Q share a pair of grandparents. Their children R and S therefore share those grandparents' parents as common ancestors, i.e., great\u2011grandparents. Sharing great\u2011grandparents makes R and S second cousins, the exact term required.",
-        "answer": "C",
-        "choices": [
-            "A) First cousins once removed",
-            "B) Half\u2011first cousins",
-            "C) Second cousins",
-            "D) Not determinable"
-        ]
-    },
-    {
-        "topic": "Blood Relations and Family Trees",
-        "question": "M\u2019s mother has a brother who is married to N\u2019s mother. Using standard English kinship terms (blood relations only, in\u2011law limited to spouse, spouse\u2019s parents/siblings, siblings\u2019 spouses, children\u2019s spouses), what is N to M?",
-        "explanation": "M\u2019s maternal uncle is his mother\u2019s brother. That uncle\u2019s wife is N\u2019s mother, so N is the child of M\u2019s uncle\u2019s spouse. There is no blood connection between M and N; the link is purely affinal and no standard direct kinship term exists for such a relationship.",
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "On a 6\u2011seat round table with seat 1 at the top, A sits in seat 1. B sits immediately clockwise of A. C sits two seats clockwise of A. D sits opposite A. E sits immediately counterclockwise of D. F sits immediately clockwise of E. Which of the following must be true?",
+        "explanation": "With the fixed positions, D is opposite A at seat 4, E at seat 5, F at seat 6. The only invariant is that E is immediately counterclockwise of D, so E\u2019s right (clockwise) neighbor is F. Thus only statement B holds in every arrangement.",
         "answer": "B",
         "choices": [
+            "A) B sits opposite F.",
+            "B) E\u2019s right neighbor is F.",
+            "C) C sits adjacent to D.",
+            "D) A sits next to F."
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "On a circular table with eight seats numbered clockwise from a marked top seat taken by A (right = clockwise). B sits immediately clockwise of A. C sits immediately counterclockwise of F. D sits three seats clockwise of B. E sits immediately counterclockwise of D. F sits immediately clockwise of E. H sits immediately counterclockwise of C. Which statement must be true?",
+        "explanation": "B\u2019s seat fixes the cycle: A\u2013B\u2013C\u2013D\u2013E\u2013F\u2013H. D\u2019s position three seats clockwise of B forces D to seat 5; E is seat 4, F seat 6, C seat 3, H seat 2. The only invariant is that C is two seats counterclockwise of F, so C\u2019s right neighbor is B. Thus only the statement about C\u2019s right neighbor is always true.",
+        "answer": "C",
+        "choices": [
+            "A) C sits immediately left of F.",
+            "B) H sits immediately right of D.",
+            "C) C\u2019s right neighbor is B.",
+            "D) E sits immediately right of A."
+        ]
+    },
+    {
+        "topic": "Blood Relations and Family Trees",
+        "question": "Samantha\u2019s mother, Laura, has a brother named Mark. Mark marries Emma, and they have a son, Tom. Samantha\u2019s father, Paul, has a daughter, Nina, who marries Tom. What is the relationship between Nina and Samantha?",
+        "explanation": "Samantha and Nina are siblings through their parents. Nina is married to Samantha\u2019s cousin Tom, but that does not affect their sibling link. Thus Nina is Samantha\u2019s sister.",
+        "answer": "D",
+        "choices": [
             "A) First cousin",
-            "B) No standard kinship term",
-            "C) Half\u2011cousin",
-            "D) Second cousin"
+            "B) Aunt",
+            "C) Niece",
+            "D) Sister"
+        ]
+    },
+    {
+        "topic": "Seating Arrangements (Circular and Linear)",
+        "question": "Four people A, B, C, and D sit in a straight line from left to right. B occupies the second seat from the left and C occupies the third seat. D sits somewhere to the left of A. Which statement must be true?",
+        "explanation": "With B in seat 2 and C in seat 3, only seats 1 and 4 remain. D must be left of A, so D occupies seat 1 and A seat 4. Therefore the statement that A sits in the rightmost seat is inevitable.",
+        "answer": "A",
+        "choices": [
+            "A) A sits in the rightmost seat.",
+            "B) D sits in the rightmost seat.",
+            "C) B sits in the leftmost seat.",
+            "D) C sits in the leftmost seat."
         ]
     }
 ]

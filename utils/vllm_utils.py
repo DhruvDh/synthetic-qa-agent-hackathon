@@ -17,7 +17,7 @@ import shutil
 
 @dataclass
 class VLLMConfig:
-    model: str = "openai/gpt-oss-120b"
+    model: str = "merged_gptoss20b_bf16"
     host: str = "127.0.0.1"
     port: int = 4200
     scheme: str = "http"
@@ -95,9 +95,10 @@ class VLLMConfig:
             "--async-scheduling",
             "--tool-call-parser",
             "openai",
-            "--reasoning-parser",
-            "openai_gptoss",
             "--enable-auto-tool-choice",
+            "--dtype",
+            "bfloat16",
+            "--trust-remote-code",
         ]
 
         if self.lora_adapter_path:
@@ -174,7 +175,6 @@ def launch_server(config: VLLMConfig) -> subprocess.Popen:
     env.setdefault("OMP_NUM_THREADS", "20")
     env.setdefault("VLLM_USE_AITER_UNIFIED_ATTENTION", "1")
     env.setdefault("VLLM_ROCM_USE_AITER_MHA", "0")
-    env.setdefault("VLLM_ROCM_USE_AITER_TRITON_BF16_GEMM", "0")
     env.setdefault("VLLM_ROCM_QUICK_REDUCE_QUANTIZATION", "INT4")
     executable = cmd[0]
     if "/" not in executable and not shutil.which(executable):

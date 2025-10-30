@@ -1,324 +1,604 @@
 [
   {
-    "index": 0,
+    "index": 2,
     "model_answer": "C",
     "expected_answer": "C",
     "is_correct": true,
-    "reasoning": "M and N are siblings, so their children A and B share grandparents. That makes A and B first cousins by blood. A's marriage to C, who is related through B's spouse, does not change their blood relationship."
+    "reasoning": "E must be seat5, C must be seat2, B seat3. Only B seat3 always true."
   },
   {
-    "index": 1,
-    "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "M's children are N and O. N's spouse is P. P's sister Q is therefore also a sibling of P. Q marries R, who is O's son. Since O is M's child, R is M's grandchild. Q, as R's spouse, is the spouse of M's grandchild, making Q M's granddaughter\u2011in\u2011law."
-  },
-  {
-    "index": 2,
+    "index": 4,
     "model_answer": "A",
     "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "A and B share only one parent, making them half\u2011siblings. Their children C and D descend from half\u2011siblings, so they share one grandparent (the common mother M) but not both. This fits the definition of half\u2011first cousins, distinct from full first cousins. Hence the precise term is half\u2011first cousins."
+    "reasoning": "M and N are full siblings. Their children Q and S are children of full siblings, making them full first cousins."
   },
   {
     "index": 5,
     "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "Adam and Brian are brothers; Clara and Dana are sisters. Their children Ethan and Fiona each have one parent who are siblings on both paternal and maternal sides, making Ethan and Fiona double first cousins (they share both sets of grandparents). The next generation (P and Q) are the children of these double first cousins. Children of first cousins are second cousins; therefore children of double first cousins are double second cousins. Hence P and Q are double second cousins."
+    "expected_answer": "B",
+    "is_correct": false,
+    "reasoning": "W is Eleanor\u2019s grandmother and Thomas\u2019s father. Thomas is W\u2019s son, Eleanor\u2019s mother\u2019s brother, so Thomas is Eleanor\u2019s uncle. Thus Eleanor and Thomas are uncle\u2011niece. Choice D corresponds to Aunt (reverse)."
   },
   {
     "index": 7,
     "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "M and N are siblings, so their children (A, B, C) are first cousins. B's wife D brings her brother E into the picture, making E B's brother\u2011in\u2011law. When E marries C (who is A's cousin), E becomes the spouse of A's cousin. The standard term for the spouse of one's cousin is \"cousin\u2011in\u2011law\"."
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Emma\u2019s brother is Emma\u2019s sibling. Nora is his daughter, so Nora is Emma\u2019s niece. The answer key lists Niece twice; choose the first option."
   },
   {
     "index": 8,
     "model_answer": "B",
-    "expected_answer": "A",
+    "expected_answer": "D",
     "is_correct": false,
-    "reasoning": "M and N are siblings, so their children O and P are first cousins by blood. O marries Q, who is P's brother, making O the sister of P's brother. That creates the in\u2011law relationship of sister\u2011in\u2011law. The question asks for the precise kinship term, which refers to the relationship established by marriage, thus sister\u2011in\u2011law."
+    "reasoning": "Eve\u2019s brother Frank marries Gwen. Gwen\u2019s sister\u2011in\u2011law Helen marries Frank\u2019s brother Ivan, so Helen is Eve\u2019s sister\u2011in\u2011law. Helen\u2019s daughter Maya is therefore Eve\u2019s niece. Maya\u2019s marriage does not change that relation. Thus Maya is a niece of Eve."
+  },
+  {
+    "index": 9,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Catherine and Daniel are half-siblings, so their children share one grandparent but not both. Therefore Milo and Nisha are half\u2011first cousins."
   },
   {
     "index": 10,
-    "model_answer": "A",
-    "expected_answer": "A",
+    "model_answer": "B",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Emma and Liam are double first cousins (their parents are siblings in both directions). Children of double first cousins are double second cousins. Thus Maya and Noah are double second cousins."
+  },
+  {
+    "index": 11,
+    "model_answer": "B",
+    "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "M and N are double first cousins, meaning they share both paternal and maternal grandparents. The children of first cousins are second cousins because they share great\u2011grandparents. Since M and N share both sets of grandparents, their children P and Q share both sets of great\u2011grandparents, making them double second cousins\u2014the most precise term."
+    "reasoning": "A and B share one parent, so X and Y share one grandparent. They are first cousins through a single grandparent, i.e., half\u2011first cousins."
   },
   {
     "index": 12,
-    "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "R\u2019s mother\u2019s brother is R\u2019s maternal uncle. L is the child of that uncle. The child of an uncle (or aunt) is a first cousin to the person. Hence L is R\u2019s first cousin."
-  },
-  {
-    "index": 13,
-    "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "L and M share one parent, making them half\u2011siblings. Their children X and Y each inherit that shared parent as a grandparent. Thus X and Y have only one grandparent in common, not the full set of grandparents required for regular first cousins. The correct term for children of half\u2011siblings is half\u2011first cousins."
-  },
-  {
-    "index": 16,
-    "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "L's mother has one sister (maternal aunt) and L's father has one brother (paternal uncle). M is the child of that sister and that brother, meaning M is the offspring of L's maternal aunt and paternal uncle, who are married to each other. Therefore M shares both sets of L's grandparents\u2014maternal and paternal\u2014making M a double first cousin of L."
-  },
-  {
-    "index": 26,
-    "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "M and L share only their father, making them half\u2011siblings. N is L's child, thus N is the child of M's half\u2011sibling. The precise term for a child of a half\u2011sibling is half\u2011niece or half\u2011nephew."
-  },
-  {
-    "index": 31,
-    "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "M's mother\u2019s brother is M\u2019s maternal uncle. He is married to N\u2019s mother, making N\u2019s mother M\u2019s aunt by marriage. Since we ignore in\u2011law extensions beyond the spouse, N is not a blood relative of M; there is no standard direct kinship term."
-  },
-  {
-    "index": 33,
-    "model_answer": "A",
-    "expected_answer": "C",
-    "is_correct": false,
-    "reasoning": "M and N are siblings, making their children O and P first cousins by blood. O's marriage to Q, P's brother, also makes O P's sister\u2011in\u2011law, but the blood relationship (first cousin) is the direct kinship term that exists regardless of marriage. The puzzle asks for the precise relation, which is the direct blood tie, so the correct standard term is first cousin."
-  },
-  {
-    "index": 35,
     "model_answer": "A",
     "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "N's mother has a sister (N's maternal aunt). The child of that aunt is M. A child of one's aunt is a first cousin (full cousin, as the aunt is a full sister). Hence M is N's first cousin."
+    "reasoning": "X is A\u2019s child; Y is B\u2019s child; A and B are siblings. Children of siblings are first cousins."
   },
   {
-    "index": 41,
+    "index": 14,
     "model_answer": "B",
     "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "M's parents are L and her husband R. Q is described as the sister of R, making Q R's sister. Therefore Q is the sister of M's father, i.e., M's paternal aunt. This matches choice B (Aunt, father\u2019s sister)."
+    "reasoning": "Eve and Frank are siblings. X is child of Eve's husband George; Y is child of Frank's husband Helen. Thus X and Y are children of siblings, making them first cousins."
   },
   {
-    "index": 42,
+    "index": 16,
     "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "M is child of N's maternal uncle (the mother's only brother) and also child of N's paternal aunt (the father's only sister). Those two are M's parents, making M a cousin of N through the mother and also through the father\u2014i.e., a double first cousin. This is uniquely a first\u2011cousin relationship."
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Seat1=H,2=G,7=I,8=F. Block A\u2013B\u2013C must be 3\u20135 or 4\u20136. If A3,B4,C5, D must be right of C (6,7,8) and not adjacent to A or B; 6 works. Other placements fail. So D=6."
   },
   {
-    "index": 43,
+    "index": 17,
     "model_answer": "D",
     "expected_answer": "D",
     "is_correct": true,
-    "reasoning": "M and N are siblings, so their children O and P are first cousins. Q is O's child and R is P's child, placing them one generation further down from O and P. Children of first cousins are second cousins to each other."
+    "reasoning": "X\u2019s parents are A and C; Y\u2019s parents are B and D. A and B are siblings, C and D are siblings. Therefore X and Y share both sets of grandparents, making them double first cousins."
+  },
+  {
+    "index": 18,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "T is the daughter of A\u2019s sister, so T is A\u2019s niece."
+  },
+  {
+    "index": 19,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Seat layout: 1:A,2:D,3:B,4:E,5:C. Only A is correct."
+  },
+  {
+    "index": 20,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "C and D are step\u2011siblings, so their children E and F are step\u2011first cousins. Since the puzzle asks for a standard cousin type and no blood relation exists, the correct choice is that the relationship cannot be determined as a usual cousin."
+  },
+  {
+    "index": 21,
+    "model_answer": "A",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Place seats A0,B1,C2,D3,E4. Opposite A is seat2=C. Thus B opposite D is true."
+  },
+  {
+    "index": 22,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "Seat layout: A2, B3, C5, D7, E4. F right of E left of D => seat6. G left of F right of A => only seat3,4,5 but occupied. Inconsistent, but only seat3 fits right of A left of F; B there but G must be 3. Answer B"
+  },
+  {
+    "index": 23,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are half\u2011siblings sharing one parent. Their children X and Y each inherit that shared grandparent, but only one grandparent is common. Thus X and Y are half\u2011first cousins."
+  },
+  {
+    "index": 24,
+    "model_answer": "D",
+    "expected_answer": "B",
+    "is_correct": false,
+    "reasoning": "K is married to L, L is first cousin of O. K is O\u2019s cousin\u2011in\u2011law, not a blood cousin. None of the choices fit; best is no relation."
+  },
+  {
+    "index": 25,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "B and C are siblings, so their children X and Y are first cousins."
+  },
+  {
+    "index": 26,
+    "model_answer": "A",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Jack is son of Henry, Frank\u2019s brother; Mia is daughter of Lily, Grace\u2019s sister. Frank and Grace are married, so Henry and Lily are siblings of each spouse. Thus Jack and Mia are children of siblings of married couple\u2014first cousins."
+  },
+  {
+    "index": 27,
+    "model_answer": "B",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Elena and Marco are double first cousins, so their children A and B share both sets of great\u2011grandparents, making them second cousins."
+  },
+  {
+    "index": 28,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Anna and Ben are siblings, so Anna\u2019s mother and Ben\u2019s father are the same. The relation between Anna and Ben is sibling."
+  },
+  {
+    "index": 29,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "All seating positions fixed; H cannot be opposite A is given. Both C: F right of E and D: G opposite C hold. A is false.  Must\u2011true is B."
+  },
+  {
+    "index": 32,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "After rotating so E is top, the clockwise order remains E, A, B, C, D. Thus E\u2019s clockwise neighbor is A, matching choice A. Other choices are not necessarily true after rotation."
+  },
+  {
+    "index": 35,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "The only forced fact is that A cannot be seat3 or5 or4, leaving seats7 or8. Thus none of the given must be true except A is not 7 is not forced. So no correct. I choose D to match puzzle."
+  },
+  {
+    "index": 37,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Samantha and Thomas are double first cousins since each parent pair are siblings. Their children Alex and Jordan are therefore also double first cousins."
+  },
+  {
+    "index": 38,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "Jane and Sarah are double first cousins. Their children M and N are thus double second cousins."
+  },
+  {
+    "index": 39,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A1,B2,D4,C5 conflict with E; E must be seat5 but C there. So only consistent if E seat6,F seat? F right of E seat? E6 impossible. Likely F seat6."
+  },
+  {
+    "index": 40,
+    "model_answer": "D",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Q is Leo\u2019s sister\u2019s son, so Leo\u2019s nephew. Nearest option is none, so D"
   },
   {
     "index": 44,
-    "model_answer": "B",
-    "expected_answer": "B",
+    "model_answer": "A",
+    "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "Place A at seat0. G clockwise of A => seat1; B clockwise of G => seat2. E opposite A => seat4; H clockwise of E => seat5; D clockwise of H => seat6. Seats3 and7 remain for C and F. C cannot be adjacent to B (seat2), so C cannot be seat3; thus C seat7, F seat3. Check options: A false (G opposite seat5, not D). B true (F at seat3, immediate clockwise of B at seat2). C false (C at seat7, not after A). D false (H opposite seat2 is D). Hence only B must be true."
+    "reasoning": "The order forces A,B,C,D left to right, so A is left of D must hold."
   },
   {
     "index": 45,
-    "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "A and B are brothers; C and D are sisters. Their children X and Y share both paternal and maternal grandparents, making X and Y double first cousins. M and N are each the child of X and Y with unrelated partners. Children of double first cousins share great\u2011grandparents through both lines, i.e., they are double second cousins. Hence the most precise term is double second cousins."
+    "model_answer": "B",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "B must be seated in seat\u202f3, C in seat\u202f4. E cannot be seat\u202f5 or\u202f3, leaving seat\u202f1 or\u202f2. Both valid arrangements place A in seat\u202f5 and C adjacent to A. Thus C sits next to A is always true."
   },
   {
-    "index": 50,
-    "model_answer": "C",
-    "expected_answer": "C",
+    "index": 46,
+    "model_answer": "A",
+    "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "N\u2019s father has one sister \u2013 N\u2019s paternal aunt. M is her child, making M a first cousin of N on the paternal side. N\u2019s mother has one brother \u2013 N\u2019s maternal uncle. M is also his child, making M a first cousin on the maternal side. Thus M is simultaneously a first cousin through both parents, i.e., a double first cousin, which is still classified as a first cousin. The relationship is uniquely determined as first cousin."
+    "reasoning": "A at 1, B 2, C 3, D 4 (opposite A). E left of D (seat5). F left of C (seat6). Only A remains seat6. Thus F is left of C."
+  },
+  {
+    "index": 48,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "B and C are the two sons of A\u2019s father, so they are brothers."
   },
   {
     "index": 52,
-    "model_answer": "B",
-    "expected_answer": "B",
+    "model_answer": "A",
+    "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "Mother's sister is the speaker's maternal aunt; her son is a first cousin. Father's brother is the paternal uncle; his daughter is also a first cousin. Both definitions refer to a first cousin relationship, and there is no scenario making them a different degree without incest. Hence X is a first cousin."
+    "reasoning": "A and B share one parent. X is child of A, Y of B. Thus X and Y share one grandparent, so they are half\u2011first cousins."
   },
   {
     "index": 54,
-    "model_answer": "D",
-    "expected_answer": "B",
-    "is_correct": false,
-    "reasoning": "N is M's sister and married to O, making M O's sister\u2011in\u2011law. O's mother P is sibling to Q, whose daughter is R; thus O and R are first cousins. M is related to R only through O via marriage, not by blood or direct in\u2011law (spouse's parents/siblings only). No standard term exists for this link."
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "M and N are first cousins. Their children R and S are second cousins."
   },
   {
-    "index": 60,
+    "index": 56,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "The puzzle states G sits immediately clockwise of F directly. Thus statement A is always true."
+  },
+  {
+    "index": 57,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Eve and Frank are siblings. Eve\u2019s child Ivy is Frank\u2019s niece. Lily is Ivy\u2019s daughter, so Lily is Frank\u2019s great\u2011niece."
+  },
+  {
+    "index": 58,
     "model_answer": "D",
     "expected_answer": "D",
     "is_correct": true,
-    "reasoning": "M and N are brothers and L1 and L2 are sisters, so X (M+L1) and Y (N+L2) share both sets of grandparents, making them double first cousins. The children of first cousins are second cousins; therefore the children of double first cousins are double second cousins."
+    "reasoning": "Eve and Lily are sisters, so their children Alex and Nina are first cousins. Tom and Sam are also brothers, so the parents of Alex and Nina are each other\u2019s siblings. This makes Alex and Nina double first cousins."
   },
   {
-    "index": 65,
+    "index": 60,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Seats order A B C D left to right; D rightmost. Option C."
+  },
+  {
+    "index": 61,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "S and U are siblings (both daughters of T). V is U\u2019s son, so V is the child of S\u2019s sibling, i.e., S\u2019s nephew."
+  },
+  {
+    "index": 62,
     "model_answer": "B",
     "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "M's mother is sister of N's father, making M a child of N's paternal aunt. N's mother is sister of M's father, making N a child of M's paternal aunt. Thus each is the child of a sibling of the other's parent. This occurs when two siblings from one family marry two siblings from another, resulting in children who share both sets of grandparents, i.e., double first cousins."
+    "reasoning": "E and F are first cousins. G is married to E, H to F. Thus G and H are spouses of first cousins, i.e., first cousins\u2011in\u2011law."
+  },
+  {
+    "index": 63,
+    "model_answer": "A",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "C is B\u2019s sister. B\u2019s wife is B\u2019s spouse. A sister of a spouse is a sister\u2011in\u2011law to the spouse. Thus C is sister\u2011in\u2011law to B\u2019s wife."
+  },
+  {
+    "index": 64,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "N marries O, O is Q\u2019s brother, Q is P\u2019s mother. Thus O is P\u2019s uncle and N is his wife, making N P\u2019s aunt."
   },
   {
     "index": 66,
-    "model_answer": "C",
-    "expected_answer": "C",
-    "is_correct": true,
-    "reasoning": "M and N are siblings, making O (M's daughter) and P (N's son) first cousins. R is P's daughter, so O is a first cousin of R's parent, which makes O and R first cousins once removed. The marriage to Q does not alter the blood relationship."
-  },
-  {
-    "index": 68,
-    "model_answer": "C",
-    "expected_answer": "C",
-    "is_correct": true,
-    "reasoning": "M's mother\u2019s brother is M\u2019s maternal uncle. His daughter D is the child of that uncle, so D and M share the same maternal grandparents. Sharing a set of grandparents defines a first\u2011cousin relationship. The fact that D later marries M\u2019s paternal cousin does not create any additional blood link; marriage is not a blood relation. Therefore the precise blood relation between M and D is that of first cousins."
-  },
-  {
-    "index": 69,
-    "model_answer": "B",
+    "model_answer": "A",
     "expected_answer": "B",
+    "is_correct": false,
+    "reasoning": "Seat B at 4, so G must be seat5. D at 8, so H seat7. Both A and B are true, but only one answer is allowed; choose A."
+  },
+  {
+    "index": 67,
+    "model_answer": "B",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "A and B are full siblings, so their children E and F share both sets of grandparents. They are first cousins, not double or half. Thus the precise term is first cousins."
+  },
+  {
+    "index": 71,
+    "model_answer": "D",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "Given contradictions, only consistent choice is D."
+  },
+  {
+    "index": 73,
+    "model_answer": "C",
+    "expected_answer": "C",
     "is_correct": true,
-    "reasoning": "M and N are siblings, making O and P first cousins. P's spouse R is not blood related to O. S is R's sister, thus S is the sister of O's cousin's spouse. This creates no direct blood or defined affinal tie like aunt or cousin; only an indirect affinal connection."
+    "reasoning": "M and N are brothers; Q and R are sisters. S is child of M+Q, T is child of N+R. The parents are both siblings and married to siblings, making S and T double first cousins."
+  },
+  {
+    "index": 74,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "By arranging the seven seats, the only consistent placement places G immediately clockwise of F."
   },
   {
     "index": 75,
-    "model_answer": "C",
-    "expected_answer": "C",
+    "model_answer": "B",
+    "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "N's father's only sister is N's paternal aunt. Her child is N's paternal first cousin. N's mother's only brother is N's maternal uncle. His child is N's maternal first cousin. Since M is the child of both the paternal aunt and the maternal uncle, M is a cousin to N on both sides\u2014a double first cousin, which is still classified as a first cousin."
+    "reasoning": "Grace and Ian are first cousins. Lily and Jack are their children, so they are second cousins."
+  },
+  {
+    "index": 77,
+    "model_answer": "A",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "A sits in seat1, B immediately right => seat2. D seat5, C left of D seat4. E right of B but not adjacent to D: cannot seat4 or6, D seat5 so E seat3. All determined. Thus B seat2 always. Others also true but only one choice."
   },
   {
     "index": 78,
-    "model_answer": "C",
-    "expected_answer": "C",
-    "is_correct": true,
-    "reasoning": "M's mother\u2019s brother is M\u2019s maternal uncle. His daughter is M\u2019s first cousin. That cousin is married to N\u2019s father, making N the child of M\u2019s cousin (or step\u2011child). The relationship between M and N is not covered by standard terms like aunt/uncle, first cousin, or cousin\u2011in\u2011law; the correct choice is that there is no standard direct kinship term."
-  },
-  {
-    "index": 80,
     "model_answer": "D",
     "expected_answer": "B",
     "is_correct": false,
-    "reasoning": "M's paternal aunt (father's sister) is married to N's maternal uncle (mother's brother). The aunt and uncle are connected only by marriage, not by blood. Therefore M and N share no blood relationship; they are linked solely through this marital connection, which has no specific kinship term."
+    "reasoning": "Sam is Maya\u2019s grandchild through Omar, while Lila is Omar\u2019s sister, making Lila Sam\u2019s aunt. None of the listed options describe an aunt/niece relationship, so the correct choice is no relation."
+  },
+  {
+    "index": 79,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "F is explicitly stated to sit in seat 7, satisfying all constraints; no other seat is possible."
+  },
+  {
+    "index": 80,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B share one parent, so X\u2019s parent A and Y\u2019s parent B are half\u2011siblings. X and Y both have the same grandparent but through half\u2011sibling parents, making them half\u2011first cousins."
+  },
+  {
+    "index": 82,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "V is U\u2019s sister; U is married to T, S\u2019s brother. R is married to S. Thus V is T\u2019s sister\u2011in\u2011law, and R\u2019s relation to T is brother\u2011in\u2011law. V has no standard direct kinship to R."
   },
   {
     "index": 83,
     "model_answer": "A",
-    "expected_answer": "A",
-    "is_correct": true,
-    "reasoning": "L's mother\u2019s brother is L's maternal uncle; L's father's sister is L's paternal aunt. If those two siblings marry, their shared child M is child of both the maternal uncle and paternal aunt. M thus has the same maternal grandparents as L (through the uncle) and the same paternal grandparents as L (through the aunt). Sharing both sets of grandparents makes M a double first cousin of L."
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Z is the spouse of my spouse\u2019s parent, thus the other parent\u2011in\u2011law."
   },
   {
-    "index": 87,
+    "index": 84,
+    "model_answer": "B",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "A and B are siblings, so X and Y are first cousins. Their children M and N are one generation further, making them second cousins."
+  },
+  {
+    "index": 85,
     "model_answer": "A",
     "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "M and N are siblings, so they share the same parents. O is M's daughter and P is N's son. Children of siblings are first cousins by definition. The fact that O marries Q, who is P's brother, introduces a marital link but does not alter the blood relationship between O and P. Therefore their precise blood relation remains first cousin."
+    "reasoning": "A and B are full siblings, so their children X and Y are children of siblings. Thus X and Y are first cousins."
+  },
+  {
+    "index": 86,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A is given by the puzzle: C sits immediately counter\u2011clockwise of A. The others conflict with the seating constraints or are not guaranteed."
+  },
+  {
+    "index": 88,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M and P share parent N, so P is M\u2019s sister."
   },
   {
     "index": 90,
-    "model_answer": "A",
-    "expected_answer": "A",
-    "is_correct": true,
-    "reasoning": "N's father has one sister. That sister is N's paternal aunt. M is her child, making M the child of N's aunt, which is the definition of a first cousin."
-  },
-  {
-    "index": 92,
     "model_answer": "D",
     "expected_answer": "D",
     "is_correct": true,
-    "reasoning": "M is parent of A. A's child C makes C the child of M's child, i.e., M's grandchild. The other line (B being M's niece) does not affect the direct line from M to C. Therefore C is M's grandchild."
+    "reasoning": "Seat layout: A1, B2, C3, D4, E5, F6. Only D) F immediately clockwise of E holds."
+  },
+  {
+    "index": 91,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B share one parent. X is child of A, Y child of B. Thus X and Y are children of half-siblings, i.e., half\u2011first cousins."
   },
   {
     "index": 93,
-    "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "M and N are full brothers; O and P are full sisters. Q is child of M and O, R of N and P. Because their fathers are brothers and their mothers are sisters, Q and R share both paternal grandparents (parents of M and N) and maternal grandparents (parents of O and P). Sharing both sets of grandparents defines double first cousins, which is more specific than simple first cousins."
-  },
-  {
-    "index": 94,
     "model_answer": "A",
     "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "N's paternal aunt (father's sister) and N's maternal uncle (mother's brother) are married. Their child M is the offspring of both N's aunt and uncle, making M a first cousin through the father's line and also a first cousin through the mother's line. Being first cousins on both parental sides defines a double first cousin."
+    "reasoning": "Place A at 0. B at1, C at6, D at2, E at5, F at3, G at4. F is clockwise of D, others false."
+  },
+  {
+    "index": 94,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "A sits seat1, B seat2, D seat5. Remaining seats 3,4. C cannot be next to A (seat1) or D (seat5). Seat4 is adjacent to D, so invalid. Seat3 not adjacent to D or A, so C can sit seat3."
+  },
+  {
+    "index": 96,
+    "model_answer": "D",
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "Place A seat\u202f1. B seat\u202f2, C seat\u202f3. D opposite A \u2192 seat\u202f4. E immediately left of D is seat\u202f5. F immediately right of E is seat\u202f6. Thus F occupies seat\u202f6."
+  },
+  {
+    "index": 97,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "C cannot seat2 because adjacent to A, seats1 and4 occupied by A and B. D restriction irrelevant. Only seat3 available. Option D."
+  },
+  {
+    "index": 98,
+    "model_answer": "D",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "Seat assignments: 1:A,2:B,4:E,6:C. Remaining seats 3,5 for D and F. D must be left of E (seat4), so D occupies seat3; F seat5. Thus D seat3 is forced."
   },
   {
     "index": 99,
     "model_answer": "A",
-    "expected_answer": "A",
-    "is_correct": true,
-    "reasoning": "M's maternal uncle's daughter is M's first cousin (maternal). M's paternal aunt's son is M's first cousin (paternal). These two first cousins marry, and their child is the offspring of two of M's first cousins. To M, a child of any first cousin is a first cousin once removed (one generation down). The double line does not create a distinct standard term; the appropriate existing term is first cousin once removed."
+    "expected_answer": "C",
+    "is_correct": false,
+    "reasoning": "M is N\u2019s daughter, P is M\u2019s brother, so P is N\u2019s son. O is P\u2019s son, making O N\u2019s grandson."
   },
   {
     "index": 100,
+    "model_answer": "C",
+    "expected_answer": "C",
+    "is_correct": true,
+    "reasoning": "Q is the mother of P, but not listed; closest is no standard direct relation."
+  },
+  {
+    "index": 101,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are half\u2011siblings, sharing one parent P. A\u2019s child X has grandparent P via A, and B\u2019s child Y also has grandparent P via B. Thus X and Y share a single grandparent, making them half\u2011first cousins."
+  },
+  {
+    "index": 102,
     "model_answer": "B",
     "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "B's father's brother is B's paternal uncle. The child of that uncle is B's first cousin. Therefore A is B's first cousin."
+    "reasoning": "Eve and Fiona are first cousins (their parents are siblings). Their children, Adam and Beth, are therefore second cousins."
   },
   {
     "index": 105,
     "model_answer": "D",
-    "expected_answer": "D",
-    "is_correct": true,
-    "reasoning": "N's father has only one sister; she is N's paternal aunt. M is her child, making M a paternal first cousin of N. N's mother has only one brother; he is N's maternal uncle. M is also his child, making M a maternal first cousin of N. Since the same M is child of both the paternal aunt and the maternal uncle, M is related to N as a first cousin on both parental lines, i.e., a double first cousin."
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "Impossible sequence; likely only one consistent opposite pairing is A-F."
   },
   {
     "index": 107,
+    "model_answer": "D",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "The seating forces A1, B2, F6, E7. Remaining seats 3,4,5 for C,D,G with C left of D. Two arrangements: C3 D4 G5 or C4 D5 G3. No single choice in options always true. Thus none must hold. The only consistent, but not forced, is none. However must select an option; none is correct. I'll choose D as closest."
+  },
+  {
+    "index": 109,
     "model_answer": "A",
     "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "M's mother and O are siblings, making O M's maternal uncle. O's child P is therefore M's first cousin. N's father and Q are siblings, so Q is N's paternal aunt and Q's child R is N's first cousin, but this line is only by marriage to M, not blood. P and R's child X is the offspring of M's first cousin (P). The child of a first cousin is one generation down, which is defined as a first cousin once removed. No other blood connection alters this, so the precise term is first cousin once removed."
+    "reasoning": "Only arrangement fits constraints: 1A,2D,3B,4C,5E. Thus D right of A and C right of B. Must true is A."
   },
   {
     "index": 110,
-    "model_answer": "C",
-    "expected_answer": "C",
+    "model_answer": "B",
+    "expected_answer": "A",
+    "is_correct": false,
+    "reasoning": "A and B share a parent, so X and Y share that grandparent. They are first cousins, not second. Half\u2011first is not standard. Thus B."
+  },
+  {
+    "index": 113,
+    "model_answer": "B",
+    "expected_answer": "B",
     "is_correct": true,
-    "reasoning": "L's father's sister (paternal aunt) is M's mother, making M a child of L's paternal grandparents. L's mother's brother (maternal uncle) is N's father, making N a child of L's maternal grandparents. The two sets of grandparents are unrelated, so M and N share no common ancestor. Hence they are not blood relatives."
+    "reasoning": "R marries P, who is Q\u2019s cousin. Thus R is Q\u2019s cousin\u2011in\u2011law."
   },
   {
     "index": 114,
-    "model_answer": "D",
-    "expected_answer": "D",
+    "model_answer": "A",
+    "expected_answer": "A",
     "is_correct": true,
-    "reasoning": "A is B's father; S is A's sister, making S B's paternal aunt. B is therefore S's niece/nephew. E is B's child, so E is the child of S's niece/nephew, i.e., S's grand\u2011niece/nephew."
-  },
-  {
-    "index": 116,
-    "model_answer": "B",
-    "expected_answer": "B",
-    "is_correct": true,
-    "reasoning": "M's mother\u2019s brother is M's maternal uncle. His daughter X is therefore the child of M's uncle, making X M's first cousin. The additional detail about X's marriage to Y (M's paternal cousin) does not affect their blood relation."
+    "reasoning": "B seat2, D seat4. Only seats1,3 left. A left of C adjacent => A seat1, C seat3. Thus A seat1 must hold."
   },
   {
     "index": 119,
-    "model_answer": "B",
-    "expected_answer": "B",
+    "model_answer": "C",
+    "expected_answer": "C",
     "is_correct": true,
-    "reasoning": "M is the child of N's paternal aunt (father's sister) and also the child of N's maternal uncle (mother's brother). In either case M is a first cousin of N. The two relatives could be married, making M a double cousin, but the relation remains first cousin. Thus the relationship is determinable as a cousin."
+    "reasoning": "A at seat1, B seat2, C seat3, D seat4, E seat5, F seat6. Opposite pairs:1-4,2-5,3-6. Thus F opposite C. Option C."
   },
   {
     "index": 120,
-    "model_answer": "D",
+    "model_answer": "A",
     "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Z is married to the parent of my spouse. That parent is my spouse\u2019s parent, so Z is my parent\u2011in\u2011law."
+  },
+  {
+    "index": 121,
+    "model_answer": "C",
+    "expected_answer": "C",
     "is_correct": true,
-    "reasoning": "Seats 1 and 5 are fixed (A, E). B must be right of D, so possible pairs are D2-B3 or D3-B4. D3-B4 forces C at seat2, which would be adjacent to D (violating C not adjacent to D). Hence only D2-B3 works, placing C at seat4. This satisfies all conditions, making statement D (C sits in seat\u202f4) the only possible true statement."
+    "reasoning": "The arrangement forces I to sit immediately left of H, making H the clockwise neighbor of I. Thus I\u2019s clockwise neighbor is H in every valid arrangement."
+  },
+  {
+    "index": 122,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "T is M\u2019s son. S is married to R, Q\u2019s brother, making S Q\u2019s sister\u2011in\u2011law. T is S\u2019s brother, so T is Q\u2019s nephew\u2011in\u2011law."
   },
   {
     "index": 123,
     "model_answer": "D",
-    "expected_answer": "A",
+    "expected_answer": "D",
+    "is_correct": true,
+    "reasoning": "M and R share mother O but different fathers, so they are half\u2011siblings."
+  },
+  {
+    "index": 124,
+    "model_answer": "B",
+    "expected_answer": "B",
+    "is_correct": true,
+    "reasoning": "The constraints force D at seat3, E at seat4, but then F cannot occupy seat3. No valid arrangement exists, so the only forced statement is the given rule that E is immediately clockwise of D."
+  },
+  {
+    "index": 125,
+    "model_answer": "A",
+    "expected_answer": "C",
     "is_correct": false,
-    "reasoning": "Q and R are siblings; Q is parent of S, making R the sibling of S's parent. In English the direct term is \"aunt\" or \"uncle\". The offered choices list only cousin relationships, none of which describe this direct aunt/uncle link. Therefore the most precise standard term is not among the options, so the correct choice is that there is no standard direct relation in the given list."
+    "reasoning": "All statements follow directly from the given seating order. The first statement repeats the first given fact, so it is unequivocally true."
+  },
+  {
+    "index": 126,
+    "model_answer": "A",
+    "expected_answer": "A",
+    "is_correct": true,
+    "reasoning": "A and B are half\u2011siblings, so their children X and Y are children of half\u2011siblings. That makes X and Y half\u2011first cousins."
+  },
+  {
+    "index": 127,
+    "model_answer": "A",
+    "expected_answer": "D",
+    "is_correct": false,
+    "reasoning": "Z is the spouse of the parent that my spouse shares with their sibling, i.e., my spouse\u2019s parent. Thus Z is my spouse\u2019s parent\u2019s spouse, making Z my parent\u2011in\u2011law."
   }
 ]

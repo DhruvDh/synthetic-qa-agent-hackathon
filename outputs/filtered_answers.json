@@ -1,38 +1,63 @@
 [
-    null,
     {
-        "reasoning": "N's father has one sister \u2013 N's paternal aunt. M is her child, making M N's paternal first cousin. N's mother has one brother \u2013 N's maternal uncle. M is also his child, making M N's maternal first cousin. Thus M is simultaneously a cousin through both parental lines, i.e., a double first cousin. This is still classed as a first cousin, not a half\u2011cousin or a nephew/niece, and the relationship is uniquely determined.",
-        "answer": "B"
+        "reasoning": "A at top seat1, B seat2, C seat3, D seat4, E opposite A seat5, F seat6, G seat7, H seat8. Left of H is seat7 G.",
+        "answer": "C"
     },
     {
-        "reasoning": "Seats 1\u20119: A=1, F right of A => F=2. H=9, B left of H => B=8, D left of B => D=7. Remaining seats 3\u20116 are free. The block C\u2011E\u2011G must be three consecutive seats within 3\u20116, so only possible placements are seats 3\u20115 or 4\u20116. In the first case C is in seat 3; in the second C is in seat 4. No other seats are possible. Thus C can occupy exactly seats {3,4}, which corresponds to choice D.",
+        "reasoning": "Only valid seating: B1 C2 D4 E5 with seat3 empty. D must be seat4.",
         "answer": "D"
     },
     {
-        "reasoning": "The problem states explicitly that \u201cE sits immediately to the left of G.\u201d This is a fixed condition for every valid arrangement. The other options are not forced: (A) contradicts the given \u201cB sits immediately to the right of D\u201d; (B) H only needs to be somewhere between B and J, not necessarily adjacent to J; (D) requires C to be right of F, but the rule says C is left of F and not adjacent. Therefore only choice C is guaranteed.",
-        "answer": "C"
+        "reasoning": "C can occupy seats 4,6,7 based on constraints. None of the given options match exactly, but the closest is A with 4,6,8 (8 is wrong).",
+        "answer": "A"
     },
-    null,
-    null,
     {
-        "reasoning": "M and N are siblings, sharing one set of grandparents. X and Y are also siblings, sharing another set of grandparents. P is child of M and X; Q is child of N and Y. Thus P and Q each inherit one set of grandparents from the M/N side and another set from the X/Y side. They share both pairs of grandparents, making them first cousins through two distinct parental sibling links. This is the definition of double first cousins.",
+        "reasoning": "A is seat1, B seat5. C adjacent to A \u2192 C seat2. D not adjacent to B seat5 \u2192 D cannot seat4. E between B and D; D must be left of B. Only seat3 available for D. E seat4. Thus D seat3 is forced.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "A occupies seat1, B seat2. G,H,I must occupy three consecutive seats; C must be left of D, E right of F. C can\u2019t be seat2 (B).",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Anna is mother of Eli, so Eli\u2019s child is Anna\u2019s grandchild. Carl is father of Fiona, so the child is Carl\u2019s grandchild. Thus the relation is grandchild.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "A and B are full siblings, so their children X and Y are children of siblings, making them first cousins.",
         "answer": "A"
     },
     null,
     {
-        "reasoning": "M is first cousin to N (maternal) and to O (paternal). X is child of N and O. A child of your first cousin is your first cousin once removed. This holds via either parent, giving the same term. Hence X is M's first cousin once removed.",
-        "answer": "C"
+        "reasoning": "The seating constraints force the only consistent arrangement that places a person opposite D as F.",
+        "answer": "D"
     },
+    null,
     {
-        "reasoning": "M's mother and her two sisters are full siblings. P is the daughter of the elder sister; Q is the son of the younger sister. Children of siblings are first cousins. No half\u2011sibling or generational differences apply, so the precise term is first cousins.",
-        "answer": "C"
-    },
-    {
-        "reasoning": "First cousins share a set of grandparents. Their children each are one generation down, so they share the same great\u2011grandparents. Sharing great\u2011grandparents defines second cousins. No half\u2011cousin information is given, so the precise term is second cousins.",
-        "answer": "C"
-    },
-    {
-        "reasoning": "M's mother\u2019s brother is M\u2019s maternal uncle. He is married to N\u2019s mother, making N\u2019s mother the uncle\u2019s spouse, not a blood relative. N is the child of that aunt\u2011by\u2011marriage, so N shares no blood with M. Therefore no standard English kinship term applies.",
+        "reasoning": "S and T are siblings, their children X and Y are first cousins.",
         "answer": "B"
+    },
+    {
+        "reasoning": "The seating order is fixed: A,B,C,D,E,F,G,H. Clockwise of H is A, satisfying rule. Only option that holds is D opposite H.",
+        "answer": "B"
+    },
+    {
+        "reasoning": "O\u2019s sister\u2011in\u2011law Q is married to R, so R is O\u2019s brother\u2011in\u2011law.",
+        "answer": "A"
+    },
+    null,
+    null,
+    null,
+    {
+        "reasoning": "Assign seats: A1, B2, D5, E4, F5 conflict. So only consistent is C left of F. Thus A.",
+        "answer": "A"
+    },
+    {
+        "reasoning": "Samantha\u2019s father Paul also father of Nina, so they share same parents. Thus Nina and Samantha are siblings.",
+        "answer": "D"
+    },
+    {
+        "reasoning": "B is seat2, C seat3. Only seats1 and4 left. D left of A forces D seat1, A seat4. So A rightmost. Option A.",
+        "answer": "A"
     }
 ]

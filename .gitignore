@@ -65,4 +65,7 @@ ipython_config.py
 # OS files
 .DS_Store
 Thumbs.db
+gpucore.*
 
+# Oversized artifacts kept locally
+merged_gptoss20b_bf16/

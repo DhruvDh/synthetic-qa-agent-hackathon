@@ -175,7 +175,6 @@ model = AutoModelForCausalLM.from_pretrained(
     "openai/gpt-oss-20b",
     torch_dtype=torch.bfloat16,
     quantization_config=Mxfp4Config(dequantize=True),
-    attn_implementation="eager",
     device_map="auto",
 )
 model.gradient_checkpointing_enable()
