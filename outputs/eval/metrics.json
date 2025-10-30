@@ -1,21 +1,21 @@
 {
   "question_metrics": {
-    "total_generated": 128,
-    "valid_count": 126,
-    "invalid_count": 2,
+    "total_generated": 6112,
+    "valid_count": 5970,
+    "invalid_count": 142,
     "invalid_reasons": {
-      "json_decode_error": 1,
-      "explanation_too_long": 1
+      "json_decode_error": 138,
+      "explanation_too_long": 4
     }
   },
   "question_timing": {
-    "batch_count": 1,
-    "total_tokens": 39095,
-    "total_time_sec": 15.760676860809326,
-    "tokens_per_sec": 2480.5406738091347
+    "batch_count": 48,
+    "total_tokens": 1830013,
+    "total_time_sec": 714.9135677814484,
+    "tokens_per_sec": 2559.7681768426605
   },
-  "question_truncations": 0,
-  "question_empty_events": 1,
+  "question_truncations": 1,
+  "question_empty_events": 85,
   "question_self_reflection": {
     "attempts": 0,
     "successes": 0,
@@ -23,23 +23,24 @@
     "failures": 0
   },
   "answer_metrics": {
-    "questions_answered": 126,
-    "valid_count": 86,
-    "invalid_count": 40,
+    "questions_answered": 5970,
+    "valid_count": 4197,
+    "invalid_count": 1773,
     "invalid_reasons": {
-      "json_decode_error": 40
+      "json_decode_error": 1772,
+      "answer_invalid_value": 1
     },
-    "correct_count": 59,
-    "accuracy": 0.686046511627907
+    "correct_count": 2571,
+    "accuracy": 0.6125804145818442
   },
   "answer_timing": {
-    "batch_count": 1,
-    "total_tokens": 43087,
-    "total_time_sec": 10.937324047088623,
-    "tokens_per_sec": 3939.446231500219
+    "batch_count": 47,
+    "total_tokens": 2013257,
+    "total_time_sec": 513.348212480545,
+    "tokens_per_sec": 3921.8155455762862
   },
   "answer_truncations": 0,
-  "answer_empty_events": 40,
+  "answer_empty_events": 1771,
   "answer_self_reflection": {
     "attempts": 0,
     "successes": 0,
@@ -52,45 +53,45 @@
     "failures": 0
   },
   "completion_monitor": {
-    "total_calls": 254,
+    "total_calls": 12082,
     "total_errors": 0,
-    "total_latency_sec": 1989.816213130951,
+    "total_latency_sec": 96139.97019100189,
     "modes": {
       "question": {
-        "total_calls": 128,
+        "total_calls": 6112,
         "finish_reasons": {
-          "stop": 127,
-          "length": 1
+          "stop": 6027,
+          "length": 85
         },
         "empty_reason_counts": {
-          "empty_content": 1
+          "empty_content": 85
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: C (others: A, B, D)\n- Keep the explanation <= 90 words\nEXAMPLE RESPONSE:\n{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"questi",
-        "completion_tokens": 39095,
-        "prompt_tokens": 267494,
-        "avg_latency_sec": 7.521805318072438,
-        "max_latency_sec": 15.714789867401123,
-        "min_latency_sec": 4.886451959609985
+        "prompt_example": "Respond with one **winning** puzzle JSON (using the question_json schema) in this domain: Blood Relations and Family Trees/Blood Relations and Family Trees\n- Provide exactly four options labeled 'A) ...', 'B) ...', 'C) ...', 'D) ...'\n- The only correct answer must be: B (others: A, C, D)\n- Keep the explanation <= 90 words\nEXAMPLE RESPONSE:\n{\n  \"topic\": \"Blood Relations and Family Trees\",\n  \"questi",
+        "completion_tokens": 1830013,
+        "prompt_tokens": 12721859,
+        "avg_latency_sec": 7.7709223202853925,
+        "max_latency_sec": 16.18109107017517,
+        "min_latency_sec": 2.8443658351898193
       },
       "answer": {
-        "total_calls": 126,
+        "total_calls": 5970,
         "finish_reasons": {
-          "stop": 86,
-          "length": 40
+          "stop": 4199,
+          "length": 1771
         },
         "empty_reason_counts": {
-          "empty_content": 40
+          "empty_content": 1771
         },
         "errors": {},
         "error_samples": [],
-        "prompt_example": "PUZZLE: Eve and Adam are siblings. Eve marries Frank and has a son, Grace. Adam marries Hilda and has a son, Ian. Grace and Ian marry and each has a daughter, Lily and Jack respectively. What is Lily\u2019s relation to Jack?\nCHOICES: A) First cousin B) Second cousin C) Third cousin D) No relation\n\nReturn using response format: answer_json with the **exact JSON key order**: reasoning, answer.\n",
-        "completion_tokens": 43087,
-        "prompt_tokens": 62867,
-        "avg_latency_sec": 8.150993114426022,
-        "max_latency_sec": 10.876097679138184,
-        "min_latency_sec": 3.718170404434204
+        "prompt_example": "PUZZLE: Anna and Beth are sisters. Anna marries Mark and has a son, Leo. Beth marries Tom and has a daughter, Maya. Without any other marriages, what is Maya\u2019s relationship to Leo?\nCHOICES: A) Aunt B) First cousin C) Second cousin D) Half\u2011sibling\n\nReturn using response format: answer_json with the **exact JSON key order**: reasoning, answer.\n",
+        "completion_tokens": 2013257,
+        "prompt_tokens": 2972535,
+        "avg_latency_sec": 8.148089274609308,
+        "max_latency_sec": 11.380226135253906,
+        "min_latency_sec": 1.4271748065948486
       },
       "other": {
         "total_calls": 0,
@@ -108,7 +109,7 @@
     }
   },
   "config": {
-    "num_questions": 128,
+    "num_questions": 6000,
     "batch_size": 128,
     "answer_batch_size": 128,
     "topics_file": "assets/topics.json",
