@@ -1,7 +1,7 @@
 """
 2025.10.12
 2025.10.11
-4.56.2
+4.57.1
 0.23.0
 __UNSLOTH_VERSIONING__
 """
@@ -317,7 +317,6 @@ class UnslothCPOConfig(CPOConfig):
         seed = 3407,
         data_seed = 3407,
         jit_mode_eval = False,
-        use_ipex = False,
         bf16 = False,
         fp16 = False,
         fp16_opt_level = 'O1',
@@ -343,7 +342,7 @@ class UnslothCPOConfig(CPOConfig):
         metric_for_best_model = None,
         greater_is_better = None,
         ignore_data_skip = False,
-        fsdp = '',
+        fsdp = None,
         fsdp_min_num_params = 0,
         fsdp_config = None,
         fsdp_transformer_layer_cls_to_wrap = None,
@@ -357,6 +356,8 @@ class UnslothCPOConfig(CPOConfig):
         group_by_length = False,
         length_column_name = 'length',
         report_to = None,
+        project = 'huggingface',
+        trackio_space_id = 'trackio',
         ddp_find_unused_parameters = None,
         ddp_bucket_cap_mb = None,
         ddp_broadcast_buffers = None,
@@ -478,7 +479,6 @@ class UnslothCPOConfig(CPOConfig):
             seed = seed,
             data_seed = data_seed,
             jit_mode_eval = jit_mode_eval,
-            use_ipex = use_ipex,
             bf16 = bf16,
             fp16 = fp16,
             fp16_opt_level = fp16_opt_level,
@@ -518,6 +518,8 @@ class UnslothCPOConfig(CPOConfig):
             group_by_length = group_by_length,
             length_column_name = length_column_name,
             report_to = report_to,
+            project = project,
+            trackio_space_id = trackio_space_id,
             ddp_find_unused_parameters = ddp_find_unused_parameters,
             ddp_bucket_cap_mb = ddp_bucket_cap_mb,
             ddp_broadcast_buffers = ddp_broadcast_buffers,

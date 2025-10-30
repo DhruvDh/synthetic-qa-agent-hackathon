@@ -1,7 +1,7 @@
 """
 2025.10.12
 2025.10.11
-4.56.2
+4.57.1
 0.23.0
 __UNSLOTH_VERSIONING__
 """
@@ -163,7 +163,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from typing import Any, List, Optional, Tuple, Union, Dict, Set, Callable
-from transformers.models.gpt_oss.modeling_gpt_oss import (__name__, F, Optional, Union, torch, nn, Cache, GenerationMixin, use_kernel_forward_from_hub, MoeCausalLMOutputWithPast, MoeModelOutputWithPast, ROPE_INIT_FUNCTIONS, dynamic_rope_update, PreTrainedModel, Unpack, TransformersKwargs, can_return_tuple, GptOssConfig, GptOssPreTrainedModel, GptOssModel, GptOssForCausalLM, GptOssExperts, GptOssMLP)
+from transformers.models.gpt_oss.modeling_gpt_oss import (__name__, F, Optional, Union, torch, nn, Cache, GenerationMixin, use_kernel_forward_from_hub, MoeCausalLMOutputWithPast, MoeModelOutputWithPast, ROPE_INIT_FUNCTIONS, dynamic_rope_update, PreTrainedModel, Unpack, TransformersKwargs, can_return_tuple, GptOssConfig, GptOssPreTrainedModel, GptOssModel, GptOssForCausalLM, GptOssMLP, GptOssExperts)
 
 @torch.compile(fullgraph = True, dynamic = True, options = torch_compile_options)
 def GptOssRMSNorm_forward(self, hidden_states):
@@ -211,7 +211,9 @@ def GptOssExperts_forward(self, hidden_states: torch.Tensor, router_indices=None
     if hidden_states.device.type == "cpu" or self.training:
         next_states = torch.zeros_like(hidden_states, dtype=hidden_states.dtype, device=hidden_states.device)
         with torch.no_grad():
-            expert_mask = torch.nn.functional.one_hot(router_indices, num_classes=num_experts)
+            expert_mask = torch.nn.functional.one_hot(
+                router_indices, num_classes=num_experts + 1
+            )  # masking is also a class
             expert_mask = expert_mask.permute(2, 1, 0)
             # we sum on the top_k and on the sequence length to get which experts
             # are hit this time around
@@ -219,6 +221,9 @@ def GptOssExperts_forward(self, hidden_states: torch.Tensor, router_indices=None
         for expert_idx in expert_hit[:]:
             # expert_idx only have 1 element, so we can use scale for fast indexing
             expert_idx = expert_idx[0]
+            # skip masking index
+            if expert_idx == num_experts:
+                continue
             with torch.no_grad():
                 _, token_idx = torch.where(expert_mask[expert_idx])
             current_state = hidden_states[token_idx]

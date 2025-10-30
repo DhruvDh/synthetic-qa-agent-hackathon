@@ -15,11 +15,108 @@ from unsloth import FastLanguageModel, PatchDPOTrainer, is_bfloat16_supported
 import json
 import os
 import random
+from types import SimpleNamespace
 from typing import Any, Dict, Iterator, List
 
 from datasets import Dataset
 from transformers import TrainingArguments
 from trl import DPOTrainer
+
+
+def ensure_mxfp4_activation_shim() -> None:
+    """Align Unsloth's MXFP4 fused activation call with current triton kernels."""
+    try:
+        from transformers.integrations import mxfp4 as mxfp4_mod
+        from triton_kernels import matmul_ogs, swiglu
+    except Exception:
+        return
+
+    fused_activation = getattr(matmul_ogs, "FusedActivation", None)
+    fn_specs = getattr(matmul_ogs, "FnSpecs", None)
+    swiglu_fn = getattr(swiglu, "swiglu_fn", None)
+    experts_cls = getattr(mxfp4_mod, "Mxfp4GptOssExperts", None)
+    RoutingData = getattr(matmul_ogs, "RoutingData", None)
+    InnerRoutingData = getattr(matmul_ogs, "InnerRoutingData", None)
+    if None in (fused_activation, fn_specs, swiglu_fn, experts_cls):
+        return
+
+    def _ensure_act(module):
+        if hasattr(module, "act"):
+            return
+        specs = fn_specs("swiglu", swiglu_fn, ("alpha", "limit"))
+        try:
+            module.act = fused_activation(specs, (module.alpha, module.limit), 2)
+        except TypeError:
+            module.act = fused_activation(specs, (module.alpha, module.limit))
+
+    def _coerce_routing_data(data):
+        if data is None or RoutingData is None:
+            return data
+        if isinstance(data, RoutingData):
+            return data
+        if InnerRoutingData is not None and isinstance(data, InnerRoutingData):
+            base = _coerce_routing_data(getattr(data, "base", None))
+            return InnerRoutingData(
+                base=base,
+                block_k=getattr(data, "block_k", None),
+                x_is_padded=getattr(data, "x_is_padded", False),
+                w_is_padded=getattr(data, "w_is_padded", False),
+            )
+        try:
+            expt_data = getattr(data, "expt_data", None)
+            if expt_data is not None:
+                slice_sizes = getattr(expt_data, "slice_sizes", None)
+                if slice_sizes is None and hasattr(expt_data, "slice_hist"):
+                    slice_sizes = expt_data.slice_hist
+                if slice_sizes is None and hasattr(expt_data, "hist"):
+                    slice_sizes = expt_data.hist
+
+                slice_offs = getattr(expt_data, "slice_offs", None)
+                if slice_offs is None and hasattr(expt_data, "slice_offsets"):
+                    slice_offs = expt_data.slice_offsets
+                if slice_offs is None and hasattr(expt_data, "offsets"):
+                    slice_offs = expt_data.offsets
+
+                block_schedule = getattr(expt_data, "block_schedule", None)
+                block_offs = getattr(expt_data, "block_offs", None)
+                if block_schedule is None and hasattr(expt_data, "block_schedule_fn"):
+                    block_schedule = expt_data.block_schedule_fn
+                if block_offs is None and hasattr(expt_data, "block_offs_fn"):
+                    block_offs = expt_data.block_offs_fn
+
+                if block_schedule is None and slice_offs is not None:
+                    block_schedule = lambda block: slice_offs
+                if block_offs is None and slice_offs is not None:
+                    block_offs = lambda block: slice_offs
+
+                expt_data = SimpleNamespace(
+                    slice_sizes=slice_sizes,
+                    slice_offs=slice_offs,
+                    block_schedule=block_schedule,
+                    block_offs=block_offs,
+                )
+            return RoutingData(
+                gate_scal=getattr(data, "gate_scal"),
+                expt_hist=getattr(data, "expt_hist"),
+                n_expts_tot=getattr(data, "n_expts_tot"),
+                n_expts_act=getattr(data, "n_expts_act"),
+                expt_data=expt_data,
+                expected_tokens_per_expt=getattr(data, "expected_tokens_per_expt", None),
+            )
+        except AttributeError:
+            return data
+
+    original_forward = experts_cls.forward
+    if getattr(original_forward, "_unsloth_shimmed", False):
+        return
+
+    def forward(self, hidden_states, routing_data, gather_idx, scatter_idx):
+        _ensure_act(self)
+        coerced = _coerce_routing_data(routing_data)
+        return original_forward(self, hidden_states, coerced, gather_idx, scatter_idx)
+
+    forward._unsloth_shimmed = True
+    experts_cls.forward = forward
 
 
 # =========================================================
@@ -171,7 +268,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
     max_seq_length=max_seq_length,
     load_in_4bit=False,
     use_exact_model_name=True,
-    fast_inference=True,
+    fast_inference=False,
     # float8_kv_cache=True,  # Uncomment if supported to shrink KV memory footprint.
 )
 
@@ -221,9 +318,10 @@ if len(dpo_dataset) > 0:
 # =========================================================
 # 6) DPO training
 # =========================================================
+ensure_mxfp4_activation_shim()
 PatchDPOTrainer()
 
-training_args = TrainingArguments(
+args = TrainingArguments(
     output_dir="dpo_gptoss120b_lora_harmony8192",
     per_device_train_batch_size=1,
     gradient_accumulation_steps=16,
@@ -238,13 +336,93 @@ training_args = TrainingArguments(
     optim="adamw_torch_fused",
 )
 
+# --- Unsloth DPOTrainer compat shim (one place for all extras) ---
+def patch_unsloth_args(args, tokenizer, model):
+    defaults = dict(
+        padding_value=tokenizer.pad_token_id,
+        label_pad_token_id=-100,
+        remove_unused_columns=False,
+        truncation_mode="keep_end",
+        packing=False,
+        padding_free=False,
+        model_init_kwargs=None,
+        tokenizer_init_kwargs=None,
+        ref_model_init_kwargs=None,
+        ref_tokenizer_init_kwargs=None,
+        force_use_ref_model=False,
+        evaluation_strategy="no",
+        generate_during_eval=False,
+        predict_with_generate=False,
+        generation_max_length=256,
+        generation_num_beams=1,
+        per_device_eval_batch_size=args.per_device_train_batch_size,
+        eval_batch_size=args.per_device_train_batch_size,
+        model_adapter_name=None,
+        adapter_name=None,
+        ref_model_adapter_name=None,
+        ref_adapter_name=None,
+        reference_free=True,
+        disable_dropout=True,
+        use_liger_loss=False,
+        use_logits_to_keep=False,
+        precompute_ref_log_probs=False,
+        precompute_ref_batch_size=None,
+        tools=None,
+        base_model_attribute_name="model",
+        beta=0.1,
+        f_divergence_type="kl",
+        f_alpha_divergence_coef=1.0,
+        label_smoothing=0.0,
+        loss_type="sigmoid",
+        loss_weights=None,
+        use_weighting=False,
+        rpo_alpha=None,
+        ld_alpha=None,
+        discopop_tau=0.05,
+        sync_ref_model=False,
+        ref_model_mixup_alpha=0.6,
+        ref_model_sync_steps=512,
+        vllm_sampling_params=None,
+        unsloth_num_chunks=-1,
+        dataset_num_proc=None,
+        max_seq_length=max_seq_length,
+        max_length=max_seq_length,
+        max_prompt_length=7000,
+        max_completion_length=1024,
+    )
+    for key, value in defaults.items():
+        if not hasattr(args, key):
+            setattr(args, key, value)
+
+    # Enforce reference-free setup and disabled dropout per run configuration.
+    args.reference_free = True
+    args.disable_dropout = True
+
+    if args.model_adapter_name is None or args.adapter_name is None:
+        adapter = "default"
+        peft_config = getattr(model, "peft_config", None)
+        if isinstance(peft_config, dict) and peft_config:
+            adapter = next(iter(peft_config.keys()))
+        if args.model_adapter_name is None:
+            args.model_adapter_name = adapter
+        if args.adapter_name is None:
+            args.adapter_name = adapter
+
+    if args.ref_model_adapter_name is None:
+        args.ref_model_adapter_name = None
+    if args.ref_adapter_name is None:
+        args.ref_adapter_name = None
+
+
+patch_unsloth_args(args, tokenizer, model)
+
 trainer = DPOTrainer(
     model=model,
     ref_model=None,
-    args=training_args,
+    args=args,
     beta=0.1,
     train_dataset=dpo_dataset,
-    tokenizer=tokenizer,
+    processing_class=tokenizer,
     max_length=max_seq_length,
     max_prompt_length=7000,
     max_target_length=1024,

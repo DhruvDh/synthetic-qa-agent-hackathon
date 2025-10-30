@@ -1,7 +1,7 @@
 """
 2025.10.12
 2025.10.11
-4.56.2
+4.57.1
 0.23.0
 __UNSLOTH_VERSIONING__
 """
@@ -27,7 +27,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from typing import Any, List, Optional, Tuple, Union, Dict, Set, Callable
-from trl.trainer.rloo_trainer import (Any, AutoConfig, AutoModelForSequenceClassification, AutoProcessor, AutoTokenizer, DataLoader, Dataset, FSDP, GenerationConfig, GuidedDecodingParams, IterableDataset, LLM, Optional, Path, PeftConfig, PreTrainedModel, PreTrainedTokenizerBase, ProcessorMixin, RLOOConfig, RLOOTrainer, RepeatSampler, RewardFunc, Sampler, SamplingParams, SyncRefModelCallback, Trainer, TrainerCallback, Union, VLLMClient, apply_chat_template, broadcast_object_list, copy, datasets, defaultdict, deque, disable_dropout_in_model, entropy_from_logits, gather, gather_object, generate_model_card, get_comet_experiment_url, identity, inspect, is_conversational, is_datasets_available, is_flash_attn_2_available, is_peft_model, is_rich_available, is_vllm_available, is_wandb_available, logger, logging, maybe_apply_chat_template, nanmax, nanmin, nanstd, nn, nullcontext, os, pad, partial, prepare_deepspeed, prepare_fsdp, prepare_peft_model, print_prompt_completions_sample, profiling_context, profiling_decorator, re, seed_worker, selective_log_softmax, set_seed, shuffle_sequence_dict, split_pixel_values_by_grid, split_tensor_dict, textwrap, torch, transformers, truncate_with_protected_tokens, unsplit_pixel_values_by_grid, unwrap_model_for_generation, warnings, Any, FSDP, GuidedDecodingParams, LLM, SamplingParams, Union, apply_chat_template, broadcast_object_list, copy, gather, gather_object, is_conversational, is_flash_attn_2_available, logging, maybe_apply_chat_template, nanstd, nullcontext, os, pad, profiling_context, re, torch, transformers, truncate_with_protected_tokens, unwrap_model_for_generation, FSDP, LLM, gather, is_peft_model, nn, nullcontext, os, profiling_decorator, re, Any, Union, profiling_decorator, re, shuffle_sequence_dict, split_pixel_values_by_grid, split_tensor_dict, torch, unsplit_pixel_values_by_grid, Optional, PreTrainedModel, Trainer, logger, os, re, torch, FSDP, LLM, nn, os, re, FSDP, nn, re, torch)
+from trl.trainer.rloo_trainer import (Any, AutoConfig, AutoModelForSequenceClassification, AutoProcessor, AutoTokenizer, DataLoader, Dataset, FSDP, GenerationConfig, IterableDataset, Optional, Path, PeftConfig, PreTrainedModel, PreTrainedTokenizerBase, ProcessorMixin, RLOOConfig, RLOOTrainer, RepeatSampler, RewardFunc, Sampler, SyncRefModelCallback, Trainer, TrainerCallback, Union, VLLMClient, apply_chat_template, broadcast_object_list, copy, datasets, defaultdict, deque, disable_dropout_in_model, entropy_from_logits, gather, gather_object, generate_model_card, get_comet_experiment_url, identity, inspect, is_conversational, is_datasets_available, is_flash_attn_2_available, is_peft_model, is_rich_available, is_vllm_available, is_wandb_available, logger, logging, maybe_apply_chat_template, nanmax, nanmin, nanstd, nn, nullcontext, os, pad, partial, prepare_deepspeed, prepare_fsdp, prepare_peft_model, print_prompt_completions_sample, profiling_context, profiling_decorator, re, seed_worker, selective_log_softmax, set_seed, shuffle_sequence_dict, split_pixel_values_by_grid, split_tensor_dict, textwrap, torch, transformers, truncate_with_protected_tokens, unsplit_pixel_values_by_grid, unwrap_model_for_generation, warnings, Any, FSDP, Union, apply_chat_template, broadcast_object_list, copy, gather, gather_object, is_conversational, is_flash_attn_2_available, logging, maybe_apply_chat_template, nanstd, nullcontext, os, pad, profiling_context, re, torch, transformers, truncate_with_protected_tokens, unwrap_model_for_generation, FSDP, gather, is_peft_model, nn, nullcontext, os, profiling_decorator, re, Any, Union, profiling_decorator, re, shuffle_sequence_dict, split_pixel_values_by_grid, split_tensor_dict, torch, unsplit_pixel_values_by_grid, Optional, PreTrainedModel, Trainer, logger, os, re, torch, FSDP, nn, os, re, FSDP, nn, re, torch)
 
 
 import os
@@ -423,7 +423,6 @@ class UnslothRLOOConfig(RLOOConfig):
         seed = 3407,
         data_seed = 3407,
         jit_mode_eval = False,
-        use_ipex = False,
         bf16 = False,
         fp16 = False,
         fp16_opt_level = 'O1',
@@ -449,7 +448,7 @@ class UnslothRLOOConfig(RLOOConfig):
         metric_for_best_model = None,
         greater_is_better = None,
         ignore_data_skip = False,
-        fsdp = '',
+        fsdp = None,
         fsdp_min_num_params = 0,
         fsdp_config = None,
         fsdp_transformer_layer_cls_to_wrap = None,
@@ -463,6 +462,8 @@ class UnslothRLOOConfig(RLOOConfig):
         group_by_length = False,
         length_column_name = 'length',
         report_to = None,
+        project = 'huggingface',
+        trackio_space_id = 'trackio',
         ddp_find_unused_parameters = None,
         ddp_bucket_cap_mb = None,
         ddp_broadcast_buffers = None,
@@ -633,7 +634,6 @@ class UnslothRLOOConfig(RLOOConfig):
             seed = seed,
             data_seed = data_seed,
             jit_mode_eval = jit_mode_eval,
-            use_ipex = use_ipex,
             bf16 = bf16,
             fp16 = fp16,
             fp16_opt_level = fp16_opt_level,
@@ -673,6 +673,8 @@ class UnslothRLOOConfig(RLOOConfig):
             group_by_length = group_by_length,
             length_column_name = length_column_name,
             report_to = report_to,
+            project = project,
+            trackio_space_id = trackio_space_id,
             ddp_find_unused_parameters = ddp_find_unused_parameters,
             ddp_bucket_cap_mb = ddp_bucket_cap_mb,
             ddp_broadcast_buffers = ddp_broadcast_buffers,
